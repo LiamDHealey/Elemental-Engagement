@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 2391177535409774206}
   - component: {fileID: 2280283077756958185}
   - component: {fileID: 3600748324673135355}
+  - component: {fileID: 7977147439944294568}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -329,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allegiance: {fileID: 7977147439944294568}
   damage:
     amount: 0
     type: 0
@@ -382,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d111e843f6af70d489bf19b2870fc320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <selectionGroup>k__BackingField: Default
+  allegiance: {fileID: 7977147439944294568}
   onSelected:
     m_PersistentCalls:
       m_Calls:
@@ -435,6 +437,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7977147439944294568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833595026407189285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alignment: 0
 --- !u!1 &7486104880870669279
 GameObject:
   m_ObjectHideFlags: 0

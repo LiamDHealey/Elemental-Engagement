@@ -10,6 +10,9 @@ namespace ElementalEngagement.Combat
     /// </summary>
     public abstract class Attack : MonoBehaviour
     {
+        [Tooltip("The component determining the allegiance of this. Will not damage objects that are aligned. Will damage any object if null.")]
+        public ElementalEngagement.Player.Allegiance allegiance;
+
         [Tooltip("The damage dealt by this.")]
         [SerializeField] Damage damage;
 

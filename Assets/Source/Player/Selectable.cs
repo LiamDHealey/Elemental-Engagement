@@ -11,8 +11,11 @@ namespace ElementalEngagement.Player
     [RequireComponent(typeof(Collider))]
     public class Selectable : MonoBehaviour
     {
+        [Tooltip("The players that can select this. Leave null to allow for anyone to select.")]
+        public Allegiance allegiance;
+
         [Tooltip("The name of the selection group this is in. Only selectable objects in the same group can be selected at the same time.")]
-        [field: SerializeField] public string selectionGroup { get; private set; } = "Default";
+        [field: SerializeField] public string selectionGroup { get; } = "Default";
 
         [Tooltip("Called when this has been selected. Can be invoked to select this object")]
         public UnityEvent<IEnumerable<Selectable>> onSelected;
