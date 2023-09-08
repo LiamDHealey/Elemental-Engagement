@@ -8,12 +8,13 @@ namespace ElementalEngagement.Combat
     /// <summary>
     /// Stores data about a damage event.
     /// </summary>
+    [System.Serializable]
     public struct Damage
     {
         // The amount of damage being dealt in hp.
         public float amount;
         // The type of the damage being dealt.
-        public Type? type;
+        public Type type;
         // The entity that causing the damage.
         public GameObject causer;
 
@@ -23,7 +24,7 @@ namespace ElementalEngagement.Combat
         /// <param name="amount"> The amount of damage being dealt in hp. </param>
         /// <param name="type"> The type of the damage being dealt. </param>
         /// <param name="causer"> The entity that causing the damage. </param>
-        public Damage(float amount, Type? type, GameObject causer)
+        public Damage(float amount, Type type, GameObject causer)
         {
             this.amount = amount;
             this.type = type;
@@ -35,9 +36,10 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public enum Type
         {
-            fire,
-            water,
-            earth,
+            Untyped,
+            Fire,
+            Water,
+            Earth,
         }
     }
 }

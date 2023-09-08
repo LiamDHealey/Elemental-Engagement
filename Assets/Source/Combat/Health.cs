@@ -10,13 +10,20 @@ namespace ElementalEngagement.Combat
     /// </summary>
     public sealed class Health : MonoBehaviour
     {
-        // The maximum health points this can have.
+        [Tooltip("The maximum health points this can have.")]
         [SerializeField] private float p_maxHP = 100;
         public float maxHp
         {
             get { throw new System.NotImplementedException(); }
             set { throw new System.NotImplementedException(); }
         }
+
+        [Tooltip("Called when this is damaged.")]
+        public UnityEvent<Damage> onDamaged;
+
+        [Tooltip("Called once when this has been killed.")]
+        public UnityEvent onKilled;
+
 
         // The current number of health points this has.
         public float hp
@@ -25,11 +32,6 @@ namespace ElementalEngagement.Combat
             private set { throw new System.NotImplementedException(); }
         }
 
-        // Called when this is damaged.
-        public UnityEvent<Damage> onDamaged;
-
-        // Called once when this has been killed
-        public UnityEvent<Damage> onKilled;
 
         /// <summary>
         /// Cases this to take damage.
