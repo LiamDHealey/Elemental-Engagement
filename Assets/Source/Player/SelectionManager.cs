@@ -7,8 +7,12 @@ using UnityEngine.InputSystem;
 namespace ElementalEngagement.Player
 {
     /// <summary>
-    /// Handles the selection of selectable objects. Can select either by clicking on an individual selectable 
+    /// Handles the selection, commanding, & deselection of selectable objects. 
+    /// 
+    /// Can select either by clicking on an individual selectable 
     /// or by clicking and dragging to create a selection box which will select all members of the selection group with the most member within the box.
+    /// 
+    /// Once objects have been selected further clicks will broadcast commands to selected units.
     /// </summary>
     [RequireComponent(typeof(Allegiance))]
     public class SelectionManager : MonoBehaviour
@@ -27,5 +31,9 @@ namespace ElementalEngagement.Player
 
         [Tooltip("The minimum distance from initial click location to create a selection box for.")]
         [SerializeField] private float minBoxSize = 10;
+
+
+        // All of the currently selected objects.
+        public IReadOnlyList<Selectable> selectedObjects { get { throw new System.NotImplementedException(); } }
     }
 }
