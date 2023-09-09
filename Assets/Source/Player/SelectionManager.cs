@@ -12,7 +12,8 @@ namespace ElementalEngagement.Player
     /// Can select either by clicking on an individual selectable 
     /// or by clicking and dragging to create a selection box which will select all members of the selection group with the most member within the box.
     /// 
-    /// Once objects have been selected further clicks will broadcast commands to selected units.
+    /// Once objects have been selected further clicks will cancel all current commands on the selected object, then executes the command with the highest priority.
+    /// See also: CommandReciever
     /// </summary>
     [RequireComponent(typeof(Allegiance))]
     public class SelectionManager : MonoBehaviour

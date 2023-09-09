@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ElementalEngagement.Economic
 {
     /// <summary>
-    /// Spawns in new units aligned with it based on favor of a minor god.
+    /// Spawns in new units aligned with it based on favor the minor god this is aligned with.
     /// </summary>
     [RequireComponent(typeof(Player.Allegiance))]
     public class Spawner : MonoBehaviour
@@ -15,9 +15,6 @@ namespace ElementalEngagement.Economic
 
         [Tooltip("What unit to spawn depending on the favor.")]
         [SerializeField] private List<UnitSpawnConditions> spawnConditions = new List<UnitSpawnConditions>() { new UnitSpawnConditions() };
-
-        [Tooltip("The minor god this shrine basses its favor off of.")]
-        [SerializeField] private MinorGod affiliatedGod;
 
         /// <summary>
         /// Stores the conditions for a unit to spawn

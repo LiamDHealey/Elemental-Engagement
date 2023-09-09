@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 3600748324673135355}
   - component: {fileID: 7977147439944294568}
   - component: {fileID: 106441613470632701}
+  - component: {fileID: -7189238663681482304}
   - component: {fileID: 6879914099066221970}
   m_Layer: 0
   m_Name: Unit
@@ -443,8 +444,7 @@ MonoBehaviour:
   allegiance: {fileID: 7977147439944294568}
   damage:
     amount: 10
-    type: 0
-    causer: {fileID: 5833595026407189285}
+    allegiance: {fileID: 0}
   onAttack:
   - timeOffset: -0.2
     onTriggered:
@@ -559,7 +559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alignment: 0
+  faction: 0
+  god: 0
 --- !u!136 &106441613470632701
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -583,6 +584,22 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7189238663681482304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833595026407189285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f733fd356791254f8e27420068f6ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commandPriority: 1
+  agent: {fileID: 3600748324673135355}
+  allegiance: {fileID: 7977147439944294568}
+  sacrificeValue: 0.01
 --- !u!114 &6879914099066221970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,6 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a391e82680fe48a42ac470e4d103a22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  commandPriority: 0
   visionRange: {fileID: 3324738417288572574}
   agent: {fileID: 3600748324673135355}
   allegiance: {fileID: 7977147439944294568}

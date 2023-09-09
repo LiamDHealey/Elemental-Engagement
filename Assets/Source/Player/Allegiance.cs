@@ -1,3 +1,4 @@
+using ElementalEngagement.Economic;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,16 +10,10 @@ namespace ElementalEngagement.Player
     /// </summary>
     public class Allegiance : MonoBehaviour
     {
+        // The player this is aligned with.
         public Faction faction;
 
-        /// <summary>
-        /// Whether or not this is friendly towards another game object.
-        /// </summary>
-        /// <param name="other"> The other game object. </param>
-        /// <returns> True if this has the same alignment as the other object. </returns>
-        public bool IsAligned(GameObject other)
-        {
-            throw new System.NotImplementedException();
-        }
+        // The god this is aligned with.
+        public MinorGod god;
     }
 }
