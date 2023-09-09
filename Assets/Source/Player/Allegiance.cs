@@ -9,7 +9,7 @@ namespace ElementalEngagement.Player
     /// </summary>
     public class Allegiance : MonoBehaviour
     {
-        public Alignment alignment;
+        public Faction faction;
 
         /// <summary>
         /// Whether or not this is friendly towards another game object.
@@ -19,30 +19,6 @@ namespace ElementalEngagement.Player
         public bool IsAligned(GameObject other)
         {
             throw new System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// Whether or not this is aligned with one of the given flags.
-        /// </summary>
-        /// <param name="other"> The flags to test. </param>
-        /// <returns> True if this component's alignment is contained in the given flags. </returns>
-        public bool IsAligned(AlignmentFlags other)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public enum Alignment
-        {
-            Unaligned,
-            PlayerOne,
-            PlayerTwo,
-        }
-
-        [System.Flags]
-        public enum AlignmentFlags
-        {
-            PlayerOne,
-            PlayerTwo,
         }
     }
 }

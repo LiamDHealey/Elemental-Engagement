@@ -29,7 +29,7 @@ namespace ElementalEngagement.Combat
         [SerializeField] private float movementTimeoutMaxDistance = 0.5f;
 
         /// <summary>
-        /// Called when the selection manager boadcasts MoveTo.
+        /// Called when the selection manager broadcasts MoveTo.
         /// </summary>
         /// <param name="position"> The desired move location. </param>
         public void MoveTo(Vector3 position)

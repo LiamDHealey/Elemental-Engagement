@@ -2,17 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+namespace ElementalEngagement.Economic
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Spawns in new units aligned with it based on favor of a minor god.
+    /// </summary>
+    [RequireComponent(typeof(Player.Allegiance))]
+    public class Spawner : MonoBehaviour
     {
-        
-    }
+        [Tooltip("How the spawn interval (in seconds/unit) changes as the favor increases. Favor is normalized 0-1")]
+        [SerializeField] private AnimationCurve favorToSpawnInterval;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [Tooltip("What unit to spawn depending on the favor.")]
+        [SerializeField] private List<UnitSpawnConditions> spawnConditions = new List<UnitSpawnConditions>() { new UnitSpawnConditions() };
+
+        [Tooltip("The minor god this shrine basses its favor off of.")]
+        [SerializeField] private MinorGod affiliatedGod;
+
+        /// <summary>
+        /// Stores the conditions for a unit to spawn
+        /// </summary>
+        [System.Serializable]
+        private class UnitSpawnConditions
+        {
+            [Tooltip("The minimum favor required to spawn this.")] [Range(0,1)]
+            public float favorThreshold;
+
+            [Tooltip("The prefab to instantiate when spawning this unit.")]
+            public Player.Allegiance unitPrefab;
+
+            public UnitSpawnConditions(float favorThreshold = 0, Player.Allegiance unitPrefab = null)
+            {
+                this.favorThreshold = favorThreshold;
+                this.unitPrefab = unitPrefab;
+            }
+        }
     }
 }
