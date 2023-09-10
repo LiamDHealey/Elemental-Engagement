@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 558593958030879408}
   - component: {fileID: -2631422958165361864}
   - component: {fileID: 7572055457978535631}
+  - component: {fileID: 1686256207638245235}
   - component: {fileID: 4229869321111341770}
   - component: {fileID: 8495704196627844067}
   m_Layer: 0
@@ -49,7 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alignment: 0
+  faction: 0
+  god: 0
 --- !u!114 &-2631422958165361864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +83,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 4229869321111341770}
   Panspeed: 1
+--- !u!114 &1686256207638245235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381274470310263124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10c2c87fffaa1d479d2d788ac715670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onSelectedAbilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onAbilityPlayed:
+    m_PersistentCalls:
+      m_Calls: []
+  onAbilityCooldownExpired:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4229869321111341770
 MonoBehaviour:
   m_ObjectHideFlags: 0

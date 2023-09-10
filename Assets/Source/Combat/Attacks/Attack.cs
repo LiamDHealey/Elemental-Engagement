@@ -11,16 +11,25 @@ namespace ElementalEngagement.Combat
     public abstract class Attack : MonoBehaviour
     {
         [Tooltip("The component determining the allegiance of this. Will not damage objects that are aligned. Will damage any object if null.")]
-        public ElementalEngagement.Player.Allegiance allegiance;
+        [SerializeField] private ElementalEngagement.Player.Allegiance allegiance;
 
         [Tooltip("The damage dealt by this.")]
-        [SerializeField] Damage damage;
+        public Damage damage;
+
+        [Tooltip("The knockback dealt by this.")]
+        public Knockback knockback;
+        
+        [Tooltip("The time between dealing damages in seconds.")] [Min(1/60f)]
+        public float attackInterval = 0.5f;
 
         [Tooltip("A set of events that will be at called at different time offsets from when this attacks. Useful for animations and sound effects")]
-        [SerializeField] private List<Event> onAttack;
+        public List<Event> onAttack;
 
+        /// <summary>
+        /// Represents a thing that can be triggered before or after an attack.
+        /// </summary>
         [System.Serializable]
-        private class Event
+        public class Event
         {
             [Tooltip("The time in seconds before (-) or after (+) onAttack when this will be called.")]
             public float timeOffset = 0;

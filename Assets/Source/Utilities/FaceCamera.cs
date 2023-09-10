@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ElementalEngagement.FX
+namespace ElementalEngagement.Utilities
 {
     /// <summary>
     /// Causes this game object to always face the camera.
