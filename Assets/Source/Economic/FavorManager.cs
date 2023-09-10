@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,10 +9,15 @@ namespace ElementalEngagement.Economic
     /// <summary>
     /// Tracks the favor of all minor god for all player.
     /// </summary>
-    public class FavorTracker : MonoBehaviour
+    public class FavorManager : MonoBehaviour
     {
+        [Tooltip("How each god's favor unlocks things.")]
+        [SerializeField] private FavorProgressionSettings _progressionSettings;
+        public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> progressionSettings { get { throw new System.NotImplementedException(); } }
+
+
         // Stores the favor each god shows towards each player faction.
-        public static IReadOnlyDictionary<Player.Faction, IReadOnlyDictionary<MinorGod, float>> factionToFavor { get { throw new System.NotImplementedException(); } }
+        public static ReadOnlyDictionary<Player.Faction, IReadOnlyDictionary<MinorGod, float>> factionToFavor { get { throw new System.NotImplementedException(); } }
 
         /// <summary>
         /// Adds an amount to the favor this god has towards a player.

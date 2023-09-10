@@ -11,7 +11,7 @@ namespace ElementalEngagement.Combat
     public sealed class Health : MonoBehaviour
     {
         [Tooltip("The maximum health points this can have.")]
-        [SerializeField] private float p_maxHP = 100;
+        [SerializeField] private float _maxHP = 100;
         public float maxHp
         {
             get { throw new System.NotImplementedException(); }
