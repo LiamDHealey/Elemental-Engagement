@@ -18,6 +18,9 @@ namespace ElementalEngagement.Combat
             set { throw new System.NotImplementedException(); }
         }
 
+        [Tooltip("The amounts damage will be multiplied depending on the incoming damage's allegiance.")]
+        [SerializeField] private List<DamageMultiplier> damageMultipliers;
+
         [Tooltip("Called when this is damaged.")]
         public UnityEvent<Damage> onDamaged;
 
@@ -40,6 +43,20 @@ namespace ElementalEngagement.Combat
         public void TakeDamage(Damage damage)
         {
             throw new System.NotImplementedException();
+        }
+
+
+        /// <summary>
+        /// Used for determine how things resist damage.
+        /// </summary>
+        [System.Serializable]
+        private class DamageMultiplier
+        {
+            [Tooltip("The god associated with the incoming damage.")]
+            public Favor.MinorGod incomingAffiliation;
+
+            [Tooltip("The amount that damage willed be multiplied by.")]
+            public float multiplier = 1;
         }
     }
 }

@@ -377,6 +377,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHP: 100
+  damageMultipliers:
+  - incomingAffiliation: 1
+    multiplier: 1
+  - incomingAffiliation: 2
+    multiplier: 1
+  - incomingAffiliation: 3
+    multiplier: 1
   onDamaged:
     m_PersistentCalls:
       m_Calls:
@@ -495,7 +502,7 @@ MonoBehaviour:
     amount: 0
     duration: 0
     source: {fileID: 5982273917337833412}
-  attackRate: 0.5
+  attackInterval: 0.5
   onAttack:
   - timeOffset: -0.2
     onTriggered:
