@@ -1,5 +1,7 @@
+using ElementalEngagement.Combat;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -24,5 +26,9 @@ namespace ElementalEngagement.Player
 
         // The currently selected ability
         public int selectedAbilityIndex { get; private set; }
+
+
+        // The current abilities' remaining cooldown times in seconds.
+        public ReadOnlyDictionary<Ability, float> abilityCooldowns;
     }
 }

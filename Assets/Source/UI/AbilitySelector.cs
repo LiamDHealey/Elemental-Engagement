@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ElementalEngagement.UI
 {
     /// <summary>
-    /// Displays all unlocked abilities for the given player
+    /// Displays all unlocked abilities for the given player, and show which is selected and which are on cooldown.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class AbilitySelector : MonoBehaviour

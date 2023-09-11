@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 namespace ElementalEngagement.UI
 {
+    /// <summary>
+    /// Used to display the icon of a single ability. Can also display it as being selected and on cooldown.
+    /// </summary>
     public class AbilityIcon : MonoBehaviour
     {
         [Tooltip("The image used to display the ability icon.")]

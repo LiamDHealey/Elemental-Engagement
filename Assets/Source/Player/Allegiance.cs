@@ -1,4 +1,4 @@
-using ElementalEngagement.Economic;
+using ElementalEngagement.Favor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

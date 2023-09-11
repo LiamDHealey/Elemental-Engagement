@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ElementalEngagement.Economic
+namespace ElementalEngagement.Favor
 {
     /// <summary>
     /// A location where units can be sacrificed.

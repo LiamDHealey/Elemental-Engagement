@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace ElementalEngagement.Economic
+namespace ElementalEngagement.Favor
 {
     /// <summary>
     /// Tracks the favor of all minor god for all player, and how that favor unlocks new things.

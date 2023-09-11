@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-namespace ElementalEngagement.Economic
+namespace ElementalEngagement.Favor
 {
     /// <summary>
     /// Stores all of the stats of how each god's favor effects the game.

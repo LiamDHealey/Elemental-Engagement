@@ -1,4 +1,4 @@
-namespace ElementalEngagement.Economic
+namespace ElementalEngagement.Favor
 {
     public enum MinorGod
     {

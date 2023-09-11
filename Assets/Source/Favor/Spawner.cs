@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ElementalEngagement.Economic
+namespace ElementalEngagement.Favor
 {
     /// <summary>
     /// Spawns in new units aligned with it based on favor the minor god this is aligned with.
