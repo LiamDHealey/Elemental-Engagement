@@ -23,7 +23,7 @@ namespace ElementalEngagement.Combat
         [SerializeField] private UnityEvent onKnockbackEnd;
 
         /// <summary>
-        /// Moves this away from the knockback source.
+        /// Moves this away from the knockback source a given distance over a given amount of time.
         /// </summary>
         /// <param name="knockback"> The info of how this will be knocked back. </param>
         public void ReceiveKnockback(Knockback knockback)
