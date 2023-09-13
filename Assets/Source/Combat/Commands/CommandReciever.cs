@@ -8,8 +8,8 @@ namespace ElementalEngagement.Player
     [RequireComponent(typeof(Selectable))]
     public abstract class CommandReceiver : MonoBehaviour
     {
-        [Tooltip("The priority of this command. Used to determine which command is run when multiple are followable.")]
-        [SerializeField] int commandPriority;
+        [Tooltip("The priority of this command. Used to determine which command is run when multiple are followable. Command with the largest priority will be executed.")]
+        public int commandPriority;
 
         /// <summary>
         /// Tests if a command is followable.

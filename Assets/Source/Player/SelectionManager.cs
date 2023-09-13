@@ -44,16 +44,34 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Bind Controls
         /// </summary>
-        public void Start()
+        private void Start()
         {
             input.actions["Select"].started += SelectionStarted;
+            input.actions["IssueCommand"].performed += IssueCommand;
         }
 
+        /// <summary>
+        /// Unbinds controls
+        /// </summary>
+        private void OnDestroy()
+        {
+            input.actions["Select"].started -= SelectionStarted;
+            input.actions["IssueCommand"].performed -= IssueCommand;
+        }
+
+        /// <summary>
+        /// Begins selecting of units.
+        /// </summary>
+        /// <param name="context"> The context of the selection input. </param>
         private void SelectionStarted(CallbackContext context)
         {
             StartCoroutine(UpdateSelection());
         }
 
+        /// <summary>
+        /// Updates the selection of units under the cursor while the Select input is in progress.
+        /// </summary>
+        /// <returns> The time to wait between selection updates. </returns>
         private IEnumerator UpdateSelection()
         {
             int newSelectionCount = 0;
@@ -101,10 +119,37 @@ namespace ElementalEngagement.Player
 
             bool GetSelectableUnderCursor(out Selectable selectable)
             {
-                Ray screenToWorldRay = camera.ScreenPointToRay(input.actions["SelectionPosition"].ReadValue<Vector2>());
+                Ray screenToWorldRay = camera.ScreenPointToRay(input.actions["CursorPosition"].ReadValue<Vector2>());
                 bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
                 selectable = hit.collider?.GetComponent<Selectable>();
                 return result && selectable != null;
+            }
+        }
+
+
+        /// <summary>
+        /// Issues a command to all selected units.
+        /// </summary>
+        /// <param name="context"> The context of the command input. </param>
+        private void IssueCommand(CallbackContext context)
+        {
+            Ray screenToWorldRay = camera.ScreenPointToRay(input.actions["CursorPosition"].ReadValue<Vector2>());
+            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
+
+
+            foreach (Selectable selectable in selectedObjects)
+            {
+                CommandReceiver[] receivers = selectable.GetComponents<CommandReceiver>();
+                foreach (CommandReceiver receiver in receivers)
+                    receiver.CancelCommand();
+
+                // Get highest priority receiver that can execute this command.
+                CommandReceiver chosenReceiver = receivers
+                    .Where(receiver => receiver.CanExecuteCommand(hit))
+                    .OrderByDescending(receiver => receiver.commandPriority)
+                    .FirstOrDefault();
+
+                chosenReceiver?.ExecuteCommand(hit);
             }
         }
     }

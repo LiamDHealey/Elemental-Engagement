@@ -33,13 +33,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectionPosition",
+                    "name": "CursorPosition",
                     "type": "Value",
                     "id": "c84b177f-5724-4d87-8c36-fca73f65a3cb",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "IssueCommand",
+                    "type": "Button",
+                    "id": "33735e59-ce10-49a9-a92b-e1b0e233d4bd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -270,7 +279,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad",
-                    "action": "SelectionPosition",
+                    "action": "CursorPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3729888c-1e85-48b8-a30f-e4caa6ebbd7d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "IssueCommand",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b5877bf-a60d-41c7-86c1-608afc29c46d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "IssueCommand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
