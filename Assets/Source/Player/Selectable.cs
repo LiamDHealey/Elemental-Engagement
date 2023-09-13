@@ -17,31 +17,25 @@ namespace ElementalEngagement.Player
         [Tooltip("The name of the selection group this is in. Only selectable objects in the same group can be selected at the same time.")]
         [field: SerializeField] public string selectionGroup { get; } = "Default";
 
-        [Tooltip("Called when this has been selected.")]
+        [Tooltip("Called when this has been selected. Can be invoked to select this object")]
         public UnityEvent onSelected;
 
-        [Tooltip("Called when this has been deselected..")]
+        [Tooltip("Called when this has been deselected. Can be invoked to deselect this object.")]
         public UnityEvent onDeselected;
 
 
 
         // Whether or not this is currently selected.
-        private bool _isSelected = false;
-        public bool isSelected 
+        public bool isSelected { get; private set; } = false;
+
+
+        /// <summary>
+        /// Handles is selected.
+        /// </summary>
+        private void Start()
         {
-            get => _isSelected;
-            set 
-            {
-                _isSelected = value;
-                if (value)
-                {
-                    onSelected?.Invoke();
-                }
-                else
-                {
-                    onDeselected?.Invoke();
-                }
-            }
+            onSelected.AddListener(delegate { isSelected = true; });
+            onDeselected.AddListener(delegate { isSelected = false; });
         }
     }
 }
