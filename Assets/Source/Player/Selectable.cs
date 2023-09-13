@@ -18,14 +18,24 @@ namespace ElementalEngagement.Player
         [field: SerializeField] public string selectionGroup { get; } = "Default";
 
         [Tooltip("Called when this has been selected. Can be invoked to select this object")]
-        public UnityEvent<IEnumerable<Selectable>> onSelected;
+        public UnityEvent onSelected;
 
         [Tooltip("Called when this has been deselected. Can be invoked to deselect this object.")]
-        [SerializeField] public UnityEvent onDeselected;
+        public UnityEvent onDeselected;
 
 
 
         // Whether or not this is currently selected.
         public bool isSelected { get; private set; } = false;
+
+
+        /// <summary>
+        /// Handles is selected.
+        /// </summary>
+        private void Start()
+        {
+            onSelected.AddListener(delegate { isSelected = true; });
+            onDeselected.AddListener(delegate { isSelected = false; });
+        }
     }
 }
