@@ -9,7 +9,7 @@ using UnityEngine.Events;
 namespace ElementalEngagement.Combat
 {
     /// <summary>
-    /// Allows this to sacrifice itself at a sacrifice location.
+    /// Allows this to move to the commanded location.
     /// </summary>
     [RequireComponent(typeof(Selectable))]
     public class MoveToBehavior : CommandReceiver
@@ -19,24 +19,26 @@ namespace ElementalEngagement.Combat
 
 
         /// <summary>
-        /// Tests if an attack command is followable.
+        /// Tests if an move to command is followable.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
         /// <returns> True if the destination is a sacrifice location, and is aligned with this. </returns>
         public override bool CanExecuteCommand(RaycastHit hitUnderCursor)
         {
-            return true;
+            NavMeshPath path = new NavMeshPath();
+            agent.CalculatePath(hitUnderCursor.point, path);
+            return path.status == NavMeshPathStatus.PathComplete;
         }
 
         /// <summary>
-        /// Moves to the sacrifice location and then sacrifices itself to it by calling Sacrifice on the sacrifice location.
+        /// Moves to the hit location.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
         public override bool ExecuteCommand(RaycastHit hitUnderCursor)
         {
             agent.isStopped = false;
             agent.SetDestination(hitUnderCursor.point);
-            return true;
+            return agent.pathStatus == NavMeshPathStatus.PathComplete;
         }
 
         /// <summary>
