@@ -79,8 +79,12 @@ namespace ElementalEngagement.Player
             // Add to selection.
             while (input.actions["Select"].inProgress)
             {
-                
-                if (GetSelectableUnderCursor(out Selectable selectable))
+                yield return null;
+
+                if (!RayUnderCursor(out Ray screenToWorldRay))
+                    continue;
+
+                if (GetSelectableUnderCursor(screenToWorldRay, out Selectable selectable))
                 {
                     if (!selectable.isSelected)
                     {
@@ -89,16 +93,17 @@ namespace ElementalEngagement.Player
                     }
                     selectable.isSelected = true;
                 }
-
-                yield return null;
             }
 
 
             // Clear selection.
             if (newSelectionCount == 0)
             {
+                if (!RayUnderCursor(out Ray screenToWorldRay))
+                    yield break;
+
                 // Clear just targeted unit
-                if (GetSelectableUnderCursor(out Selectable selectable))
+                if (GetSelectableUnderCursor(screenToWorldRay, out Selectable selectable))
                 {
                     _selectedObjects.Remove(selectable);
                     selectable.isSelected = false;
@@ -117,9 +122,8 @@ namespace ElementalEngagement.Player
 
 
 
-            bool GetSelectableUnderCursor(out Selectable selectable)
+            bool GetSelectableUnderCursor(Ray screenToWorldRay, out Selectable selectable)
             {
-                Ray screenToWorldRay = camera.ScreenPointToRay(input.actions["CursorPosition"].ReadValue<Vector2>());
                 bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
                 selectable = hit.collider?.GetComponent<Selectable>();
                 return result && selectable != null;
@@ -133,7 +137,8 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the command input. </param>
         private void IssueCommand(CallbackContext context)
         {
-            Ray screenToWorldRay = camera.ScreenPointToRay(input.actions["CursorPosition"].ReadValue<Vector2>());
+            if (!RayUnderCursor(out Ray screenToWorldRay))
+                return;
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
 
 
@@ -151,6 +156,25 @@ namespace ElementalEngagement.Player
 
                 chosenReceiver?.ExecuteCommand(hit);
             }
+        }
+
+        /// <summary>
+        /// Gets the screen to world ray under the cursor.
+        /// </summary>
+        /// <param name="ray"> The ray that when cast will get the object under the cursor. </param>
+        /// <returns> True if the mouse position is vaild, false otherwise. </returns>
+        private bool RayUnderCursor(out Ray ray)
+        {
+            Vector2 cursorPosition = input.actions["CursorPosition"].ReadValue<Vector2>();
+
+            if (!camera.pixelRect.Contains(cursorPosition))
+            {
+                ray = new Ray();
+                return false;
+            }
+
+            ray = camera.ScreenPointToRay(cursorPosition);
+            return true;
         }
     }
 }
