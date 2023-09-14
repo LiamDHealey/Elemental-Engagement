@@ -6,6 +6,8 @@ namespace ElementalEngagement.Utilities
 {
     /// <summary>
     /// Exposes certain functionality to the animator.
+    /// 
+    /// Edit: Added this test comment by Christian Hartman
     /// </summary>
     public class AnimatorFunctionality : MonoBehaviour
     {
