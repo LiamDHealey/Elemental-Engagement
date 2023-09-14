@@ -24,17 +24,8 @@ namespace ElementalEngagement.Player
         [Tooltip("The input component that this will get mouse data from.")]
         [SerializeField] private PlayerInput input;
 
-        [Tooltip("The camera from which to make the selection.")]
-        [SerializeField] private new Camera camera;
-
-        [Tooltip("The camera from which to make the selection.")]
-        [SerializeField] private Canvas hudCanvas;
-
-        [Tooltip("The camera from which to make the selection.")]
-        [SerializeField] private RectTransform selectionCursor;
-
-        [Tooltip("The minimum distance from initial click location to create a selection box for.")]
-        [SerializeField] private float minBoxSize = 10;
+        [Tooltip("The cursor used to get the selection location from.")]
+        [SerializeField] private PlayerCursor cursor;
 
 
         // All of the currently selected objects.
@@ -81,7 +72,7 @@ namespace ElementalEngagement.Player
             {
                 yield return null;
 
-                if (!RayUnderCursor(out Ray screenToWorldRay))
+                if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
                     continue;
 
                 if (GetSelectableUnderCursor(screenToWorldRay, out Selectable selectable))
@@ -99,7 +90,7 @@ namespace ElementalEngagement.Player
             // Clear selection.
             if (newSelectionCount == 0)
             {
-                if (!RayUnderCursor(out Ray screenToWorldRay))
+                if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
                     yield break;
 
                 // Clear just targeted unit
@@ -137,7 +128,7 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the command input. </param>
         private void IssueCommand(CallbackContext context)
         {
-            if (!RayUnderCursor(out Ray screenToWorldRay))
+            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
                 return;
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
 
@@ -155,36 +146,6 @@ namespace ElementalEngagement.Player
                     .FirstOrDefault();
 
                 chosenReceiver?.ExecuteCommand(hit);
-            }
-        }
-
-        /// <summary>
-        /// Gets the screen to world ray under the cursor.
-        /// </summary>
-        /// <param name="ray"> The ray that when cast will get the object under the cursor. </param>
-        /// <returns> True if the mouse position is vaild, false otherwise. </returns>
-        private bool RayUnderCursor(out Ray ray)
-        {
-            if (input.actions["CursorPosition"].IsInProgress())
-            {
-                selectionCursor.gameObject.SetActive(false);
-
-                Vector2 cursorPosition = input.actions["CursorPosition"].ReadValue<Vector2>();
-
-                if (!camera.pixelRect.Contains(cursorPosition))
-                {
-                    ray = new Ray();
-                    return false;
-                }
-
-                ray = camera.ScreenPointToRay(cursorPosition);
-                return true;
-            }
-            else
-            {
-                selectionCursor.gameObject.SetActive(true);
-                ray = new Ray(camera.transform.position, camera.transform.forward);
-                return true;
             }
         }
     }

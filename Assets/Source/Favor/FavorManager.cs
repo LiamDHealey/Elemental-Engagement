@@ -22,14 +22,26 @@ namespace ElementalEngagement.Favor
 
 
         // The abilities that are currently unlocked.
-        public static ReadOnlyCollection<Ability> unlockedAbilities { get { throw new System.NotImplementedException(); } }
-
+        public static ReadOnlyCollection<Ability> unlockedAbilities { get => instance.tempUnlockedAbilities.AsReadOnly(); }
+        // TODO: replace this with an actual implementation based off of progression settings and favor
+        public List<Ability> tempUnlockedAbilities;
 
         // Stores the favor each god shows towards each player faction.
         public static ReadOnlyDictionary<Player.Faction, IReadOnlyDictionary<MinorGod, float>> factionToFavor { get { throw new System.NotImplementedException(); } }
 
 
+        // Tracks the singleton instance of this.
+        private static FavorManager instance;
 
+
+
+        /// <summary>
+        /// Initializes singleton.
+        /// </summary>
+        private void Start()
+        {
+            instance = this;
+        }
 
 
         /// <summary>
