@@ -31,7 +31,7 @@ namespace ElementalEngagement.Player
         [SerializeField] private Canvas hudCanvas;
 
         [Tooltip("The camera from which to make the selection.")]
-        [SerializeField] private RectTransform selectionBox;
+        [SerializeField] private RectTransform selectionCursor;
 
         [Tooltip("The minimum distance from initial click location to create a selection box for.")]
         [SerializeField] private float minBoxSize = 10;
@@ -165,16 +165,27 @@ namespace ElementalEngagement.Player
         /// <returns> True if the mouse position is vaild, false otherwise. </returns>
         private bool RayUnderCursor(out Ray ray)
         {
-            Vector2 cursorPosition = input.actions["CursorPosition"].ReadValue<Vector2>();
-
-            if (!camera.pixelRect.Contains(cursorPosition))
+            if (input.actions["CursorPosition"].IsInProgress())
             {
-                ray = new Ray();
-                return false;
-            }
+                selectionCursor.gameObject.SetActive(false);
 
-            ray = camera.ScreenPointToRay(cursorPosition);
-            return true;
+                Vector2 cursorPosition = input.actions["CursorPosition"].ReadValue<Vector2>();
+
+                if (!camera.pixelRect.Contains(cursorPosition))
+                {
+                    ray = new Ray();
+                    return false;
+                }
+
+                ray = camera.ScreenPointToRay(cursorPosition);
+                return true;
+            }
+            else
+            {
+                selectionCursor.gameObject.SetActive(true);
+                ray = new Ray(camera.transform.position, camera.transform.forward);
+                return true;
+            }
         }
     }
 }
