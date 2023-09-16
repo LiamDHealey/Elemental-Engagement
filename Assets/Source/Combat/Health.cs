@@ -16,7 +16,24 @@ namespace ElementalEngagement.Combat
         [Tooltip("The maximum health points this can have.")]
         [SerializeField] private float _maxHP = 100;
         public float maxHp
-        { get; set; }
+        { get { return _maxHP; }
+          set
+          {
+                if(value <= 0)
+                {
+                    return;
+                }
+                else
+                {
+                    _maxHP = value;
+                }
+
+                if(_maxHP < hp)
+                {
+                    hp = _maxHP;
+                }
+          }
+        }
 
         [Tooltip("The amounts damage will be multiplied depending on the incoming damage's allegiance.")]
         [SerializeField] private List<DamageMultiplier> damageMultipliers;
@@ -39,10 +56,19 @@ namespace ElementalEngagement.Combat
         /// <param name="damage"> The damage to take. </param>
         public void TakeDamage(Damage damage)
         {
-            DamageMultiplier multiplier = new DamageMultiplier();
-            Favor.MinorGod unitAffiliation = this.gameObject.GetComponent<Favor.MinorGod>();
+            if(hp <= 0)
+            {
+                return;
+            }
+            
+            for(int i =0; i < damageMultipliers.Count; i++)
+            {
+                if (damageMultipliers[i].incomingAffiliation.Equals(damage.allegiance))
+                {
+                    damage.amount *= damageMultipliers[i].multiplier;
+                }
+            }
 
-            hp -= multiplier.checkAndMultiplyDamage(unitAffiliation, damage);
             onDamaged?.Invoke(damage);
 
             if(hp <= 0)
@@ -61,42 +87,6 @@ namespace ElementalEngagement.Combat
 
             [Tooltip("The amount that damage willed be multiplied by.")]
             public float multiplier = 1.5F;
-
-            public float checkAndMultiplyDamage(MinorGod godOfUnit, Damage damage)
-            {
-                incomingAffiliation = damage.allegiance.god;
-                if(incomingAffiliation.Equals(godOfUnit)) 
-                {
-                    return damage.amount;
-                }
-                else if(incomingAffiliation.Equals(Favor.MinorGod.Fire))
-                { 
-                    if(godOfUnit.Equals(Favor.MinorGod.Earth)) 
-                    { 
-                        return damage.amount * multiplier;
-                    }
-                }
-                else if (incomingAffiliation.Equals(Favor.MinorGod.Water))
-                {
-                    if (godOfUnit.Equals(Favor.MinorGod.Fire))
-                    {
-                        return damage.amount * multiplier;
-                    }
-                }
-                else if (incomingAffiliation.Equals(Favor.MinorGod.Earth))
-                {
-                    if (godOfUnit.Equals(Favor.MinorGod.Water))
-                    {
-                        return damage.amount * multiplier;
-                    }
-                }
-                else 
-                { 
-                    return damage.amount; 
-                }
-
-                return 0;
-            }
         }
     }
 }
