@@ -28,7 +28,21 @@ namespace ElementalEngagement.Combat
         /// <param name="knockback"> The info of how this will be knocked back. </param>
         public void ReceiveKnockback(Knockback knockback)
         {
-            throw new System.NotImplementedException();
+            onKnockbackBegin?.Invoke();
+           
+            Vector3 knockbackDirection = knockback.source.position - rigidbody.transform.position;
+            knockbackDirection.Normalize();
+            rigidbody.transform.eulerAngles = knockback.source.position;
+            
+            float timeElapsed = 0;
+            
+            while(timeElapsed < knockback.duration)
+            {
+                rigidbody.transform.position += (knockbackDirection * knockbackMultiplier) / knockback.duration;
+                timeElapsed += Time.deltaTime;
+            }
+
+            onKnockbackEnd?.Invoke();
         }
     }
 }
