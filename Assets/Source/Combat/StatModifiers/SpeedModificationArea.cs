@@ -17,5 +17,14 @@ namespace ElementalEngagement.Combat
 
         [Tooltip("The amount to add to the acceleration of any navmesh agents in the area as a percent of its current value.")]
         [SerializeField] private float deltaAcceleration;
+
+        public SpeedModificationArea(float deltaSpeed, float deltaAngularSpeed, float deltaAcceleration)
+        {
+            this.deltaSpeed = deltaSpeed;
+            this.deltaAngularSpeed = deltaAngularSpeed;
+            this.deltaAcceleration = deltaAcceleration;
+        }
+
+        //TODO:Implement modification area
     }
 }
