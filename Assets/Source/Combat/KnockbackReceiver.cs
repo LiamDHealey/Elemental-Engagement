@@ -26,6 +26,7 @@ namespace ElementalEngagement.Combat
         [SerializeField] private bool chainKnockback;
 
         private List<CurrentKnockback> currentKnockbacks = new List<CurrentKnockback>();
+        private bool endReported = true;
 
 
         /// <summary>
@@ -34,6 +35,7 @@ namespace ElementalEngagement.Combat
         /// <param name="knockback"> The info of how this will be knocked back. </param>
         public void ReceiveKnockback(Knockback knockback)
         {
+            endReported = false;
             Vector3 direction = transform.position - rigidbody.transform.position;
             direction.Normalize();
 
@@ -42,6 +44,7 @@ namespace ElementalEngagement.Combat
                 if (currentKnockbacks.Count > 0) { return; }
                 CurrentKnockback onlyKnockback = new CurrentKnockback(direction * knockbackMultiplier * knockback.amount / knockback.duration, knockback.duration);
                 currentKnockbacks.Add(onlyKnockback);
+                onKnockbackBegin?.Invoke();
                 return;
             }
 
@@ -50,6 +53,9 @@ namespace ElementalEngagement.Combat
             onKnockbackBegin?.Invoke();
         }
 
+        /// <summary>
+        /// Update that adds all vectors together to create a total vector to move along
+        /// </summary>
         private void FixedUpdate()
         {
             Vector3 totalKnockback = Vector3.zero;
@@ -65,23 +71,28 @@ namespace ElementalEngagement.Combat
 
             rigidbody.MovePosition((Vector3)transform.position + totalKnockback * Time.fixedDeltaTime);
 
-            if (currentKnockbacks.Count == 0)
+            if (currentKnockbacks.Count == 0 && endReported == false)
             {
                 onKnockbackEnd?.Invoke();
+                endReported = true;
             }
         }
-    }
 
-    class CurrentKnockback
-    {
-        public Vector3 distanceOverTime;
-
-        public float duration;
-
-        public CurrentKnockback(Vector3 distanceOverTime, float duration)
+        /// <summary>
+        /// Class to store all info for the currently calculated knockbacks
+        /// </summary>
+        private class CurrentKnockback
         {
-            this.distanceOverTime = distanceOverTime;
-            this.duration = duration;
+            //
+            public Vector3 distanceOverTime;
+
+            public float duration;
+
+            public CurrentKnockback(Vector3 distanceOverTime, float duration)
+            {
+                this.distanceOverTime = distanceOverTime;
+                this.duration = duration;
+            }
         }
     }
 }
