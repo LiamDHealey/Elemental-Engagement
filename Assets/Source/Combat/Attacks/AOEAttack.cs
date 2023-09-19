@@ -36,8 +36,8 @@ namespace ElementalEngagement.Combat
 
             // If the target is aligned with this attack
             if (allegiance != null && otherAllegiance != null &&
-                ((allegiance.faction != Faction.Unaligned && allegiance.faction != otherAllegiance.faction) ||
-                (allegiance.god != Favor.MinorGod.Unaligned && allegiance.god != otherAllegiance.god)))
+                (allegiance.faction != Faction.Unaligned && allegiance.faction == otherAllegiance.faction ||
+                allegiance.god != Favor.MinorGod.Unaligned && allegiance.god == otherAllegiance.god))
                 return;
 
             targets.Add(other);
