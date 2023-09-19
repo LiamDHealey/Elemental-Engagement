@@ -11,7 +11,7 @@ namespace ElementalEngagement.Combat
     public abstract class Attack : MonoBehaviour
     {
         [Tooltip("The component determining the allegiance of this. Will not damage objects that are aligned. Will damage any object if null.")]
-        [SerializeField] private ElementalEngagement.Player.Allegiance allegiance;
+        public Player.Allegiance allegiance;
 
         [Tooltip("The damage dealt by this.")]
         public Damage damage;
@@ -19,23 +19,19 @@ namespace ElementalEngagement.Combat
         [Tooltip("The knockback dealt by this.")]
         public Knockback knockback;
         
-        [Tooltip("The time between dealing damages in seconds.")] [Min(1/60f)]
+        [Tooltip("The time between starting attacks in seconds.")] [Min(1/60f)]
         public float attackInterval = 0.5f;
+        
+        [Tooltip("The time between stating an attack and dealing damage. Must be less than attackInterval")] [Min(0f)]
+        public float damageDelay = 0f;
 
-        [Tooltip("A set of events that will be at called at different time offsets from when this attacks. Useful for animations and sound effects")]
-        public List<Event> onAttack;
+        [Tooltip("Whether or not to wait a for attack rate to elapse once when a new target enters the attack range.")]
+        public bool waitBeforeDamage = false;
 
-        /// <summary>
-        /// Represents a thing that can be triggered before or after an attack.
-        /// </summary>
-        [System.Serializable]
-        public class Event
-        {
-            [Tooltip("The time in seconds before (-) or after (+) onAttack when this will be called.")]
-            public float timeOffset = 0;
+        [Tooltip("Called when this starts its attack")]
+        public UnityEvent onAttackStart;
 
-            [Tooltip("Called a certain amount of time before or after on attack.")]
-            public UnityEvent onTriggered;
-        }
+        [Tooltip("Called when this attack actually deals damage")]
+        public UnityEvent onAttackDamage;
     }
 }
