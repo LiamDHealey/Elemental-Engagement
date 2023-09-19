@@ -14,6 +14,15 @@ namespace ElementalEngagement.Player
         [SerializeField] private PlayerInput input;
 
         [Tooltip("The speed multiplier for panning.")]
-        [SerializeField] private float Panspeed = 1f;
+        [SerializeField] private float panspeed = 1f;
+
+        /// <summary>
+        /// Move this
+        /// </summary>
+        private void Update()
+        {
+            Vector2 delta = input.actions["Pan"].ReadValue<Vector2>() * panspeed * Time.deltaTime;
+            transform.position += new Vector3(delta.x, 0, delta.y);
+        }
     }
 }
