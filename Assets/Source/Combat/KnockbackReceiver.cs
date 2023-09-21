@@ -22,10 +22,13 @@ namespace ElementalEngagement.Combat
         [Tooltip("Called when this finishes being knocked back.")]
         [SerializeField] private UnityEvent onKnockbackEnd;
 
-        [Tooltip("Toggle to remove the potential for chained knockbacks")]
-        [SerializeField] private bool chainKnockback;
+        [Tooltip("Toggle to add the potential for chained knockbacks")]
+        [SerializeField] private bool chainKnockback = true;
 
+        //List of knockbacks, added together to create a final distance vector
         private List<CurrentKnockback> currentKnockbacks = new List<CurrentKnockback>();
+
+        //Guarantees the KnockbackEnd unity event is only called once
         private bool endReported = true;
 
 
@@ -35,8 +38,14 @@ namespace ElementalEngagement.Combat
         /// <param name="knockback"> The info of how this will be knocked back. </param>
         public void ReceiveKnockback(Knockback knockback)
         {
+            if (knockback.amount == 0 || knockback.duration == 0)
+            {
+                return;
+            }
+
             endReported = false;
-            Vector3 direction = transform.position - rigidbody.transform.position;
+            Vector3 direction = rigidbody.transform.position - knockback.source.position;
+            direction.y = 0;
             direction.Normalize();
 
             if (chainKnockback == false)
@@ -69,7 +78,12 @@ namespace ElementalEngagement.Combat
                 currentKnockbacks.RemoveAt(i--);
             }
 
-            rigidbody.MovePosition((Vector3)transform.position + totalKnockback * Time.fixedDeltaTime);
+            if(currentKnockbacks.Count > 0)
+            {
+                Vector3 newPosition = transform.position + (totalKnockback * Time.fixedDeltaTime);
+
+                transform.position = newPosition;
+            }
 
             if (currentKnockbacks.Count == 0 && endReported == false)
             {
