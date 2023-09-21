@@ -11,5 +11,28 @@ namespace ElementalEngagement.Combat
     {
         [Tooltip("The amount to add to the max hp of any health in the area as a percent of its current value. When entering and leaving this area units stay at the same % of max health.")]
         [SerializeField] private float deltaMaxHp;
+
+        private void OnTriggerEnter(Collider collider)
+        {
+            Health health = collider.GetComponent<Health>();
+
+            float hpPercent = health.hp / health.maxHp;
+
+            health.maxHp += deltaMaxHp;
+
+            health.hp = health.maxHp * hpPercent;
+
+        }
+
+        private void OnTriggerExit(Collider collider)
+        {
+            Health health = collider.GetComponent<Health>();
+
+            float hpPercent = health.hp / health.maxHp;
+
+            health.maxHp -= deltaMaxHp;
+
+            health.hp = health.maxHp * hpPercent;
+        }
     }
 }

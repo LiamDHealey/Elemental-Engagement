@@ -47,7 +47,7 @@ namespace ElementalEngagement.Combat
 
         // The current number of health points this has.
         public float hp
-        { get; private set; }
+        { get;  set; }
 
 
         /// <summary>
