@@ -35,10 +35,7 @@ namespace ElementalEngagement.Combat
                 return;
 
             // If the target is aligned with this attack
-            if (allegiance != null && otherAllegiance != null &&
-                (allegiance.faction != Faction.Unaligned && allegiance.faction == otherAllegiance.faction ||
-                allegiance.god != Favor.MinorGod.Unaligned && allegiance.god == otherAllegiance.god))
-                return;
+            if (allegiance.CheckAnyAllegiance(otherAllegiance)) { return; }
 
             targets.Add(other);
             StartCoroutine(DamageOverTime());

@@ -17,27 +17,27 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Returns true if the two units are aligned with either faction or God
         /// </summary>
-        /// <param name="selfAllegiance"></param>
+        /// <param name="this"></param>
         /// <param name="targetAllegiance"></param>
         /// <returns>true if aligned, false otherwise</returns>
-        public static bool CheckAnyAllegiance(Allegiance selfAllegiance, Allegiance targetAllegiance)
+        public bool CheckAnyAllegiance(Allegiance targetAllegiance)
         {
-            return (selfAllegiance != null && targetAllegiance != null &&
-                (selfAllegiance.faction != Faction.Unaligned && selfAllegiance.faction == targetAllegiance.faction ||
-                selfAllegiance.god != Favor.MinorGod.Unaligned && selfAllegiance.god == targetAllegiance.god));
+            return (this != null && targetAllegiance != null &&
+                (this.faction != Faction.Unaligned && this.faction == targetAllegiance.faction ||
+                this.god != Favor.MinorGod.Unaligned && this.god == targetAllegiance.god));
         }
 
         /// <summary>
         /// Returns true if the two units are aligned with both faction AND God
         /// </summary>
-        /// <param name="selfAllegiance"></param>
+        /// <param name="this"></param>
         /// <param name="targetAllegiance"></param>
         /// <returns>true if aligned, false if not</returns>
-        public static bool CheckBothAllegiance(Allegiance selfAllegiance, Allegiance targetAllegiance)
+        public bool CheckBothAllegiance(Allegiance targetAllegiance)
         {
-            return (selfAllegiance != null && targetAllegiance != null &&
-                (selfAllegiance.faction != Faction.Unaligned && selfAllegiance.faction == targetAllegiance.faction &&
-                selfAllegiance.god != Favor.MinorGod.Unaligned && selfAllegiance.god == targetAllegiance.god));
+            return (this != null && targetAllegiance != null &&
+                (this.faction != Faction.Unaligned && this.faction == targetAllegiance.faction &&
+                this.god != Favor.MinorGod.Unaligned && this.god == targetAllegiance.god));
         }
     }
 }
