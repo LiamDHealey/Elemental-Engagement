@@ -1,3 +1,5 @@
+using ElementalEngagement.Favor;
+using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +13,13 @@ namespace ElementalEngagement.UI
     public class AbilitySelector : MonoBehaviour
     {
         [Tooltip("The prefab used to show unlocked abilities & whether they are selected or on cooldown.")]
-        [SerializeField] private AbilityIcon abilityIconPrefab
-            ;
-        [Tooltip("The allegiance used to determine which player this shows the abilities for.")]
-        [SerializeField] private Player.Allegiance allegiance;
+        [SerializeField] private AbilityIcon abilityIconPrefab;
+
+        [Tooltip("The manager this is showing the abilities for.")]
+        [SerializeField] private AbilityManager manager;
+
+        // A list of all the ability icons.
+        private List<AbilityIcon> abilityIcons =  new List<AbilityIcon>();
 
         /// <summary>
         /// Activates the selected overlay for the ability icon at ability index, and deactivates it for all other abilities.
@@ -22,27 +27,43 @@ namespace ElementalEngagement.UI
         /// <param name="abilityIndex"> The index of the ability in FavorManager.unlockedAbilities. </param>
         public void SetSelectedAbility(int abilityIndex)
         {
-            throw new System.NotImplementedException();
+            for (int i = 0; i < abilityIcons.Count; i++)
+            {
+                abilityIcons[i].selectedOverlayEnabled = abilityIndex == i;
+            }
         }
 
-
         /// <summary>
-        /// Enables the cooldown overlay for the ability icon at ability index.
+        /// Initializes all of the ability icons.
         /// </summary>
-        /// <param name="abilityIndex"> The index of the ability in FavorManager.unlockedAbilities. </param>
-        public void EnableCooldownOverlay(int abilityIndex)
+        private void Start()
         {
-            throw new System.NotImplementedException();
-        }
+            UpdateIcons();
+
+            void UpdateIcons()
+            {
+                System.Collections.ObjectModel.ReadOnlyCollection<Combat.Ability> unlockedAbilities = FavorManager.unlockedAbilities;
 
 
-        /// <summary>
-        /// Disables the cooldown overlay for the ability icon at ability index.
-        /// </summary>
-        /// <param name="abilityIndex"> The index of the ability in FavorManager.unlockedAbilities. </param>
-        public void DisableCooldownOverlay(int abilityIndex)
-        {
-            throw new System.NotImplementedException();
+                for (int i = 0; i < abilityIcons.Count; i++)
+                {
+                    abilityIcons[i].ability = unlockedAbilities[i];
+                }
+
+                for (int i = abilityIcons.Count; i < unlockedAbilities.Count; i++)
+                {
+                    AbilityIcon newIcon = Instantiate(abilityIconPrefab.gameObject).GetComponent<AbilityIcon>();
+                    abilityIcons.Add(newIcon);
+                    newIcon.transform.SetParent(transform);
+                    newIcon.ability = unlockedAbilities[i];
+                }
+
+                for (int i = unlockedAbilities.Count; i < abilityIcons.Count; i++)
+                {
+                    Destroy(abilityIcons[i].gameObject);
+                    abilityIcons.RemoveAt(i);
+                }
+            }
         }
     }
 }
