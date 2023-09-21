@@ -24,6 +24,9 @@ namespace ElementalEngagement.Player
         [Tooltip("The input component that this will get mouse data from.")]
         [SerializeField] private PlayerInput input;
 
+        [Tooltip("The allegiance use to determining what is selectable.")]
+        [SerializeField] private Allegiance allegiance;
+
         [Tooltip("The cursor used to get the selection location from.")]
         [SerializeField] private PlayerCursor cursor;
 
@@ -77,6 +80,8 @@ namespace ElementalEngagement.Player
 
                 if (GetSelectableUnderCursor(screenToWorldRay, out Selectable selectable))
                 {
+
+
                     if (!selectable.isSelected)
                     {
                         _selectedObjects.Add(selectable);
@@ -117,6 +122,10 @@ namespace ElementalEngagement.Player
             {
                 bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
                 selectable = hit.collider?.GetComponent<Selectable>();
+
+                if (!hit.collider?.GetComponent<Allegiance>()?.CheckAnyAllegiance(allegiance) ?? true)
+                    return false;
+
                 return result && selectable != null;
             }
         }
