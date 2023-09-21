@@ -18,7 +18,7 @@ namespace ElementalEngagement.Favor
 
         [Tooltip("How each god's favor unlocks things.")]
         [SerializeField] private FavorProgressionSettings _progressionSettings;
-        public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> progressionSettings { get => throw new System.NotImplementedException(); }
+        public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> progressionSettings { get => instance._progressionSettings.godProgressionSettings; }
 
 
         // The abilities that are currently unlocked.
