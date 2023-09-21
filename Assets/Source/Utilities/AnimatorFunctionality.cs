@@ -6,8 +6,6 @@ namespace ElementalEngagement.Utilities
 {
     /// <summary>
     /// Exposes certain functionality to the animator.
-    /// 
-    /// Edit: Added this test comment by Christian Hartman
     /// </summary>
     public class AnimatorFunctionality : MonoBehaviour
     {
@@ -16,7 +14,7 @@ namespace ElementalEngagement.Utilities
         /// </summary>
         public void DestroySelf()
         {
-            throw new System.NotImplementedException();
+            Destroy(this);
         }
 
         /// <summary>
@@ -24,7 +22,10 @@ namespace ElementalEngagement.Utilities
         /// </summary>
         public void DestroyParent()
         {
-            throw new System.NotImplementedException();
+            if (transform.parent != null)
+            {
+                Destroy(transform.parent.gameObject);
+            }
         }
     }
 }
