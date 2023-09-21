@@ -4908,8 +4908,8 @@ MonoBehaviour:
     amount: 0
     allegiance: {fileID: 8335957412197613769}
   knockback:
-    amount: 10
-    duration: 0.03333334
+    amount: 1
+    duration: 0.2
     source: {fileID: 3169935085978601852}
   attackInterval: 0.5
   damageDelay: 0
@@ -4921,7 +4921,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackRanage: {fileID: 7785458032764344796}
-  maxTargets: 1
+  maxTargets: 9999
 --- !u!135 &7785458032764344796
 SphereCollider:
   m_ObjectHideFlags: 0
