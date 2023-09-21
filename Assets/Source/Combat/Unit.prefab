@@ -463,7 +463,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   onKnockbackEnd:
     m_PersistentCalls:
@@ -480,6 +480,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  chainKnockback: 1
 --- !u!114 &2391177535409774206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,42 +502,16 @@ MonoBehaviour:
     duration: 0
     source: {fileID: 5982273917337833412}
   attackInterval: 0.5
-  onAttack:
-  - timeOffset: -0.2
-    onTriggered:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 854166808930866116}
-          m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-          m_MethodName: SetTrigger
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: onAttack
-            m_BoolArgument: 0
-          m_CallState: 2
-  - timeOffset: 0
-    onTriggered:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7939374904098663714}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  attackRanage: {fileID: 5955947798740677355}
+  damageDelay: 0
   waitBeforeDamage: 1
-  maxTarget: 1
+  onAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onAttackDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  attackRanage: {fileID: 5955947798740677355}
+  maxTargets: 1
 --- !u!114 &7977147439944294568
 MonoBehaviour:
   m_ObjectHideFlags: 0
