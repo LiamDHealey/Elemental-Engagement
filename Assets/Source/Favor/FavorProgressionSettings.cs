@@ -2,6 +2,7 @@ using ElementalEngagement.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 
 namespace ElementalEngagement.Favor
@@ -14,7 +15,7 @@ namespace ElementalEngagement.Favor
     {
         [Tooltip("How each of the gods benefits the player as their favor rises/falls.")]
         [SerializeField] private List<GodProgressionSettings> _godProgressionSettings;
-        public ReadOnlyDictionary<MinorGod, GodProgressionSettings> godProgressionSettings { get { throw new System.NotImplementedException(); } }
+        public ReadOnlyDictionary<MinorGod, GodProgressionSettings> godProgressionSettings { get => new ReadOnlyDictionary<MinorGod, GodProgressionSettings>(_godProgressionSettings.ToDictionary(s => s.god)); }
 
 
 
@@ -37,7 +38,7 @@ namespace ElementalEngagement.Favor
 
             [Tooltip("All the ways this god's spawners can spawn units.")]
             [SerializeField] private List<SpawnerType> _spawnerTypes;
-            public ReadOnlyDictionary<string, GodProgressionSettings> spawnerTypes { get { throw new System.NotImplementedException(); } }
+            public ReadOnlyDictionary<string, SpawnerType> spawnerTypes { get => new ReadOnlyDictionary<string, SpawnerType>(_spawnerTypes.ToDictionary(s => s.typeName)); }
 
 
 
@@ -62,7 +63,7 @@ namespace ElementalEngagement.Favor
             /// Stores info related to a single spawner type.
             /// </summary>
             [System.Serializable]
-            private class SpawnerType
+            public class SpawnerType
             {
                 [Tooltip("The name used by spawner to pick these settings")]
                 [SerializeField] public string typeName = "Default";

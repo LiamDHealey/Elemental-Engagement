@@ -11,5 +11,9 @@ namespace ElementalEngagement.Utilities
     {
         [Tooltip("The amount of time this will exist for in seconds.")] [Min(0)]
         [SerializeField] private float lifetime = 1;
+        void Start ()
+        {
+            Destroy(this, lifetime);
+        }
     }
 }
