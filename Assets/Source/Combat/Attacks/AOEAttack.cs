@@ -12,18 +12,25 @@ namespace ElementalEngagement.Combat
     [RequireComponent(typeof(Collider))]
     public class AOEAttack : Attack
     {
+        [Tooltip("The collider in which the target must be within to take damage.")]
+        [SerializeField] private BindableCollider attackRange;
+
         [Tooltip("The maximum number of things this can hit at once.")] [Min(1)]
         [SerializeField] private int maxTargets = 1;
 
-        // The number of targets this is currently able to damage.
-        List<Collider> targets = new List<Collider>();
-
+        /// <summary>
+        /// Binds events
+        /// </summary>
+        private void Start()
+        {
+            attackRange.onTriggerEnter.AddListener(TriggerEntered);
+        }
 
         /// <summary>
         /// Starts damaging other if not aligned and in range.
         /// </summary>
         /// <param name="other"></param>
-        private void OnTriggerEnter(Collider other)
+        private void TriggerEntered(Collider other)
         {
             Health health = other.GetComponent<Health>();
             KnockbackReceiver knockbackReceiver = other.GetComponent<KnockbackReceiver>();
@@ -36,7 +43,6 @@ namespace ElementalEngagement.Combat
             if (allegiance != null && otherAllegiance != null &&
                 allegiance.faction == otherAllegiance.faction) { return; }
 
-            targets.Add(other);
             StartCoroutine(DamageOverTime());
 
             /// <summary>
@@ -47,9 +53,9 @@ namespace ElementalEngagement.Combat
                 if (waitBeforeDamage)
                     yield return new WaitForSeconds(attackInterval);
 
-                while (targets.Contains(other))
+                while (attackRange.overlappingColliders.Contains(other))
                 {
-                    if (targets.Count <= maxTargets || targets.IndexOf(other) < maxTargets)
+                    if (attackRange.overlappingColliders.Count <= maxTargets || attackRange.overlappingColliders.IndexOf(other) < maxTargets)
                     {
                         onAttackStart?.Invoke();
 
@@ -64,15 +70,6 @@ namespace ElementalEngagement.Combat
                     yield return new WaitForSeconds(attackInterval - damageDelay);
                 }
             }
-        }
-
-        /// <summary>
-        /// Remove a target so it cannot be damaged.
-        /// </summary>
-        /// <param name="other"> The target to remove. </param>
-        private void OnTriggerExit(Collider other)
-        {
-            targets.Remove(other);
         }
     }
 }

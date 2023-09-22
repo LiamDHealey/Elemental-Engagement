@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8052078675104637361}
   - component: {fileID: 5955947798740677355}
+  - component: {fileID: 5389468287829788689}
   - component: {fileID: 7627168746881532718}
   m_Layer: 2
   m_Name: AttackRange
@@ -138,6 +139,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5389468287829788689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730563324831770595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054d9989d80e9f34c908222f4cb8e126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7627168746881532718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +198,7 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
-  attackRanage: {fileID: 0}
+  attackRange: {fileID: 0}
   maxTargets: 1
 --- !u!1 &4055073139529189887
 GameObject:
@@ -319,6 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6808801920505254747}
   - component: {fileID: 3324738417288572574}
+  - component: {fileID: 2821754969731851486}
   m_Layer: 2
   m_Name: VisionRange
   m_TagString: Untagged
@@ -362,6 +382,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2821754969731851486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4920318208871874747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054d9989d80e9f34c908222f4cb8e126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5833595026407189285
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +416,7 @@ GameObject:
   - component: {fileID: 3600748324673135355}
   - component: {fileID: 106441613470632701}
   - component: {fileID: 3084716155162024372}
+  - component: {fileID: 3685090205885791067}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -702,6 +741,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3685090205885791067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833595026407189285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allegiance: {fileID: 7977147439944294568}
+  damage:
+    amount: 10
+    allegiance: {fileID: 7977147439944294568}
+  knockback:
+    amount: 0
+    duration: 0
+    source: {fileID: 5982273917337833412}
+  attackInterval: 0.5
+  damageDelay: 0
+  waitBeforeDamage: 1
+  onAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 854166808930866116}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnAttack
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAttackDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  attackRange: {fileID: 5389468287829788689}
+  maxTargets: 1
 --- !u!1 &7486104880870669279
 GameObject:
   m_ObjectHideFlags: 0
