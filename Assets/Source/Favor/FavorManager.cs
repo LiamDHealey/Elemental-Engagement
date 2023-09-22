@@ -2,6 +2,7 @@ using ElementalEngagement.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ namespace ElementalEngagement.Favor
     public class FavorManager : MonoBehaviour
     {
         [Tooltip("Called when the favor changes for a player.")]
-        public static UnityEvent<Player.Faction> onFavorChanged;
+        public static UnityEvent<Player.Faction, MinorGod> onFavorChanged;
 
 
         [Tooltip("How each god's favor unlocks things.")]
@@ -27,7 +28,9 @@ namespace ElementalEngagement.Favor
         public List<Ability> tempUnlockedAbilities;
 
         // Stores the favor each god shows towards each player faction.
-        public static ReadOnlyDictionary<Player.Faction, IReadOnlyDictionary<MinorGod, float>> factionToFavor { get { throw new System.NotImplementedException(); } }
+        [Tooltip("How much favor each god has for each player's faction.")]
+        [SerializeField] private Dictionary<(Player.Faction, MinorGod), float> _factionToFavor;
+        public ReadOnlyDictionary<(Player.Faction, MinorGod), float> factionToFavor { get => new ReadOnlyDictionary<(Player.Faction, MinorGod), float>(_factionToFavor); }
 
 
         // Tracks the singleton instance of this.
@@ -52,7 +55,8 @@ namespace ElementalEngagement.Favor
         /// <param name="deltaFavor"> The amount of favor to add. </param>
         public static void ModifyFavor(Player.Faction allegiance, MinorGod god, float deltaFavor)
         {
-            throw new System.NotImplementedException();
+            Dictionary<(Player.Faction, MinorGod), float> godToFavor = new Dictionary<(Player.Faction, MinorGod), float>(instance.factionToFavor);
+            godToFavor[(allegiance, god)] += deltaFavor;
         }
     }
 }
