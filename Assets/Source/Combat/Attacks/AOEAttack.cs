@@ -9,7 +9,7 @@ namespace ElementalEngagement.Combat
     /// <summary>
     /// Deals damage to things in an area.
     /// </summary>
-    [RequireComponent(typeof(Collider)]
+    [RequireComponent(typeof(Collider))]
     public class AOEAttack : Attack
     {
         [Tooltip("The maximum number of things this can hit at once.")] [Min(1)]
