@@ -12,7 +12,7 @@ namespace ElementalEngagement.Combat
     /// Allows this to sacrifice itself at a sacrifice location.
     /// </summary>
     [RequireComponent(typeof(Selectable))]
-    public class SacrificialBehavior : CommandReceiver
+    public class SacrificeCommand : CommandReceiver
     {
         [Tooltip("The agent used to move this.")]
         [SerializeField] private NavMeshAgent agent;

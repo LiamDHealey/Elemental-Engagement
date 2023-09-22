@@ -12,11 +12,16 @@ namespace ElementalEngagement.Combat
     /// Allows this to move to the commanded location.
     /// </summary>
     [RequireComponent(typeof(Selectable))]
-    public class MoveToBehavior : CommandReceiver
+    public class MoveToCommand : CommandReceiver
     {
         [Tooltip("The agent used to move this.")]
         [SerializeField] private NavMeshAgent agent;
 
+        [Tooltip("The time in seconds to cancel a move to command if considered stationary.")]
+        [SerializeField] private float movementTimeout = 1f;
+
+        [Tooltip("The maximum distance this is allowed to move for it to still be considered stationary.")]
+        [SerializeField] private float movementTimeoutMaxDistance = 0.5f;
 
         /// <summary>
         /// Tests if an move to command is followable.
@@ -37,7 +42,38 @@ namespace ElementalEngagement.Combat
         public override bool ExecuteCommand(RaycastHit hitUnderCursor)
         {
             agent.isStopped = false;
+            commandInProgress = true;
             agent.SetDestination(hitUnderCursor.point);
+
+
+            StartCoroutine(DestinationReached());
+            IEnumerator DestinationReached()
+            {
+                Vector3 lastPosition = agent.transform.position;
+
+                do
+                {
+                    bool PassedMovementThreshold()
+                    {
+                        bool result = (lastPosition - agent.transform.position).sqrMagnitude > movementTimeoutMaxDistance * movementTimeoutMaxDistance;
+                        lastPosition = agent.transform.position;
+                        return result;
+                    }
+
+
+                    if (!PassedMovementThreshold())
+                    {
+                        yield return new WaitForSeconds(movementTimeout);
+                        if (!PassedMovementThreshold())
+                            break;
+                    }
+                    yield return null;
+                }
+                while (!agent.isStopped && agent.remainingDistance > movementTimeoutMaxDistance);
+
+                CancelCommand();
+            }
+
             return agent.pathStatus == NavMeshPathStatus.PathComplete;
         }
 
@@ -47,6 +83,7 @@ namespace ElementalEngagement.Combat
         public override void CancelCommand()
         {
             agent.isStopped = true;
+            commandInProgress = false;
         }
     }
 }

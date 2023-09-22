@@ -11,6 +11,9 @@ namespace ElementalEngagement.Player
         [Tooltip("The priority of this command. Used to determine which command is run when multiple are followable. Command with the largest priority will be executed.")]
         public int commandPriority;
 
+        // Whether or not this is currently executing a command
+        public bool commandInProgress { get; protected set; } = false;
+
         /// <summary>
         /// Tests if a command is followable.
         /// </summary>

@@ -25,7 +25,7 @@ namespace ElementalEngagement.Favor
         /// </summary>
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         /// <returns> True if the unit was sacrificed. </returns>
-        public bool Sacrifice(SacrificialBehavior unitToSacrifice)
+        public bool Sacrifice(SacrificeCommand unitToSacrifice)
         {
             throw new System.NotImplementedException();
         }

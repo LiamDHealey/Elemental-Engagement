@@ -21,12 +21,6 @@ namespace ElementalEngagement.Combat
         [Tooltip("The allegiance of this. Leave null for this to chase any object with a health component.")]
         [SerializeField] private Allegiance allegiance;
 
-        [Tooltip("The time in seconds to cancel a move to command if considered stationary.")]
-        [SerializeField] private float movementTimeout = 1f;
-
-        [Tooltip("The maximum distance this is allowed to move for it to still be considered stationary.")]
-        [SerializeField] private float movementTimeoutMaxDistance = 0.5f;
-
 
         /// <summary>
         /// Tests if an attack command is followable.

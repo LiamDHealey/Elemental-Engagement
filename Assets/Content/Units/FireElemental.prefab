@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 09bf6664ce87dd44e987d79aeae13e5d, type: 2}
     - target: {fileID: 1291757304422249541, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: damageMultipliers.Array.data[1].multiplier
@@ -146,15 +146,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4685
+      value: 4.85
       objectReference: {fileID: 0}
     - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4685
+      value: 4.85
       objectReference: {fileID: 0}
     - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4685
+      value: 4.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -188,6 +196,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commandPriority: 0
   agent: {fileID: 5056685781315541490}
+  movementTimeout: 1
+  movementTimeoutMaxDistance: 0.01
 --- !u!195 &5056685781315541490 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
