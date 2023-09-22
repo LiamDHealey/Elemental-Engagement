@@ -1,5 +1,10 @@
 using ElementalEngagement.Favor;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ElementalEngagement.Player
 {
@@ -9,10 +14,41 @@ namespace ElementalEngagement.Player
     public class Allegiance : MonoBehaviour
     {
         // The player this is aligned with.
-        public Faction faction;
+        [SerializeField] private Faction _faction;
+        public Faction faction
+        {
+            get => _faction;
+            set
+            {
+                if (_faction != value)
+                {
+                    _faction = value; 
+                    InvokeOnFactionChanged();
+                }
+            }
+        }
 
         // The god this is aligned with.
         public MinorGod god;
+
+        // Called when this allegiance's faction was set.
+        public List<FactionEvent> onFactionChanged = new List<FactionEvent> { new FactionEvent(Faction.Unaligned), new FactionEvent(Faction.PlayerOne), new FactionEvent(Faction.PlayerTwo) };
+
+
+        private void OnValidate()
+        {
+            InvokeOnFactionChanged();
+        }
+
+        private void Start()
+        {
+            InvokeOnFactionChanged();
+        }
+
+        private void InvokeOnFactionChanged()
+        {
+            onFactionChanged.First(fe => fe.faction == faction).onSelected?.Invoke();
+        }
 
         /// <summary>
         /// Returns true if the two units are aligned with either faction or God
@@ -38,6 +74,22 @@ namespace ElementalEngagement.Player
             return (this != null && targetAllegiance != null &&
                 (this.faction != Faction.Unaligned && this.faction == targetAllegiance.faction &&
                 this.god != Favor.MinorGod.Unaligned && this.god == targetAllegiance.god));
+        }
+
+
+        [System.Serializable]
+        public class FactionEvent
+        {
+            [ViewOnly] [Tooltip("The Faction this is tied to.")]
+            [SerializeField] public Faction faction;
+
+            [Tooltip("Called when the faction has been set to this.")]
+            public UnityEvent onSelected;
+
+            public FactionEvent(Faction faction)
+            {
+                this.faction = faction;
+            }
         }
     }
 }

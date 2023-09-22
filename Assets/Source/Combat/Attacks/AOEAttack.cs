@@ -9,11 +9,9 @@ namespace ElementalEngagement.Combat
     /// <summary>
     /// Deals damage to things in an area.
     /// </summary>
+    [RequireComponent(typeof(Collider)]
     public class AOEAttack : Attack
     {
-        [Tooltip("The collider in which the target must be within to take damage.")]
-        [SerializeField] private Collider attackRanage;
-
         [Tooltip("The maximum number of things this can hit at once.")] [Min(1)]
         [SerializeField] private int maxTargets = 1;
 
@@ -35,7 +33,8 @@ namespace ElementalEngagement.Combat
                 return;
 
             // If the target is aligned with this attack
-            if (allegiance.CheckAnyAllegiance(otherAllegiance)) { return; }
+            if (allegiance != null && otherAllegiance != null &&
+                allegiance.faction == otherAllegiance.faction) { return; }
 
             targets.Add(other);
             StartCoroutine(DamageOverTime());

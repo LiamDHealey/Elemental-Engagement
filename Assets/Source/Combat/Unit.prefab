@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8052078675104637361}
   - component: {fileID: 5955947798740677355}
+  - component: {fileID: 7627168746881532718}
   m_Layer: 2
   m_Name: AttackRange
   m_TagString: Untagged
@@ -137,6 +138,49 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7627168746881532718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730563324831770595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allegiance: {fileID: 0}
+  damage:
+    amount: 10
+    allegiance: {fileID: 0}
+  knockback:
+    amount: 0
+    duration: 0
+    source: {fileID: 0}
+  attackInterval: 0.5
+  damageDelay: 0
+  waitBeforeDamage: 1
+  onAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 854166808930866116}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnAttack
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAttackDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  attackRanage: {fileID: 0}
+  maxTargets: 1
 --- !u!1 &4055073139529189887
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +373,6 @@ GameObject:
   - component: {fileID: 5982273917337833412}
   - component: {fileID: 2375182342915241180}
   - component: {fileID: 7928787025073165778}
-  - component: {fileID: 2391177535409774206}
   - component: {fileID: 7977147439944294568}
   - component: {fileID: 2280283077756958185}
   - component: {fileID: 3600748324673135355}
@@ -394,7 +437,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: onDamaged
+          m_StringArgument: OnDamaged
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7939374904098663714}
@@ -421,7 +464,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: onKilled
+          m_StringArgument: OnKilled
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7939374904098663714}
@@ -481,37 +524,6 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   chainKnockback: 1
---- !u!114 &2391177535409774206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833595026407189285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allegiance: {fileID: 7977147439944294568}
-  damage:
-    amount: 10
-    allegiance: {fileID: 7977147439944294568}
-  knockback:
-    amount: 0
-    duration: 0
-    source: {fileID: 5982273917337833412}
-  attackInterval: 0.5
-  damageDelay: 0
-  waitBeforeDamage: 1
-  onAttackStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onAttackDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  attackRanage: {fileID: 5955947798740677355}
-  maxTargets: 1
 --- !u!114 &7977147439944294568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,8 +536,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faction: 0
+  _faction: 0
   god: 0
+  onFactionChanged:
+  - faction: 0
+    onSelected:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6329092609386425010}
+          m_TargetAssemblyTypeName: Outline, Assembly-CSharp
+          m_MethodName: SetColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 0, 0, 0, 0
+            m_BoolArgument: 0
+          m_CallState: 2
+  - faction: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6329092609386425010}
+          m_TargetAssemblyTypeName: Outline, Assembly-CSharp
+          m_MethodName: SetColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 1, 1, 1, 1
+            m_BoolArgument: 0
+          m_CallState: 2
+  - faction: 2
+    onSelected:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6329092609386425010}
+          m_TargetAssemblyTypeName: Outline, Assembly-CSharp
+          m_MethodName: SetColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 0, 0, 0, 1
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2280283077756958185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -639,7 +700,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &7486104880870669279
 GameObject:
@@ -653,6 +714,7 @@ GameObject:
   - component: {fileID: 5252771878741741873}
   - component: {fileID: 854166808930866116}
   - component: {fileID: 3381072725277730928}
+  - component: {fileID: 6329092609386425010}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -695,7 +757,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -876546973899608171, guid: 2bbcad7e886b9404aa35ca476a6c60aa, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -763,3 +825,15 @@ MonoBehaviour:
   animator: {fileID: 854166808930866116}
   movingParameterName: IsMoving
   moveThreshed: 0.2
+--- !u!114 &6329092609386425010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486104880870669279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,7 +13,7 @@ namespace ElementalEngagement.Utilities
         [SerializeField] private float lifetime = 1;
         void Start ()
         {
-            Destroy(this, lifetime);
+            Destroy(gameObject, lifetime);
         }
     }
 }

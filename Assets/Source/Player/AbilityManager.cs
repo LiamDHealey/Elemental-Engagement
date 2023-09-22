@@ -65,7 +65,11 @@ namespace ElementalEngagement.Player
                     _abilityCooldowns.Add(ability, ability.cooldown);
                     if (cursor.RayUnderCursor(out Ray ray) && Physics.Raycast(ray, out RaycastHit hit))
                     {
-                        Instantiate(ability.prefabToSpawn).transform.position = hit.point;
+                        GameObject abilityObject = Instantiate(ability.prefabToSpawn);
+                        abilityObject.transform.position = hit.point;
+
+                        if (ability.inheritPlayerAllegiance)
+                            abilityObject.GetComponent<Allegiance>().faction = GetComponent<Allegiance>().faction;
                     }
                 });
 

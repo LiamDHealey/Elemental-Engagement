@@ -9853,7 +9853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1
+  lifetime: 2
 --- !u!114 &865892039160538150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9884,7 +9884,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   attackRanage: {fileID: 7785458032764344796}
-  maxTargets: 1
+  maxTargets: 999
 --- !u!135 &7785458032764344796
 SphereCollider:
   m_ObjectHideFlags: 0
