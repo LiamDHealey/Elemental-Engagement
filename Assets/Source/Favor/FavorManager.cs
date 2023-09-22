@@ -13,7 +13,7 @@ namespace ElementalEngagement.Favor
     public class FavorManager : MonoBehaviour
     {
         [Tooltip("Called when the favor changes for a player.")]
-        public static UnityEvent<Player.Faction> onFavorChanged;
+        public static UnityEvent<Player.Faction> onFavorChanged = new UnityEvent<Player.Faction>();
 
 
         [Tooltip("How each god's favor unlocks things.")]
@@ -38,7 +38,7 @@ namespace ElementalEngagement.Favor
         /// <summary>
         /// Initializes singleton.
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             instance = this;
         }

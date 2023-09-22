@@ -39,6 +39,7 @@ namespace ElementalEngagement.UI
         private void Start()
         {
             UpdateIcons();
+            FavorManager.onFavorChanged.AddListener(delegate { UpdateIcons(); });
 
             void UpdateIcons()
             {
@@ -54,7 +55,8 @@ namespace ElementalEngagement.UI
                 {
                     AbilityIcon newIcon = Instantiate(abilityIconPrefab.gameObject).GetComponent<AbilityIcon>();
                     abilityIcons.Add(newIcon);
-                    newIcon.transform.SetParent(transform);
+                    newIcon.manager = manager;
+                    newIcon.transform.SetParent(transform, false);
                     newIcon.ability = unlockedAbilities[i];
                 }
 

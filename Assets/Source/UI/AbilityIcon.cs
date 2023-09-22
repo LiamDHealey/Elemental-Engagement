@@ -13,9 +13,9 @@ namespace ElementalEngagement.UI
     {
         [Tooltip("The image used to display the ability icon.")]
         [SerializeField] private Image iconImage;
-            ;
+            
         [Tooltip("The manager this is showing the ability for.")]
-        [SerializeField] private AbilityManager manager;
+        public AbilityManager manager;
 
 
 
@@ -44,7 +44,7 @@ namespace ElementalEngagement.UI
             {
                 if (value == _ability)
                     return;
-
+                _ability = value;
                 iconImage.sprite = _ability.icon;
             }
         }
@@ -98,11 +98,12 @@ namespace ElementalEngagement.UI
 
         private void Update()
         {
-            float currentCooldown = manager.abilityCooldowns[ability];
+            if(!manager.abilityCooldowns.TryGetValue(ability, out float currentCooldown))
+                currentCooldown = 0;
 
             cooldownOverlayEnabled = currentCooldown != 0;
             if (cooldownOverlayEnabled)
-                onCooldownPercentChanged?.Invoke(currentCooldown);
+                onCooldownPercentChanged?.Invoke(currentCooldown/ability.cooldown);
         }
     }
 }
