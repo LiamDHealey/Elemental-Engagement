@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 8052078675104637361}
   - component: {fileID: 5955947798740677355}
   - component: {fileID: 5389468287829788689}
-  - component: {fileID: 7627168746881532718}
   m_Layer: 2
   m_Name: AttackRange
   m_TagString: Untagged
@@ -148,7 +147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2730563324831770595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 054d9989d80e9f34c908222f4cb8e126, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b9321f9db6c55d479173e3e69f13b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onTriggerEnter:
@@ -157,49 +156,12 @@ MonoBehaviour:
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7627168746881532718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2730563324831770595}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allegiance: {fileID: 0}
-  damage:
-    amount: 10
-    allegiance: {fileID: 0}
-  knockback:
-    amount: 0
-    duration: 0
-    source: {fileID: 0}
-  attackInterval: 0.5
-  damageDelay: 0
-  waitBeforeDamage: 1
-  onAttackStart:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 854166808930866116}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnAttack
-          m_BoolArgument: 0
-        m_CallState: 2
-  onAttackDamage:
+  onCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
-  attackRange: {fileID: 0}
-  maxTargets: 1
+  onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4055073139529189887
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,13 +353,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4920318208871874747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 054d9989d80e9f34c908222f4cb8e126, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b9321f9db6c55d479173e3e69f13b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
   onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5833595026407189285

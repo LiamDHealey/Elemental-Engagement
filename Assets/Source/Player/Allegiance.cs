@@ -63,6 +63,19 @@ namespace ElementalEngagement.Player
                 this.god != Favor.MinorGod.Unaligned && this.god == targetAllegiance.god));
         }
 
+
+        /// <summary>
+        /// Returns true if the two units are aligned with either faction or God
+        /// </summary>
+        /// <param name="this"></param>
+        /// <param name="targetAllegiance"></param>
+        /// <returns>true if aligned, false otherwise</returns>
+        public bool CheckFactionAllegiance(Allegiance targetAllegiance)
+        {
+            return this != null && targetAllegiance != null &&
+                this.faction != Faction.Unaligned && this.faction == targetAllegiance.faction;
+        }
+
         /// <summary>
         /// Returns true if the two units are aligned with both faction AND God
         /// </summary>
