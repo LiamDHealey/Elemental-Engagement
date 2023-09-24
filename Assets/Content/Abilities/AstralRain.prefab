@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 128783558549254781}
   - component: {fileID: 3263158530363913069}
   - component: {fileID: 2989146140439052266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4843,7 +4843,7 @@ GameObject:
   - component: {fileID: 2813213031981280768}
   - component: {fileID: 8557279274171391393}
   - component: {fileID: 9142803568649359392}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AstralRain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4878,8 +4878,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faction: 0
+  _faction: 0
   god: 0
+  onFactionChanged:
+  - faction: 0
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 2
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &-4413762488026342783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4946,6 +4959,7 @@ MonoBehaviour:
   deltaSpeed: 0.5
   deltaAngularSpeed: 0
   deltaAcceleration: 0
+  seperateBuffs: 0
 --- !u!114 &9142803568649359392
 MonoBehaviour:
   m_ObjectHideFlags: 0

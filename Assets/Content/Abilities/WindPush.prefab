@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 128783558549254781}
   - component: {fileID: 3263158530363913069}
   - component: {fileID: 2989146140439052266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4841,7 +4841,8 @@ GameObject:
   - component: {fileID: -4413762488026342783}
   - component: {fileID: 865892039160538150}
   - component: {fileID: 7785458032764344796}
-  m_Layer: 0
+  - component: {fileID: 269073783852043837}
+  m_Layer: 2
   m_Name: WindPush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4876,8 +4877,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faction: 0
+  _faction: 0
   god: 0
+  onFactionChanged:
+  - faction: 0
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 2
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &-4413762488026342783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4920,7 +4934,7 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
-  attackRanage: {fileID: 7785458032764344796}
+  attackRange: {fileID: 269073783852043837}
   maxTargets: 9999
 --- !u!135 &7785458032764344796
 SphereCollider:
@@ -4943,3 +4957,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &269073783852043837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520094084802813353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9321f9db6c55d479173e3e69f13b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8403797814909908840}
   - component: {fileID: 6564997814202247614}
   - component: {fileID: 6676491367617660557}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 4069184704686543195}
   - component: {fileID: -6726511020436873134}
   - component: {fileID: 5165895102758255372}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,6 +187,7 @@ MonoBehaviour:
   deltaSpeed: -1
   deltaAngularSpeed: 0
   deltaAcceleration: 0
+  seperateBuffs: 0
 --- !u!114 &5165895102758255372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,5 +200,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  faction: 0
+  _faction: 0
   god: 0
+  onFactionChanged:
+  - faction: 0
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 2
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
