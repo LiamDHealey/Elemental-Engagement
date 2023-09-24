@@ -27,12 +27,20 @@ namespace ElementalEngagement.Favor
 
 
         /// <summary>
-        /// Tries to sacrifice a unit. Will succeed if the integrity gained/lost will not put it outside the acceptable range.
-        /// If it succeeds kill the unit and give its favor gain to the associated player and god.
+        /// Repeatedly tries to sacrifice a unit. Will succeed if the integrity gained/lost will not put it outside the acceptable range.
+        /// If it succeeds it will damage the unit and give its favor gain to the associated player and god. If it fails it will cancel the sacrifice command.
         /// </summary>
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
-        /// <returns> True if the unit was sacrificed. </returns>
-        public bool Sacrifice(SacrificeCommand unitToSacrifice)
+        public void StartSacrificing(SacrificeCommand unitToSacrifice)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Causes this to stop trying to sacrifice a unit.
+        /// </summary>
+        /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
+        public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
             throw new System.NotImplementedException();
         }
