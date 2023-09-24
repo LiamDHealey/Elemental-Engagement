@@ -20,8 +20,8 @@ namespace ElementalEngagement.Combat
         [Tooltip("The allegiance of this. Can not be null.")]
         [SerializeField] private Allegiance allegiance;
 
-        [Tooltip("The amount of favor gained by sacrificing this.")] [Range(-1, 1)]
-        [SerializeField] private float sacrificeValue;
+        [Tooltip("The amount of favor gained by sacrificing 1 hp from this unit.")] [Range(-1, 1)]
+        [SerializeField] private float sacrificeHpValue;
 
 
         /// <summary>
