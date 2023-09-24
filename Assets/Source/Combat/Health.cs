@@ -49,6 +49,10 @@ namespace ElementalEngagement.Combat
         public float hp
         { get;  set; }
 
+        public void Awake()
+        {
+            hp = _maxHP;
+        }
 
         /// <summary>
         /// Cases this to take damage.
