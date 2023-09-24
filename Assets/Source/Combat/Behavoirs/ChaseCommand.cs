@@ -9,19 +9,19 @@ using UnityEngine.Events;
 namespace ElementalEngagement.Combat
 {
     /// <summary>
-    /// Allows this to move to the commanded location.
+    /// Allows this to chase the selected object.
     /// </summary>
     [RequireComponent(typeof(Selectable))]
-    public class MoveToCommand : CommandReceiver
+    public class ChaseCommand : CommandReceiver
     {
         [Tooltip("The agent used to move this.")]
         [SerializeField] private NavMeshAgent agent;
 
-        [Tooltip("The time in seconds to cancel a move to command if considered stationary.")]
-        [SerializeField] private float movementTimeout = 1f;
+        [Tooltip("The distance away from the chase target to stop.")]
+        [SerializeField] private float stoppingDistance = 1f;
 
-        [Tooltip("The maximum distance this is allowed to move for it to still be considered stationary.")]
-        [SerializeField] private float movementTimeoutMaxDistance = 0.5f;
+        [Tooltip("The interval on which the path is refreshed.")]
+        [SerializeField] private float pathRefreshRate = 0.25f;
 
         /// <summary>
         /// Tests if an move to command is followable.
@@ -31,6 +31,8 @@ namespace ElementalEngagement.Combat
         public override bool CanExecuteCommand(RaycastHit hitUnderCursor)
         {
             if (hitUnderCursor.collider == null)
+                return false;
+            if (hitUnderCursor.collider.GetComponent<Health>() == null)
                 return false;
 
             NavMeshPath path = new NavMeshPath();
@@ -46,33 +48,26 @@ namespace ElementalEngagement.Combat
         {
             agent.isStopped = false;
             commandInProgress = true;
-            agent.SetDestination(hitUnderCursor.point);
 
-
-            StartCoroutine(DestinationReached());
-            IEnumerator DestinationReached()
+            StartCoroutine(ChaseTarget());
+            IEnumerator ChaseTarget()
             {
-                Vector3 lastPosition = agent.transform.position;
-
-                do
+                while (commandInProgress && hitUnderCursor.collider != null)
                 {
-                    bool PassedMovementThreshold()
+                    Vector3 targetPosition = hitUnderCursor.collider.transform.position;
+                    Debug.Log((targetPosition - transform.position).sqrMagnitude);
+                    if ((targetPosition - transform.position).sqrMagnitude > stoppingDistance * stoppingDistance)
                     {
-                        bool result = (lastPosition - agent.transform.position).sqrMagnitude > movementTimeoutMaxDistance * movementTimeoutMaxDistance;
-                        lastPosition = agent.transform.position;
-                        return result;
+                        agent.isStopped = false;
+                        agent.SetDestination(targetPosition);
+                    } 
+                    else
+                    {
+                        agent.isStopped = true;
                     }
 
-
-                    if (!PassedMovementThreshold())
-                    {
-                        yield return new WaitForSeconds(movementTimeout);
-                        if (!PassedMovementThreshold())
-                            break;
-                    }
-                    yield return null;
+                    yield return new WaitForSeconds(pathRefreshRate);
                 }
-                while (commandInProgress && agent.remainingDistance > movementTimeoutMaxDistance);
 
                 CancelCommand();
             }

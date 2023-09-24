@@ -25,7 +25,7 @@ namespace ElementalEngagement.Player
         /// Performs the given command a command from the selection manager. 
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
-        public abstract bool ExecuteCommand(RaycastHit hitUnderCursor);
+        public abstract void ExecuteCommand(RaycastHit hitUnderCursor);
 
         /// <summary>
         /// Cancels any command this is currently performing.

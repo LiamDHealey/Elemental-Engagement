@@ -38,7 +38,7 @@ namespace ElementalEngagement.Combat
         /// Moves to the sacrifice location and then sacrifices itself to it by calling Sacrifice on the sacrifice location.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
-        public override bool ExecuteCommand(RaycastHit hitUnderCursor)
+        public override void ExecuteCommand(RaycastHit hitUnderCursor)
         {
             throw new System.NotImplementedException();
         }
