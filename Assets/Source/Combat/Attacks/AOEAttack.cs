@@ -18,12 +18,16 @@ namespace ElementalEngagement.Combat
         [Tooltip("The maximum number of things this can hit at once.")] [Min(1)]
         [SerializeField] private int maxTargets = 1;
 
+        // Contains a list of all valid things for this aoe to hit.
+        private List<Collider> validTargets = new List<Collider>();
+
         /// <summary>
         /// Binds events
         /// </summary>
         private void Start()
         {
             attackRange.onTriggerEnter.AddListener(TriggerEntered);
+            attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
         }
 
         /// <summary>
@@ -43,6 +47,8 @@ namespace ElementalEngagement.Combat
             if (allegiance != null && otherAllegiance != null &&
                 allegiance.faction == otherAllegiance.faction) { return; }
 
+            validTargets.Add(other);
+
             StartCoroutine(DamageOverTime());
 
             /// <summary>
@@ -53,9 +59,9 @@ namespace ElementalEngagement.Combat
                 if (waitBeforeDamage)
                     yield return new WaitForSeconds(attackInterval);
 
-                while (attackRange.overlappingColliders.Contains(other))
+                while (validTargets.Contains(other))
                 {
-                    if (attackRange.overlappingColliders.Count <= maxTargets || attackRange.overlappingColliders.IndexOf(other) < maxTargets)
+                    if (validTargets.Count <= maxTargets || validTargets.IndexOf(other) < maxTargets)
                     {
                         onAttackStart?.Invoke();
 

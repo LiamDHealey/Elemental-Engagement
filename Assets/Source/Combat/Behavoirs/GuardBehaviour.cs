@@ -36,7 +36,8 @@ namespace ElementalEngagement.Combat
             visionRange.onTriggerEnter.AddListener(
                 collider =>
                 {
-                    if (IsValidTarget(collider))
+                    if (!allegiance.CheckFactionAllegiance(collider.GetComponent<Allegiance>()) // Is not aligned
+                        && collider.GetComponent<Health>() != null) // Is attackable)
                     {
                         validTargets.Add(collider.transform);
                     }
@@ -44,18 +45,6 @@ namespace ElementalEngagement.Combat
 
             // Waits until this is idle then moves to visible targets.
             StartCoroutine(AttackWhenIdle());
-
-
-
-
-            // Is the given collider a valid target.
-            bool IsValidTarget(Collider collider)
-            {
-                return !allegiance.CheckFactionAllegiance(collider.GetComponent<Allegiance>()) // Is not aligned
-                    && collider.GetComponent<Health>() != null; // Is attackable
-            }
-
-            // Waits until this is idle then moves to visible targets.
             IEnumerator AttackWhenIdle()
             {
                 IEnumerable<CommandReceiver> receivers = GetComponents<CommandReceiver>();
