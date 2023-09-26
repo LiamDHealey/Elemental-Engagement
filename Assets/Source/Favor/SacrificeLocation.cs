@@ -8,7 +8,7 @@ namespace ElementalEngagement.Favor
     /// <summary>
     /// A location where units can be sacrificed.
     /// </summary>
-    public class SacrificeTarget : MonoBehaviour
+    public class SacrificeLocation : MonoBehaviour
     {
         [field: Tooltip("The maximum integrity of this. This is unable to sacrifice any unit that would move integrity outside its acceptable range.")]
         [field: SerializeField] public float maxIntegrity { get; private set; } = 0.5f;

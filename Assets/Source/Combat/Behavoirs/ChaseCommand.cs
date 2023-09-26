@@ -78,6 +78,7 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public override void CancelCommand()
         {
+            StopAllCoroutines();
             agent.isStopped = true;
             commandInProgress = false;
         }

@@ -20,18 +20,37 @@ namespace ElementalEngagement.Combat
         [Tooltip("The allegiance of this. Can not be null.")]
         [SerializeField] private Allegiance allegiance;
 
-        [Tooltip("The amount of favor gained by sacrificing 1 hp from this unit.")] [Range(-1, 1)]
+        [Tooltip("The amount of favor gained by sacrificing 1 hp from this unit.")]
         [SerializeField] private float sacrificeHpValue;
 
+        [Tooltip("The range that a sacrifice location needs to overlap in order to be sacrificed to by this.")]
+        [SerializeField] private BindableCollider sacrificeRange;
+
+        [Tooltip("Called when this starts sacrificing itself")]
+        public UnityEvent onSacrificeBegin;
+
+        [Tooltip("Called when this stops sacrificing itself")]
+        public UnityEvent onSacrificeEnd;
+
+
+        // The last sacrifice location this was commanded to sacrifice to.
+        private Collider targetSacrificeLocation;
 
         /// <summary>
-        /// Tests if an attack command is followable.
+        /// Tests if an sacrifice command is followable.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
         /// <returns> True if the destination is a sacrifice location, and is aligned with this. </returns>
         public override bool CanExecuteCommand(RaycastHit hitUnderCursor)
         {
-            throw new System.NotImplementedException();
+            if (hitUnderCursor.collider == null)
+                return false;
+            if (hitUnderCursor.collider.GetComponent<SacrificeLocation>() == null)
+                return false;
+            if (!hitUnderCursor.collider.GetComponent<Allegiance>()?.CheckBothAllegiance(allegiance) ?? false)
+                return false;
+
+            return true;
         }
 
         /// <summary>
@@ -40,7 +59,16 @@ namespace ElementalEngagement.Combat
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
         public override void ExecuteCommand(RaycastHit hitUnderCursor)
         {
-            throw new System.NotImplementedException();
+            agent.isStopped = false;
+            commandInProgress = true;
+            agent.SetDestination(hitUnderCursor.collider.transform.position);
+
+            targetSacrificeLocation = hitUnderCursor.collider;
+            if (sacrificeRange.overlappingColliders.Contains(targetSacrificeLocation))
+                StartSacrificing(targetSacrificeLocation);
+
+            sacrificeRange.onTriggerEnter.AddListener(StartSacrificing);
+            sacrificeRange.onTriggerExit.AddListener(StopSacrificing);
         }
 
         /// <summary>
@@ -48,7 +76,42 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public override void CancelCommand()
         {
-            throw new System.NotImplementedException();
+            commandInProgress = false;
+
+            if (targetSacrificeLocation != null)
+                StopSacrificing(targetSacrificeLocation);
+
+            sacrificeRange.onTriggerEnter.RemoveListener(StartSacrificing);
+            sacrificeRange.onTriggerExit.RemoveListener(StopSacrificing);
+        }
+
+
+        /// <summary>
+        /// Causes this to start sacrificing itself to the sacrifice location.
+        /// </summary>
+        /// <param name="collider"> The sacrifice location that has entered the sacrifice range. </param>
+        private void StartSacrificing(Collider collider)
+        {
+            if (collider != targetSacrificeLocation)
+                return;
+
+            agent.isStopped = true;
+            onSacrificeBegin?.Invoke();
+            targetSacrificeLocation.GetComponent<SacrificeLocation>().StartSacrificing(this);
+        }
+
+        /// <summary>
+        /// Causes this to stop sacrificing itself to the sacrifice location.
+        /// </summary>
+        /// <param name="collider"> The sacrifice location that has left the sacrifice range. </param>
+        private void StopSacrificing(Collider collider)
+        {
+            if (collider != targetSacrificeLocation)
+                return;
+
+            agent.isStopped = false;
+            onSacrificeEnd?.Invoke();
+            targetSacrificeLocation.GetComponent<SacrificeLocation>().StopSacrificing(this);
         }
     }
 }
