@@ -13,5 +13,7 @@ namespace ElementalEngagement.Favor
         [Tooltip("The name used to determine this spawner's settings. Setting are stored in the favor progression settings.")]
         [SerializeField] private string spawnerType = "Default";
 
+        [Tooltip("The location to spawn the units at.")]
+        [SerializeField] private Transform spawnLocation;
     }
 }
