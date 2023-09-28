@@ -75,6 +75,8 @@ namespace ElementalEngagement.Combat
 
             onDamaged?.Invoke(damage);
 
+            hp -= damage.amount;
+
             if(hp <= 0)
                 onKilled?.Invoke();
         }

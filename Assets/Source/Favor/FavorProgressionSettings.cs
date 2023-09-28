@@ -68,11 +68,11 @@ namespace ElementalEngagement.Favor
                 [Tooltip("The name used by spawner to pick these settings")]
                 [SerializeField] public string typeName = "Default";
 
-                [Tooltip("How the spawn interval (in seconds/unit) changes as the favor increases. Favor is normalized 0-1")]
-                [SerializeField] public AnimationCurve favorToSpawnInterval;
+                [Tooltip("How the spawn rate (in units/second) changes as the favor increases. Favor is normalized 0-1.")]
+                [SerializeField] public AnimationCurve favorToSpawnRate;
 
-                [Tooltip("What thing to spawn depending on the favor.")]
-                [SerializeField] public List<Unlock<GameObject>> spawnConditions;
+                [Tooltip("The prefab to instantiate when this spawns a thing.")]
+                [SerializeField] public GameObject prefabToSpawn;
             }
         }
     }
