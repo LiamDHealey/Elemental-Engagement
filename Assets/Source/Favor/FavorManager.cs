@@ -32,7 +32,7 @@ namespace ElementalEngagement.Favor
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
         [SerializeField] private Dictionary<Tuple<Player.Faction, MinorGod>, float> _factionToFavor;
-        public ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float> factionToFavor { get => new ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float>(_factionToFavor); }
+        public static ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float> factionToFavor { get => new ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float>(_factionToFavor); }
 
 
         // Tracks the singleton instance of this.
@@ -64,7 +64,6 @@ namespace ElementalEngagement.Favor
             //This tuple is used as the key to search through the godToFavor variable
             Tuple<Player.Faction, MinorGod> godToFavorKey = new Tuple<Player.Faction, MinorGod>(allegiance, god);
             godToFavor[godToFavorKey] += deltaFavor;
-            onFavorChanged.Invoke(allegiance, god);
         }
     }
 }
