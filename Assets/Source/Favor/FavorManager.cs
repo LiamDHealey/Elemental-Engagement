@@ -44,8 +44,11 @@ namespace ElementalEngagement.Favor
         private void Awake()
         {
             instance = this;
+            if (onFavorChanged != null)
+            {
+                onFavorChanged = new UnityEvent<Player.Faction, MinorGod>();
+            }
         }
-
 
         /// <summary>
         /// Adds an amount to the favor this god has towards a player.
