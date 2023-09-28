@@ -30,7 +30,7 @@ namespace ElementalEngagement.Favor
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
         [SerializeField] private Dictionary<(Player.Faction, MinorGod), float> _factionToFavor;
-        public ReadOnlyDictionary<(Player.Faction, MinorGod), float> factionToFavor { get => new ReadOnlyDictionary<(Player.Faction, MinorGod), float>(_factionToFavor); }
+        public static ReadOnlyDictionary<(Player.Faction, MinorGod), float> factionToFavor { get => new ReadOnlyDictionary<(Player.Faction, MinorGod), float>(_factionToFavor); }
 
 
         // Tracks the singleton instance of this.
