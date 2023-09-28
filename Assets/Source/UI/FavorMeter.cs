@@ -1,6 +1,7 @@
 ﻿using ElementalEngagement.Combat;
 using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -23,19 +24,21 @@ namespace ElementalEngagement.UI
         [SerializeField] private UnityEvent<float> onFavorChanged;
 
         /// <summary>
-        /// Initialize the onFavorChanged event
+        /// Create listener for the onFavorChanged event.
+        /// This listener will invoke the event if the god and the faction align with
+        /// the current player's faction and god.
         /// </summary>
         private void Start()
         {
-            if (onFavorChanged != null)
+            FavorManager.onFavorChanged.AddListener((faction,god)=>
             {
-                onFavorChanged = new UnityEvent<float>();
-            }
-        }
-
-        private void Update()
-        {
-            Slider slider = GetComponent<Slider>();
+                if (god == this.god && faction == allegiance.faction)
+                {
+                    Tuple<Faction,MinorGod> favorUpdateTuple = new Tuple<Faction,MinorGod>(faction, god);
+                    float favorUpdate = FavorManager.factionToFavor[favorUpdateTuple];
+                    onFavorChanged.Invoke(favorUpdate);
+                }
+            });
         }
     }
 }

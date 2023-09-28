@@ -1,5 +1,7 @@
+using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ElementalEngagement.Favor
@@ -15,5 +17,62 @@ namespace ElementalEngagement.Favor
 
         [Tooltip("The location to spawn the units at.")]
         [SerializeField] private Transform spawnLocation;
+        
+        //The Allegiance tied to this spawner
+        Allegiance spawnAllegiance;
+
+        //The time since the last object was spawned
+        float timeSinceLastSpawn;
+
+        /// <summary>
+        /// Prepares to spawn objects at the start of the game
+        /// </summary>
+        public void Awake()
+        {
+            spawnAllegiance = GetComponent<Player.Allegiance>();
+            timeSinceLastSpawn = 0;
+        }
+
+        /// <summary>
+        /// Calculates the time since the last object was spawned and spawns the object
+        /// </summary>
+        public void Update()
+        {
+            float spawnInterval;
+            if(spawnRate() != 0.0)
+            {
+                spawnInterval = 1 / spawnRate();
+            }
+            else
+            {
+                return; 
+            }
+
+            timeSinceLastSpawn += Time.deltaTime;
+            if(Time.deltaTime >= spawnInterval)
+            {
+                GameObject spawnedObject = Instantiate(objectToSpawn());
+                spawnedObject.transform.position = spawnLocation.position;
+                timeSinceLastSpawn = 0;
+            }
+        }
+
+        private float spawnRate()
+        {
+                    //Accessing the GodProgressionSettings of the FavorManager
+            return FavorManager.progressionSettings[spawnAllegiance.god]
+                   //Progressing from GodProgressionSettings to the Animation Curve
+                   .spawnerTypes[spawnerType].favorToSpawnRate
+                   //Evaluating the Animation Curve at the current Faction value
+                   .Evaluate(FavorManager.factionToFavor[new System.Tuple<Player.Faction, MinorGod> (spawnAllegiance.faction, spawnAllegiance.god)]);
+        }
+
+        private GameObject objectToSpawn()
+        {
+            //Accessing the GodProgressionSettings of the FavorManager
+            return FavorManager.progressionSettings[spawnAllegiance.god]
+                   //Progressing from GodProgressionSettings to the Prefab to Spawn
+                   .spawnerTypes[spawnerType].prefabToSpawn;
+        }
     }
 }

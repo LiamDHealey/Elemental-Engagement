@@ -23,7 +23,6 @@ namespace ElementalEngagement.Favor
         [SerializeField] private FavorProgressionSettings _progressionSettings;
         public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> progressionSettings { get => instance._progressionSettings.godProgressionSettings; }
 
-
         // The abilities that are currently unlocked.
         public static ReadOnlyCollection<Ability> unlockedAbilities { get => instance.tempUnlockedAbilities.AsReadOnly(); }
         // TODO: replace this with an actual implementation based off of progression settings and favor
@@ -46,10 +45,6 @@ namespace ElementalEngagement.Favor
         private void Awake()
         {
             instance = this;
-            if (onFavorChanged != null)
-            {
-                onFavorChanged = new UnityEvent<Player.Faction, MinorGod>();
-            }
         }
 
         /// <summary>
