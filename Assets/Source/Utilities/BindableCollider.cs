@@ -14,13 +14,13 @@ namespace ElementalEngagement
     public class BindableCollider : MonoBehaviour
     {
         // Called when on trigger enter is called.
-        public UnityEvent<Collider> onTriggerEnter;
+        public UnityEvent<Collider> onTriggerEnter = new UnityEvent<Collider>();
         // Called when on trigger exit is called.
-        public UnityEvent<Collider> onTriggerExit;
+        public UnityEvent<Collider> onTriggerExit = new UnityEvent<Collider>();
         // Called when on trigger enter is called.
-        public UnityEvent<Collision> onCollisionEnter;
+        public UnityEvent<Collision> onCollisionEnter = new UnityEvent<Collision>();
         // Called when on trigger exit is called.
-        public UnityEvent<Collision> onCollisionExit;
+        public UnityEvent<Collision> onCollisionExit = new UnityEvent<Collision>();
 
 
         // Contains all of the currently overlapping colliders in the order they entered this trigger.
