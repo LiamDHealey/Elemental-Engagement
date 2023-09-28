@@ -1,8 +1,10 @@
 using ElementalEngagement.Combat;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,8 +31,8 @@ namespace ElementalEngagement.Favor
 
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
-        [SerializeField] private Dictionary<(Player.Faction, MinorGod), float> _factionToFavor;
-        public static ReadOnlyDictionary<(Player.Faction, MinorGod), float> factionToFavor { get => new ReadOnlyDictionary<(Player.Faction, MinorGod), float>(_factionToFavor); }
+        [SerializeField] private Dictionary<Tuple<Player.Faction, MinorGod>, float> _factionToFavor;
+        public ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float> factionToFavor { get => new ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float>(_factionToFavor); }
 
 
         // Tracks the singleton instance of this.
@@ -58,8 +60,11 @@ namespace ElementalEngagement.Favor
         /// <param name="deltaFavor"> The amount of favor to add. </param>
         public static void ModifyFavor(Player.Faction allegiance, MinorGod god, float deltaFavor)
         {
-            Dictionary<(Player.Faction, MinorGod), float> godToFavor = new Dictionary<(Player.Faction, MinorGod), float>(instance.factionToFavor);
-            godToFavor[(allegiance, god)] += deltaFavor;
+            Dictionary<Tuple<Player.Faction, MinorGod>, float> godToFavor = new Dictionary<Tuple<Player.Faction, MinorGod>, float>(instance.factionToFavor);
+            //This tuple is used as the key to search through the godToFavor variable
+            Tuple<Player.Faction, MinorGod> godToFavorKey = new Tuple<Player.Faction, MinorGod>(allegiance, god);
+            godToFavor[godToFavorKey] += deltaFavor;
+            onFavorChanged.Invoke(allegiance, god);
         }
     }
 }
