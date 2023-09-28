@@ -1,4 +1,6 @@
 ﻿using ElementalEngagement.Combat;
+using ElementalEngagement.Favor;
+using ElementalEngagement.Player;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -15,9 +17,23 @@ namespace ElementalEngagement.UI
         [SerializeField] private Favor.MinorGod god;
 
         [Tooltip("The allegiance used to determine which player this displays the favor for.")]
-        [SerializeField] private Player.Allegiance allegiance;
+        [SerializeField] private Allegiance allegiance;
 
         [Tooltip("Called whenever the favor this meter is tracking changes.")]
         [SerializeField] private UnityEvent<float> onFavorChanged;
+
+        private void Start()
+        {
+            if (onFavorChanged != null)
+            {
+                onFavorChanged = new UnityEvent<float>();
+            }
+            onFavorChanged.AddListener(MeterChanged);
+        }
+
+        private void MeterChanged(float value)
+        {
+            FavorManager.ModifyFavor(allegiance.faction, god, value);
+        }
     }
 }
