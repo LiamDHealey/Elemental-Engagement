@@ -42,10 +42,6 @@ namespace ElementalEngagement.Favor
 
 
 
-
-
-
-
             /// <summary>
             /// Stores the conditions for a thing to be spawned.
             /// </summary>
