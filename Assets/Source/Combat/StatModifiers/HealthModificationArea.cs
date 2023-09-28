@@ -16,8 +16,6 @@ namespace ElementalEngagement.Combat
 
         private void Start()
         {
-
-
             area.onTriggerEnter.AddListener(OnTriggerEnter);
             area.onTriggerExit.AddListener(OnTriggerExit);
 
@@ -44,7 +42,6 @@ namespace ElementalEngagement.Combat
                 health.maxHp *= deltaMaxHp;
 
                 health.hp = health.maxHp * hpPercent;
-
             }
 
             void OnTriggerExit(Collider collider)
@@ -69,7 +66,6 @@ namespace ElementalEngagement.Combat
                 health.maxHp /= deltaMaxHp;
 
                 health.hp = health.maxHp * hpPercent;
-
             }
         }
     }
