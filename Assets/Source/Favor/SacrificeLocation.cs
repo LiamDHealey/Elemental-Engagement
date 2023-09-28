@@ -33,7 +33,20 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StartSacrificing(SacrificeCommand unitToSacrifice)
         {
-            throw new System.NotImplementedException();
+            while (integrity < maxIntegrity)
+            {
+                MinorGod unitGod = unitToSacrifice.allegiance.god;
+                float addToIntegrity = 0;
+                foreach (MinorGodToIntegrityMultiplier multiplier in minorGodsToIntegrityMultipliers)
+                {
+                    if (multiplier.minorGod == unitGod)
+                    {
+                        addToIntegrity = multiplier.integrityMultiplier;
+                        FavorManager.ModifyFavor(unitToSacrifice.allegiance, unitGod, multiplier.favorMultiplier);
+                    }
+                }
+                integrity += addToIntegrity;
+            }
         }
 
         /// <summary>
