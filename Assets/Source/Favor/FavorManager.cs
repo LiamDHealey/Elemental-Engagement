@@ -60,7 +60,7 @@ namespace ElementalEngagement.Favor
         /// <param name="deltaFavor"> The amount of favor to add. </param>
         public static void ModifyFavor(Player.Faction allegiance, MinorGod god, float deltaFavor)
         {
-            Dictionary<Tuple<Player.Faction, MinorGod>, float> godToFavor = new Dictionary<Tuple<Player.Faction, MinorGod>, float>(instance.factionToFavor);
+            Dictionary<Tuple<Player.Faction, MinorGod>, float> godToFavor = new Dictionary<Tuple<Player.Faction, MinorGod>, float>(FavorManager.factionToFavor);
             //This tuple is used as the key to search through the godToFavor variable
             Tuple<Player.Faction, MinorGod> godToFavorKey = new Tuple<Player.Faction, MinorGod>(allegiance, god);
             godToFavor[godToFavorKey] += deltaFavor;
