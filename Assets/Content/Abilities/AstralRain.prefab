@@ -4843,6 +4843,7 @@ GameObject:
   - component: {fileID: 2813213031981280768}
   - component: {fileID: 8557279274171391393}
   - component: {fileID: 9142803568649359392}
+  - component: {fileID: 5686342651022301136}
   m_Layer: 2
   m_Name: AstralRain
   m_TagString: Untagged
@@ -4939,7 +4940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c073fdf8081ff41b7df36ccddf7a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: {fileID: 7785458032764344796}
+  area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
   deltaMaxHp: 1
 --- !u!114 &8557279274171391393
@@ -4954,12 +4955,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399c254cab40e024f8fe24d546cb9f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: {fileID: 7785458032764344796}
+  area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
   deltaSpeed: 0.5
   deltaAngularSpeed: 0
   deltaAcceleration: 0
-  seperateBuffs: 0
 --- !u!114 &9142803568649359392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4972,8 +4972,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c461cdc6d775cce45ac78a68f3b83051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: {fileID: 0}
-  allegiance: {fileID: 0}
+  area: {fileID: 5686342651022301136}
+  allegiance: {fileID: 8335957412197613769}
   deltaDamage: 0.5
   deltaKnockback: 0.25
   deltaAttackInterval: -0.5
+--- !u!114 &5686342651022301136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520094084802813353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9321f9db6c55d479173e3e69f13b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
