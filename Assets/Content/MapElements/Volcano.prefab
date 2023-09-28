@@ -53,20 +53,12 @@ PrefabInstance:
       value: 16.958914
       objectReference: {fileID: 0}
     - target: {fileID: 2187513396712701579, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
-      propertyPath: m_Size.z
-      value: 38.870216
-      objectReference: {fileID: 0}
-    - target: {fileID: 2187513396712701579, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_Center.x
       value: 0.17626381
       objectReference: {fileID: 0}
     - target: {fileID: 2187513396712701579, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_Center.y
       value: 7.979457
-      objectReference: {fileID: 0}
-    - target: {fileID: 2187513396712701579, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
-      propertyPath: m_Center.z
-      value: -18.935108
       objectReference: {fileID: 0}
     - target: {fileID: 5081262603137984299, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -114,11 +106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: <integrity>k__BackingField
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: <maxIntegrity>k__BackingField
-      value: 2999
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: minorGodsToIntegrityMultipliers.Array.data[0].minorGod
@@ -126,23 +118,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: minorGodsToIntegrityMultipliers.Array.data[0].favorMultiplier
-      value: 0.00066666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
-      propertyPath: minorGodsToIntegrityMultipliers.Array.data[1].favorMultiplier
-      value: 0.00066666666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: minorGodsToIntegrityMultipliers.Array.data[2].favorMultiplier
-      value: 0.00066666666
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
-      propertyPath: minorGodsToIntegrityMultipliers.Array.data[0].integrityMultiplier
-      value: 1
+      propertyPath: minorGodsToIntegrityMultipliers.Array.data[2].integrityMultiplier
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9065649901808501139, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_Name
-      value: Village
+      value: Volcano
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
