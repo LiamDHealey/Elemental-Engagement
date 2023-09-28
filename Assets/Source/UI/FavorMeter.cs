@@ -22,18 +22,20 @@ namespace ElementalEngagement.UI
         [Tooltip("Called whenever the favor this meter is tracking changes.")]
         [SerializeField] private UnityEvent<float> onFavorChanged;
 
+        /// <summary>
+        /// Initialize the onFavorChanged event
+        /// </summary>
         private void Start()
         {
             if (onFavorChanged != null)
             {
                 onFavorChanged = new UnityEvent<float>();
             }
-            onFavorChanged.AddListener(MeterChanged);
         }
 
-        private void MeterChanged(float value)
+        private void Update()
         {
-            FavorManager.ModifyFavor(allegiance.faction, god, value);
+            Slider slider = GetComponent<Slider>();
         }
     }
 }
