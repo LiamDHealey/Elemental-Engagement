@@ -29,8 +29,6 @@ namespace ElementalEngagement.Favor
         // TODO: replace this with an actual implementation based off of progression settings and favor
         public List<Ability> tempUnlockedAbilities;
 
-
-
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
         [SerializeField] private Dictionary<Tuple<Player.Faction, MinorGod>, float> _factionToFavor;
@@ -48,8 +46,11 @@ namespace ElementalEngagement.Favor
         private void Awake()
         {
             instance = this;
+            if (onFavorChanged != null)
+            {
+                onFavorChanged = new UnityEvent<Player.Faction, MinorGod>();
+            }
         }
-
 
         /// <summary>
         /// Adds an amount to the favor this god has towards a player.
