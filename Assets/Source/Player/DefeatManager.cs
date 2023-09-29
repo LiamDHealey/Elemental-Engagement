@@ -9,21 +9,34 @@ using UnityEngine.Events;
 
 namespace ElementalEngagement.Player
 {
-    public class VictoryDetector : MonoBehaviour
+    public class DefeatManager : MonoBehaviour
     {
         [Tooltip("The players and the structures they need to keep alive to stay in the game.")]
         [SerializeField] private List<PlayerToVitalStructures> playersToVitalStructures;
 
         [Tooltip("Called when a player has lost.")]
-        public UnityEvent<Faction> onPlayerLost;
+        [SerializeField] private UnityEvent<Faction> _onPlayerLost;
+        public static UnityEvent<Faction> onPlayerLost => instance._onPlayerLost;
 
         // The factions map to their loose conditions.
-        public ReadOnlyDictionary<Faction, ReadOnlyCollection<Health>> factionToVitalStructures;
+        public static ReadOnlyDictionary<Faction, ReadOnlyCollection<Health>> factionToVitalStructures;
 
+        // Stores a list of the currently surviving factions.
+        private static List<Faction> _survivingFactions;
+        public static ReadOnlyCollection<Faction> survivingFactions;
+
+        // Tracks the singleton instance of this.
+        private static DefeatManager instance;
+        
         private void Start()
         {
+            instance = this;
+
             factionToVitalStructures = new ReadOnlyDictionary<Faction, ReadOnlyCollection<Health>>(
                 playersToVitalStructures.ToDictionary(ptvs => ptvs.faction, ptvs => ptvs.vitalStructures.AsReadOnly()));
+
+            _survivingFactions = playersToVitalStructures.Select(ptvs => ptvs.faction).ToList();
+            survivingFactions = new ReadOnlyCollection<Faction>(_survivingFactions);
 
             foreach (PlayerToVitalStructures playerToVitalStructures in playersToVitalStructures)
             {
@@ -39,6 +52,7 @@ namespace ElementalEngagement.Player
                                 return;
                         }
 
+                        _survivingFactions.Remove(playerToVitalStructures.faction);
                         onPlayerLost?.Invoke(playerToVitalStructures.faction);
                     }
                 }
@@ -48,6 +62,7 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Class for mapping factions to vital structures.
         /// </summary>
+        [System.Serializable]
         private class PlayerToVitalStructures
         {
             [Tooltip("The faction with who's vital structures are listed.")]
