@@ -26,6 +26,12 @@ namespace ElementalEngagement.Favor
         [Tooltip("The time between each sacrifice tick.")]
         [SerializeField] private float sacrificeInterval = 0.5f;
 
+        [Tooltip("Whether this location is being sacrificed to or not.")]
+        [SerializeField] private bool isSacrificed;
+
+        [Tooltip("Unit currently being sacrificed. If there is none, this is null")]
+        [SerializeField] private SacrificeCommand targetUnit;
+
 
         /// <summary>
         /// Repeatedly tries to sacrifice a unit. Will succeed if the integrity gained/lost will not put it outside the acceptable range.
@@ -34,20 +40,29 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StartSacrificing(SacrificeCommand unitToSacrifice)
         {
-            while (integrity < maxIntegrity)
+            isSacrificed = true;
+            targetUnit = unitToSacrifice;
+        }
+
+        private void Update()
+        {
+            if (isSacrificed == true && integrity < maxIntegrity && targetUnit)
             {
-                MinorGod unitGod = unitToSacrifice.GetComponent<Allegiance>().god;
+                MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
                 float addToIntegrity = 0;
                 foreach (MinorGodToIntegrityMultiplier multiplier in minorGodsToIntegrityMultipliers)
                 {
                     if (multiplier.minorGod == unitGod)
                     {
                         addToIntegrity = multiplier.integrityMultiplier;
-                        FavorManager.ModifyFavor(unitToSacrifice.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
+                        FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
                         //TODO: Reduce player's health when sacrifice succeeds
                     }
                 }
                 integrity += addToIntegrity;
+            } else
+            {
+                targetUnit = null;
             }
         }
 
@@ -57,7 +72,8 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
-            throw new System.NotImplementedException();
+            isSacrificed = false;
+            targetUnit = null;
         }
 
 
