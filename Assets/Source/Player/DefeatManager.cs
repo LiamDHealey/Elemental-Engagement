@@ -27,11 +27,11 @@ namespace ElementalEngagement.Player
 
         // Tracks the singleton instance of this.
         private static DefeatManager instance;
-        
+
+        private void Awake() => instance = this;
+
         private void Start()
         {
-            instance = this;
-
             factionToVitalStructures = new ReadOnlyDictionary<Faction, ReadOnlyCollection<Health>>(
                 playersToVitalStructures.ToDictionary(ptvs => ptvs.faction, ptvs => ptvs.vitalStructures.AsReadOnly()));
 
@@ -48,7 +48,7 @@ namespace ElementalEngagement.Player
                         // See if any other vital structure for this faction are still alive
                         foreach (Health otherVitalStructure in playerToVitalStructures.vitalStructures)
                         {
-                            if (otherVitalStructure != null)
+                            if (otherVitalStructure != null && otherVitalStructure.hp > 0)
                                 return;
                         }
 

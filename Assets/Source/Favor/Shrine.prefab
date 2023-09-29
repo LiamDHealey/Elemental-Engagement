@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5298598599648437548}
   - component: {fileID: 9132523939842744515}
+  - component: {fileID: 7779629695944107611}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -84,6 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7779629695944107611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979323060529684527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  movingParameterName: IsMoving
+  moveThreshed: 1
 --- !u!1 &6150281395519725055
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +111,6 @@ GameObject:
   - component: {fileID: 3636707124858924371}
   - component: {fileID: 3244114177246839453}
   - component: {fileID: 792218743297872134}
-  - component: {fileID: 7848398269800981518}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -168,27 +183,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7848398269800981518
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6150281395519725055}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8548424856781637128
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,6 +195,7 @@ GameObject:
   - component: {fileID: -5820929415335894547}
   - component: {fileID: 7091580252332748757}
   - component: {fileID: 8715321656192180978}
+  - component: {fileID: 2125978576373769656}
   m_Layer: 0
   m_Name: Shrine
   m_TagString: Untagged
@@ -287,3 +282,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 1.1518264, z: 10}
   m_Center: {x: 0, y: -0.72002244, z: 0}
+--- !u!114 &2125978576373769656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548424856781637128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e4031da48309847b21b0b7d9ef0178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHP: 1
+  damageMultipliers: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  onKilled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7779629695944107611}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
+        m_MethodName: DestroyParent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

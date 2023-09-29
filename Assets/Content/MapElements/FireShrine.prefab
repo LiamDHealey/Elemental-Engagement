@@ -16,6 +16,38 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9af18aef6d40a084a96be4737c641d84, type: 2}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: _maxHP
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: damageMultipliers.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: damageMultipliers.Array.data[0].multiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: damageMultipliers.Array.data[1].multiplier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: damageMultipliers.Array.data[2].multiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: damageMultipliers.Array.data[0].incomingAffiliation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: damageMultipliers.Array.data[1].incomingAffiliation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: damageMultipliers.Array.data[2].incomingAffiliation
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.3862002

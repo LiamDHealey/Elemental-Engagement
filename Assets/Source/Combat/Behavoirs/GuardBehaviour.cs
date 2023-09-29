@@ -42,6 +42,8 @@ namespace ElementalEngagement.Combat
                         validTargets.Add(collider.transform);
                     }
                 });
+            visionRange.onTriggerExit.AddListener(
+                collider => { validTargets.Remove(collider.transform); } );
 
             // Waits until this is idle then moves to visible targets.
             StartCoroutine(AttackWhenIdle());
@@ -67,7 +69,7 @@ namespace ElementalEngagement.Combat
                         {
                             // Exclude targets outside the starting vision area.
                             IEnumerable<Transform> attackableTargets = validTargets
-                                    .Where(target => anchorBounds.Contains(target.transform.position));
+                                    .Where(target => target != null && anchorBounds.Contains(target.transform.position));
 
                             // Return to starting area
                             if (attackableTargets.Count() == 0)

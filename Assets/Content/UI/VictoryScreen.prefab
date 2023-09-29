@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1474812863553154725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
             m_StringArgument: Player One Victory!
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1622653651661455586}
+        - m_Target: {fileID: 5206339918011361253}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
@@ -94,7 +94,7 @@ MonoBehaviour:
             m_StringArgument: Player Two Victory!
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1622653651661455586}
+        - m_Target: {fileID: 5206339918011361253}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
@@ -123,7 +123,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5494474634049006459
 RectTransform:
   m_ObjectHideFlags: 0

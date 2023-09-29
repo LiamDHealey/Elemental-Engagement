@@ -61,6 +61,12 @@ namespace ElementalEngagement.Combat
 
                 while (validTargets.Contains(other))
                 {
+                    if (other == null)
+                    {
+                        validTargets.Remove(other);
+                        yield break;
+                    }
+
                     if (validTargets.Count <= maxTargets || validTargets.IndexOf(other) < maxTargets)
                     {
                         onAttackStart?.Invoke();
@@ -68,8 +74,8 @@ namespace ElementalEngagement.Combat
                         if (damageDelay > 0)
                             yield return new WaitForSeconds(damageDelay);
 
-                        health.TakeDamage(damage);
-                        knockbackReceiver.ReceiveKnockback(knockback);
+                        health?.TakeDamage(damage);
+                        knockbackReceiver?.ReceiveKnockback(knockback);
                         onAttackDamage?.Invoke();
                     }
 

@@ -62,7 +62,7 @@ namespace ElementalEngagement.Utilities
             if (moved != isMoving)
             {
                 isMoving = moved;
-                GetComponent<Animator>().SetBool(movingParameterName, isMoving);
+                animator?.SetBool(movingParameterName, isMoving);
             }
             lastPosition  = transform.position;
         }
