@@ -1,4 +1,5 @@
 using ElementalEngagement.Combat;
+using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,14 +36,15 @@ namespace ElementalEngagement.Favor
         {
             while (integrity < maxIntegrity)
             {
-                MinorGod unitGod = unitToSacrifice.allegiance.god;
+                MinorGod unitGod = unitToSacrifice.GetComponent<Allegiance>().god;
                 float addToIntegrity = 0;
                 foreach (MinorGodToIntegrityMultiplier multiplier in minorGodsToIntegrityMultipliers)
                 {
                     if (multiplier.minorGod == unitGod)
                     {
                         addToIntegrity = multiplier.integrityMultiplier;
-                        FavorManager.ModifyFavor(unitToSacrifice.allegiance, unitGod, multiplier.favorMultiplier);
+                        FavorManager.ModifyFavor(unitToSacrifice.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
+                        //TODO: Reduce player's health when sacrifice succeeds
                     }
                 }
                 integrity += addToIntegrity;
