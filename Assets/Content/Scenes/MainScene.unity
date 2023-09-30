@@ -1593,7 +1593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653138074550990029, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 115.5
+      value: -37
       objectReference: {fileID: 0}
     - target: {fileID: 2653138074550990029, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1623,15 +1623,107 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2698605728114428386, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+      propertyPath: m_Radius
+      value: 15.59
+      objectReference: {fileID: 0}
     - target: {fileID: 2819691728172290092, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
       propertyPath: m_Name
-      value: FireElemental (2)
+      value: Ranged Dude
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4967623700644528210, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+      propertyPath: attackInterval
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278808062657777621, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+      propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4967623700644528210, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2819691728172290092, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 974046252}
   m_SourcePrefab: {fileID: 100100000, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+--- !u!1 &974046248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2819691728172290092, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+  m_PrefabInstance: {fileID: 974046247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &974046249 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4404421141326639896, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+  m_PrefabInstance: {fileID: 974046247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9321f9db6c55d479173e3e69f13b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &974046250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1828492509368982433, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+  m_PrefabInstance: {fileID: 974046247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974046248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &974046251 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2653138074550990029, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+  m_PrefabInstance: {fileID: 974046247}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &974046252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974046248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62c829351064b54fa667158b8381e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allegiance: {fileID: 974046250}
+  damage:
+    amount: 35
+    allegiance: {fileID: 974046250}
+  knockback:
+    amount: 1
+    duration: 0.2
+    source: {fileID: 0}
+  attackInterval: 1
+  damageDelay: 0.5
+  waitBeforeDamage: 1
+  onAttackStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1824593199}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnAttack
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAttackDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  attackRange: {fileID: 974046249}
+  projectileSource: {fileID: 974046251}
+  projectileTemplate: {fileID: 3472519871759677579, guid: deef3d85de45bcd429ca4eae7be47589, type: 3}
 --- !u!1001 &1021874514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3117,6 +3209,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+--- !u!95 &1824593199 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8939088103229728973, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+  m_PrefabInstance: {fileID: 974046247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1874534500
 PrefabInstance:
   m_ObjectHideFlags: 0

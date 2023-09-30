@@ -13,7 +13,7 @@ namespace ElementalEngagement.Utilities
     public class AnimatorFunctionality : MonoBehaviour
     {
         [Tooltip("The animator this is helping.")]
-        [SerializeField] private Animator animator;
+        [SerializeField] private Animator animator = null;
 
         [Tooltip("The name of the animator parameter used to check if the animator is moving.")]
         [SerializeField] private string movingParameterName = "IsMoving";
@@ -57,6 +57,9 @@ namespace ElementalEngagement.Utilities
         /// </summary>
         public void FixedUpdate()
         {
+            if (animator == null)
+                return;
+
             bool moved = (lastPosition - transform.position).sqrMagnitude/Time.fixedDeltaTime > moveThreshed * moveThreshed;
             
             if (moved != isMoving)

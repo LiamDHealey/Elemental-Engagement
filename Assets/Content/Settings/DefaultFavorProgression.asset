@@ -20,33 +20,13 @@ MonoBehaviour:
       thing: {fileID: 11400000, guid: 223a2598774d1b8499f883c54d1789a5, type: 2}
     _spawnerTypes:
     - typeName: Default
-      favorToSpawnInterval:
+      favorToSpawnRate:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 30
-          inSlope: -28
-          outSlope: -28
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 2
-          inSlope: -28
-          outSlope: -28
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0
+        m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      spawnConditions:
-      - favorThreshold: 0
-        thing: {fileID: 2819691728172290092, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
+      prefabToSpawn: {fileID: 0}
   - god: 2
     initialFavor: 0
     abilityUnlocks:
@@ -54,33 +34,13 @@ MonoBehaviour:
       thing: {fileID: 11400000, guid: c9954d57354497b4c98f15876e807255, type: 2}
     _spawnerTypes:
     - typeName: Default
-      favorToSpawnInterval:
+      favorToSpawnRate:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 30
-          inSlope: -28
-          outSlope: -28
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 2
-          inSlope: -28
-          outSlope: -28
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0
+        m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      spawnConditions:
-      - favorThreshold: 0
-        thing: {fileID: 2819691728172290092, guid: 5bee485329d1334489f682c34dcfaa8d, type: 3}
+      prefabToSpawn: {fileID: 0}
   - god: 3
     initialFavor: 0
     abilityUnlocks:
@@ -88,30 +48,10 @@ MonoBehaviour:
       thing: {fileID: 11400000, guid: 35c1f10b66b6a0a4fb51e99d92d6d437, type: 2}
     _spawnerTypes:
     - typeName: Default
-      favorToSpawnInterval:
+      favorToSpawnRate:
         serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 30
-          inSlope: -28
-          outSlope: -28
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
-          value: 2
-          inSlope: -28
-          outSlope: -28
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0
+        m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      spawnConditions:
-      - favorThreshold: 0
-        thing: {fileID: 2819691728172290092, guid: e33413a2db3a5144c835803f95cb82c4, type: 3}
+      prefabToSpawn: {fileID: 0}
