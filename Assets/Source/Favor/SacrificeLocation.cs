@@ -26,12 +26,6 @@ namespace ElementalEngagement.Favor
         [Tooltip("The time between each sacrifice tick.")]
         [SerializeField] private float sacrificeInterval = 0.5f;
 
-        [Tooltip("Whether this location is being sacrificed to or not.")]
-        [SerializeField] private bool isSacrificed;
-
-        [Tooltip("Unit currently being sacrificed. If there is none, this is null")]
-        [SerializeField] private SacrificeCommand targetUnit;
-
 
         /// <summary>
         /// Repeatedly tries to sacrifice a unit. Will succeed if the integrity gained/lost will not put it outside the acceptable range.
@@ -40,29 +34,38 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StartSacrificing(SacrificeCommand unitToSacrifice)
         {
-            isSacrificed = true;
-            targetUnit = unitToSacrifice;
+            StartCoroutine(sacrificeUnits(unitToSacrifice, true));
         }
 
-        private void Update()
+        /// <summary>
+        /// Coroutine for sacrificing units. Runs infinitely at every sacrificeInterval until stopped
+        /// by another method.
+        /// </summary>
+        /// <param name="targetUnit">The unit that will be calling on this coroutine.</param>
+        /// <param name="isSacrificed">If the coroutine is being started, set to true. If being stopped, set to false</param>
+        /// <returns></returns>
+        private IEnumerator sacrificeUnits(SacrificeCommand targetUnit, bool isSacrificed)
         {
-            if (isSacrificed == true && integrity < maxIntegrity && targetUnit)
+            while (isSacrificed)
             {
-                MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
-                float addToIntegrity = 0;
-                foreach (MinorGodToIntegrityMultiplier multiplier in minorGodsToIntegrityMultipliers)
+                if (integrity < maxIntegrity)
                 {
-                    if (multiplier.minorGod == unitGod)
+                    MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
+                    float addToIntegrity = 0;
+                    foreach (MinorGodToIntegrityMultiplier multiplier in minorGodsToIntegrityMultipliers)
                     {
-                        addToIntegrity = multiplier.integrityMultiplier;
-                        FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
-                        //TODO: Reduce player's health when sacrifice succeeds
+                        if (multiplier.minorGod == unitGod)
+                        {
+                            addToIntegrity = multiplier.integrityMultiplier;
+                            //TODO: Fix FavorManager
+                            //FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
+                            //TODO: Reduce player's health when sacrifice succeeds
+                        }
                     }
+                    integrity += addToIntegrity;
                 }
-                integrity += addToIntegrity;
-            } else
-            {
-                targetUnit = null;
+                Debug.Log("Made sacrifice from " + targetUnit);
+                yield return new WaitForSeconds(sacrificeInterval);
             }
         }
 
@@ -72,8 +75,8 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
-            isSacrificed = false;
-            targetUnit = null;
+            Debug.Log("Stopping Sacrifice");
+            StopCoroutine(sacrificeUnits(unitToSacrifice, false));
         }
 
 
