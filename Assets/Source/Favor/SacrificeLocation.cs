@@ -26,6 +26,9 @@ namespace ElementalEngagement.Favor
         [Tooltip("The time between each sacrifice tick.")]
         [SerializeField] private float sacrificeInterval = 0.5f;
 
+        [Tooltip("Dictionary of coroutines currently being run associated with the unit running it.")]
+        private Dictionary<SacrificeCommand, IEnumerator> sacrificeCoroutines = new Dictionary<SacrificeCommand, IEnumerator>();
+
 
         /// <summary>
         /// Repeatedly tries to sacrifice a unit. Will succeed if the integrity gained/lost will not put it outside the acceptable range.
@@ -34,7 +37,9 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StartSacrificing(SacrificeCommand unitToSacrifice)
         {
-            StartCoroutine(sacrificeUnits(unitToSacrifice, true));
+            IEnumerator sacrificeCoroutine = sacrificeUnits(unitToSacrifice);
+            sacrificeCoroutines.Add(unitToSacrifice, sacrificeCoroutine);
+            StartCoroutine(sacrificeCoroutine);
         }
 
         /// <summary>
@@ -42,11 +47,11 @@ namespace ElementalEngagement.Favor
         /// by another method.
         /// </summary>
         /// <param name="targetUnit">The unit that will be calling on this coroutine.</param>
-        /// <param name="isSacrificed">If the coroutine is being started, set to true. If being stopped, set to false</param>
+        /// <param name="isSacrificing">If the coroutine is being started, set to true. If being stopped, set to false</param>
         /// <returns></returns>
-        private IEnumerator sacrificeUnits(SacrificeCommand targetUnit, bool isSacrificed)
+        private IEnumerator sacrificeUnits(SacrificeCommand targetUnit)
         {
-            while (isSacrificed)
+            while (true)
             {
                 if (integrity < maxIntegrity)
                 {
@@ -63,8 +68,8 @@ namespace ElementalEngagement.Favor
                         }
                     }
                     integrity += addToIntegrity;
+                    Debug.Log("Made sacrifice from " + targetUnit);
                 }
-                Debug.Log("Made sacrifice from " + targetUnit);
                 yield return new WaitForSeconds(sacrificeInterval);
             }
         }
@@ -76,7 +81,8 @@ namespace ElementalEngagement.Favor
         public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
             Debug.Log("Stopping Sacrifice");
-            StopCoroutine(sacrificeUnits(unitToSacrifice, false));
+            IEnumerator coroutineToStop = sacrificeCoroutines[unitToSacrifice];
+            StopCoroutine(coroutineToStop);
         }
 
 
