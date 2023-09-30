@@ -183,6 +183,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6674196038525123075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6548466361993315904}
+  m_Layer: 0
+  m_Name: SpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6548466361993315904
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674196038525123075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8907197884870483922}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8548424856781637128
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +227,7 @@ GameObject:
   - component: {fileID: 7091580252332748757}
   - component: {fileID: 8715321656192180978}
   - component: {fileID: 2125978576373769656}
+  - component: {fileID: 1707226985759907048}
   m_Layer: 0
   m_Name: Shrine
   m_TagString: Untagged
@@ -218,6 +250,7 @@ Transform:
   m_Children:
   - {fileID: 5298598599648437548}
   - {fileID: 3636707124858924371}
+  - {fileID: 6548466361993315904}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-5820929415335894547
@@ -232,8 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5fa28ea532fe3e43bcd8bb481229944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerType: Default
-  spawnLocation: {fileID: 0}
+  spawnerType: Basic
+  spawnLocation: {fileID: 6548466361993315904}
 --- !u!114 &7091580252332748757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,3 +348,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1707226985759907048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548424856781637128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fa28ea532fe3e43bcd8bb481229944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerType: Advanced
+  spawnLocation: {fileID: 6548466361993315904}
