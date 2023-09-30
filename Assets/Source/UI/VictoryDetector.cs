@@ -14,7 +14,6 @@ namespace ElementalEngagement.UI
 
         private void Start()
         {
-            Debug.Log("Bind");
             DefeatManager.onPlayerLost.AddListener(OnPLayerLost);
         }
 
@@ -26,11 +25,9 @@ namespace ElementalEngagement.UI
         {
             if (DefeatManager.survivingFactions.Count != 1)
             {
-                Debug.Log("No win cause Other:" + DefeatManager.survivingFactions[1]);
                 return;
             }
             
-            Debug.Log("Win");
             // Get wining player win event.
             playersToWinEvents.FirstOrDefault(ptwe => ptwe.faction == DefeatManager.survivingFactions[0])?.onWon?.Invoke();
         }
