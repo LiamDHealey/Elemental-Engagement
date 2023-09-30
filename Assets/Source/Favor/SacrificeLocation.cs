@@ -51,6 +51,7 @@ namespace ElementalEngagement.Favor
         /// <returns></returns>
         private IEnumerator sacrificeUnits(SacrificeCommand targetUnit)
         {
+            //sacrificeUnits runs forever until it is stopped externally
             while (true)
             {
                 if (integrity < maxIntegrity)
@@ -64,13 +65,13 @@ namespace ElementalEngagement.Favor
                             addToIntegrity = multiplier.integrityMultiplier;
                             //TODO: Fix FavorManager
                             //FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
-                            Damage damageFromSacrifice = new Damage();
-                            damageFromSacrifice.amount = sacrificeDamage;
-                            targetUnit.GetComponent<Health>().TakeDamage(damageFromSacrifice);
                         }
                     }
+                    Damage damageFromSacrifice = new Damage();
+                    damageFromSacrifice.amount = sacrificeDamage;
+                    targetUnit.GetComponent<Health>().TakeDamage(damageFromSacrifice);
                     integrity += addToIntegrity;
-                }
+                } 
                 yield return new WaitForSeconds(sacrificeInterval);
             }
         }
