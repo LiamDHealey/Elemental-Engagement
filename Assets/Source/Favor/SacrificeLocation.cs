@@ -64,7 +64,9 @@ namespace ElementalEngagement.Favor
                             addToIntegrity = multiplier.integrityMultiplier;
                             //TODO: Fix FavorManager
                             //FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
-                            //TODO: Reduce player's health when sacrifice succeeds
+                            Damage damageFromSacrifice = new Damage();
+                            damageFromSacrifice.amount = sacrificeDamage;
+                            targetUnit.GetComponent<Health>().TakeDamage(damageFromSacrifice);
                         }
                     }
                     integrity += addToIntegrity;
