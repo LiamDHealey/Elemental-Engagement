@@ -9,7 +9,6 @@ namespace ElementalEngagement.Combat
     /// <summary>
     /// Deals damage to things in an area.
     /// </summary>
-    [RequireComponent(typeof(Collider))]
     public class AOEAttack : Attack
     {
         [Tooltip("The collider in which the target must be within to take damage.")]
