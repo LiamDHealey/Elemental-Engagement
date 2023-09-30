@@ -39,7 +39,7 @@ namespace ElementalEngagement.Favor
         {
             IEnumerator sacrificeCoroutine = sacrificeUnits(unitToSacrifice);
             sacrificeCoroutines.Add(unitToSacrifice, sacrificeCoroutine);
-            StartCoroutine(sacrificeCoroutine);
+            StartCoroutine(sacrificeCoroutines[unitToSacrifice]);
         }
 
         /// <summary>
@@ -68,7 +68,6 @@ namespace ElementalEngagement.Favor
                         }
                     }
                     integrity += addToIntegrity;
-                    Debug.Log("Made sacrifice from " + targetUnit);
                 }
                 yield return new WaitForSeconds(sacrificeInterval);
             }
@@ -80,7 +79,6 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
-            Debug.Log("Stopping Sacrifice");
             IEnumerator coroutineToStop = sacrificeCoroutines[unitToSacrifice];
             StopCoroutine(coroutineToStop);
         }
