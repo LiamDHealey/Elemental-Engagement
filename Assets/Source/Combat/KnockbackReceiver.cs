@@ -14,7 +14,7 @@ namespace ElementalEngagement.Combat
         [SerializeField] private float knockbackMultiplier = 1;
 
         [Tooltip("The rigid body used for collisions.")]
-        [SerializeField] private Rigidbody rigidbody;
+        [SerializeField] private new Rigidbody rigidbody;
 
         [Tooltip("Called when this starts being knocked back.")]
         [SerializeField] private UnityEvent onKnockbackBegin;
