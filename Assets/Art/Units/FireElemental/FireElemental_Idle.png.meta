@@ -106,6 +106,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,10 +139,10 @@ TextureImporter:
       name: FireElemental_Idle_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 512
-        width: 368
-        height: 512
+        x: 205
+        y: 0
+        width: 591
+        height: 987
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +160,10 @@ TextureImporter:
       name: FireElemental_Idle_1
       rect:
         serializedVersion: 2
-        x: 584
-        y: 512
-        width: 368
-        height: 485
+        x: 533
+        y: 963
+        width: 45
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,48 +173,6 @@ TextureImporter:
       bones: []
       spriteID: fe1b6d8b3ebffd34eb8034a96ccceddb
       internalID: 833970208
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireElemental_Idle_2
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 0
-        width: 368
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e00ae872a3773d4fae8e5189b3a1d97
-      internalID: 342845522
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireElemental_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 584
-        y: 0
-        width: 368
-        height: 477
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4333022f23334b5479309b624f281cac
-      internalID: -236555775
       vertices: []
       indices: 
       edges: []
@@ -206,8 +190,6 @@ TextureImporter:
     nameFileIdTable:
       FireElemental_Idle_0: -1528224686
       FireElemental_Idle_1: 833970208
-      FireElemental_Idle_2: 342845522
-      FireElemental_Idle_3: -236555775
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
