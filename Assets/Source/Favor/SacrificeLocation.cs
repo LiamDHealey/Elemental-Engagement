@@ -63,8 +63,7 @@ namespace ElementalEngagement.Favor
                         if (multiplier.minorGod == unitGod)
                         {
                             addToIntegrity = multiplier.integrityMultiplier;
-                            //TODO: Fix FavorManager
-                            //FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
+                            FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
                         }
                     }
                     Damage damageFromSacrifice = new Damage();

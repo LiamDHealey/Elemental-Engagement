@@ -30,8 +30,8 @@ namespace ElementalEngagement.Favor
 
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
-        [SerializeField] private Dictionary<Tuple<Player.Faction, MinorGod>, float> _factionToFavor;
-        public static ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float> factionToFavor { get => new ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float>(instance._factionToFavor); }
+        [SerializeField] private Dictionary<Tuple<Player.Faction, MinorGod>, float> _factionToFavor = new Dictionary<Tuple<Player.Faction, MinorGod>, float>();
+        public static ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>, float> factionToFavor { get => new ReadOnlyDictionary<Tuple<Player.Faction, MinorGod>,float>(instance._factionToFavor); }
 
 
         // Tracks the singleton instance of this.
@@ -45,6 +45,21 @@ namespace ElementalEngagement.Favor
         private void Awake()
         {
             instance = this;
+            Tuple<Player.Faction, MinorGod> p1fire = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerOne, MinorGod.Fire);
+            Tuple<Player.Faction, MinorGod> p1water = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerOne, MinorGod.Water);
+            Tuple<Player.Faction, MinorGod> p1earth = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerOne, MinorGod.Earth);
+
+            Tuple<Player.Faction, MinorGod> p2fire = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerTwo, MinorGod.Fire);
+            Tuple<Player.Faction, MinorGod> p2water = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerTwo, MinorGod.Water);
+            Tuple<Player.Faction, MinorGod> p2earth = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerTwo, MinorGod.Earth);
+
+            _factionToFavor.Add(p1fire, 0);
+            _factionToFavor.Add(p1water, 0);
+            _factionToFavor.Add(p1earth, 0);
+
+            _factionToFavor.Add(p2fire, 0);
+            _factionToFavor.Add(p2water, 0);
+            _factionToFavor.Add(p2earth, 0);
         }
 
         /// <summary>
