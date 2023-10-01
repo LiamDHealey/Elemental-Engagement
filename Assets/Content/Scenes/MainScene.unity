@@ -1376,6 +1376,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572055457978535631, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: panspeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8181617194241091647, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2248,6 +2252,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572055457978535631, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: panspeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8181617194241091647, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2395,6 +2403,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 874254607}
     m_Modifications:
+    - target: {fileID: 5378492904543549314, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378492904543549314, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.55
+      objectReference: {fileID: 0}
     - target: {fileID: 7414885035677120458, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
       propertyPath: m_Name
       value: Player2FireShrine
