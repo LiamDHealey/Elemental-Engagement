@@ -172,7 +172,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 8.1e-44, w: 1.2026e-41}
+  m_BoundingSphereOverride: {x: 3.9e-44, y: NaN, z: NaN, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -204,7 +204,7 @@ Transform:
   m_GameObject: {fileID: 5540229135827350434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 31.4, z: 0}
+  m_LocalPosition: {x: 0, y: 41.5, z: 0}
   m_LocalScale: {x: 1, y: 3.56, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,8 +218,8 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5540229135827350434}
   serializedVersion: 8
-  lengthInSec: 5.5
-  simulationSpeed: 1
+  lengthInSec: 9.2
+  simulationSpeed: 0.7
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -293,7 +293,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.8
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5094,7 +5094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 6
+  lifetime: 10
 --- !u!135 &7785458032764344796
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5145,7 +5145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
-  deltaSpeed: 0.5
+  deltaSpeed: 0
   deltaAngularSpeed: 0
   deltaAcceleration: 0
 --- !u!114 &9142803568649359392
@@ -5162,9 +5162,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
-  deltaDamage: 0.5
-  deltaKnockback: 0.25
-  deltaAttackInterval: -0.5
+  deltaDamage: 0
+  deltaKnockback: 0
+  deltaAttackInterval: 0
 --- !u!114 &5686342651022301136
 MonoBehaviour:
   m_ObjectHideFlags: 0

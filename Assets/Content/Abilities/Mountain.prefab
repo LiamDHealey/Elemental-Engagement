@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5165895102758255372}
   - component: {fileID: 2379239973732439595}
   - component: {fileID: 8038256131458705645}
+  - component: {fileID: 3451971340023867532}
   m_Layer: 7
   m_Name: Mountain
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7520094084802813353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -14.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -156,6 +157,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 32, y: 6, z: 17.2}
   m_Center: {x: 2.3880787, y: 2.26, z: -4.1357384}
+--- !u!95 &3451971340023867532
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520094084802813353}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02541b9a8cc38fe4581e2dddc0bbc1ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4959426899554087299
 PrefabInstance:
   m_ObjectHideFlags: 0
