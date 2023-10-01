@@ -49,7 +49,7 @@ namespace ElementalEngagement.Favor
             }
 
             timeSinceLastSpawn += Time.deltaTime;
-            if(Time.deltaTime >= spawnInterval)
+            if(timeSinceLastSpawn >= spawnInterval)
             {
                 GameObject spawnedObject = Instantiate(objectToSpawn());
                 spawnedObject.transform.position = spawnLocation.position;
