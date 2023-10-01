@@ -27,10 +27,23 @@ namespace ElementalEngagement.Combat
         /// <summary>
         /// Binds events
         /// </summary>
-        private void Start()
+        private void Awake()
         {
             attackRange.onTriggerEnter.AddListener(TriggerEntered);
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
+        }
+
+
+        private void OnEnable()
+        {
+            foreach (Collider target in validTargets)
+            {
+                TriggerEntered(target);
+            }
+        }
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
 
         /// <summary>

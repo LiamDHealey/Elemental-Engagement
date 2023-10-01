@@ -38,7 +38,7 @@ namespace ElementalEngagement.Combat
         /// <param name="knockback"> The info of how this will be knocked back. </param>
         public void ReceiveKnockback(Knockback knockback)
         {
-            if (knockback.amount == 0 || knockback.duration == 0)
+            if (rigidbody == null || knockback.amount == 0 || knockback.duration == 0)
             {
                 return;
             }

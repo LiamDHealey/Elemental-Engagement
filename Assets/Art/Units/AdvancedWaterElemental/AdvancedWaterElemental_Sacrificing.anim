@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterElemental_Idle
+  m_Name: AdvancedWaterElemental_Sacrificing
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,15 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 553572489, guid: 5aa8647586afcd94da96da9562f369a3, type: 3}
+      value: {fileID: 756522318, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - time: 0.21666667
+      value: {fileID: 1332210115, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - time: 0.41666666
+      value: {fileID: -1034941863, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - time: 0.6333333
+      value: {fileID: -1160611832, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - time: 0.8333333
+      value: {fileID: -1160611832, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,13 +52,17 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 553572489, guid: 5aa8647586afcd94da96da9562f369a3, type: 3}
+    - {fileID: 756522318, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - {fileID: 1332210115, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - {fileID: -1034941863, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - {fileID: -1160611832, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
+    - {fileID: -1160611832, guid: fb2ce98990523c5438a6b7398d7d1560, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 0.84999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
