@@ -2,6 +2,7 @@ using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace ElementalEngagement.UI
@@ -43,7 +44,7 @@ namespace ElementalEngagement.UI
 
             void UpdateIcons()
             {
-                System.Collections.ObjectModel.ReadOnlyCollection<Combat.Ability> unlockedAbilities = FavorManager.unlockedAbilities;
+                ReadOnlyCollection<Combat.Ability> unlockedAbilities = FavorManager.GetUnlockedAbilities(manager.allegiance.faction);
 
 
                 for (int i = 0; i < abilityIcons.Count; i++)
