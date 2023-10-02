@@ -2,6 +2,7 @@ using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ElementalEngagement.Favor
@@ -49,10 +50,13 @@ namespace ElementalEngagement.Favor
             }
 
             timeSinceLastSpawn += Time.deltaTime;
-            if(Time.deltaTime >= spawnInterval)
+            if(timeSinceLastSpawn >= spawnInterval)
             {
                 GameObject spawnedObject = Instantiate(objectToSpawn());
                 spawnedObject.transform.position = spawnLocation.position;
+                //I Think this is right? I honestly don't know but it was the best I could come up with
+                Allegiance playerWithControl = spawnedObject.GetComponent<Allegiance>();
+                playerWithControl = spawnAllegiance;
                 timeSinceLastSpawn = 0;
             }
         }

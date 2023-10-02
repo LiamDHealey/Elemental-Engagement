@@ -487,6 +487,63 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c750e45294440434aafad5982085b167, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1001 &266095526
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1949139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16762161
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 37.875458
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653138074550990029, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819691728172290092, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+      propertyPath: m_Name
+      value: HumanArmy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
 --- !u!1 &333527633
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,6 +657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 874254607}
     m_Modifications:
+    - target: {fileID: 5378492904543549314, guid: 7350501d91746fc4f8016829835d3df3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7414885035677120458, guid: 7350501d91746fc4f8016829835d3df3, type: 3}
       propertyPath: m_Name
       value: Player1WaterShrine
@@ -1051,7 +1112,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5378492904543549314, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.06
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7414885035677120458, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
       propertyPath: m_Name
@@ -1319,6 +1380,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572055457978535631, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: panspeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8181617194241091647, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1400,6 +1465,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 874254607}
     m_Modifications:
+    - target: {fileID: 5378492904543549314, guid: 2c0b363ff285a74418a979a8f4e60b79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11
+      objectReference: {fileID: 0}
     - target: {fileID: 7414885035677120458, guid: 2c0b363ff285a74418a979a8f4e60b79, type: 3}
       propertyPath: m_Name
       value: Player2EarthShrine
@@ -2191,6 +2260,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7572055457978535631, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: panspeed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8181617194241091647, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2338,6 +2411,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 874254607}
     m_Modifications:
+    - target: {fileID: 5378492904543549314, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378492904543549314, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11
+      objectReference: {fileID: 0}
     - target: {fileID: 7414885035677120458, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
       propertyPath: m_Name
       value: Player2FireShrine
@@ -2646,6 +2727,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 874254607}
     m_Modifications:
+    - target: {fileID: 5378492904543549314, guid: 2c0b363ff285a74418a979a8f4e60b79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7414885035677120458, guid: 2c0b363ff285a74418a979a8f4e60b79, type: 3}
       propertyPath: m_Name
       value: Player1EarthShrine
@@ -2793,6 +2878,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 874254607}
     m_Modifications:
+    - target: {fileID: 5378492904543549314, guid: 7350501d91746fc4f8016829835d3df3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11
+      objectReference: {fileID: 0}
     - target: {fileID: 7414885035677120458, guid: 7350501d91746fc4f8016829835d3df3, type: 3}
       propertyPath: m_Name
       value: Player2WaterShrine
@@ -3670,3 +3759,4 @@ SceneRoots:
   - {fileID: 1765238958}
   - {fileID: 1546375103}
   - {fileID: 2134380125}
+  - {fileID: 266095526}
