@@ -144,6 +144,9 @@ namespace ElementalEngagement.Player
 
             foreach (Selectable selectable in selectedObjects)
             {
+                if (selectable == null)
+                    continue;
+
                 CommandReceiver[] receivers = selectable.GetComponents<CommandReceiver>();
                 foreach (CommandReceiver receiver in receivers)
                     receiver.CancelCommand();

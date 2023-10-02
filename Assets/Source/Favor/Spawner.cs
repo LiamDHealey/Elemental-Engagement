@@ -58,9 +58,7 @@ namespace ElementalEngagement.Favor
                 NavMesh.SamplePosition(spawnLocation.position, out NavMeshHit navMeshHit, 50f, 1);
                 spawnedObject.transform.position = navMeshHit.position;
 
-                //I Think this is right? I honestly don't know but it was the best I could come up with
-                Allegiance playerWithControl = spawnedObject.GetComponent<Allegiance>();
-                playerWithControl = spawnAllegiance;
+                spawnedObject.GetComponent<Allegiance>().faction = spawnAllegiance.faction;
 
 
                 timeSinceLastSpawn = 0;
