@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3169935085978601852}
   - component: {fileID: -4413762488026342783}
-  - component: {fileID: 4069184704686543195}
   - component: {fileID: -6726511020436873134}
   - component: {fileID: 5165895102758255372}
   - component: {fileID: 2379239973732439595}
@@ -52,22 +51,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 30
---- !u!208 &4069184704686543195
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7520094084802813353}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 7.42, y: 3.71, z: 7.42}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!114 &-6726511020436873134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +171,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1616847184012651028, guid: 5f983c67b6d43774a8e5fa1324aaf924, type: 3}
       propertyPath: m_Name
-      value: Double Mountain
+      value: Mesh
       objectReference: {fileID: 0}
     - target: {fileID: 2106525044864348334, guid: 5f983c67b6d43774a8e5fa1324aaf924, type: 3}
       propertyPath: m_LocalScale.x
@@ -245,8 +228,32 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1616847184012651028, guid: 5f983c67b6d43774a8e5fa1324aaf924, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7380917823617764810}
   m_SourcePrefab: {fileID: 100100000, guid: 5f983c67b6d43774a8e5fa1324aaf924, type: 3}
+--- !u!1 &5954706003866557335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1616847184012651028, guid: 5f983c67b6d43774a8e5fa1324aaf924, type: 3}
+  m_PrefabInstance: {fileID: 4959426899554087299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &7380917823617764810
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954706003866557335}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.1680001, y: 0.93500006, z: 1.4200001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0.004, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &6478583246457815341 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2106525044864348334, guid: 5f983c67b6d43774a8e5fa1324aaf924, type: 3}
