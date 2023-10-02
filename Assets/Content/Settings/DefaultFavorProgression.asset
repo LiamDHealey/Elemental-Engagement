@@ -187,3 +187,11 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: cd741a4fab9ec6f42935aaca5d2fff18, type: 3}
+  - god: 0
+    initialFavor: 0
+    abilityUnlocks:
+    - favorThreshold: 1
+      thing: {fileID: 11400000, guid: 35c1f10b66b6a0a4fb51e99d92d6d437, type: 2}
+    - favorThreshold: 0
+      thing: {fileID: 11400000, guid: c9954d57354497b4c98f15876e807255, type: 2}
+    _spawnerTypes: []
