@@ -239,7 +239,7 @@
                 {
                     "name": "",
                     "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
@@ -250,7 +250,7 @@
                 {
                     "name": "",
                     "id": "3729888c-1e85-48b8-a30f-e4caa6ebbd7d",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
@@ -261,7 +261,7 @@
                 {
                     "name": "",
                     "id": "0b5877bf-a60d-41c7-86c1-608afc29c46d",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -283,7 +283,7 @@
                 {
                     "name": "",
                     "id": "ab379082-3425-4df6-8c3a-0f96aca9d241",
-                    "path": "<Gamepad>/dpad/down",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -327,7 +327,7 @@
                 {
                     "name": "",
                     "id": "697cc113-56aa-42c7-9b7f-dd5e33912de6",
-                    "path": "<Gamepad>/dpad/left",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -349,7 +349,7 @@
                 {
                     "name": "",
                     "id": "42e8f47d-708e-4bfc-8ab5-a87d2692f9e0",
-                    "path": "<Gamepad>/dpad/up",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -363,7 +363,7 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "DeselectAll",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -371,10 +371,10 @@
                 {
                     "name": "",
                     "id": "a2c2a484-1afc-45fb-9960-0c1e5a3135be",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/backspace",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "DeselectAll",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -393,7 +393,7 @@
                 {
                     "name": "",
                     "id": "88679529-77d8-4937-bb48-7e5f8ab4fa72",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "MultiTap",
                     "processors": "",
                     "groups": "Gamepad",
@@ -407,43 +407,21 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "IssueAltCommand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Button With One Modifier",
-                    "id": "16acac97-625c-4707-8719-ecd3fc93f06d",
-                    "path": "ButtonWithOneModifier",
+                    "name": "",
+                    "id": "6fe9e67e-cd3c-41bc-80f2-852e89f8c0aa",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "IssueAltCommand",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Modifier",
-                    "id": "9755e102-8700-4004-97e4-9ef6788b6991",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "IssueAltCommand",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Button",
-                    "id": "18bb911c-a6f1-4085-a91b-91821cee50ee",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "IssueAltCommand",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -459,7 +437,7 @@
                 {
                     "name": "",
                     "id": "dbd1064b-cd9f-48bd-8090-718347759206",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
