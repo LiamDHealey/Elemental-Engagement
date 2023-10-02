@@ -6,6 +6,9 @@ using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 using System.Linq;
 using System.Collections.ObjectModel;
+using UnityEngine.UI;
+using System;
+using Unity.VisualScripting;
 
 namespace ElementalEngagement.Player
 {
@@ -21,6 +24,9 @@ namespace ElementalEngagement.Player
     [RequireComponent(typeof(Allegiance))]
     public class SelectionManager : MonoBehaviour
     {
+        [Tooltip("The radius of the circular selection.")]
+        [SerializeField] private float circularSelectionRadius = 10;
+
         [Tooltip("The input component that this will get mouse data from.")]
         [SerializeField] private PlayerInput input;
 
@@ -30,6 +36,11 @@ namespace ElementalEngagement.Player
         [Tooltip("The cursor used to get the selection location from.")]
         [SerializeField] private PlayerCursor cursor;
 
+        [Tooltip("The game object to spawn at the selection location")]
+        [SerializeField] private GameObject circularSelectionIndicator;
+
+        [Tooltip("The game object to spawn at the deselection location")]
+        [SerializeField] private GameObject circularDeselectionIndicator;
 
         // All of the currently selected objects.
         private List<Selectable> _selectedObjects = new List<Selectable>();
@@ -40,8 +51,15 @@ namespace ElementalEngagement.Player
         /// </summary>
         private void Start()
         {
-            input.actions["Select"].started += SelectionStarted;
+            circularSelectionIndicator.SetActive(false);
+            circularDeselectionIndicator.SetActive(false);
+
+            input.actions["Select"].performed += Select;
+            input.actions["CircularSelect"].performed += CircularSelectionStarted;
+            input.actions["SelectAll"].performed += SelectAll;
+            input.actions["DeselectAll"].performed += DeselectAll;
             input.actions["IssueCommand"].performed += IssueCommand;
+            input.actions["IssueAltCommand"].performed += IssueAltCommand;
         }
 
         /// <summary>
@@ -49,84 +67,87 @@ namespace ElementalEngagement.Player
         /// </summary>
         private void OnDestroy()
         {
-            input.actions["Select"].started -= SelectionStarted;
+            input.actions["Select"].performed -= Select;
+            input.actions["CircularSelect"].performed -= CircularSelectionStarted;
+            input.actions["SelectAll"].performed -= SelectAll;
+            input.actions["DeselectAll"].performed -= DeselectAll;
             input.actions["IssueCommand"].performed -= IssueCommand;
+            input.actions["IssueAltCommand"].performed -= IssueAltCommand;
+        }
+
+
+        /// <summary>
+        /// Selects the unit under the cursor.
+        /// </summary>
+        /// <param name="context"> The context of the selection input. </param>
+        private void Select(CallbackContext context)
+        {
+            if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)
+            {
+                _selectedObjects.Add(selectable);
+                selectable.enabled = true;
+            }
         }
 
         /// <summary>
         /// Begins selecting of units.
         /// </summary>
         /// <param name="context"> The context of the selection input. </param>
-        private void SelectionStarted(CallbackContext context)
+        private void CircularSelectionStarted(CallbackContext context)
         {
+            circularSelectionIndicator.SetActive(true);
             StartCoroutine(UpdateSelection());
+
+            /// <summary>
+            /// Updates the selection of units under the cursor while the Select input is in progress.
+            /// </summary>
+            /// <returns> The time to wait between selection updates. </returns>
+            IEnumerator UpdateSelection()
+            {
+                // Add to selection.
+                while (input.actions["CircularSelect"].inProgress)
+                {
+                    if (GetSelectableUnderCursor(out IEnumerable<Selectable> selectables, circularSelectionRadius, circularSelectionIndicator.transform))
+                    {
+                        foreach (Selectable selectable in selectables)
+                        {
+                            if (selectable.isSelected)
+                                continue;
+
+                            _selectedObjects.Add(selectable);
+                            selectable.isSelected = true;
+                        }
+                    }
+
+                    yield return null;
+                }
+                circularSelectionIndicator.SetActive(false);
+            }
         }
 
+
         /// <summary>
-        /// Updates the selection of units under the cursor while the Select input is in progress.
+        /// Select all units of the selected types on screen.
         /// </summary>
-        /// <returns> The time to wait between selection updates. </returns>
-        private IEnumerator UpdateSelection()
+        /// <param name="context"> The context of the selection input. </param>
+        private void SelectAll(CallbackContext context)
         {
-            int newSelectionCount = 0;
+            
+            throw new NotImplementedException();
+        }
 
-            // Add to selection.
-            while (input.actions["Select"].inProgress)
+
+        /// <summary>
+        /// Deselects all units.
+        /// </summary>
+        /// <param name="context"> The context of the selection input. </param>
+        private void DeselectAll(CallbackContext context)
+        {
+            IEnumerable<Selectable> selectedObjects = new List<Selectable>(_selectedObjects);
+            foreach (Selectable selectedObject in selectedObjects)
             {
-                yield return null;
-
-                if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-                    continue;
-
-                if (GetSelectableUnderCursor(screenToWorldRay, out Selectable selectable))
-                {
-
-
-                    if (!selectable.isSelected)
-                    {
-                        _selectedObjects.Add(selectable);
-                        newSelectionCount++;
-                    }
-                    selectable.isSelected = true;
-                }
-            }
-
-
-            // Clear selection.
-            if (newSelectionCount == 0)
-            {
-                if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-                    yield break;
-
-                // Clear just targeted unit
-                if (GetSelectableUnderCursor(screenToWorldRay, out Selectable selectable))
-                {
-                    _selectedObjects.Remove(selectable);
-                    selectable.isSelected = false;
-                }
-                // Clear whole selection
-                else
-                {
-                    IEnumerable<Selectable> selectedObjects = new List<Selectable>(_selectedObjects);
-                    foreach (Selectable selectedObject in selectedObjects)
-                    {
-                        _selectedObjects.Remove(selectedObject);
-                        selectedObject.isSelected = false;
-                    }
-                }
-            }
-
-
-
-            bool GetSelectableUnderCursor(Ray screenToWorldRay, out Selectable selectable)
-            {
-                bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
-                selectable = hit.collider?.GetComponent<Selectable>();
-
-                if (!hit.collider?.GetComponent<Allegiance>()?.CheckAnyAllegiance(allegiance) ?? true)
-                    return false;
-
-                return result && selectable != null;
+                _selectedObjects.Remove(selectedObject);
+                selectedObject.isSelected = false;
             }
         }
 
@@ -159,6 +180,79 @@ namespace ElementalEngagement.Player
 
                 chosenReceiver?.ExecuteCommand(hit);
             }
+        }
+
+
+
+
+        /// <summary>
+        /// Issues a alternate version of the command to all selected units.
+        /// </summary>
+        /// <param name="context"> The context of the command input. </param>
+        private void IssueAltCommand(CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the selectable unit under the ray cursor.
+        /// </summary>
+        /// <param name="selectables"> The units that was under the ray. </param>
+        /// <returns> True if there was a valid unit to select. </returns>
+        private bool GetSelectableUnderCursor(out IEnumerable<Selectable> selectables, float radius, Transform hitLocationIndicator = null)
+        {
+            selectables = null;
+
+
+            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
+                return false;
+
+
+            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
+
+            if (hitLocationIndicator != null)
+            {
+                hitLocationIndicator.position = hit.point;
+            }
+
+            if (!result)
+                return false;
+
+            Debug.DrawLine(hit.point, hit.point + new Vector3(radius, 0, 0), Color.red, 10f);  
+            selectables = Physics.OverlapSphere(hit.point, radius)
+                .Select(collider => collider.GetComponent<Selectable>()).NotNull()
+                .Where(selectable => selectable.GetComponent<Allegiance>()?.CheckAnyAllegiance(allegiance) ?? true);
+
+            return selectables.Count() > 0;
+        }
+
+        /// <summary>
+        /// Gets the selectable unit under the ray cursor.
+        /// </summary>
+        /// <param name="selectable"> The unit that was under the ray. </param>
+        /// <returns> True if there was a valid unit to select. </returns>
+        private bool GetSelectableUnderCursor(out Selectable selectable)
+        {
+            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
+            {
+                selectable = null;
+                return false;
+            }
+
+            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
+
+            selectable = hit.collider?.GetComponent<Selectable>();
+
+
+            if (!hit.collider?.GetComponent<Allegiance>()?.CheckAnyAllegiance(allegiance) ?? true)
+                return false;
+
+            return result && selectable != null;
         }
     }
 }
