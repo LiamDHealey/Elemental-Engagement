@@ -580,6 +580,18 @@ MonoBehaviour:
             m_StringArgument: 1, 0, 0, 1
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 3600748324673135355}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 1, 0, 0, 1
+            m_BoolArgument: 1
+          m_CallState: 2
   - faction: 1
     onSelected:
       m_PersistentCalls:
@@ -620,6 +632,18 @@ MonoBehaviour:
             m_StringArgument: 1, 1, 1, 1
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 3600748324673135355}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 1, 1, 1, 1
+            m_BoolArgument: 1
+          m_CallState: 2
   - faction: 2
     onSelected:
       m_PersistentCalls:
@@ -659,6 +683,18 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 0, 0, 0, 1
             m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 3600748324673135355}
+          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 0, 0, 0, 1
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &2280283077756958185
 MonoBehaviour:
@@ -710,7 +746,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5833595026407189285}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
