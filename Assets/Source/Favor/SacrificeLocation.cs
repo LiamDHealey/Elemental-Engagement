@@ -51,8 +51,8 @@ namespace ElementalEngagement.Favor
         /// <returns></returns>
         private IEnumerator sacrificeUnits(SacrificeCommand targetUnit)
         {
-            //sacrificeUnits runs forever until it is stopped externally
-            while (true)
+            //sacrificeUnits runs forever until it is stopped externally or the unit dies
+            while (targetUnit)
             {
                 if (integrity < maxIntegrity)
                 {
@@ -63,7 +63,7 @@ namespace ElementalEngagement.Favor
                         if (multiplier.minorGod == unitGod)
                         {
                             addToIntegrity = multiplier.integrityMultiplier;
-                            FavorManager.ModifyFavor(targetUnit.GetComponent<Faction>(), unitGod, multiplier.favorMultiplier);
+                            FavorManager.ModifyFavor(targetUnit.GetComponent<Allegiance>().faction, unitGod, multiplier.favorMultiplier);
                         }
                     }
                     Damage damageFromSacrifice = new Damage();
@@ -81,8 +81,12 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
-            IEnumerator coroutineToStop = sacrificeCoroutines[unitToSacrifice];
-            StopCoroutine(coroutineToStop);
+            if (sacrificeCoroutines.ContainsKey(unitToSacrifice))
+            {
+                IEnumerator coroutineToStop = sacrificeCoroutines[unitToSacrifice];
+                StopCoroutine(coroutineToStop);
+                sacrificeCoroutines.Remove(unitToSacrifice);
+            }
         }
 
 
