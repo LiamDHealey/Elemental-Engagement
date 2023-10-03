@@ -25,9 +25,18 @@ namespace ElementalEngagement.Favor
         public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> progressionSettings { get => instance._progressionSettings.godProgressionSettings; }
 
         // The abilities that are currently unlocked.
-        public static ReadOnlyCollection<Ability> unlockedAbilities { get => instance.tempUnlockedAbilities.AsReadOnly(); }
-        // TODO: replace this with an actual implementation based off of progression settings and favor
-        public List<Ability> tempUnlockedAbilities;
+        public static ReadOnlyCollection<Ability> unlockedAbilities { get => unlockedAbilities; }
+        /// <summary>
+        /// Gets the unlocked abilities for this faction.
+        /// </summary>
+        /// <param name="faction"> The faction to get the unlocked abilities of. </param>
+        /// <returns> A collection of all the abilities that are unlocked. </returns>
+        public static ReadOnlyCollection<Ability> GetUnlockedAbilities(Faction faction)
+        {
+            //TODO: Return unlocked abilities associated with each faction
+            return unlockedAbilities;
+        }
+
 
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
