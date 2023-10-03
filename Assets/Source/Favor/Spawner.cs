@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 namespace ElementalEngagement.Favor
 {
@@ -19,7 +20,10 @@ namespace ElementalEngagement.Favor
 
         [Tooltip("The location to spawn the units at.")]
         [SerializeField] private Transform spawnLocation;
-        
+
+        [Tooltip("The location to spawn the units at.")]
+        public UnityEvent onSpawned;
+
         //The Allegiance tied to this spawner
         Allegiance spawnAllegiance;
 
@@ -59,7 +63,7 @@ namespace ElementalEngagement.Favor
                 spawnedObject.transform.position = navMeshHit.position;
 
                 spawnedObject.GetComponent<Allegiance>().faction = spawnAllegiance.faction;
-
+                onSpawned?.Invoke();
 
                 timeSinceLastSpawn = 0;
             }
@@ -67,7 +71,7 @@ namespace ElementalEngagement.Favor
 
         private float spawnRate()
         {
-                    //Accessing the GodProgressionSettings of the FavorManager
+                   //Accessing the GodProgressionSettings of the FavorManager
             return FavorManager.progressionSettings[spawnAllegiance.god]
                    //Progressing from GodProgressionSettings to the Animation Curve
                    .spawnerTypes[spawnerType].favorToSpawnRate

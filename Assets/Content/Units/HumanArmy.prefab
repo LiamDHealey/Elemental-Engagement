@@ -1580,6 +1580,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_AgentTypeID
+      value: -334000983
+      objectReference: {fileID: 0}
+    - target: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Acceleration
       value: 1000
       objectReference: {fileID: 0}
@@ -1653,15 +1657,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: god
-      value: 0
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[1].onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[2].onSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[1].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[2].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onFactionChanged.Array.data[1].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5056685781315541490}
     - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onFactionChanged.Array.data[2].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
+      objectReference: {fileID: 5056685781315541490}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[1].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[2].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[1].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[2].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[1].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977147439944294568, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onFactionChanged.Array.data[2].onSelected.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8322546842097471898, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_SizeDelta.x

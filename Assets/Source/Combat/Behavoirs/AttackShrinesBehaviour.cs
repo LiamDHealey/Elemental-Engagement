@@ -1,3 +1,4 @@
+using ElementalEngagement;
 using ElementalEngagement.Combat;
 using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
@@ -12,7 +13,7 @@ using UnityEngine.AI;
 /// <summary>
 /// Cause this to move to shrines when not being commanded
 /// </summary>
-public class AttackShinesBehaviour : MonoBehaviour
+public class AttackShrinesBehaviour : MonoBehaviour
 {
     [Tooltip("The agent used to move this.")]
     [SerializeField] private NavMeshAgent agent;
@@ -26,13 +27,10 @@ public class AttackShinesBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NavMesh.SamplePosition(transform.position, out NavMeshHit navMeshHit, 50f, 1);
-        transform.position = navMeshHit.position;
-
         List<Transform> shrines = FindObjectsOfType<Spawner>()
             .Where(spawner => spawner.GetComponent<Health>()    != null)
             .Where(spawner => !spawner.GetComponent<Allegiance>().CheckFactionAllegiance(allegiance))
-            .Select(spawner => transform)
+            .Select(spawner => spawner.transform)
             .ToList();
 
         foreach (Transform shrine in shrines)
@@ -60,21 +58,20 @@ public class AttackShinesBehaviour : MonoBehaviour
                 {
                     while (!receivers.Any(r => r.commandInProgress) && shrines.Count > 0)
                     {
-
                         float SqrDistance(Transform target) => (target.position - transform.position).sqrMagnitude;
 
                         // Get the closest target
                         Transform closetsTarget = shrines
                             .Aggregate((closest, next) =>
                             {
-                                if (SqrDistance(closest) < SqrDistance(next))
+                                if (SqrDistance(closest) > SqrDistance(next))
                                     return next;
                                 else
                                     return closest;
                             });
 
                         agent.isStopped = SqrDistance(closetsTarget) < stoppingRange * stoppingRange;
-                        agent.SetDestination(closetsTarget.position);
+                        agent.MoveTo(closetsTarget.position);
 
                         yield return null;
                     }

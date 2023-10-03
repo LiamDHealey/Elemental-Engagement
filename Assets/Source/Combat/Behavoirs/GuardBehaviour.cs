@@ -75,7 +75,7 @@ namespace ElementalEngagement.Combat
                             if (attackableTargets.Count() == 0)
                             {
                                 agent.isStopped = false;
-                                agent.SetDestination(anchorBounds.center);
+                                agent.MoveTo(anchorBounds.center);
                             }
                             // Chase targets
                             else
@@ -93,7 +93,7 @@ namespace ElementalEngagement.Combat
                                     });
 
                                 agent.isStopped = SqrDistance(closetsTarget) < stoppingRange * stoppingRange;
-                                agent.SetDestination(closetsTarget.position);
+                                agent.MoveTo(closetsTarget.position);
                             }
 
                             yield return null;

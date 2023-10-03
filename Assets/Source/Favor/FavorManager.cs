@@ -48,18 +48,22 @@ namespace ElementalEngagement.Favor
             Tuple<Player.Faction, MinorGod> p1fire = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerOne, MinorGod.Fire);
             Tuple<Player.Faction, MinorGod> p1water = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerOne, MinorGod.Water);
             Tuple<Player.Faction, MinorGod> p1earth = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerOne, MinorGod.Earth);
+            Tuple<Player.Faction, MinorGod> p1human= new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerOne, MinorGod.Human);
 
             Tuple<Player.Faction, MinorGod> p2fire = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerTwo, MinorGod.Fire);
             Tuple<Player.Faction, MinorGod> p2water = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerTwo, MinorGod.Water);
             Tuple<Player.Faction, MinorGod> p2earth = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerTwo, MinorGod.Earth);
+            Tuple<Player.Faction, MinorGod> p2human = new Tuple<Player.Faction, MinorGod>(Player.Faction.PlayerTwo, MinorGod.Human);
 
             _factionToFavor.Add(p1fire, 0);
             _factionToFavor.Add(p1water, 0);
             _factionToFavor.Add(p1earth, 0);
+            _factionToFavor.Add(p1human, 1);
 
             _factionToFavor.Add(p2fire, 0);
             _factionToFavor.Add(p2water, 0);
             _factionToFavor.Add(p2earth, 0);
+            _factionToFavor.Add(p2human, 0);
         }
 
         /// <summary>

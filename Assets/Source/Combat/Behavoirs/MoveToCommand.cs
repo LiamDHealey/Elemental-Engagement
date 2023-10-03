@@ -46,7 +46,7 @@ namespace ElementalEngagement.Combat
         {
             agent.isStopped = false;
             commandInProgress = true;
-            agent.SetDestination(hitUnderCursor.point);
+            agent.MoveTo(hitUnderCursor.point);
 
 
             StartCoroutine(DestinationReached());

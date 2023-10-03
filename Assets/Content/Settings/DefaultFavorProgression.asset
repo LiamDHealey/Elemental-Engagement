@@ -193,3 +193,33 @@ MonoBehaviour:
     - favorThreshold: 1
       thing: {fileID: 11400000, guid: e7e597d06803e244084695f7f3def76e, type: 2}
     _spawnerTypes: []
+  - god: 4
+    initialFavor: 1
+    abilityUnlocks: []
+    _spawnerTypes:
+    - typeName: Default
+      favorToSpawnRate:
+        serializedVersion: 2
+        m_Curve:
+        - serializedVersion: 3
+          time: 0
+          value: 0
+          inSlope: Infinity
+          outSlope: Infinity
+          tangentMode: 103
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0.33333334
+        - serializedVersion: 3
+          time: 1
+          value: 2
+          inSlope: 2
+          outSlope: 2
+          tangentMode: 34
+          weightedMode: 0
+          inWeight: 0.33333334
+          outWeight: 0
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      prefabToSpawn: {fileID: 2819691728172290092, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
