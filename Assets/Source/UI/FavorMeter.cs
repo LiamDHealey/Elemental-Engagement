@@ -34,10 +34,12 @@ namespace ElementalEngagement.UI
             {
                 if (god == this.god && faction == allegiance.faction)
                 {
-                    float favorUpdate = FavorManager.factionToFavor[(faction,god)];
-                    onFavorChanged.Invoke(favorUpdate);
+                    float favorUpdate = FavorManager.factionToFavor[(faction, god)];
+                    onFavorChanged?.Invoke(favorUpdate);
                 }
             });
+
+            onFavorChanged?.Invoke(FavorManager.factionToFavor[(allegiance.faction, god)]);
         }
     }
 }

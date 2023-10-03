@@ -16,32 +16,18 @@ namespace ElementalEngagement.Favor
     /// </summary>
     public class FavorManager : MonoBehaviour
     {
-        [Tooltip("Called when the favor changes for a player.")]
-        public static UnityEvent<Player.Faction, MinorGod> onFavorChanged = new UnityEvent<Player.Faction, MinorGod>();
+        [Tooltip("Called when the favor changes for a ")]
+        public static UnityEvent<Faction, MinorGod> onFavorChanged = new UnityEvent<Faction, MinorGod>();
 
 
         [Tooltip("How each god's favor unlocks things.")]
         [SerializeField] private FavorProgressionSettings _progressionSettings;
         public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> progressionSettings { get => instance._progressionSettings.godProgressionSettings; }
 
-        // The abilities that are currently unlocked.
-        public static ReadOnlyCollection<Ability> unlockedAbilities { get => unlockedAbilities; }
-        /// <summary>
-        /// Gets the unlocked abilities for this faction.
-        /// </summary>
-        /// <param name="faction"> The faction to get the unlocked abilities of. </param>
-        /// <returns> A collection of all the abilities that are unlocked. </returns>
-        public static ReadOnlyCollection<Ability> GetUnlockedAbilities(Faction faction)
-        {
-            //TODO: Return unlocked abilities associated with each faction
-            return unlockedAbilities;
-        }
-
-
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
-        [SerializeField] private Dictionary<(Player.Faction, MinorGod), float> _factionToFavor = new Dictionary<(Player.Faction, MinorGod), float>();
-        public static ReadOnlyDictionary<(Player.Faction, MinorGod), float> factionToFavor { get => new ReadOnlyDictionary<(Player.Faction, MinorGod),float>(instance._factionToFavor); }
+        [SerializeField] private Dictionary<(Faction, MinorGod), float> _factionToFavor;
+        public static ReadOnlyDictionary<(Faction, MinorGod), float> factionToFavor { get => new ReadOnlyDictionary<(Faction, MinorGod),float>(instance._factionToFavor); }
 
 
         // Tracks the singleton instance of this.
@@ -55,29 +41,48 @@ namespace ElementalEngagement.Favor
         private void Awake()
         {
             instance = this;
-            _factionToFavor = new Dictionary<(Player.Faction, MinorGod), float>()
+
+            _factionToFavor = new Dictionary<(Faction, MinorGod), float>()
             {
                 {(Faction.PlayerOne, MinorGod.Fire), 0f},
                 {(Faction.PlayerOne, MinorGod.Water), 0f},
                 {(Faction.PlayerOne, MinorGod.Earth), 0f},
-                {(Faction.PlayerOne, MinorGod.Human), 0f},
 
                 {(Faction.PlayerTwo, MinorGod.Fire), 0f},
                 {(Faction.PlayerTwo, MinorGod.Water), 0f},
                 {(Faction.PlayerTwo, MinorGod.Earth), 0f},
-                {(Faction.PlayerTwo, MinorGod.Human), 0f}
             };
         }
 
         /// <summary>
-        /// Adds an amount to the favor this god has towards a player.
+        /// Adds an amount to the favor this god has towards a 
         /// </summary>
         /// <param name="allegiance"> The faction to add favor for. </param>
         /// <param name="god"> The god to add favor for. </param>
         /// <param name="deltaFavor"> The amount of favor to add. </param>
-        public static void ModifyFavor(Player.Faction allegiance, MinorGod god, float deltaFavor)
+        public static void ModifyFavor(Faction allegiance, MinorGod god, float deltaFavor)
         {
             instance._factionToFavor[(allegiance, god)] += deltaFavor;
+            onFavorChanged?.Invoke(allegiance, god);
+        }
+
+
+        /// <summary>
+        /// Gets the unlocked abelites for this faction.
+        /// </summary>
+        /// <param name="faction"> The faction to get the unlocked abelites of. </param>
+        /// <returns> A collection of all the abelites that are unlocked. </returns>
+        public static ReadOnlyCollection<Ability> GetUnlockedAbilities(Faction faction)
+        {
+            return progressionSettings
+                .SelectMany(
+                    kvp => kvp.Value.abilityUnlocks,
+                    (kvp, abilityUnlock) => new { kvp.Value.god, abilityUnlock })
+                .Where(
+                    godAndAbility => godAndAbility.abilityUnlock.favorThreshold <= (factionToFavor.TryGetValue((faction, godAndAbility.god), out float favor) ? favor : 1f))
+                .Select(
+                    godAndAbility => godAndAbility.abilityUnlock.thing)
+                .ToList().AsReadOnly();
         }
     }
 }
