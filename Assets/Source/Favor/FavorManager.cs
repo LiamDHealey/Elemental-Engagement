@@ -51,10 +51,12 @@ namespace ElementalEngagement.Favor
                 {(Faction.PlayerOne, MinorGod.Fire), 0f},
                 {(Faction.PlayerOne, MinorGod.Water), 0f},
                 {(Faction.PlayerOne, MinorGod.Earth), 0f},
+                {(Faction.PlayerOne, MinorGod.Human), 0f},
 
                 {(Faction.PlayerTwo, MinorGod.Fire), 0f},
                 {(Faction.PlayerTwo, MinorGod.Water), 0f},
                 {(Faction.PlayerTwo, MinorGod.Earth), 0f},
+                {(Faction.PlayerTwo, MinorGod.Human), 0f}
             };
         }
 
