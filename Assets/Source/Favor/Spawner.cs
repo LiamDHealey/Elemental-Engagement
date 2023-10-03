@@ -76,7 +76,7 @@ namespace ElementalEngagement.Favor
                    //Progressing from GodProgressionSettings to the Animation Curve
                    .spawnerTypes[spawnerType].favorToSpawnRate
                    //Evaluating the Animation Curve at the current Faction value
-                   .Evaluate(FavorManager.factionToFavor[(spawnAllegiance.faction, spawnAllegiance.god)]);
+                   .Evaluate(FavorManager.factionToFavor[new System.Tuple<Player.Faction, MinorGod> (spawnAllegiance.faction, spawnAllegiance.god)]);
         }
 
         private GameObject objectToSpawn()
