@@ -59,7 +59,7 @@ namespace ElementalEngagement.Combat
                     if ((targetPosition - transform.position).sqrMagnitude > stoppingDistance * stoppingDistance)
                     {
                         agent.isStopped = false;
-                        agent.SetDestination(targetPosition);
+                        agent.MoveTo(targetPosition);
                     } 
                     else
                     {

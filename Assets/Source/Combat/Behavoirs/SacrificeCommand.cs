@@ -61,8 +61,7 @@ namespace ElementalEngagement.Combat
         {
             agent.isStopped = false;
             commandInProgress = true;
-            NavMesh.Raycast(transform.position, hitUnderCursor.collider.transform.position, out NavMeshHit navMeshHit, 1);
-            agent.SetDestination(navMeshHit.position);
+            agent.MoveTo(hitUnderCursor.collider.transform.position);
 
             targetSacrificeLocation = hitUnderCursor.collider;
             if (sacrificeRange.overlappingColliders.Contains(targetSacrificeLocation))

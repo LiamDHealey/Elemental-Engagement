@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5aa8647586afcd94da96da9562f369a3
+guid: 1e28bca5d4d619e4caaffe739d96adaf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,43 +106,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WaterElemental_Idle_0
+      name: Particle Effects_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1024
-        width: 1024
-        height: 1024
+        y: 145.5
+        width: 118.375
+        height: 145.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6070971fa6f92954781207f7e333638b
-      internalID: 553572489
+      spriteID: dca3e6e60372bc041a62b5269079bec6
+      internalID: 312650461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterElemental_Idle_1
+      name: Particle Effects_1
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1024
-        width: 1024
-        height: 1024
+        x: 118
+        y: 145.5
+        width: 118.375
+        height: 145.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +145,146 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd76373a22c979844ade70f27a452b58
-      internalID: -714588776
+      spriteID: 41bd60a27cf4b7d43a49adf3f2437c4d
+      internalID: 641144539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterElemental_Idle_2
+      name: Particle Effects_2
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 145.5
+        width: 118.375
+        height: 145.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6fac0fe70ff8d6418e9f3ae3e34ded1
+      internalID: -1059758936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle Effects_3
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 145.5
+        width: 118.375
+        height: 145.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b58bbf431e98c149b5efa0df2e62b4e
+      internalID: -596338017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle Effects_4
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 145.5
+        width: 118.375
+        height: 145.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc95b095c9e2f67428f8033f390f6a92
+      internalID: 341347490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle Effects_5
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 145.5
+        width: 118.375
+        height: 145.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a8df65b3acdca44b291d3709427e86
+      internalID: 2146448247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle Effects_6
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 145.5
+        width: 118.375
+        height: 145.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f47adb53b7761445bbac69fe16c48a2
+      internalID: 1492727229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle Effects_7
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 145.5
+        width: 118.375
+        height: 145.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec43687834f0e7c429d26ca6563c2f4f
+      internalID: -245284702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Particle Effects_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1024
-        height: 1024
+        y: 0.5
+        width: 118.375
+        height: 145.5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,29 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77504c344ee9c4745a7c3ef19b36f6d2
-      internalID: 629935223
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WaterElemental_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 0
-        width: 1024
-        height: 1024
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e062e552beb77f4a8c6a7b03a26f41d
-      internalID: 649357790
+      spriteID: 7e0e52d3c2cb4564d94e4f9fcda06779
+      internalID: 1756813922
       vertices: []
       indices: 
       edges: []
@@ -230,10 +309,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WaterElemental_Idle_0: 553572489
-      WaterElemental_Idle_1: -714588776
-      WaterElemental_Idle_2: 629935223
-      WaterElemental_Idle_3: 649357790
+      Particle Effects_0: 312650461
+      Particle Effects_1: 641144539
+      Particle Effects_10: -714853347
+      Particle Effects_11: 1832155517
+      Particle Effects_12: 696127852
+      Particle Effects_13: 604202756
+      Particle Effects_14: 672396697
+      Particle Effects_15: 171605193
+      Particle Effects_2: -1059758936
+      Particle Effects_3: -596338017
+      Particle Effects_4: 341347490
+      Particle Effects_5: 2146448247
+      Particle Effects_6: 1492727229
+      Particle Effects_7: -245284702
+      Particle Effects_8: 1756813922
+      Particle Effects_9: -1250831508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

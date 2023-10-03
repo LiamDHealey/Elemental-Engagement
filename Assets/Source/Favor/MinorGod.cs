@@ -6,5 +6,6 @@ namespace ElementalEngagement.Favor
         Fire,
         Water,
         Earth,
+        Human,
     }
 }
