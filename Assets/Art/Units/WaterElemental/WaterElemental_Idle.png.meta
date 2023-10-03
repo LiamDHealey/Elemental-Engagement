@@ -139,10 +139,10 @@ TextureImporter:
       name: WaterElemental_Idle_0
       rect:
         serializedVersion: 2
-        x: 199
-        y: 3
-        width: 688
-        height: 853
+        x: 0
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,10 +160,10 @@ TextureImporter:
       name: WaterElemental_Idle_1
       rect:
         serializedVersion: 2
-        x: 527
-        y: 0
-        width: 85
-        height: 55
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,6 +173,48 @@ TextureImporter:
       bones: []
       spriteID: dd76373a22c979844ade70f27a452b58
       internalID: -714588776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterElemental_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77504c344ee9c4745a7c3ef19b36f6d2
+      internalID: 629935223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterElemental_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e062e552beb77f4a8c6a7b03a26f41d
+      internalID: 649357790
       vertices: []
       indices: 
       edges: []
@@ -190,6 +232,8 @@ TextureImporter:
     nameFileIdTable:
       WaterElemental_Idle_0: 553572489
       WaterElemental_Idle_1: -714588776
+      WaterElemental_Idle_2: 629935223
+      WaterElemental_Idle_3: 649357790
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
