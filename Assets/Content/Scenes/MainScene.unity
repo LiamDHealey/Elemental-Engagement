@@ -520,6 +520,8 @@ GameObject:
   - component: {fileID: 256741347}
   - component: {fileID: 256741346}
   - component: {fileID: 256741348}
+  - component: {fileID: 256741350}
+  - component: {fileID: 256741349}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -540,11 +542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressionSettings: {fileID: 11400000, guid: 411b58c852ee71a449fc6845efb0227d, type: 2}
-  tempUnlockedAbilities:
-  - {fileID: 11400000, guid: e7e597d06803e244084695f7f3def76e, type: 2}
-  - {fileID: 11400000, guid: 223a2598774d1b8499f883c54d1789a5, type: 2}
-  - {fileID: 11400000, guid: c9954d57354497b4c98f15876e807255, type: 2}
-  - {fileID: 11400000, guid: 35c1f10b66b6a0a4fb51e99d92d6d437, type: 2}
 --- !u!4 &256741347
 Transform:
   m_ObjectHideFlags: 0
@@ -586,6 +583,125 @@ MonoBehaviour:
   _onPlayerLost:
     m_PersistentCalls:
       m_Calls: []
+--- !u!82 &256741349
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256741345}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &256741350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256741345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055937edebcfa2a4ba785571ad494af9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutDuration: 0.5
+  mainMenuSceneName: Plz make me the actual value when we make the main menu
+  menuStartClips: []
+  menuMusic: []
+  lowIntensityStartClips: []
+  lowIntensityMusic: []
+  favorThreshold: 0.5
+  mediumIntensityStartClips: []
+  mediumIntensityMusic: []
+  highIntensityStartClips: []
+  highIntensityMusic: []
 --- !u!1 &261116967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,7 +2880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 14
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionId
@@ -2823,6 +2939,38 @@ PrefabInstance:
       value: bfd7f12d-aed1-438a-9db2-c1be0904e0a4
       objectReference: {fileID: 0}
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionId
+      value: fae07cbc-28c7-460f-b9aa-3c15d828f035
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: 430b3381-8930-4aa6-b76e-52b49de8f5a9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: 4cfbb6a4-697d-4d11-855b-99257be26475
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionId
+      value: ce269ce6-7922-43d1-8d30-bd8c4df88be9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionId
+      value: 6249c00f-46c6-410e-ade3-d16f254cbb6a
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionId
+      value: 9b077dd5-b595-45fa-bf93-d4c92cda0795
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionId
+      value: 04c7e4d7-0bd8-4fc8-ba00-5baffe48582b
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[21].m_ActionId
+      value: fdcd1da8-36d6-4026-aed5-61177245e894
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionName
       value: Player/Pan[/DualShock4GamepadHID/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
       objectReference: {fileID: 0}
@@ -2877,6 +3025,38 @@ PrefabInstance:
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_ActionEvents.Array.data[13].m_ActionName
       value: UI/TrackedDeviceOrientation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[14].m_ActionName
+      value: Player/CircularSelect[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: Player/SelectAll[/Keyboard/space]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: Player/DeselectAll[/Keyboard/backspace]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+      value: Player/IssueAltCommand[/Keyboard/q]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[18].m_ActionName
+      value: Player/PlayAbility1[/Keyboard/1]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[19].m_ActionName
+      value: Player/PlayAbility2[/Keyboard/2]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[20].m_ActionName
+      value: Player/PlayAbility3[/Keyboard/3]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_ActionEvents.Array.data[21].m_ActionName
+      value: Player/PlayAbility4[/Keyboard/4]
       objectReference: {fileID: 0}
     - target: {fileID: 4288308866459242319, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_AnchorMax.x
