@@ -40,8 +40,12 @@ namespace ElementalEngagement.Player
         private Dictionary<Ability, float> _abilityCooldowns = new Dictionary<Ability, float>();
         public ReadOnlyDictionary<Ability, float> abilityCooldowns { get => new ReadOnlyDictionary<Ability, float>(_abilityCooldowns); }
 
+        public Allegiance allegiance { get; private set; }
 
+        // The keybindings of the actions.
         private List<Action<CallbackContext>> actionBindings;
+
+        private void Awake() => allegiance = GetComponent<Allegiance>();
 
         private void Start()
         {
@@ -54,10 +58,11 @@ namespace ElementalEngagement.Player
                 // Play ability
                 actionBindings.Add(delegate
                 {
-                    if (FavorManager.unlockedAbilities.Count <= abilityIndex)
+                    ReadOnlyCollection<Ability> unlockedAbilities = FavorManager.GetUnlockedAbilities(allegiance.faction);
+                    if (unlockedAbilities.Count <= abilityIndex)
                         return;
 
-                    Ability ability = FavorManager.unlockedAbilities[abilityIndex];
+                    Ability ability = unlockedAbilities[abilityIndex];
                     if (abilityCooldowns.ContainsKey(ability))
                         return;
 
@@ -69,7 +74,7 @@ namespace ElementalEngagement.Player
                         abilityObject.transform.position = hit.point;
 
                         if (ability.inheritPlayerAllegiance)
-                            abilityObject.GetComponent<Allegiance>().faction = GetComponent<Allegiance>().faction;
+                            abilityObject.GetComponent<Allegiance>().faction = allegiance.faction;
                     }
                 });
 
