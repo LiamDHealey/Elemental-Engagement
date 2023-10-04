@@ -72,6 +72,9 @@ namespace ElementalEngagement.Favor
                     integrity += addToIntegrity;
                     yield return new WaitForSeconds(sacrificeInterval);
                 }
+            } else
+            {
+                targetUnit.onSacrificeEnd?.Invoke();
             }
         }
 
