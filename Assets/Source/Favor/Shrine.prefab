@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5298598599648437548}
   - component: {fileID: 9132523939842744515}
   - component: {fileID: 7779629695944107611}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 3636707124858924371}
   - component: {fileID: 3244114177246839453}
   - component: {fileID: 792218743297872134}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6548466361993315904}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpawnLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 2125978576373769656}
   - component: {fileID: 1707226985759907048}
   - component: {fileID: 4004314516147337774}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Shrine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,11 +294,35 @@ MonoBehaviour:
   - faction: 1
     onSelected:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2525602046784287246}
+          m_TargetAssemblyTypeName: ElementalEngagement.UI.HealthBar, Assembly-CSharp
+          m_MethodName: SetColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 1, 1, 1, 1
+            m_BoolArgument: 0
+          m_CallState: 2
   - faction: 2
     onSelected:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2525602046784287246}
+          m_TargetAssemblyTypeName: ElementalEngagement.UI.HealthBar, Assembly-CSharp
+          m_MethodName: SetColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 0, 0, 0, 1
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!65 &8715321656192180978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -400,10 +424,6 @@ PrefabInstance:
     - target: {fileID: 2527524241045839502, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_Name
       value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 3104297446340046577, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_MaxValue
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3525556639119249430, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -514,6 +534,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bae706e231c75744fbe955af1264558e, type: 3}
+--- !u!114 &2525602046784287246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6409054260665623454, guid: bae706e231c75744fbe955af1264558e, type: 3}
+  m_PrefabInstance: {fileID: 8934355830195491216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7664527ec2619984d89e82a13031ee49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2535445037499553411 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}

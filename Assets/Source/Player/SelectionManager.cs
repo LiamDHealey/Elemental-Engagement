@@ -42,6 +42,12 @@ namespace ElementalEngagement.Player
         [Tooltip("The game object to spawn at the deselection location")]
         [SerializeField] private GameObject circularDeselectionIndicator;
 
+        [Tooltip("The mask to use when detecting selectable objects.")]
+        [SerializeField] private LayerMask selectableMask;
+
+        [Tooltip("The mask to use when detecting locations where commands can be issued.")]
+        [SerializeField] private LayerMask commandMask;
+
         // All of the currently selected objects.
         private List<Selectable> _selectedObjects = new List<Selectable>();
         public ReadOnlyCollection<Selectable> selectedObjects { get => _selectedObjects.AsReadOnly(); }
@@ -160,7 +166,7 @@ namespace ElementalEngagement.Player
         {
             if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
                 return;
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
+            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask);
 
 
             foreach (Selectable selectable in selectedObjects)
@@ -213,7 +219,7 @@ namespace ElementalEngagement.Player
                 return false;
 
 
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
+            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, selectableMask);
 
             if (hitLocationIndicator != null)
             {
@@ -244,7 +250,7 @@ namespace ElementalEngagement.Player
                 return false;
             }
 
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit);
+            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, selectableMask);
 
             selectable = hit.collider?.GetComponent<Selectable>();
 

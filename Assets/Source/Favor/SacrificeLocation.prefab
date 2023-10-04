@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1671326851980095430}
   - component: {fileID: 1955264813912632556}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5564540015091633205}
   - component: {fileID: 6124476767312734197}
   - component: {fileID: 1295301410343901759}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 5081262603137984299}
   - component: {fileID: 7014076263548193281}
   - component: {fileID: 2187513396712701579}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SacrificeLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,18 +215,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd97664a21f0146877e8ce5c4a8bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  godOverride: 0
   <maxIntegrity>k__BackingField: 0.5
   <integrity>k__BackingField: 0.25
   minorGodsToIntegrityMultipliers:
   - minorGod: 0
-    integrityMultiplier: -1
-    favorMultiplier: 1
+    deltaIntegrity: 1
+    deltaFavor: 1
   - minorGod: 1
-    integrityMultiplier: 1
-    favorMultiplier: 1
+    deltaIntegrity: 1
+    deltaFavor: 1
   - minorGod: 2
-    integrityMultiplier: 1
-    favorMultiplier: 1
+    deltaIntegrity: 1
+    deltaFavor: 1
   sacrificeDamage: 4
   sacrificeInterval: 0.5
 --- !u!65 &2187513396712701579

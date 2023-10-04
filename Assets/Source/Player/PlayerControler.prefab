@@ -85,6 +85,12 @@ MonoBehaviour:
   cursor: {fileID: 7348364133145110575}
   circularSelectionIndicator: {fileID: 5165861323404850447}
   circularDeselectionIndicator: {fileID: 5165861323404850447}
+  selectableMask:
+    serializedVersion: 2
+    m_Bits: 256
+  commandMask:
+    serializedVersion: 2
+    m_Bits: 896
 --- !u!114 &7572055457978535631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +128,9 @@ MonoBehaviour:
       m_Calls: []
   cursor: {fileID: 7348364133145110575}
   input: {fileID: 4229869321111341770}
+  abilityMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &4229869321111341770
 MonoBehaviour:
   m_ObjectHideFlags: 0

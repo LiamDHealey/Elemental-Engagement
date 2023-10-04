@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8534031672330110094}
   - component: {fileID: 4885565404329688953}
   - component: {fileID: 9207352464830974425}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SelectedIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5546849311238180468}
   - component: {fileID: 7939374904098663714}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 8306161271482549596}
   - component: {fileID: 7481136888690889076}
   - component: {fileID: 6997656361314388549}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &3685090205885791067
 MonoBehaviour:
@@ -974,7 +974,7 @@ GameObject:
   - component: {fileID: 854166808930866116}
   - component: {fileID: 3381072725277730928}
   - component: {fileID: 6329092609386425010}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,9 +1104,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5982273917337833412}
     m_Modifications:
+    - target: {fileID: 1535089726803382314, guid: bae706e231c75744fbe955af1264558e, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707386870458220364, guid: bae706e231c75744fbe955af1264558e, type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2527524241045839502, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527524241045839502, guid: bae706e231c75744fbe955af1264558e, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3525556639119249430, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1223,6 +1235,10 @@ PrefabInstance:
     - target: {fileID: 6418125800119652861, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_Color.g
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941960448084190459, guid: bae706e231c75744fbe955af1264558e, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

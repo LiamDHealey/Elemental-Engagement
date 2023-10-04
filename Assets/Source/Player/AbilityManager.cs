@@ -32,6 +32,9 @@ namespace ElementalEngagement.Player
         [Tooltip("The input to get the play bindings from.")]
         [SerializeField] private PlayerInput input;
 
+        [Tooltip("The mask to use when detecting where to spawn an ability.")]
+        [SerializeField] private LayerMask abilityMask;
+
         // The currently selected ability
         public int selectedAbilityIndex { get; private set; }
 
@@ -68,7 +71,7 @@ namespace ElementalEngagement.Player
 
 
                     _abilityCooldowns.Add(ability, ability.cooldown);
-                    if (cursor.RayUnderCursor(out Ray ray) && Physics.Raycast(ray, out RaycastHit hit))
+                    if (cursor.RayUnderCursor(out Ray ray) && Physics.Raycast(ray, out RaycastHit hit, 9999f, abilityMask))
                     {
                         GameObject abilityObject = Instantiate(ability.prefabToSpawn);
                         abilityObject.transform.position = hit.point;
