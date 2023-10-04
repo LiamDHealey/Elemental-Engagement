@@ -129,6 +129,7 @@ namespace ElementalEngagement.Player
 
                     yield return null;
                 }
+                circularSelectionIndicator.SetActive(false);
             }
         }
 
