@@ -59,6 +59,7 @@ namespace ElementalEngagement.Combat
                         continue;
 
                     Bounds anchorBounds = visionRange.GetComponent<Collider>().bounds;
+                    anchorBounds.center = visionRange.transform.position;
 
                     // Attacks any target in its original vision range until commanded.
                     // Will also move back to its initial position when no targets are visible.
