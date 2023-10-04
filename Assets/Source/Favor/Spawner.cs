@@ -61,7 +61,8 @@ namespace ElementalEngagement.Favor
 
                 NavMesh.SamplePosition(spawnLocation.position, out NavMeshHit navMeshHit, 50f, 1);
                 spawnedObject.transform.position = navMeshHit.position;
-
+                Vector3 noise = new Vector3(Random.insideUnitCircle.x, 0, Random.insideUnitCircle.y);
+                spawnedObject.transform.position += noise;
                 spawnedObject.GetComponent<Allegiance>().faction = spawnAllegiance.faction;
                 onSpawned?.Invoke();
 
