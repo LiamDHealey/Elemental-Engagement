@@ -1592,6 +1592,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: maxTargets
+      value: 999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: damage.amount
       value: 2
       objectReference: {fileID: 0}
@@ -1609,7 +1613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5955947798740677355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Radius
-      value: 19.53
+      value: 20.81
       objectReference: {fileID: 0}
     - target: {fileID: 5955947798740677355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Center.y
@@ -1758,6 +1762,7 @@ PrefabInstance:
     - {fileID: 7481136888690889076, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
     - {fileID: 6997656361314388549, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
     - {fileID: 172367160331058577, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+    - {fileID: 5955947798740677355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1291757304422249541, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
     m_AddedGameObjects:
@@ -1870,7 +1875,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 34, y: 2, z: 34}
   m_Center: {x: 0, y: 0, z: 0}
