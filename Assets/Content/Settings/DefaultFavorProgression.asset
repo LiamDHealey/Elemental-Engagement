@@ -16,7 +16,7 @@ MonoBehaviour:
   - god: 1
     initialFavor: 0
     abilityUnlocks:
-    - favorThreshold: 1
+    - favorThreshold: 0.027
       thing: {fileID: 11400000, guid: 223a2598774d1b8499f883c54d1789a5, type: 2}
     _spawnerTypes:
     - typeName: Basic
@@ -74,7 +74,7 @@ MonoBehaviour:
   - god: 2
     initialFavor: 0
     abilityUnlocks:
-    - favorThreshold: 1
+    - favorThreshold: 0.028
       thing: {fileID: 11400000, guid: c9954d57354497b4c98f15876e807255, type: 2}
     _spawnerTypes:
     - typeName: Basic
@@ -132,7 +132,7 @@ MonoBehaviour:
   - god: 3
     initialFavor: 0
     abilityUnlocks:
-    - favorThreshold: 1
+    - favorThreshold: 0.016
       thing: {fileID: 11400000, guid: 35c1f10b66b6a0a4fb51e99d92d6d437, type: 2}
     _spawnerTypes:
     - typeName: Basic
