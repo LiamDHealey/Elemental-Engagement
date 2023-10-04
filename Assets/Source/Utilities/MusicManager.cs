@@ -10,7 +10,6 @@ using UnityEngine.SceneManagement;
 
 namespace ElementalEngagement.Utilities
 {
-    [RequireComponent(typeof(AudioSource))]
     public class MusicManager : MonoBehaviour
     {
         [Tooltip("The time it takes for a track to fade out after another starts.")] [Min(0f)]
@@ -162,7 +161,7 @@ namespace ElementalEngagement.Utilities
 
         private static IEnumerator PlayMusic(State state, List<AudioClip> startClips, List<AudioClip> music)
         {
-            AudioSource audioSource = Instantiate(MusicManager.audioSource);
+            AudioSource audioSource = instance.gameObject.AddComponent<AudioSource>();
 
             // Play start clip
             if (startClips.Count > 0)
@@ -188,10 +187,7 @@ namespace ElementalEngagement.Utilities
             }
             Destroy(audioSource);
 
-
-
-
-            AudioClip GetRandomClip(List<AudioClip> clips) => startClips[UnityEngine.Random.Range(0, startClips.Count)];
+            AudioClip GetRandomClip(List<AudioClip> clips) => clips[UnityEngine.Random.Range(0, clips.Count-1)];
         }
         private enum State { Menu, LowIntensity, MediumIntensity, HighIntensity }
     }
