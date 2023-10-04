@@ -5,6 +5,7 @@ namespace ElementalEngagement
 {
     public class ViewOnlyAttribute : PropertyAttribute { }
 
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ViewOnlyAttribute))]
     public class ViewOnlyDrawer : PropertyDrawer
     {
@@ -23,4 +24,5 @@ namespace ElementalEngagement
             GUI.enabled = true;
         }
     }
+#endif
 }
