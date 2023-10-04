@@ -2,6 +2,7 @@ using ElementalEngagement.Combat;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ElementalEngagement.Favor
@@ -11,6 +12,9 @@ namespace ElementalEngagement.Favor
     /// </summary>
     public class SacrificeLocation : MonoBehaviour
     {
+        [Tooltip("If not unaligned fill I favor for this god instead.")]
+        [SerializeField] private MinorGod godOverride;
+
         [field: Tooltip("The maximum integrity of this. This is unable to sacrifice any unit that would move integrity outside its acceptable range.")]
         [field: SerializeField] public float maxIntegrity { get; private set; } = 0.5f;
 
@@ -18,7 +22,7 @@ namespace ElementalEngagement.Favor
         [field: SerializeField] public float integrity { get; private set; } = 0.25f;
 
         [Tooltip("The multiplier applied to the favor given to a god to get the change in integrity. If a god is not present in this list than they cannot gain favor here.")]
-        [SerializeField] private List<MinorGodToIntegrityMultiplier> minorGodsToIntegrityMultipliers;
+        [SerializeField] private List<MinorGodToIntegrity> minorGodsToIntegrityMultipliers;
 
         [Tooltip("The hp lost per sacrifice.")]
         [SerializeField] private float sacrificeDamage = 4f;
@@ -37,7 +41,7 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StartSacrificing(SacrificeCommand unitToSacrifice)
         {
-            IEnumerator sacrificeCoroutine = sacrificeUnits(unitToSacrifice);
+            IEnumerator sacrificeCoroutine = SacrificeUnits(unitToSacrifice);
             sacrificeCoroutines.Add(unitToSacrifice, sacrificeCoroutine);
             StartCoroutine(sacrificeCoroutines[unitToSacrifice]);
         }
@@ -49,32 +53,39 @@ namespace ElementalEngagement.Favor
         /// <param name="targetUnit">The unit that will be calling on this coroutine.</param>
         /// <param name="isSacrificing">If the coroutine is being started, set to true. If being stopped, set to false</param>
         /// <returns></returns>
-        private IEnumerator sacrificeUnits(SacrificeCommand targetUnit)
+        private IEnumerator SacrificeUnits(SacrificeCommand targetUnit)
         {
-            if (integrity < maxIntegrity)
+            bool unitSacrificing = true;
+            MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
+            MinorGodToIntegrity multiplier = minorGodsToIntegrityMultipliers.First(m => m.minorGod == unitGod);
+
+            while (targetUnit)
             {
-                //sacrificeUnits runs forever until it is stopped externally or the unit dies
-                while (targetUnit)
+                float newIntegrity = integrity + multiplier.deltaIntegrity;
+                if (newIntegrity >= 0 && newIntegrity <= maxIntegrity)
                 {
-                    MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
-                    float addToIntegrity = 0;
-                    foreach (MinorGodToIntegrityMultiplier multiplier in minorGodsToIntegrityMultipliers)
+                    integrity = newIntegrity;
+                    FavorManager.ModifyFavor(targetUnit.GetComponent<Allegiance>().faction, godOverride == MinorGod.Unaligned ? unitGod : godOverride, multiplier.deltaFavor);
+                    targetUnit.GetComponent<Health>().TakeDamage(new Damage(sacrificeDamage));
+
+                    if (!unitSacrificing)
                     {
-                        if (multiplier.minorGod == unitGod)
-                        {
-                            addToIntegrity = multiplier.integrityMultiplier;
-                            FavorManager.ModifyFavor(targetUnit.GetComponent<Allegiance>().faction, unitGod, multiplier.favorMultiplier);
-                        }
+                        unitSacrificing = true;
+                        targetUnit.onSacrificeBegin?.Invoke();
                     }
-                    Damage damageFromSacrifice = new Damage();
-                    damageFromSacrifice.amount = sacrificeDamage;
-                    targetUnit.GetComponent<Health>().TakeDamage(damageFromSacrifice);
-                    integrity += addToIntegrity;
+
                     yield return new WaitForSeconds(sacrificeInterval);
                 }
-            } else
-            {
-                targetUnit.onSacrificeEnd?.Invoke();
+                else
+                {
+
+                    if (unitSacrificing)
+                    {
+                        unitSacrificing = false;
+                        targetUnit.onSacrificeEnd?.Invoke();
+                    }
+                    yield return null;
+                }
             }
         }
 
@@ -97,16 +108,16 @@ namespace ElementalEngagement.Favor
         /// For storing how a god interacts with this location.
         /// </summary>
         [System.Serializable]
-        private class MinorGodToIntegrityMultiplier
+        private class MinorGodToIntegrity
         {
             [Tooltip("The god to allow to sacrifice here.")]
             public MinorGod minorGod;
 
             [Tooltip("The amount favor gains are multiplied by to get the change in integrity.")]
-            public float integrityMultiplier = 1;
+            public float deltaIntegrity = 1;
 
             [Tooltip("The amount favor gains are multiplied for this god.")]
-            public float favorMultiplier = 1;
+            public float deltaFavor = 1;
         }
     }
 }

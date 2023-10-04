@@ -23,7 +23,7 @@ namespace ElementalEngagement.Combat
         /// </summary>
         /// <param name="amount"> The amount of damage being dealt in hp. </param>
         /// <param name="allegiance"> The causer of the damage and the associated god. </param>
-        public Damage(float amount, Allegiance allegiance)
+        public Damage(float amount, Allegiance allegiance = null)
         {
             this.amount = amount;
             this.allegiance = allegiance;
