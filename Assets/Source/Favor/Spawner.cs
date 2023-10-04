@@ -19,7 +19,7 @@ namespace ElementalEngagement.Favor
         [SerializeField] private string spawnerType = "Default";
 
         [Tooltip("The location to spawn the units at.")]
-        [SerializeField] private Transform spawnLocation;
+        [SerializeField] public Transform spawnLocation;
 
         [Tooltip("The location to spawn the units at.")]
         public UnityEvent onSpawned;
