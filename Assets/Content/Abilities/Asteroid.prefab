@@ -56,7 +56,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.25
+    scalar: 0.6
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -116,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 2.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -169,7 +169,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -287,8 +287,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 1
+      scalar: 2
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -604,7 +604,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     gravitySource: 0
-    maxNumParticles: 1000
+    maxNumParticles: 500
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -4924,9 +4924,9 @@ Transform:
   m_GameObject: {fileID: 7520094084802813353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.34, z: 0}
+  m_LocalPosition: {x: 0, y: -17.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 128783558549254781}
   - {fileID: 213901636795376822}
@@ -4971,7 +4971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1
+  lifetime: 1.5
 --- !u!114 &865892039160538150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4986,13 +4986,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 8335957412197613769}
   damage:
-    amount: 5
+    amount: 7
     allegiance: {fileID: 8335957412197613769}
   knockback:
     amount: 3
     duration: 0.03
     source: {fileID: 3169935085978601852}
-  attackInterval: 0.5
+  attackInterval: 0.8
   damageDelay: 0
   waitBeforeDamage: 1
   onAttackStart:
@@ -5022,7 +5022,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 4
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7012133622005105386
 MonoBehaviour:
@@ -5079,15 +5079,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3.3397498
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.3397498
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.3397498
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5103,19 +5103,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.92387956
+      value: 0.6532815
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.38268343
+      value: -0.27059805
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.6532815
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.27059805
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5123,7 +5123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bbf47d3ee84d6294281e64185f496e01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
