@@ -178,6 +178,8 @@ GameObject:
   - component: {fileID: 5081262603137984299}
   - component: {fileID: 7014076263548193281}
   - component: {fileID: 2187513396712701579}
+  - component: {fileID: 5560996958116096518}
+  - component: {fileID: 209188727104258757}
   m_Layer: 9
   m_Name: SacrificeLocation
   m_TagString: Untagged
@@ -251,6 +253,41 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.383715, y: 0.7158592, z: 17.39116}
   m_Center: {x: 0.014084816, y: 0.72785556, z: 0.0017604828}
+--- !u!114 &5560996958116096518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065649901808501139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
+--- !u!208 &209188727104258757
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065649901808501139}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 8.691855, y: 0.3579296, z: 8.69558}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.014084816, y: 0.72785556, z: 0.0017604828}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2790677313329122656
 PrefabInstance:
   m_ObjectHideFlags: 0
