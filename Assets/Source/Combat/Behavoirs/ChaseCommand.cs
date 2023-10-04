@@ -55,7 +55,7 @@ namespace ElementalEngagement.Combat
                 while (commandInProgress && hitUnderCursor.collider != null)
                 {
                     Vector3 targetPosition = hitUnderCursor.collider.transform.position;
-                    Debug.Log((targetPosition - transform.position).sqrMagnitude);
+
                     if ((targetPosition - transform.position).sqrMagnitude > stoppingDistance * stoppingDistance)
                     {
                         agent.isStopped = false;

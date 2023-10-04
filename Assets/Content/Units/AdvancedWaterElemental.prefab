@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2471459541223501577}
   - component: {fileID: 4499735010822195332}
   - component: {fileID: 5492152974625980174}
-  - component: {fileID: 7394337500320077018}
   - component: {fileID: 626453168417721588}
   - component: {fileID: 9056938931786672578}
   m_Layer: 2
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6561107938099992727}
   m_Father: {fileID: 2653138074550990029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2471459541223501577
@@ -54,16 +54,16 @@ MonoBehaviour:
     amount: 0
     allegiance: {fileID: 1828492509368982433}
   knockback:
-    amount: -5
-    duration: 3
-    source: {fileID: 2653138074550990029}
+    amount: 0
+    duration: 0
+    source: {fileID: 0}
   attackInterval: 6
   damageDelay: 3
   waitBeforeDamage: 1
   onAttackStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7394337500320077018}
+      - m_Target: {fileID: 8862181413952004673}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -90,7 +90,7 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7394337500320077018}
+      - m_Target: {fileID: 8862181413952004673}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -149,37 +149,6 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7394337500320077018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2145735349901449479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allegiance: {fileID: 1828492509368982433}
-  damage:
-    amount: 1
-    allegiance: {fileID: 1828492509368982433}
-  knockback:
-    amount: 0
-    duration: 3
-    source: {fileID: 2653138074550990029}
-  attackInterval: 1
-  damageDelay: 0
-  waitBeforeDamage: 1
-  onAttackStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onAttackDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  attackRange: {fileID: 5492152974625980174}
-  maxTargets: 242
 --- !u!198 &626453168417721588
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4975,6 +4944,69 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6868302159246053560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6561107938099992727}
+  - component: {fileID: 8862181413952004673}
+  m_Layer: 0
+  m_Name: PullInAttackTick
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6561107938099992727
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868302159246053560}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -29.825287, y: 17.380295, z: -10.177223}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7293732051361180773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8862181413952004673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868302159246053560}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allegiance: {fileID: 1828492509368982433}
+  damage:
+    amount: 1
+    allegiance: {fileID: 1828492509368982433}
+  knockback:
+    amount: -6.666667
+    duration: 1
+    source: {fileID: 2653138074550990029}
+  attackInterval: 1
+  damageDelay: 0
+  waitBeforeDamage: 0
+  onAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onAttackDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  attackRange: {fileID: 5492152974625980174}
+  maxTargets: 242
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5068,12 +5100,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Size.x
+      value: 3.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 553572489, guid: 569fa5ee34da5b144a31b42660a09cd1, type: 3}
+      objectReference: {fileID: 2123812375, guid: 569fa5ee34da5b144a31b42660a09cd1, type: 3}
     - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5833595026407189285, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Name

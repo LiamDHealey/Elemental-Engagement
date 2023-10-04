@@ -2,6 +2,7 @@ using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ElementalEngagement.Combat
@@ -25,20 +26,8 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Awake()
         {
-            attackRange.onTriggerEnter.AddListener(TriggerEntered);
+            attackRange.onTriggerEnter.AddListener( collider => { TriggerEntered(collider); });
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
-        }
-
-        private void OnEnable()
-        {
-            foreach (Collider target in validTargets)
-            {
-                TriggerEntered(target);
-            }
-        }
-        private void OnDisable()
-        {
-            StopAllCoroutines();
         }
 
         /// <summary>
@@ -56,10 +45,10 @@ namespace ElementalEngagement.Combat
 
             // If the target is aligned with this attack
             if (allegiance != null && otherAllegiance != null &&
-                allegiance.faction == otherAllegiance.faction) { return; }
+                allegiance.faction == otherAllegiance.faction) 
+                return;
 
             validTargets.Add(other);
-
             StartCoroutine(DamageOverTime());
 
             /// <summary>
@@ -67,30 +56,42 @@ namespace ElementalEngagement.Combat
             /// </summary>
             IEnumerator DamageOverTime()
             {
-                if (waitBeforeDamage)
-                    yield return new WaitForSeconds(attackInterval);
-
-                while (validTargets.Contains(other))
+                while (true)
                 {
-                    if (other == null)
+                    if (!enabled)
                     {
-                        validTargets.Remove(other);
+                        yield return null;
+                        continue;
+                    }
+
+                    if (waitBeforeDamage)
+                        yield return new WaitForSeconds(attackInterval);
+
+                    while (enabled && validTargets.Contains(other))
+                    {
+                        if (other == null)
+                        {
+                            validTargets.Remove(other);
+                            yield break;
+                        }
+
+                        if (validTargets.Count <= maxTargets || validTargets.IndexOf(other) < maxTargets)
+                        {
+                            onAttackStart?.Invoke();
+
+                            if (damageDelay > 0)
+                                yield return new WaitForSeconds(damageDelay);
+
+                            health?.TakeDamage(damage);
+                            knockbackReceiver?.ReceiveKnockback(knockback);
+                            onAttackDamage?.Invoke();
+                        }
+
+                        yield return new WaitForSeconds(attackInterval - damageDelay);
+                    }
+
+                    if (enabled)
                         yield break;
-                    }
-
-                    if (validTargets.Count <= maxTargets || validTargets.IndexOf(other) < maxTargets)
-                    {
-                        onAttackStart?.Invoke();
-
-                        if (damageDelay > 0)
-                            yield return new WaitForSeconds(damageDelay);
-
-                        health?.TakeDamage(damage);
-                        knockbackReceiver?.ReceiveKnockback(knockback);
-                        onAttackDamage?.Invoke();
-                    }
-
-                    yield return new WaitForSeconds(attackInterval - damageDelay);
                 }
             }
         }
