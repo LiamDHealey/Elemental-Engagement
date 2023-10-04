@@ -14,11 +14,18 @@ namespace ElementalEngagement
                 agentTypeID = NavMesh.GetSettingsByIndex(2).agentTypeID,
             };
 
-            if (!NavMesh.SamplePosition(position, out NavMeshHit hit, 0f, filter))
+            if (!NavMesh.SamplePosition(position, out NavMeshHit hit, 1f, filter))
             {
-                if (!NavMesh.SamplePosition(position + (@this.transform.position - position).normalized, out hit, 100f, filter))
-                    throw new System.Exception("No closest point found.");
-                //Debug.DrawRay(hit.position, Vector3.up * 50, Color.yellow, 1f);
+                if (!NavMesh.Raycast(position, @this.transform.position, out hit, @this.areaMask))
+                {
+                    NavMesh.Raycast(hit.position, position, out hit, @this.areaMask);
+                }
+
+                NavMesh.SamplePosition(hit.position, out hit, 50f, filter);
+
+                Debug.DrawLine(position, @this.transform.position, Color.cyan, 50f);
+                Debug.DrawLine(hit.position, position, Color.yellow, 50f);
+                Debug.DrawRay(hit.position, Vector3.up * 50, Color.cyan, 50f);
                 @this.SetDestination(hit.position);
             }
             else
