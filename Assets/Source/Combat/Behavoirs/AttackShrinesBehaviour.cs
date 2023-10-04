@@ -72,7 +72,7 @@ public class AttackShrinesBehaviour : MonoBehaviour
 
                         agent.isStopped = SqrDistance(closetsTarget) < stoppingRange * stoppingRange;
                         agent.MoveTo(closetsTarget.GetComponent<Spawner>().spawnLocation.position);
-                        Debug.Log(agent.pathStatus);
+                        Debug.Log(agent.pathStatus);    
                         yield return null;
                     }
                 }
