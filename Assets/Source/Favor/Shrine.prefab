@@ -228,7 +228,6 @@ GameObject:
   - component: {fileID: 8715321656192180978}
   - component: {fileID: 2125978576373769656}
   - component: {fileID: 1707226985759907048}
-  - component: {fileID: 7495526454835749275}
   m_Layer: 0
   m_Name: Shrine
   m_TagString: Untagged
@@ -369,19 +368,3 @@ MonoBehaviour:
   onSpawned:
     m_PersistentCalls:
       m_Calls: []
---- !u!208 &7495526454835749275
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8548424856781637128}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 5, y: 0.575913, z: 5}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: -0.7200224, z: 0}
-  m_TimeToStationary: 0.5
