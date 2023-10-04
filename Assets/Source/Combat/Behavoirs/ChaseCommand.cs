@@ -34,6 +34,8 @@ namespace ElementalEngagement.Combat
                 return false;
             if (hitUnderCursor.collider.GetComponent<Health>() == null)
                 return false;
+            if (hitUnderCursor.collider.GetComponent<Allegiance>().CheckFactionAllegiance(GetComponent<Allegiance>()))
+                return false;
 
             NavMeshPath path = new NavMeshPath();
             agent.CalculatePath(hitUnderCursor.point, path);

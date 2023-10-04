@@ -94,7 +94,7 @@ namespace ElementalEngagement.Player
             if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)
             {
                 _selectedObjects.Add(selectable);
-                selectable.enabled = true;
+                selectable.isSelected = true;
             }
         }
 
@@ -104,6 +104,7 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         private void CircularSelectionStarted(CallbackContext context)
         {
+            DeselectAll(context);
             StartCoroutine(UpdateSelection());
 
             /// <summary>

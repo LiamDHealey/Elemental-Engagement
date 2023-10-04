@@ -33,6 +33,9 @@ namespace ElementalEngagement.Combat
             if (hitUnderCursor.collider == null)
                 return false;
 
+            if (hitUnderCursor.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
+                return false;
+
             NavMeshPath path = new NavMeshPath();
             agent.CalculatePath(hitUnderCursor.point, path);
             return path.status == NavMeshPathStatus.PathComplete;
