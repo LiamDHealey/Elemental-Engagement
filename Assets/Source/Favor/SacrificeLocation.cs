@@ -51,10 +51,10 @@ namespace ElementalEngagement.Favor
         /// <returns></returns>
         private IEnumerator sacrificeUnits(SacrificeCommand targetUnit)
         {
-            //sacrificeUnits runs forever until it is stopped externally or the unit dies
-            while (targetUnit)
+            if (integrity < maxIntegrity)
             {
-                if (integrity < maxIntegrity)
+                //sacrificeUnits runs forever until it is stopped externally or the unit dies
+                while (targetUnit)
                 {
                     MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
                     float addToIntegrity = 0;
@@ -70,8 +70,11 @@ namespace ElementalEngagement.Favor
                     damageFromSacrifice.amount = sacrificeDamage;
                     targetUnit.GetComponent<Health>().TakeDamage(damageFromSacrifice);
                     integrity += addToIntegrity;
-                } 
-                yield return new WaitForSeconds(sacrificeInterval);
+                    yield return new WaitForSeconds(sacrificeInterval);
+                }
+            } else
+            {
+                targetUnit.onSacrificeEnd?.Invoke();
             }
         }
 
