@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireElemental_Idle_0
+      name: AdvancedFireElemental_Idle_0
       rect:
         serializedVersion: 2
-        x: 205
-        y: 0
-        width: 591
-        height: 987
+        x: 72
+        y: 512
+        width: 368
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d438d0f581c933c41839e07ced195371
-      internalID: -1528224686
+      spriteID: b6e7a51ddcf7cf4448ff0e36371b9167
+      internalID: 331164245
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Idle_1
+      name: AdvancedFireElemental_Idle_1
       rect:
         serializedVersion: 2
-        x: 533
-        y: 963
-        width: 45
-        height: 61
+        x: 584
+        y: 513
+        width: 368
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +171,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe1b6d8b3ebffd34eb8034a96ccceddb
-      internalID: 833970208
+      spriteID: b8e5b0b13a6169040b2e2e477b74fb86
+      internalID: -592211541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedFireElemental_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 368
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cb6da54dc9ca6c44a81aca845916c9a
+      internalID: 162166525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedFireElemental_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1
+        width: 368
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6fefcbec95d45448a620d85605bbd1a
+      internalID: 2137554160
       vertices: []
       indices: 
       edges: []
@@ -188,8 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FireElemental_Idle_0: -1528224686
-      FireElemental_Idle_1: 833970208
+      AdvancedFireElemental_Idle_0: 331164245
+      AdvancedFireElemental_Idle_1: -592211541
+      AdvancedFireElemental_Idle_2: 162166525
+      AdvancedFireElemental_Idle_3: 2137554160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WaterElemental_Idle_0
+      name: AdvancedWaterElemental_Idle_0
       rect:
         serializedVersion: 2
-        x: 199
-        y: 3
-        width: 688
-        height: 853
+        x: 72
+        y: 512
+        width: 368
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6070971fa6f92954781207f7e333638b
-      internalID: 553572489
+      spriteID: d32ed8a1758ada843ab851966409b00c
+      internalID: 2123812375
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WaterElemental_Idle_1
+      name: AdvancedWaterElemental_Idle_1
       rect:
         serializedVersion: 2
-        x: 527
-        y: 0
-        width: 85
-        height: 55
+        x: 584
+        y: 513
+        width: 368
+        height: 511
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,8 +171,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd76373a22c979844ade70f27a452b58
-      internalID: -714588776
+      spriteID: 78e4f142d82fe184a9b6d5b3247a812d
+      internalID: 1318892342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedWaterElemental_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 368
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a31e3ab10c209649b457059a3974ed4
+      internalID: -1475177437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedWaterElemental_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1
+        width: 368
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 721e69e1d64462846a3431af691ed713
+      internalID: -2036169522
       vertices: []
       indices: 
       edges: []
@@ -188,8 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WaterElemental_Idle_0: 553572489
-      WaterElemental_Idle_1: -714588776
+      AdvancedWaterElemental_Idle_0: 2123812375
+      AdvancedWaterElemental_Idle_1: 1318892342
+      AdvancedWaterElemental_Idle_2: -1475177437
+      AdvancedWaterElemental_Idle_3: -2036169522
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

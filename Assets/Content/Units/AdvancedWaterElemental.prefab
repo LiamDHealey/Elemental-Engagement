@@ -5071,6 +5071,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 553572489, guid: 569fa5ee34da5b144a31b42660a09cd1, type: 3}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5833595026407189285, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Name
       value: AdvancedWaterElemental
@@ -5139,7 +5143,8 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 30.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6997656361314388549, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5982273917337833412, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}

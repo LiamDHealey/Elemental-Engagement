@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EarthElemental_Idle_0
+      name: AdvancedEarthElemental_Idle_0
       rect:
         serializedVersion: 2
-        x: 110
-        y: 0
-        width: 896
-        height: 775
+        x: 72
+        y: 512
+        width: 368
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,8 +150,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5e064095df49914e83865073cfc7bea
-      internalID: -1937065876
+      spriteID: a233c4e81cf9aa5429cbf24569172f13
+      internalID: 1519022983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedEarthElemental_Idle_1
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 513
+        width: 368
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bbd5520d0a956f429494a8bc08a29d3
+      internalID: -1625151431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedEarthElemental_Idle_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 368
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cfad9c3b2e0d349a4a44dbc4b8187c
+      internalID: 1899072396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedEarthElemental_Idle_3
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 1
+        width: 368
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1c44ff103d51e47a100ba6e3260f14
+      internalID: -83948770
       vertices: []
       indices: 
       edges: []
@@ -167,7 +230,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      EarthElemental_Idle_0: -1937065876
+      AdvancedEarthElemental_Idle_0: 1519022983
+      AdvancedEarthElemental_Idle_1: -1625151431
+      AdvancedEarthElemental_Idle_2: 1899072396
+      AdvancedEarthElemental_Idle_3: -83948770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
