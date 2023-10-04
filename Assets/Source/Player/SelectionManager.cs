@@ -45,6 +45,9 @@ namespace ElementalEngagement.Player
         [Tooltip("The mask to use when detecting selectable objects.")]
         [SerializeField] private LayerMask selectableMask;
 
+        [Tooltip("The mask to use when placing a circular selection.")]
+        [SerializeField] private LayerMask circularMask;
+
         [Tooltip("The mask to use when detecting locations where commands can be issued.")]
         [SerializeField] private LayerMask commandMask;
 
@@ -101,7 +104,6 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         private void CircularSelectionStarted(CallbackContext context)
         {
-            circularSelectionIndicator.SetActive(true);
             StartCoroutine(UpdateSelection());
 
             /// <summary>
@@ -127,7 +129,6 @@ namespace ElementalEngagement.Player
 
                     yield return null;
                 }
-                circularSelectionIndicator.SetActive(false);
             }
         }
 
@@ -219,11 +220,19 @@ namespace ElementalEngagement.Player
                 return false;
 
 
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, selectableMask);
+            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, circularMask);
 
             if (hitLocationIndicator != null)
             {
-                hitLocationIndicator.position = hit.point;
+                if (result)
+                {
+                    circularSelectionIndicator.SetActive(true);
+                    hitLocationIndicator.position = hit.point;
+                }
+                else
+                {
+                    circularSelectionIndicator.SetActive(false);
+                }    
             }
 
             if (!result)
