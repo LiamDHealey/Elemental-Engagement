@@ -176,6 +176,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5081262603137984299}
+  - component: {fileID: 3092060114295032852}
   - component: {fileID: 7014076263548193281}
   - component: {fileID: 2187513396712701579}
   - component: {fileID: 5560996958116096518}
@@ -205,6 +206,33 @@ Transform:
   - {fileID: 9108805835143203443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3092060114295032852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065649901808501139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _faction: 0
+  god: 0
+  onFactionChanged:
+  - faction: 0
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 1
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
+  - faction: 2
+    onSelected:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &7014076263548193281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,21 +245,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9bd97664a21f0146877e8ce5c4a8bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  godOverride: 0
-  <maxIntegrity>k__BackingField: 0.5
-  <integrity>k__BackingField: 0.25
-  minorGodsToIntegrityMultipliers:
-  - minorGod: 0
-    deltaIntegrity: 1
-    deltaFavor: 1
-  - minorGod: 1
-    deltaIntegrity: 1
-    deltaFavor: 1
-  - minorGod: 2
-    deltaIntegrity: 1
-    deltaFavor: 1
+  allegiance: {fileID: 3092060114295032852}
+  requiredCapturePoints: 10
+  requiredDecapturePoints: 10
+  capturePointSettings: []
   sacrificeDamage: 4
   sacrificeInterval: 0.5
+  favorGainRate: 0.025
+  gainFavorWhileDecapping: 1
+  onCaptured:
+    m_PersistentCalls:
+      m_Calls: []
+  onDecaptured:
+    m_PersistentCalls:
+      m_Calls: []
+  onClaimed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &2187513396712701579
 BoxCollider:
   m_ObjectHideFlags: 0

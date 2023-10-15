@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ElementalEngagement.Favor
 {
@@ -36,6 +37,19 @@ namespace ElementalEngagement.Favor
         [Tooltip("Whether or not favor should be gained while being decaped.")]
         [SerializeField] private bool gainFavorWhileDecapping = true;
 
+
+        [Tooltip("Called when this has been captured")]
+        public UnityEvent onCaptured;
+
+        [Tooltip("Called when this has been decaptured")]
+        public UnityEvent onDecaptured;
+
+        [Tooltip("Called when this has claimed")]
+        public UnityEvent onClaimed;
+
+
+
+
         // The number of capture points this currently has.
         public State state { get; private set; }
 
@@ -48,15 +62,29 @@ namespace ElementalEngagement.Favor
 
         private void Start()
         {
-            state =  allegiance.faction == Faction.Unaligned ? State.Neutral : State.Captured;
+            if (allegiance.faction == Faction.Unaligned)
+            {
+                state = State.Neutral;
+            }
+            else
+            {
+                state = State.Captured;
+                onClaimed?.Invoke();
+            }
         }
 
         private void Update()
         {
-            if (state == State.Captured || (gainFavorWhileDecapping && state == State.Decapturing))
+            if (IsGainingFavor())
             {
                 FavorManager.ModifyFavor(allegiance.faction, allegiance.god, favorGainRate * Time.deltaTime);
             }
+        }
+
+        
+        public bool IsGainingFavor()
+        {
+            return state == State.Captured || (gainFavorWhileDecapping && state == State.Decapturing);
         }
 
         /// <summary>
@@ -97,6 +125,7 @@ namespace ElementalEngagement.Favor
                         {
                             state = State.Capturing;
                             allegiance.faction = unitFaction;
+                            onClaimed?.Invoke();
                             capturePoints = settings.capturePointsPerSacrifice;
                             unitUealth.TakeDamage(new Damage(sacrificeDamage));
                             StartUnitSacrificing();
@@ -121,6 +150,7 @@ namespace ElementalEngagement.Favor
                                 if (capturePoints >= requiredCapturePoints)
                                 {
                                     state = State.Captured;
+                                    onCaptured?.Invoke();
                                     StopUnitSacrificing();
                                 }
                                 else
@@ -198,6 +228,7 @@ namespace ElementalEngagement.Favor
                                 {
                                     state = State.Capturing;
                                     allegiance.faction = unitFaction;
+                                    onDecaptured?.Invoke();
                                     capturePoints = 0;
                                     if (settings.allowCapture)
                                     {

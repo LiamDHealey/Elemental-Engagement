@@ -47,8 +47,6 @@ namespace ElementalEngagement.Combat
                 return false;
             if (hitUnderCursor.collider.GetComponent<SacrificeLocation>() == null)
                 return false;
-            if (!hitUnderCursor.collider.GetComponent<Allegiance>()?.CheckBothAllegiance(allegiance) ?? false)
-                return false;
 
             return true;
         }
