@@ -96,7 +96,6 @@ namespace ElementalEngagement.Combat
                 return;
 
             agent.isStopped = true;
-            onSacrificeBegin?.Invoke();
             targetSacrificeLocation.GetComponent<SacrificeLocation>().StartSacrificing(this);
         }
 

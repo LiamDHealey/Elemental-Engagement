@@ -33,10 +33,10 @@ namespace ElementalEngagement.UI
         private void Update()
         {
             slider.minValue = 0;
-            slider.maxValue = sacrificeLocation.maxIntegrity;
+            slider.maxValue = sacrificeLocation.RequiredCapturePoints;
             slider.value = sacrificeLocation.integrity;
             tooLowOverlay.SetActive(sacrificeLocation.integrity <= outOfRangeTolerance);
-            tooHighOverlay.SetActive(sacrificeLocation.integrity >= sacrificeLocation.maxIntegrity - outOfRangeTolerance);
+            tooHighOverlay.SetActive(sacrificeLocation.integrity >= sacrificeLocation.RequiredCapturePoints - outOfRangeTolerance);
         }
     } 
 }
