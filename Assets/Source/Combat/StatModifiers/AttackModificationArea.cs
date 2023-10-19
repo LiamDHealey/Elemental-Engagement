@@ -24,57 +24,17 @@ namespace ElementalEngagement.Combat
         {
             area.onTriggerEnter.AddListener(OnTriggerEnter);
             area.onTriggerExit.AddListener(OnTriggerExit);
+        }
 
-            /// <summary>
-            /// Activates when an object enters the object's collider area.
-            /// If the object is a unit, then apply the damage, knockback, and attack interval upgrades
-            /// to that unit.
-            /// </summary>
-            /// <param name="other"></param>
-            void OnTriggerEnter(Collider other)
+        public void OnDestroy()
+        {
+            foreach(Collider collider in area.overlappingColliders)
             {
-                Allegiance all = other.GetComponent<Allegiance>();
+                Allegiance all = collider.GetComponent<Allegiance>();
 
-                Attack attack = other.GetComponent<Attack>();
+                Attack attack = collider.GetComponent<Attack>();
 
                 if (attack == null || all == null)
-                    return;
-
-                // If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
-                if (all.faction != allegiance.faction || allegiance.faction == Faction.Unaligned)
-                    return;
-
-                if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
-                    return;
-
-                attack.damage.amount *= deltaDamage;
-
-                attack.knockback.amount *= deltaKnockback;
-
-                attack.attackInterval *= deltaAttackInterval;
-            }
-
-            /// <summary>
-            /// Activates when an object exits the object's collider area.
-            /// If the object is a unit, then apply the damage, knockback, and attack interval downgrades
-            /// to that unit.
-            /// </summary>
-            /// <param name="other"></param>
-            void OnTriggerExit(Collider other)
-            {
-                Allegiance all = other.GetComponent<Allegiance>();
-
-                Attack attack = other.GetComponent<Attack>();
-
-                if (attack == null || all == null)
-                    return;
-
-                // If collider allegiance does not equal area of effect's allegiance, or the area of effect's allegiance is unaligned.
-                if (all.faction != allegiance.faction || allegiance.faction == Faction.Unaligned)
-                    return;
-
-                // If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
-                if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
                     return;
 
                 attack.damage.amount /= deltaDamage;
@@ -83,6 +43,65 @@ namespace ElementalEngagement.Combat
 
                 attack.attackInterval /= deltaAttackInterval;
             }
+        }
+
+        /// <summary>
+        /// Activates when an object enters the object's collider area.
+        /// If the object is a unit, then apply the damage, knockback, and attack interval upgrades
+        /// to that unit.
+        /// </summary>
+        /// <param name="collider"></param>
+        void OnTriggerEnter(Collider collider)
+        {
+            Allegiance all = collider.GetComponent<Allegiance>();
+
+            Attack attack = collider.GetComponent<Attack>();
+
+            if (attack == null || all == null)
+                return;
+
+            //// If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
+            //if (all.faction != allegiance.faction || allegiance.faction == Faction.Unaligned)
+            //    return;
+
+            //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
+            //    return;
+
+            attack.damage.amount *= deltaDamage;
+
+            attack.knockback.amount *= deltaKnockback;
+
+            attack.attackInterval *= deltaAttackInterval;
+        }
+
+        /// <summary>
+        /// Activates when an object exits the object's collider area.
+        /// If the object is a unit, then apply the damage, knockback, and attack interval downgrades
+        /// to that unit.
+        /// </summary>
+        /// <param name="collider"></param>
+        void OnTriggerExit(Collider collider)
+        {
+            Allegiance all = collider.GetComponent<Allegiance>();
+
+            Attack attack = collider.GetComponent<Attack>();
+
+            if (attack == null || all == null)
+                return;
+
+            //// If collider allegiance does not equal area of effect's allegiance, or the area of effect's allegiance is unaligned.
+            //if (all.faction != allegiance.faction || allegiance.faction == Faction.Unaligned)
+            //    return;
+
+            //// If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
+            //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
+            //    return;
+
+            attack.damage.amount /= deltaDamage;
+
+            attack.knockback.amount /= deltaKnockback;
+
+            attack.attackInterval /= deltaAttackInterval;
         }
     }
 }
