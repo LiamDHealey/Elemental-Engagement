@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1429777857696645411}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20338537, y: 0, z: 0, w: 0.97909886}
-  m_LocalPosition: {x: 7.38, y: 9.31, z: -11.050001}
+  m_LocalPosition: {x: 5.67, y: 7.2700005, z: -8.100001}
   m_LocalScale: {x: 3.81988, y: 3.81988, z: 3.81988}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 1899108367512820021}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20338537, y: 0, z: 0, w: 0.97909886}
-  m_LocalPosition: {x: -4.88, y: 9.31, z: -9.08}
+  m_LocalPosition: {x: -6.59, y: 7.27, z: -6.13}
   m_LocalScale: {x: 3.81988, y: 3.81988, z: 3.81988}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -372,7 +372,7 @@ Transform:
   m_GameObject: {fileID: 7294259808723287923}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20338537, y: 0, z: 0, w: 0.97909886}
-  m_LocalPosition: {x: -3.68, y: 9.31, z: 4.0999994}
+  m_LocalPosition: {x: -5.3900003, y: 7.2700005, z: 7.049999}
   m_LocalScale: {x: 3.81988, y: 3.81988, z: 3.81988}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -456,7 +456,7 @@ Transform:
   m_GameObject: {fileID: 8219860366518272659}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20338537, y: 0, z: 0, w: 0.97909886}
-  m_LocalPosition: {x: 7.38, y: 9.31, z: 6.5299997}
+  m_LocalPosition: {x: 5.67, y: 7.2700005, z: 9.48}
   m_LocalScale: {x: 3.81988, y: 3.81988, z: 3.81988}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -522,7 +522,23 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 607684488052902251, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_Radius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 703548965527924602, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 703548965527924602, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1295301410343901759, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b0f5cb2014bbc6540ad02dd720b537e6, type: 2}
+    - target: {fileID: 1312955434835442240, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b0f5cb2014bbc6540ad02dd720b537e6, type: 2}
@@ -548,15 +564,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1671326851980095430, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.86
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1671326851980095430, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.31
+      value: 7.2700005
       objectReference: {fileID: 0}
     - target: {fileID: 1671326851980095430, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6
+      value: -0.6500001
       objectReference: {fileID: 0}
     - target: {fileID: 1671326851980095430, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_LocalRotation.w
@@ -738,8 +754,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Village
       objectReference: {fileID: 0}
+    - target: {fileID: 9108805835143203443, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 408116575455974382, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5081262603137984299, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       insertIndex: 1
