@@ -31,6 +31,9 @@ namespace ElementalEngagement.Favor
         [Tooltip("The time between each sacrifice tick.")]
         [SerializeField] private float sacrificeInterval = 0.5f;
 
+        [Tooltip("The amount time in seconds that this will be forced to remain neutral after being decapped.")]
+        [SerializeField] private float neutralLockoutTime = 4f;
+
         [Tooltip("The amount of favor gained every second while this is controlled.")]
         [SerializeField] private float favorGainRate = 4f;
 
@@ -44,9 +47,6 @@ namespace ElementalEngagement.Favor
         [Tooltip("Called when this has been decaptured")]
         public UnityEvent onDecaptured;
 
-        [Tooltip("Called when this has claimed")]
-        public UnityEvent onClaimed;
-
 
 
 
@@ -54,11 +54,16 @@ namespace ElementalEngagement.Favor
         public State state { get; private set; }
 
         // The number of capture points this currently has.
-        public float capturePoints { get; private set; } = 0;
-        
+        public Dictionary<Faction, float> capturePoints { get; private set; } = new() { { Faction.PlayerOne, 0 }, { Faction.PlayerTwo, 0 } };
+
+        // The number of decapture points this currently has.
+        public float decapturePoints { get; private set; } = 0;
+
         // Dictionary of coroutines currently being run associated with the unit running it.
         private Dictionary<SacrificeCommand, IEnumerator> sacrificeCoroutines = new Dictionary<SacrificeCommand, IEnumerator>();
 
+        // The amount of time remaining.
+        public float remainingNeutralTime = 0f;
 
         private void Start()
         {
@@ -79,6 +84,7 @@ namespace ElementalEngagement.Favor
             {
                 FavorManager.ModifyFavor(allegiance.faction, allegiance.god, favorGainRate * Time.deltaTime);
             }
+            remainingNeutralTime -= Time.deltaTime;
         }
 
         
@@ -121,12 +127,14 @@ namespace ElementalEngagement.Favor
                 switch (state)
                 {
                     case State.Neutral:
-                        if (settings.allowCapture)
+                        if (settings.allowCapture && remainingNeutralTime <= 0)
                         {
                             state = State.Capturing;
-                            allegiance.faction = unitFaction;
-                            onClaimed?.Invoke();
-                            capturePoints = settings.capturePointsPerSacrifice;
+                            foreach (var capturePoint in capturePoints)
+                            {
+                                capturePoints[unitFaction] = 0f;
+                            }
+                            capturePoints[unitFaction] = settings.capturePointsPerSacrifice;
                             unitUealth.TakeDamage(new Damage(sacrificeDamage));
                             StartUnitSacrificing();
                             yield return wait;
@@ -141,95 +149,44 @@ namespace ElementalEngagement.Favor
 
 
                     case State.Capturing:
-                        if (unitFaction == allegiance.faction)
+                        if (settings.allowCapture)
                         {
-                            if (settings.allowCapture)
+                            capturePoints[unitFaction] += settings.capturePointsPerSacrifice;
+                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
+                            if (capturePoints[unitFaction] >= requiredCapturePoints)
                             {
-                                capturePoints += settings.capturePointsPerSacrifice;
-                                unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                                if (capturePoints >= requiredCapturePoints)
-                                {
-                                    state = State.Captured;
-                                    onCaptured?.Invoke();
-                                    StopUnitSacrificing();
-                                }
-                                else
-                                {
-                                    StartUnitSacrificing();
-                                }
-                                yield return wait;
+                                state = State.Captured;
+                                allegiance.faction = unitFaction;
+                                onCaptured?.Invoke();
+                                StopUnitSacrificing();
                             }
                             else
                             {
-                                StopUnitSacrificing();
-                                yield return null;
+                                StartUnitSacrificing();
                             }
+                            yield return wait;
                         }
                         else
                         {
-                            if (settings.allowDecapture)
-                            {
-                                capturePoints -= settings.decapturePointsPerSacrifice;
-                                unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                                if (capturePoints <= 0)
-                                {
-                                    capturePoints = 0;
-                                    allegiance.faction = unitFaction;
-                                    StopUnitSacrificing();
-                                }
-                                else
-                                {
-                                    StartUnitSacrificing();
-                                }
-                                yield return wait;
-                            }
-                            else
-                            {
-                                StopUnitSacrificing();
-                                yield return null;
-                            }
+                            StopUnitSacrificing();
+                            yield return null;
                         }
                         break;
 
 
 
                     case State.Decapturing:
-                        if (unitFaction == allegiance.faction)
-                        {
-                            if (settings.allowCapture)
-                            {
-                                capturePoints -= settings.capturePointsPerSacrifice;
-                                unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                                if (capturePoints <= 0)
-                                {
-                                    capturePoints = 0;
-                                    state = State.Captured;
-                                    StopUnitSacrificing();
-                                }
-                                else
-                                {
-                                    StartUnitSacrificing();
-                                }
-                                yield return wait;
-                            }
-                            else
-                            {
-                                StopUnitSacrificing();
-                                yield return null;
-                            }
-                        }
-                        else
+                        if (unitFaction != allegiance.faction)
                         {
                             if (settings.allowDecapture)
                             {
-                                capturePoints += settings.decapturePointsPerSacrifice;
+                                decapturePoints += settings.decapturePointsPerSacrifice;
                                 unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                                if (capturePoints >= requiredDecapturePoints)
+                                if (decapturePoints >= requiredDecapturePoints)
                                 {
-                                    state = State.Capturing;
-                                    allegiance.faction = unitFaction;
+                                    state = State.Neutral;
+                                    allegiance.faction = Faction.Unaligned;
                                     onDecaptured?.Invoke();
-                                    capturePoints = 0;
                                     if (settings.allowCapture)
                                     {
                                         StartUnitSacrificing();
@@ -259,8 +216,9 @@ namespace ElementalEngagement.Favor
                     case State.Captured:
                         if (settings.allowDecapture && allegiance.faction != unitFaction)
                         {
-                            capturePoints = settings.decapturePointsPerSacrifice;
+                            decapturePoints = settings.decapturePointsPerSacrifice;
                             unitUealth.TakeDamage(new Damage(sacrificeDamage));
+                            state = State.Decapturing;
                             StartUnitSacrificing();
                             yield return wait;
                         }
