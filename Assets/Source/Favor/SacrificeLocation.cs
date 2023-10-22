@@ -17,10 +17,10 @@ namespace ElementalEngagement.Favor
         [SerializeField] private Allegiance allegiance;
 
         [Tooltip("The number of capture points required to claim this location.")] [Min(0f)]
-        [SerializeField] public float requiredCapturePoints = 10;
+        public float requiredCapturePoints = 10;
 
         [Tooltip("The number of decapture points required to neutralize this location.")] [Min(0f)]
-        [SerializeField] public float requiredDecapturePoints = 10;
+        public float requiredDecapturePoints = 10;
 
         [Tooltip("The multiplier applied to the favor given to a god to get the change in integrity. If a god is not present in this list than they cannot gain favor here.")]
         [SerializeField] private List<MinorGodToCapturePoints> capturePointSettings;
@@ -32,7 +32,7 @@ namespace ElementalEngagement.Favor
         [SerializeField] private float sacrificeInterval = 0.5f;
 
         [Tooltip("The amount time in seconds that this will be forced to remain neutral after being decapped.")]
-        [SerializeField] private float neutralLockoutTime = 4f;
+        public float neutralLockoutTime = 4f;
 
         [Tooltip("The amount of favor gained every second while this is controlled.")]
         [SerializeField] private float favorGainRate = 4f;
@@ -70,11 +70,12 @@ namespace ElementalEngagement.Favor
             if (allegiance.faction == Faction.Unaligned)
             {
                 state = State.Neutral;
+                onDecaptured?.Invoke();
             }
             else
             {
                 state = State.Captured;
-                onClaimed?.Invoke();
+                onCaptured?.Invoke();
             }
         }
 
@@ -130,7 +131,7 @@ namespace ElementalEngagement.Favor
                         if (settings.allowCapture && remainingNeutralTime <= 0)
                         {
                             state = State.Capturing;
-                            foreach (var capturePoint in capturePoints)
+                            foreach (var capturePoint in new Dictionary<Faction, float>(capturePoints))
                             {
                                 capturePoints[unitFaction] = 0f;
                             }
@@ -176,37 +177,35 @@ namespace ElementalEngagement.Favor
 
 
                     case State.Decapturing:
-                        if (unitFaction != allegiance.faction)
+                        if (unitFaction != allegiance.faction && settings.allowDecapture)
                         {
-                            if (settings.allowDecapture)
+                            decapturePoints += settings.decapturePointsPerSacrifice;
+                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
+                            if (decapturePoints >= requiredDecapturePoints)
                             {
-                                decapturePoints += settings.decapturePointsPerSacrifice;
-                                unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                                if (decapturePoints >= requiredDecapturePoints)
-                                {
-                                    state = State.Neutral;
-                                    allegiance.faction = Faction.Unaligned;
-                                    onDecaptured?.Invoke();
-                                    if (settings.allowCapture)
-                                    {
-                                        StartUnitSacrificing();
-                                    }
-                                    else
-                                    {
-                                        StopUnitSacrificing();
-                                    }
-                                }
-                                else
+                                state = State.Neutral;
+                                allegiance.faction = Faction.Unaligned;
+                                remainingNeutralTime = neutralLockoutTime;
+                                onDecaptured?.Invoke();
+                                if (settings.allowCapture)
                                 {
                                     StartUnitSacrificing();
                                 }
-                                yield return wait;
+                                else
+                                {
+                                    StopUnitSacrificing();
+                                }
                             }
                             else
                             {
-                                StopUnitSacrificing();
-                                yield return null;
+                                StartUnitSacrificing();
                             }
+                            yield return wait;
+                        }
+                        else
+                        {
+                            StopUnitSacrificing();
+                            yield return null;
                         }
                         break;
 

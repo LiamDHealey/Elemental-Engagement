@@ -18,60 +18,43 @@ namespace ElementalEngagement.UI
         [SerializeField] private SacrificeLocation sacrificeLocation;
 
         [Tooltip("The objects to enable when owned by player one")]
-        [SerializeField] private GameObject[] playerOneOverlay;
+        [SerializeField] private GameObject playerOneOverlay;
 
         [Tooltip("The objects to enable when owned by player two")]
-        [SerializeField] private GameObject[] playerTwoOverlay;
+        [SerializeField] private GameObject playerTwoOverlay;
 
-        [Tooltip("The objects to enable when gaining favor")]
-        [SerializeField] private GameObject[] gainingFavorOverlay;
+        [Tooltip("The slider to display player one's capture progress on.")]
+        [SerializeField] private Slider playerOneCapturingSlider;
 
-        [Tooltip("The slider to display the integrity on.")]
-        [SerializeField] private Slider slider;
+        [Tooltip("The slider to display player two's capture progress on.")]
+        [SerializeField] private Slider playerTwoCapturingSlider;
+
+        [Tooltip("The slider to display the remaining lockout time on")]
+        [SerializeField] private Slider lockoutSlider;
 
         private void Start()
         {
             Allegiance allegiance = sacrificeLocation.GetComponent<Allegiance>();
-            sacrificeLocation.onClaimed.AddListener(UpdatePlayer);
-            sacrificeLocation.onDecaptured.AddListener(UpdatePlayer);
 
-
-            void UpdatePlayer()
+            sacrificeLocation.onCaptured.AddListener(delegate
             {
-                switch (allegiance.faction)
-                {
-                    case Faction.Unaligned:
-                        foreach(GameObject overlay in playerOneOverlay.Union(playerTwoOverlay))
-                        {
-                            overlay.SetActive(false);
-                        }
-                        break;
+                playerOneCapturingSlider.value = sacrificeLocation.requiredCapturePoints;
+                playerTwoCapturingSlider.value = sacrificeLocation.requiredCapturePoints;
+                playerOneOverlay.SetActive(allegiance.faction == Faction.PlayerOne);
+                playerTwoOverlay.SetActive(allegiance.faction == Faction.PlayerTwo);
+                playerOneCapturingSlider.gameObject.SetActive(allegiance.faction == Faction.PlayerOne);
+                playerTwoCapturingSlider.gameObject.SetActive(allegiance.faction == Faction.PlayerTwo);
+            });
 
-
-                    case Faction.PlayerOne:
-                        foreach (GameObject overlay in playerOneOverlay)
-                        {
-                            overlay.SetActive(true);
-                        }
-                        foreach (GameObject overlay in playerTwoOverlay)
-                        {
-                            overlay.SetActive(false);
-                        }
-                        break;
-
-
-                    case Faction.PlayerTwo:
-                        foreach (GameObject overlay in playerTwoOverlay)
-                        {
-                            overlay.SetActive(true);
-                        }
-                        foreach (GameObject overlay in playerOneOverlay)
-                        {
-                            overlay.SetActive(false);
-                        }
-                        break;
-                }
-            }
+            sacrificeLocation.onDecaptured.AddListener(delegate
+            {
+                playerOneCapturingSlider.value = 0;
+                playerTwoCapturingSlider.value = 0;
+                playerOneOverlay.SetActive(false);
+                playerTwoOverlay.SetActive(false);
+                playerOneCapturingSlider.gameObject.SetActive(true);
+                playerTwoCapturingSlider.gameObject.SetActive(true);
+            });
         }
 
         /// <summary>
@@ -79,14 +62,35 @@ namespace ElementalEngagement.UI
         /// </summary>
         private void Update()
         {
-            slider.minValue = 0;
-            slider.maxValue = sacrificeLocation.state == SacrificeLocation.State.Capturing ? sacrificeLocation.requiredCapturePoints : sacrificeLocation.requiredDecapturePoints;
-            slider.value = sacrificeLocation.capturePoints;
-
-            bool gainingFavor = sacrificeLocation.IsGainingFavor();
-            foreach (GameObject overlay in gainingFavorOverlay)
+            switch (sacrificeLocation.state)
             {
-                overlay.SetActive(gainingFavor);
+                case SacrificeLocation.State.Neutral:
+                    lockoutSlider.maxValue = sacrificeLocation.neutralLockoutTime;
+                    lockoutSlider.value = sacrificeLocation.remainingNeutralTime;
+                    lockoutSlider.gameObject.SetActive(sacrificeLocation.remainingNeutralTime > 0);
+                    break;
+
+
+                case SacrificeLocation.State.Capturing:
+                    lockoutSlider.gameObject.SetActive(false);
+
+                    playerOneCapturingSlider.maxValue = sacrificeLocation.requiredCapturePoints;
+                    playerOneCapturingSlider.value = sacrificeLocation.capturePoints[Faction.PlayerOne];
+
+                    playerTwoCapturingSlider.maxValue = sacrificeLocation.requiredCapturePoints;
+                    playerTwoCapturingSlider.value = sacrificeLocation.capturePoints[Faction.PlayerTwo];
+                    break;
+
+
+                case SacrificeLocation.State.Decapturing:
+                    lockoutSlider.gameObject.SetActive(false);
+
+                    playerOneCapturingSlider.maxValue = sacrificeLocation.requiredDecapturePoints;
+                    playerOneCapturingSlider.value = sacrificeLocation.requiredDecapturePoints - sacrificeLocation.decapturePoints;
+
+                    playerTwoCapturingSlider.maxValue = sacrificeLocation.requiredDecapturePoints;
+                    playerTwoCapturingSlider.value = sacrificeLocation.requiredDecapturePoints - sacrificeLocation.decapturePoints;
+                    break;
             }
         }
     } 
