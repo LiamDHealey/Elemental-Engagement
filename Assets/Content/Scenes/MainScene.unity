@@ -2343,7 +2343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard&Mouse
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4288308866459242319, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3850,7 +3850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepad
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_NotificationBehavior
@@ -3859,6 +3859,10 @@ PrefabInstance:
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_ActionEvents.Array.size
       value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4229869321111341770, guid: 9804a667e8c55004c9f910890d013bab, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionId
