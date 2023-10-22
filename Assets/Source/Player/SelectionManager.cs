@@ -165,18 +165,7 @@ namespace ElementalEngagement.Player
         /// Issues a command to all selected units.
         /// </summary>
         /// <param name="context"> The context of the command input. </param>
-        private void IssueCommand(CallbackContext context) => Command(false);
-
-
-        /// <summary>
-        /// Issues a alternate version of the command to all selected units.
-        /// </summary>
-        /// <param name="context"> The context of the command input. </param>
-        private void IssueAltCommand(CallbackContext context) => Command(true);
-
-
-
-        private void Command(bool isAltCommand)
+        private void IssueCommand(CallbackContext context)
         {
             if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
                 return;
@@ -198,9 +187,23 @@ namespace ElementalEngagement.Player
                     .OrderByDescending(receiver => receiver.commandPriority)
                     .FirstOrDefault();
 
-                chosenReceiver?.ExecuteCommand(hit, isAltCommand);
+                chosenReceiver?.ExecuteCommand(hit);
             }
         }
+
+
+
+
+        /// <summary>
+        /// Issues a alternate version of the command to all selected units.
+        /// </summary>
+        /// <param name="context"> The context of the command input. </param>
+        private void IssueAltCommand(CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
 
 

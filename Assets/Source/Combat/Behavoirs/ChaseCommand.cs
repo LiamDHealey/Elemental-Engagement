@@ -46,8 +46,7 @@ namespace ElementalEngagement.Combat
         /// Moves to the hit location.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
-        /// <param name="isAltCommand"> Whether or not this should execute the alternate version of this command (if it exists). </param>
-        public override void ExecuteCommand(RaycastHit hitUnderCursor, bool isAltCommand)
+        public override void ExecuteCommand(RaycastHit hitUnderCursor)
         {
             agent.isStopped = false;
             commandInProgress = true;
