@@ -106,17 +106,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireElemental_Attack_0
+      name: AdvancedFireElemental_Attack_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 512
-        width: 368
-        height: 512
+        x: 0
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9553c1a40787b814094359556eefd526
-      internalID: 1819122187
+      spriteID: e544bccdaf6d80d40a89a79554bba25f
+      internalID: -351068679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Attack_1
+      name: AdvancedFireElemental_Attack_1
       rect:
         serializedVersion: 2
-        x: 648
-        y: 512
-        width: 304
-        height: 512
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +158,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 910bd1a17a8735d41b03d0149eb32cbb
-      internalID: 344217254
+      spriteID: 2d42cb096d238694d89f7778b51fff75
+      internalID: 2094479382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Attack_2
+      name: AdvancedFireElemental_Attack_2
       rect:
         serializedVersion: 2
-        x: 138
+        x: 4096
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edcb1e7224b14f7459d1b22c685ca4a8
+      internalID: -742537173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedFireElemental_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
-        width: 302
-        height: 512
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 697c82d5dccd7db4b9a62f35fbfb5c67
-      internalID: -1715497341
+      spriteID: e51338ee2b954504d8736d0a1f2d928b
+      internalID: 1249568036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Attack_3
+      name: AdvancedFireElemental_Attack_4
       rect:
         serializedVersion: 2
-        x: 650
+        x: 2048
         y: 0
-        width: 302
-        height: 512
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +221,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5186aee899d6a664dad58d7f5b1134f2
-      internalID: -1411936204
+      spriteID: cee16b444586a4e4d89c30879f476ab0
+      internalID: -443753160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AdvancedFireElemental_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdd77b813d8377f4fb762d9f4d689c80
+      internalID: 383504359
       vertices: []
       indices: 
       edges: []
@@ -204,10 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FireElemental_Attack_0: 1819122187
-      FireElemental_Attack_1: 344217254
-      FireElemental_Attack_2: -1715497341
-      FireElemental_Attack_3: -1411936204
+      AdvancedFireElemental_Attack_0: -351068679
+      AdvancedFireElemental_Attack_1: 2094479382
+      AdvancedFireElemental_Attack_2: -742537173
+      AdvancedFireElemental_Attack_3: 1249568036
+      AdvancedFireElemental_Attack_4: -443753160
+      AdvancedFireElemental_Attack_5: 383504359
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
