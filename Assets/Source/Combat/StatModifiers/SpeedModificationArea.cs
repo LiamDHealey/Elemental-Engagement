@@ -11,7 +11,7 @@ namespace ElementalEngagement.Combat
     /// </summary>
     public class SpeedModificationArea : StatModificationArea
     {
-        [Tooltip("The amount to add to the speed of any navmesh agents in the area as a percent of its current value.")]
+        [Tooltip("The amount that muultiplies to the speed of any navmesh agents in the area as a percent of its current value.")]
         [SerializeField] private float deltaSpeed;
 
         [Tooltip("The amount to add to the angular speed of any navmesh agents in the area as a percent of its current value.")]
