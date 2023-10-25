@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ElementalEngagement.Favor
 {
@@ -12,17 +13,17 @@ namespace ElementalEngagement.Favor
     /// </summary>
     public class SacrificeLocation : MonoBehaviour
     {
-        [Tooltip("If not unaligned fill I favor for this god instead.")]
-        [SerializeField] private MinorGod godOverride;
+        [Tooltip("What god and player to give the favor to.")]
+        [SerializeField] private Allegiance allegiance;
 
-        [field: Tooltip("The maximum integrity of this. This is unable to sacrifice any unit that would move integrity outside its acceptable range.")]
-        [field: SerializeField] public float maxIntegrity { get; private set; } = 0.5f;
+        [Tooltip("The number of capture points required to claim this location.")] [Min(0f)]
+        public float requiredCapturePoints = 10;
 
-        [field: Tooltip("The maximum integrity of this. This is unable to sacrifice any unit that would move integrity outside its acceptable range.")]
-        [field: SerializeField] public float integrity { get; private set; } = 0.25f;
+        [Tooltip("The number of decapture points required to neutralize this location.")] [Min(0f)]
+        public float requiredDecapturePoints = 10;
 
         [Tooltip("The multiplier applied to the favor given to a god to get the change in integrity. If a god is not present in this list than they cannot gain favor here.")]
-        [SerializeField] private List<MinorGodToIntegrity> minorGodsToIntegrityMultipliers;
+        [SerializeField] private List<MinorGodToCapturePoints> capturePointSettings;
 
         [Tooltip("The hp lost per sacrifice.")]
         [SerializeField] private float sacrificeDamage = 4f;
@@ -30,9 +31,68 @@ namespace ElementalEngagement.Favor
         [Tooltip("The time between each sacrifice tick.")]
         [SerializeField] private float sacrificeInterval = 0.5f;
 
-        [Tooltip("Dictionary of coroutines currently being run associated with the unit running it.")]
+        [Tooltip("The amount time in seconds that this will be forced to remain neutral after being decapped.")]
+        public float neutralLockoutTime = 4f;
+
+        [Tooltip("The amount of favor gained every second while this is controlled.")]
+        [SerializeField] private float favorGainRate = 4f;
+
+        [Tooltip("Whether or not favor should be gained while being decaped.")]
+        [SerializeField] private bool gainFavorWhileDecapping = true;
+
+
+        [Tooltip("Called when this has been captured")]
+        public UnityEvent onCaptured;
+
+        [Tooltip("Called when this has been decaptured")]
+        public UnityEvent onDecaptured;
+
+
+
+
+        // The number of capture points this currently has.
+        public State state { get; private set; }
+
+        // The number of capture points this currently has.
+        public Dictionary<Faction, float> capturePoints { get; private set; } = new() { { Faction.PlayerOne, 0 }, { Faction.PlayerTwo, 0 } };
+
+        // The number of decapture points this currently has.
+        public float decapturePoints { get; private set; } = 0;
+
+        // Dictionary of coroutines currently being run associated with the unit running it.
         private Dictionary<SacrificeCommand, IEnumerator> sacrificeCoroutines = new Dictionary<SacrificeCommand, IEnumerator>();
 
+        // The amount of time remaining.
+        public float remainingNeutralTime = 0f;
+
+        private void Start()
+        {
+            if (allegiance.faction == Faction.Unaligned)
+            {
+                state = State.Neutral;
+                onDecaptured?.Invoke();
+            }
+            else
+            {
+                state = State.Captured;
+                onCaptured?.Invoke();
+            }
+        }
+
+        private void Update()
+        {
+            if (IsGainingFavor())
+            {
+                FavorManager.ModifyFavor(allegiance.faction, allegiance.god, favorGainRate * Time.deltaTime);
+            }
+            remainingNeutralTime -= Time.deltaTime;
+        }
+
+        
+        public bool IsGainingFavor()
+        {
+            return state == State.Captured || (gainFavorWhileDecapping && state == State.Decapturing);
+        }
 
         /// <summary>
         /// Repeatedly tries to sacrifice a unit. Will succeed if the integrity gained/lost will not put it outside the acceptable range.
@@ -55,36 +115,139 @@ namespace ElementalEngagement.Favor
         /// <returns></returns>
         private IEnumerator SacrificeUnits(SacrificeCommand targetUnit)
         {
-            bool unitSacrificing = true;
+            bool unitSacrificing = false;
             MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
-            MinorGodToIntegrity multiplier = minorGodsToIntegrityMultipliers.First(m => m.minorGod == unitGod);
+            Faction unitFaction = targetUnit.GetComponent<Allegiance>().faction;
+            Health unitUealth = targetUnit.GetComponent<Health>();
+            MinorGodToCapturePoints settings = capturePointSettings.First(m => m.minorGod == unitGod);
+            WaitForSeconds wait = new WaitForSeconds(sacrificeInterval);
+
 
             while (targetUnit)
             {
-                float newIntegrity = integrity + multiplier.deltaIntegrity;
-                if (newIntegrity >= 0 && newIntegrity <= maxIntegrity)
+                switch (state)
                 {
-                    integrity = newIntegrity;
-                    FavorManager.ModifyFavor(targetUnit.GetComponent<Allegiance>().faction, godOverride == MinorGod.Unaligned ? unitGod : godOverride, multiplier.deltaFavor);
-                    targetUnit.GetComponent<Health>().TakeDamage(new Damage(sacrificeDamage));
+                    case State.Neutral:
+                        if (settings.allowCapture && remainingNeutralTime <= 0)
+                        {
+                            state = State.Capturing;
+                            foreach (var capturePoint in new Dictionary<Faction, float>(capturePoints))
+                            {
+                                capturePoints[unitFaction] = 0f;
+                            }
+                            capturePoints[unitFaction] = settings.capturePointsPerSacrifice;
+                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
+                            StartUnitSacrificing();
+                            yield return wait;
+                        }
+                        else
+                        {
+                            StopUnitSacrificing();
+                            yield return null;
+                        }
+                        break;
+                        
 
-                    if (!unitSacrificing)
-                    {
-                        unitSacrificing = true;
-                        targetUnit.onSacrificeBegin?.Invoke();
-                    }
 
-                    yield return new WaitForSeconds(sacrificeInterval);
+                    case State.Capturing:
+                        if (settings.allowCapture)
+                        {
+                            capturePoints[unitFaction] += settings.capturePointsPerSacrifice;
+                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
+                            if (capturePoints[unitFaction] >= requiredCapturePoints)
+                            {
+                                state = State.Captured;
+                                allegiance.faction = unitFaction;
+                                onCaptured?.Invoke();
+                                StopUnitSacrificing();
+                            }
+                            else
+                            {
+                                StartUnitSacrificing();
+                            }
+                            yield return wait;
+                        }
+                        else
+                        {
+                            StopUnitSacrificing();
+                            yield return null;
+                        }
+                        break;
+
+
+
+                    case State.Decapturing:
+                        if (unitFaction != allegiance.faction && settings.allowDecapture)
+                        {
+                            decapturePoints += settings.decapturePointsPerSacrifice;
+                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
+                            if (decapturePoints >= requiredDecapturePoints)
+                            {
+                                state = State.Neutral;
+                                allegiance.faction = Faction.Unaligned;
+                                remainingNeutralTime = neutralLockoutTime;
+                                onDecaptured?.Invoke();
+                                if (settings.allowCapture)
+                                {
+                                    StartUnitSacrificing();
+                                }
+                                else
+                                {
+                                    StopUnitSacrificing();
+                                }
+                            }
+                            else
+                            {
+                                StartUnitSacrificing();
+                            }
+                            yield return wait;
+                        }
+                        else
+                        {
+                            StopUnitSacrificing();
+                            yield return null;
+                        }
+                        break;
+
+
+
+
+                    case State.Captured:
+                        if (settings.allowDecapture && allegiance.faction != unitFaction)
+                        {
+                            decapturePoints = settings.decapturePointsPerSacrifice;
+                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
+                            state = State.Decapturing;
+                            StartUnitSacrificing();
+                            yield return wait;
+                        }
+                        else
+                        {
+                            StopUnitSacrificing();
+                            yield return null;
+                        }
+                        break;
                 }
-                else
-                {
+            }
 
-                    if (unitSacrificing)
-                    {
-                        unitSacrificing = false;
-                        targetUnit.onSacrificeEnd?.Invoke();
-                    }
-                    yield return null;
+
+
+
+            void StartUnitSacrificing()
+            {
+                if (!unitSacrificing)
+                {
+                    unitSacrificing = true;
+                    targetUnit.onSacrificeBegin?.Invoke();
+                }
+            }
+
+            void StopUnitSacrificing()
+            {
+                if (unitSacrificing)
+                {
+                    unitSacrificing = false;
+                    targetUnit.onSacrificeEnd?.Invoke();
                 }
             }
         }
@@ -104,20 +267,34 @@ namespace ElementalEngagement.Favor
         }
 
 
+        public enum State
+        {
+            Neutral,
+            Capturing,
+            Decapturing,
+            Captured,
+        }
+
         /// <summary>
         /// For storing how a god interacts with this location.
         /// </summary>
         [System.Serializable]
-        private class MinorGodToIntegrity
+        private class MinorGodToCapturePoints
         {
-            [Tooltip("The god to allow to sacrifice here.")]
+            [Tooltip("The god to allowed to sacrifice here.")]
             public MinorGod minorGod;
 
-            [Tooltip("The amount favor gains are multiplied by to get the change in integrity.")]
-            public float deltaIntegrity = 1;
+            [Tooltip("The amount capture points gained when a unit associated with this god sacrifices once.")]
+            public float capturePointsPerSacrifice = 1;
 
-            [Tooltip("The amount favor gains are multiplied for this god.")]
-            public float deltaFavor = 1;
+            [Tooltip("The amount capture points lost when a unit associated with this god sacrifices once.")]
+            public float decapturePointsPerSacrifice = 1;
+
+            [Tooltip("Whether units associated with this god can capture this location.")]
+            public bool allowCapture = true;
+
+            [Tooltip("Whether units associated with this god can decapture this location.")]
+            public bool allowDecapture = true;
         }
     }
 }
