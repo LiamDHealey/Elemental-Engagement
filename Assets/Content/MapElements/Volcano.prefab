@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 9af18aef6d40a084a96be4737c641d84, type: 2}
+    - target: {fileID: 1438537705625926658, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438537705625926658, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1609809467887607158, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -104,6 +112,70 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.8354249
       objectReference: {fileID: 0}
+    - target: {fileID: 2600718578173918393, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600718578173918393, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600718578173918393, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600718578173918393, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600718578173918393, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600718578173918393, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3092060114295032852, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: god
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361073434963831585, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3361073434963831585, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048232232774332369, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048232232774332369, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048232232774332369, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048232232774332369, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048232232774332369, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048232232774332369, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950871531199550200, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: god
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5081262603137984299, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_LocalPosition.x
       value: -49
@@ -157,6 +229,42 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[0].minorGod
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[1].minorGod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[2].minorGod
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[0].allowCapture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[1].allowCapture
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[0].allowDecapture
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[1].allowDecapture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[2].allowDecapture
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: minorGodsToIntegrityMultipliers.Array.data[0].minorGod
       value: 3
       objectReference: {fileID: 0}
@@ -173,6 +281,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[0].capturePointsPerSacrifice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[1].capturePointsPerSacrifice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[2].capturePointsPerSacrifice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: minorGodsToIntegrityMultipliers.Array.data[0].deltaIntegrity
       value: -1
       objectReference: {fileID: 0}
@@ -187,6 +307,18 @@ PrefabInstance:
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: minorGodsToIntegrityMultipliers.Array.data[2].favorMultiplier
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[0].decapturePointsPerSacrifice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[1].decapturePointsPerSacrifice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: capturePointSettings.Array.data[2].decapturePointsPerSacrifice
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: minorGodsToIntegrityMultipliers.Array.data[2].integrityMultiplier
