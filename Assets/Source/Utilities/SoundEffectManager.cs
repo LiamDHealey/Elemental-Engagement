@@ -19,21 +19,9 @@ namespace ElementalEngagement.Utilities
         // Track the audio source of the music
         private static AudioSource audioSource = null;
 
-        // Tracks the instance of this.
-        private static SoundEffectManager instance = null;
-
         private void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-                audioSource = GetComponent<AudioSource>();
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            audioSource = GetComponent<AudioSource>();
         }
 
         public void playRandomSound()
@@ -41,6 +29,6 @@ namespace ElementalEngagement.Utilities
             audioSource.PlayOneShot(GetRandomClip(audioClips));
         }
 
-        AudioClip GetRandomClip(List<AudioClip> clips) => clips[UnityEngine.Random.Range(0, clips.Count - 1)];
+        AudioClip GetRandomClip(List<AudioClip> clips) => clips[UnityEngine.Random.Range(0, clips.Count)];
     }
 }
