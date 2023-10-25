@@ -47,8 +47,6 @@ namespace ElementalEngagement.Combat
                 return false;
             if (hitUnderCursor.collider.GetComponent<SacrificeLocation>() == null)
                 return false;
-            if (!hitUnderCursor.collider.GetComponent<Allegiance>()?.CheckBothAllegiance(allegiance) ?? false)
-                return false;
 
             return true;
         }
@@ -96,7 +94,6 @@ namespace ElementalEngagement.Combat
                 return;
 
             agent.isStopped = true;
-            onSacrificeBegin?.Invoke();
             targetSacrificeLocation.GetComponent<SacrificeLocation>().StartSacrificing(this);
         }
 
