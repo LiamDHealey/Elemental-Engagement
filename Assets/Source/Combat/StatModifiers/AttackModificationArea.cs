@@ -11,13 +11,13 @@ namespace ElementalEngagement.Combat
     public class AttackModificationArea : StatModificationArea
     {
         [Tooltip("The amount to add to the damage of any attacks in the area as a percent of its current value.")]
-        [SerializeField] private float deltaDamage;
+        [SerializeField] private float damageMultiplier;
 
         [Tooltip("The amount to add to the knockback amount of any attacks in the area as a percent of its current value.")]
-        [SerializeField] private float deltaKnockback;
+        [SerializeField] private float knockbackMultiplier;
 
         [Tooltip("The amount to add to the attack interval of any attacks in the area as a percent of its current value.")]
-        [SerializeField] private float deltaAttackInterval;
+        [SerializeField] private float attackIntervalMutliplier;
 
 
         private void Start()
@@ -37,11 +37,11 @@ namespace ElementalEngagement.Combat
                 if (attack == null || all == null)
                     return;
 
-                attack.damage.amount /= deltaDamage;
+                attack.damage.amount /= damageMultiplier;
 
-                attack.knockback.amount /= deltaKnockback;
+                attack.knockback.amount /= knockbackMultiplier;
 
-                attack.attackInterval /= deltaAttackInterval;
+                attack.attackInterval /= attackIntervalMutliplier;
             }
         }
 
@@ -67,11 +67,11 @@ namespace ElementalEngagement.Combat
             //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
             //    return;
 
-            attack.damage.amount *= deltaDamage;
+            attack.damage.amount *= damageMultiplier;
 
-            attack.knockback.amount *= deltaKnockback;
+            attack.knockback.amount *= knockbackMultiplier;
 
-            attack.attackInterval *= deltaAttackInterval;
+            attack.attackInterval *= attackIntervalMutliplier;
         }
 
         /// <summary>
@@ -97,11 +97,11 @@ namespace ElementalEngagement.Combat
             //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
             //    return;
 
-            attack.damage.amount /= deltaDamage;
+            attack.damage.amount /= damageMultiplier;
 
-            attack.knockback.amount /= deltaKnockback;
+            attack.knockback.amount /= knockbackMultiplier;
 
-            attack.attackInterval /= deltaAttackInterval;
+            attack.attackInterval /= attackIntervalMutliplier;
         }
     }
 }
