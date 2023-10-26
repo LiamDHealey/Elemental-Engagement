@@ -74,8 +74,10 @@ MonoBehaviour:
   - god: 2
     initialFavor: 0
     abilityUnlocks:
-    - favorThreshold: 1
+    - favorThreshold: 0
       thing: {fileID: 11400000, guid: c9954d57354497b4c98f15876e807255, type: 2}
+    - favorThreshold: 0.33
+      thing: {fileID: 11400000, guid: 6664ee7ea971d9c4d9ac34582922d649, type: 2}
     _spawnerTypes:
     - typeName: Basic
       favorToSpawnRate:
