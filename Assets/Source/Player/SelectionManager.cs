@@ -141,7 +141,12 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         private void SelectAll(CallbackContext context)
         {
-            
+            // 0. Get unit underneath cursor (GetSelectionUnderCursor)
+            // 1. Screen pos to world rays in 2 corners (NOT RAYCAST)
+            // 2. intersect with plane. create box with 2 intersection points (make sure correct rotation)
+            // 3. overlap all with box (store results)
+            // 4. call deselect all
+            // 5. put units onscreen with the same tag in the list
             throw new NotImplementedException();
         }
 
