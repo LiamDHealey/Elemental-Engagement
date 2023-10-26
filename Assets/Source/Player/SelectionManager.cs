@@ -36,6 +36,9 @@ namespace ElementalEngagement.Player
         [Tooltip("The cursor used to get the selection location from.")]
         [SerializeField] private PlayerCursor cursor;
 
+        [Tooltip("Reference to the player's camera")]
+        [SerializeField] new private Camera camera;
+
         [Tooltip("The game object to spawn at the selection location")]
         [SerializeField] private GameObject circularSelectionIndicator;
 
@@ -141,13 +144,19 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         private void SelectAll(CallbackContext context)
         {
-            // 0. Get unit underneath cursor (GetSelectionUnderCursor)
-            // 1. Screen pos to world rays in 2 corners (NOT RAYCAST)
-            // 2. intersect with plane. create box with 2 intersection points (make sure correct rotation)
-            // 3. overlap all with box (store results)
-            // 4. call deselect all
-            // 5. put units onscreen with the same tag in the list
-            throw new NotImplementedException();
+            if (GetSelectableUnderCursor(out Selectable selectable))
+            {
+                Ray corner1 = camera.ScreenPointToRay(camera.pixelRect.min);
+                Ray corner2 = camera.ScreenPointToRay(camera.pixelRect.max);
+                // 2. intersect with plane. create box with 2 intersection points (make sure correct rotation)
+                Plane groundPlane = new Plane(Vector3.up,Vector3.zero);
+                groundPlane.Raycast(corner1, out float corner1Distance);
+                groundPlane.Raycast(corner2, out float corner2Distance);
+
+                // 3. overlap all with box (store results)
+                // 4. call deselect all
+                // 5. put units onscreen with the same tag in the list
+            }
         }
 
 
