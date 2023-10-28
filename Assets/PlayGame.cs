@@ -9,4 +9,9 @@ public class PlayGame : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Content/Scenes/MainScene");
     }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }
