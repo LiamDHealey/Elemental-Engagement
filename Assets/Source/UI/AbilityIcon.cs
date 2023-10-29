@@ -19,20 +19,47 @@ namespace ElementalEngagement.UI
 
 
 
-        [Tooltip("Invoked when the selected overlay is enabled.")]
-        public UnityEvent onEnableSelectedOverlay;
+        [Header("Unlocking/Locking")]
 
-        [Tooltip("Invoked when the selected overlay is disabled.")]
-        public UnityEvent onDisableSelectedOverlay;
+        [Tooltip("Invoked when once when this is permanently locked.")]
+        [SerializeField] private MinimizableEvent onLocked;
 
-        [Tooltip("Invoked when the cooldown overlay is enabled.")]
-        public UnityEvent onEnableCooldownOverlay;
+        [Tooltip("Invoked when once when this is permanently unlocked.")]
+        [SerializeField] private MinimizableEvent onUnlocked;
 
-        [Tooltip("Invoked when the cooldown overlay is disabled.")]
-        public UnityEvent onDisableCooldownOverlay;
+
+        [Header("Selection")]
+
+        [Tooltip("Invoked when this ability is selected.")]
+        [SerializeField] private MinimizableEvent onSelected;
+
+        [Tooltip("Invoked when when this ability is deselected.")]
+        [SerializeField] private MinimizableEvent onDeselected;
+
+
+        [Header("Cooldowns")]
+
+        [Tooltip("Invoked when the cooldown has begun.")]
+        [SerializeField] private MinimizableEvent onCooldownBegan;
+
+        [Tooltip("Invoked when the cooldown ended.")]
+        [SerializeField] private MinimizableEvent onCooldownEnded;
 
         [Tooltip("Called every tick with the new cooldown percent passed in.")]
-        [SerializeField] private UnityEvent<float> onCooldownPercentChanged;
+        [SerializeField] private MinimizableEvent<float> onCooldownPercentChanged;
+
+
+
+        [Header("God")]
+
+        [Tooltip("Invoked on start when this is an icon for the water god.")]
+        [SerializeField] private MinimizableEvent onStart_WaterGod;
+
+        [Tooltip("Invoked on start when this is an icon for the fire god.")]
+        [SerializeField] private MinimizableEvent onStart_FireGod;
+
+        [Tooltip("Invoked on start when this is an icon for the earth god.")]
+        [SerializeField] private MinimizableEvent onStart_EarthGod;
 
 
         // The ability this is rending the icon for.
@@ -56,19 +83,19 @@ namespace ElementalEngagement.UI
             get => _selectedOverlayEnabled;
             set
             {
-                if (_selectedOverlayEnabled == value)
-                    return;
+                //if (_selectedOverlayEnabled == value)
+                //    return;
 
-                _selectedOverlayEnabled = value;
+                //_selectedOverlayEnabled = value;
 
-                if (_selectedOverlayEnabled)
-                {
-                    onEnableSelectedOverlay?.Invoke();
-                }
-                else
-                {
-                    onDisableSelectedOverlay?.Invoke();
-                }
+                //if (_selectedOverlayEnabled)
+                //{
+                //    onEnableSelectedOverlay?.Invoke();
+                //}
+                //else
+                //{
+                //    onDisableSelectedOverlay?.Invoke();
+                //}
             }
         }
 
@@ -79,19 +106,19 @@ namespace ElementalEngagement.UI
             get => _cooldownOverlayEnabled;
             set
             {
-                if (_cooldownOverlayEnabled == value)
-                    return;
+                //if (_cooldownOverlayEnabled == value)
+                //    return;
 
-                _cooldownOverlayEnabled = value;
+                //_cooldownOverlayEnabled = value;
 
-                if (_cooldownOverlayEnabled)
-                {
-                    onEnableCooldownOverlay?.Invoke();
-                }
-                else
-                {
-                    onDisableCooldownOverlay?.Invoke();
-                }
+                //if (_cooldownOverlayEnabled)
+                //{
+                //    onEnableCooldownOverlay?.Invoke();
+                //}
+                //else
+                //{
+                //    onDisableCooldownOverlay?.Invoke();
+                //}
             }
         }
 
@@ -104,6 +131,20 @@ namespace ElementalEngagement.UI
             cooldownOverlayEnabled = currentCooldown != 0;
             if (cooldownOverlayEnabled)
                 onCooldownPercentChanged?.Invoke(currentCooldown/ability.cooldown);
+        }
+
+        [System.Serializable]
+        private class MinimizableEvent<T>
+        {
+            public UnityEvent<T> _;
+            public void Invoke(T value) => _?.Invoke(value);
+        }
+
+        [System.Serializable]
+        private class MinimizableEvent
+        {
+            public UnityEvent _;
+            public void Invoke() => _?.Invoke();
         }
     }
 }
