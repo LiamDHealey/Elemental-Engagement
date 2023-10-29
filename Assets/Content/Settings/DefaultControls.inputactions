@@ -105,6 +105,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "PauseGame",
+                    "type": "Button",
+                    "id": "8149229d-0975-497b-8115-0012af21f5ab",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "CursorPosition",
                     "type": "Value",
                     "id": "c84b177f-5724-4d87-8c36-fca73f65a3cb",
@@ -442,6 +451,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "CircularSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "134b101f-a2d5-4ac2-b023-43c276e0cb9b",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "PauseGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e77ddfa9-8a24-4f32-93b7-2ef336d3ac7e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "PauseGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
