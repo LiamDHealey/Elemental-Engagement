@@ -89,7 +89,7 @@ namespace ElementalEngagement.Player
         /// Selects the unit under the cursor.
         /// </summary>
         /// <param name="context"> The context of the selection input. </param>
-        private void Select(CallbackContext context)
+        public void Select()
         {
             if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)
             {
@@ -101,10 +101,10 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Begins selecting of units.
         /// </summary>
-        /// <param name="context"> The context of the selection input. </param>
-        private void CircularSelectionStarted(CallbackContext context)
+        /// <param name="isInProgress"> Will evaluate to true while the circular selection is in progress. </param>
+        public void StartCircularSelection(Func<bool> isInProgress)
         {
-            DeselectAll(context);
+            DeselectAll();
             StartCoroutine(UpdateSelection());
 
             /// <summary>
@@ -114,7 +114,7 @@ namespace ElementalEngagement.Player
             IEnumerator UpdateSelection()
             {
                 // Add to selection.
-                while (input.actions["CircularSelect"].inProgress)
+                while (isInProgress())
                 {
                     if (GetSelectableUnderCursor(out IEnumerable<Selectable> selectables, circularSelectionRadius, circularSelectionIndicator.transform))
                     {
@@ -139,7 +139,7 @@ namespace ElementalEngagement.Player
         /// Select all units of the selected types on screen.
         /// </summary>
         /// <param name="context"> The context of the selection input. </param>
-        private void SelectAll(CallbackContext context)
+        public void SelectAll()
         {
             
             throw new NotImplementedException();
@@ -150,7 +150,7 @@ namespace ElementalEngagement.Player
         /// Deselects all units.
         /// </summary>
         /// <param name="context"> The context of the selection input. </param>
-        private void DeselectAll(CallbackContext context)
+        public void DeselectAll()
         {
             IEnumerable<Selectable> selectedObjects = new List<Selectable>(_selectedObjects);
             foreach (Selectable selectedObject in selectedObjects)
@@ -165,7 +165,7 @@ namespace ElementalEngagement.Player
         /// Issues a command to all selected units.
         /// </summary>
         /// <param name="context"> The context of the command input. </param>
-        private void IssueCommand(CallbackContext context)
+        public void IssueCommand()
         {
             if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
                 return;
