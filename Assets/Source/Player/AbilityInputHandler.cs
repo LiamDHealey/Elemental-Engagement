@@ -148,6 +148,11 @@ namespace ElementalEngagement.Player
         {
             currentSelection[0] = null;
             currentSelection[1] = null;
+
+            if (abilityPreview != null)
+            {
+                Destroy(abilityPreview.gameObject);
+            }
         }
 
         public void PlayAbility()
@@ -166,6 +171,7 @@ namespace ElementalEngagement.Player
             if (ability.inheritPlayerAllegiance)
                 abilityObject.GetComponent<Allegiance>().faction = allegiance.faction;
             
+            ResetSelection();
         }
 
         /// <summary>
@@ -207,7 +213,6 @@ namespace ElementalEngagement.Player
                 }
                 onAbilityUnlocked?.Invoke(ability);
 
-                Debug.Log($"{abilitiesInTiers[tier]} < {FavorManager.progressionSettings.abilitiesPerTier[tier]}");
                 // If tier not full
                 if (abilitiesInTiers[tier] < FavorManager.progressionSettings.abilitiesPerTier[tier])
                     continue;
@@ -226,6 +231,7 @@ namespace ElementalEngagement.Player
 
         private void Update()
         {
+            Debug.Log($"{currentSelection[0]}, {currentSelection[1]}");
             List<Ability> keys = new List<Ability>(abilityCooldowns.Keys);
             foreach (Ability ability in keys)
             {
