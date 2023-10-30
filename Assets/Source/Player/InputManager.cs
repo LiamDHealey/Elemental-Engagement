@@ -12,8 +12,8 @@ using static UnityEngine.InputSystem.InputAction;
 
 namespace ElementalEngagement
 {
-    [RequireComponent(typeof(PlayerInput), typeof(SelectionManager), typeof(AbilityManager))]
-    [RequireComponent(typeof(Panner))]
+    [RequireComponent(typeof(PlayerInput), typeof(SelectionInputHandler), typeof(AbilityInputHandler))]
+    [RequireComponent(typeof(PanInputHandler), typeof(UiInputHandler))]
     public class InputManager : MonoBehaviour
     {
         [Tooltip("The states each action is allowed to be used in")]
@@ -24,13 +24,16 @@ namespace ElementalEngagement
         private PlayerInput input;
 
         // The selection manager
-        private SelectionManager selectionManager;
+        private SelectionInputHandler selectionInputHandler;
 
         // The ability manager
-        private AbilityManager abilityManager;
+        private AbilityInputHandler abilityInputHandler;
 
         // The ability manager
-        private Panner panner;
+        private PanInputHandler panInputHandler;
+
+        // The UI manager
+        private UiInputHandler uiInputHandler;
 
         private State state = State.Default;
 
@@ -38,9 +41,9 @@ namespace ElementalEngagement
         private void Awake()
         {
             input = GetComponent<PlayerInput>();
-            selectionManager = GetComponent<SelectionManager>();
-            abilityManager = GetComponent<AbilityManager>();
-            panner = GetComponent<Panner>();
+            selectionInputHandler = GetComponent<SelectionInputHandler>();
+            abilityInputHandler = GetComponent<AbilityInputHandler>();
+            panInputHandler = GetComponent<PanInputHandler>();
 
             actionRequirements = _actionRequirements
                 .ToDictionary(requirement => requirement.action.action, requirement => requirement.states);
@@ -48,13 +51,12 @@ namespace ElementalEngagement
 
         private bool IsActionAllowed(CallbackContext context)
         {
-            return actionRequirements[context.action].HasFlag(state);
+            return actionRequirements[context.action].HasFlag((StateFlags)state);
         }
 
         // Update is called once per frame
         private void Start()
         {
-            input.actions["Pan"].performed += Pan;
             input.actions["Select"].performed += Select;
             input.actions["CircularSelect"].performed += CircularSelect;
             input.actions["SelectAll"].performed += SelectAll;
@@ -62,16 +64,16 @@ namespace ElementalEngagement
             input.actions["IssueCommand"].performed += IssueCommand;
             input.actions["IssueAltCommand"].performed += IssueAltCommand;
             input.actions["PlayAbility"].performed += PlayAbility;
-            input.actions["RotateAbility"].performed += RotateAbility;
             input.actions["SelectAbility0"].performed += SelectAbility0;
             input.actions["SelectAbility1"].performed += SelectAbility1;
             input.actions["SelectAbility2"].performed += SelectAbility2;
             input.actions["SelectAbility3"].performed += SelectAbility3;
             input.actions["PauseGame"].performed += PauseGame;
+            input.actions["Back"].performed += Back;
         }
+
         private void OnDestroy()
         {
-            input.actions["Pan"].performed -= Pan;
             input.actions["Select"].performed -= Select;
             input.actions["CircularSelect"].performed -= CircularSelect;
             input.actions["SelectAll"].performed -= SelectAll;
@@ -79,21 +81,29 @@ namespace ElementalEngagement
             input.actions["IssueCommand"].performed -= IssueCommand;
             input.actions["IssueAltCommand"].performed -= IssueAltCommand;
             input.actions["PlayAbility"].performed -= PlayAbility;
-            input.actions["RotateAbility"].performed -= RotateAbility;
             input.actions["SelectAbility0"].performed -= SelectAbility0;
             input.actions["SelectAbility1"].performed -= SelectAbility1;
             input.actions["SelectAbility2"].performed -= SelectAbility2;
             input.actions["SelectAbility3"].performed -= SelectAbility3;
             input.actions["PauseGame"].performed -= PauseGame;
+            input.actions["Back"].performed -= Back;
+        }
+
+        private void Update()
+        {
+            Pan(input.actions["Pan"]);
+            RotateAbility(input.actions["RotateAbility"]);
         }
 
         #region Bindings
-        private void Pan(CallbackContext context)
+        void Pan(InputAction action)
         {
-            if (!IsActionAllowed(context))
+            Debug.Log("Pan");
+            if (!actionRequirements[action].HasFlag((StateFlags)state))
                 return;
 
-            panner.Pan(context.ReadValue<Vector2>());
+            Debug.Log($"Pan: {action.ReadValue<Vector2>()}");
+            panInputHandler.Pan(action.ReadValue<Vector2>());
         }
 
         private void Select(CallbackContext context)
@@ -101,7 +111,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            selectionManager.Select();
+            selectionInputHandler.Select();
         }
 
         private void CircularSelect(CallbackContext context)
@@ -109,7 +119,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            selectionManager.StartCircularSelection(() => context.action.inProgress);
+            selectionInputHandler.StartCircularSelection(() => context.action.inProgress);
         }
 
         private void SelectAll(CallbackContext context)
@@ -117,7 +127,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            selectionManager.SelectAll();
+            selectionInputHandler.SelectAll();
         }
 
         private void DeselectAll(CallbackContext context)
@@ -125,7 +135,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            selectionManager.DeselectAll();
+            selectionInputHandler.DeselectAll();
         }
 
         private void IssueCommand(CallbackContext context)
@@ -133,7 +143,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            selectionManager.IssueCommand(false);
+            selectionInputHandler.IssueCommand(false);
         }
 
         private void IssueAltCommand(CallbackContext context)
@@ -141,7 +151,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            selectionManager.IssueCommand(true);
+            selectionInputHandler.IssueCommand(true);
         }
 
         private void PlayAbility(CallbackContext context)
@@ -149,20 +159,23 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            throw new NotImplementedException();
+            abilityInputHandler.PlayAbility();
         }
 
-        private void RotateAbility(CallbackContext context)
+        private void RotateAbility(InputAction action)
         {
-            if (!IsActionAllowed(context))
+            if (!actionRequirements[action].HasFlag((StateFlags)state))
                 return;
 
-            throw new NotImplementedException();
+            abilityInputHandler.RotateAbility(action.ReadValue<Vector2>());
         }
 
         private void SelectAbility0(CallbackContext context)
         {
-            throw new NotImplementedException();
+            if (!IsActionAllowed(context))
+                return;
+
+            abilityInputHandler.SelectAbility(0);
         }
 
         private void SelectAbility1(CallbackContext context)
@@ -170,7 +183,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            throw new NotImplementedException();
+            abilityInputHandler.SelectAbility(1);
         }
 
         private void SelectAbility2(CallbackContext context)
@@ -178,7 +191,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            throw new NotImplementedException();
+            abilityInputHandler.SelectAbility(2);
         }
 
         private void SelectAbility3(CallbackContext context)
@@ -186,7 +199,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            throw new NotImplementedException();
+            abilityInputHandler.SelectAbility(3);
         }
 
         private void PauseGame(CallbackContext context)
@@ -194,7 +207,26 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            throw new NotImplementedException();
+            uiInputHandler.Pause();
+        }
+
+        private void Back(CallbackContext context)
+        {
+            if (!IsActionAllowed(context))
+                return;
+
+            switch (state)
+            {
+                case State.SelectingAbility:
+                    abilityInputHandler.ResetSelection();
+                    break;
+                case State.AbilitySelected:
+                    abilityInputHandler.ResetSelection();
+                    break;
+                case State.InMenu:
+                    uiInputHandler.Back();
+                    break;
+            }
         }
         #endregion
 
@@ -207,19 +239,22 @@ namespace ElementalEngagement
         }
         private enum State
         {
-            Default,
-            UnitsSelected,
-            AbilitySelected,
-            InMenu,
+            Default = 1,
+            UnitsSelected = 2,
+            SelectingAbility = 4,
+            AbilitySelected = 8,
+            InMenu = 16
         }
 
         [Flags]
         private enum StateFlags
         {
-            Default,
-            UnitsSelected,
-            AbilitySelected,
-            InMenu,
+            None = 0,
+            Default = 1,
+            UnitsSelected = 2,
+            SelectingAbility = 4,
+            AbilitySelected = 8,
+            InMenu = 16,
         }
     }
 }

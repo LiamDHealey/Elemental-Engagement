@@ -30,7 +30,7 @@ namespace ElementalEngagement.UI
         [SerializeField] private Image iconImage;
             
         [Tooltip("The manager this is showing the ability for.")]
-        public AbilityManager manager;
+        public AbilityInputHandler manager;
 
 
 
@@ -118,7 +118,7 @@ namespace ElementalEngagement.UI
             Transform parent = transform.parent;
             while (manager == null && parent != null)
             {
-                manager = parent.GetComponent<AbilityManager>();
+                manager = parent.GetComponent<AbilityInputHandler>();
                 parent = parent.parent;
             }
             if (manager == null)

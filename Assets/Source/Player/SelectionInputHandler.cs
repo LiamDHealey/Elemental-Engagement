@@ -22,7 +22,7 @@ namespace ElementalEngagement.Player
     /// See also: CommandReciever
     /// </summary>
     [RequireComponent(typeof(Allegiance))]
-    public class SelectionManager : MonoBehaviour
+    public class SelectionInputHandler : MonoBehaviour
     {
         [Tooltip("The radius of the circular selection.")]
         [SerializeField] private float circularSelectionRadius = 10;
@@ -32,9 +32,6 @@ namespace ElementalEngagement.Player
 
         [Tooltip("The allegiance use to determining what is selectable.")]
         [SerializeField] private Allegiance allegiance;
-
-        [Tooltip("The cursor used to get the selection location from.")]
-        [SerializeField] private PlayerCursor cursor;
 
         [Tooltip("The game object to spawn at the selection location")]
         [SerializeField] private GameObject circularSelectionIndicator;
@@ -54,35 +51,6 @@ namespace ElementalEngagement.Player
         // All of the currently selected objects.
         private List<Selectable> _selectedObjects = new List<Selectable>();
         public ReadOnlyCollection<Selectable> selectedObjects { get => _selectedObjects.AsReadOnly(); }
-
-        /// <summary>
-        /// Bind Controls
-        /// </summary>
-        private void Start()
-        {
-            circularSelectionIndicator.SetActive(false);
-            circularDeselectionIndicator.SetActive(false);
-
-            input.actions["Select"].performed += Select;
-            input.actions["CircularSelect"].performed += CircularSelectionStarted;
-            input.actions["SelectAll"].performed += SelectAll;
-            input.actions["DeselectAll"].performed += DeselectAll;
-            input.actions["IssueCommand"].performed += IssueCommand;
-            input.actions["IssueAltCommand"].performed += IssueAltCommand;
-        }
-
-        /// <summary>
-        /// Unbinds controls
-        /// </summary>
-        private void OnDestroy()
-        {
-            input.actions["Select"].performed -= Select;
-            input.actions["CircularSelect"].performed -= CircularSelectionStarted;
-            input.actions["SelectAll"].performed -= SelectAll;
-            input.actions["DeselectAll"].performed -= DeselectAll;
-            input.actions["IssueCommand"].performed -= IssueCommand;
-            input.actions["IssueAltCommand"].performed -= IssueAltCommand;
-        }
 
 
         /// <summary>
@@ -160,26 +128,9 @@ namespace ElementalEngagement.Player
             }
         }
 
-
-        /// <summary>
-        /// Issues a command to all selected units.
-        /// </summary>
-        /// <param name="context"> The context of the command input. </param>
-        private void IssueCommand(CallbackContext context) => Command(false);
-
-
-        /// <summary>
-        /// Issues a alternate version of the command to all selected units.
-        /// </summary>
-        /// <param name="context"> The context of the command input. </param>
-        private void IssueAltCommand(CallbackContext context) => Command(true);
-
-
-
-        private void Command(bool isAltCommand)
+        public void IssueCommand(bool isAltCommand)
         {
-            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-                return;
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask);
 
 
@@ -215,8 +166,7 @@ namespace ElementalEngagement.Player
             selectables = null;
 
 
-            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-                return false;
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
 
 
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, circularMask);
@@ -252,11 +202,7 @@ namespace ElementalEngagement.Player
         /// <returns> True if there was a valid unit to select. </returns>
         private bool GetSelectableUnderCursor(out Selectable selectable)
         {
-            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-            {
-                selectable = null;
-                return false;
-            }
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
 
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, selectableMask);
 

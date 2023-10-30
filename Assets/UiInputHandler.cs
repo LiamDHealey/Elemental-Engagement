@@ -5,30 +5,26 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
-public class PauseManager : MonoBehaviour
+public class UiInputHandler : MonoBehaviour
 {
     [Tooltip("The input component that this will get mouse data from.")]
     [SerializeField] private PlayerInput input;
 
     [SerializeField] GameObject pauseMenu;
-    void Start()
-    {
-        input.actions["PauseGame"].performed += pause;
-    }
 
-    public void pause(CallbackContext context)
+    public void Pause()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public void back()
+    public void Back()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
 
-    public void openGuide()
+    public void OpenGuide()
     {
 
     }

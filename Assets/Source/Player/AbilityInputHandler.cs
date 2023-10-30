@@ -18,7 +18,7 @@ namespace ElementalEngagement.Player
     /// Responsible for handling ability related input, spawning ability effect, setting their aliment (if applicable), and handling ability cooldowns.
     /// </summary>
     [RequireComponent(typeof(Allegiance))]
-    public class AbilityManager : MonoBehaviour
+    public class AbilityInputHandler : MonoBehaviour
     {
         [Tooltip("Called when the selected ability changes.")]
         public UnityEvent<Ability> onSelectedAbilityChanged;
@@ -32,14 +32,8 @@ namespace ElementalEngagement.Player
         [Tooltip("Called when an ability is locked.")]
         public UnityEvent<Ability> onAbilityLocked;
 
-        [Tooltip("The cursor used to get the ability play location from.")]
-        [SerializeField] private PlayerCursor cursor;
-
         [Tooltip("The input to get the play bindings from.")]
         [SerializeField] private PlayerInput input;
-
-        [Tooltip("The mask to use when detecting where to spawn an ability.")]
-        [SerializeField] private LayerMask abilityMask;
 
         // The currently selected ability
         public Ability selectedAbility { get; private set; }
@@ -52,11 +46,11 @@ namespace ElementalEngagement.Player
         // The allegaince of this.
         public Allegiance allegiance { get; private set; }
 
-        // The keybindings of the actions.
-        private Dictionary<Ability, Action<CallbackContext>> actionBindings;
-
         // All the abilities available in this game.
         private HashSet<AbilityUnlock> abilityUnlocks;
+
+        // All the abilities mapped to thier input paths.
+        private Ability[,] abilities = new Ability[4,4];
 
         // The abilities that have been unlocked.
         private HashSet<Ability> unlockedAbilities;
@@ -67,15 +61,30 @@ namespace ElementalEngagement.Player
         // The number of unlocked abilities in each tier.
         private List<int> abilitiesInTiers = new List<int>();
 
+        // The currently selected abilities.
+        private readonly int?[] currentSelection = { null, null };
+
+        // The currently selected ability's preview.
+        private GameObject abilityPreview;
+
         private void Awake() => allegiance = GetComponent<Allegiance>();
 
         private void Start()
         {
             FavorManager.onFavorChanged.AddListener(OnFavorChanged);
 
+
+
             abilityUnlocks = FavorManager.godProgressionSettings.Values
                 .SelectMany(setting => setting.abilityUnlocks)
                 .ToHashSet();
+            foreach (AbilityUnlock abilityUnlock in abilityUnlocks)
+            {
+                Ability ability = abilityUnlock.ability;
+                abilities[ability.menuIndex, ability.submenuIndex] = ability;
+            }
+
+
 
             unlockedAbilities = FavorManager.godProgressionSettings.Values
                 .SelectMany(setting => setting.abilityUnlocks)
@@ -86,32 +95,70 @@ namespace ElementalEngagement.Player
             {
                 onAbilityUnlocked?.Invoke(unlockedAbility);
             }
+        }
 
 
-            actionBindings = new Dictionary<Ability, Action<CallbackContext>>();
-            foreach (AbilityUnlock abilityUnlock in abilityUnlocks)
+        public SelectionResult SelectAbility(int index)
+        {
+            if (currentSelection[0] == null)
             {
-                Ability ability = abilityUnlock.ability;
-                void OnAbilityPlayed(CallbackContext context)
-                {
-                    if (!unlockedAbilities.Contains(ability))
-                        return;
-
-                    _abilityCooldowns.Add(ability, ability.cooldown);
-                    if (cursor.RayUnderCursor(out Ray ray) && Physics.Raycast(ray, out RaycastHit hit, 9999f, abilityMask))
-                    {
-                        GameObject abilityObject = Instantiate(ability.prefabToSpawn);
-                        abilityObject.transform.position = hit.point;
-
-                        if (ability.inheritPlayerAllegiance)
-                            abilityObject.GetComponent<Allegiance>().faction = allegiance.faction;
-                    }
-                };
-
-
-                actionBindings.Add(ability, OnAbilityPlayed);
-                input.actions.FindAction($"PlayAbility{ability.name}").performed += OnAbilityPlayed;
+                currentSelection[0] = index;
+                return SelectionResult.SubmenuOpened;
             }
+
+            Ability ability = abilities[currentSelection[0].Value, index];
+            if (unlockedAbilities.Contains(ability))
+            {
+                currentSelection[1] = index;
+                if (abilityPreview != null)
+                {
+                    Destroy(abilityPreview.gameObject);
+                }
+
+                abilityPreview = Instantiate(ability.previewPrefab);
+                abilityPreview.transform.SetParent(transform);
+
+                abilityPreview.transform.position = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
+                return SelectionResult.Success;
+            }
+
+            return SelectionResult.AbilityNotAvailable;
+        }
+        public enum SelectionResult { SubmenuOpened, Success, AbilityNotAvailable }
+
+        public void RotateAbility(Vector2 direction)
+        {
+            if (direction.sqrMagnitude < Vector2.kEpsilon)
+                return;
+
+            if (abilityPreview == null)
+                return;
+
+            abilityPreview.transform.forward = direction;
+        }
+
+        public void ResetSelection()
+        {
+            currentSelection[0] = null;
+            currentSelection[1] = null;
+        }
+
+        public void PlayAbility()
+        {
+            Ability ability = abilities[currentSelection[0].Value, currentSelection[1].Value];
+
+            if (!unlockedAbilities.Contains(ability))
+                return;
+
+            _abilityCooldowns.Add(ability, ability.cooldown);
+
+            GameObject abilityObject = Instantiate(ability.abilityPrefab);
+            abilityObject.transform.position = abilityPreview.transform.position;
+            abilityObject.transform.rotation = abilityPreview.transform.rotation;
+
+            if (ability.inheritPlayerAllegiance)
+                abilityObject.GetComponent<Allegiance>().faction = allegiance.faction;
+            
         }
 
         /// <summary>
@@ -141,22 +188,17 @@ namespace ElementalEngagement.Player
                 int tier = abilityUnlock.abilityTier;
 
                 unlockedAbilities.Add(ability);
-                Debug.Log("Unlock");
                 if (abilitiesInTiers.Contains(tier))
                 {
-                    Debug.Log("++");
                     abilitiesInTiers[tier]++;
                 }
                 else
                 {
-                    Debug.Log("Add");
                     while (abilitiesInTiers.Count < tier)
                         abilitiesInTiers.Add(0);
                     abilitiesInTiers.Add(1);
                 }
-                Debug.Log("Invoke");
                 onAbilityUnlocked?.Invoke(ability);
-                Debug.Log("Done Invoke");
 
                 Debug.Log($"{abilitiesInTiers[tier]} < {FavorManager.progressionSettings.abilitiesPerTier[tier]}");
                 // If tier not full
@@ -185,14 +227,6 @@ namespace ElementalEngagement.Player
                 {
                     _abilityCooldowns.Remove(ability);
                 }
-            }
-        }
-
-        private void OnDestroy()
-        {
-            foreach(AbilityUnlock abilityUnlock in abilityUnlocks)
-            {
-                input.actions.FindAction($"PlayAbility{abilityUnlock.ability.name}").performed -= actionBindings[abilityUnlock.ability];
             }
         }
     }
