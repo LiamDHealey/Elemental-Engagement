@@ -106,17 +106,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireElemental_Sacrificing_0
+      name: WaterElemental_Sacrificing_0
       rect:
         serializedVersion: 2
-        x: 70
-        y: 512
-        width: 312
-        height: 512
+        x: 0
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cbafe9cb8910f94eafacdf827eb5252
-      internalID: 756522318
+      spriteID: e31cb7e4edeb67a40b35a3b8e87ff003
+      internalID: 1365337478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Sacrificing_1
+      name: WaterElemental_Sacrificing_1
       rect:
         serializedVersion: 2
-        x: 514
-        y: 512
-        width: 308
-        height: 471
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7734db1d1896074e954bbc279e951a4
-      internalID: 1332210115
+      spriteID: 4ac104bf0842b5c4d8a0a4f8074d00e8
+      internalID: -65748667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Sacrificing_2
+      name: WaterElemental_Sacrificing_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 310
-        height: 373
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e239f1fa8637ba54097f9b7676a4363b
-      internalID: -1034941863
+      spriteID: e7cffe0142a8807469c4ee712f79771e
+      internalID: 1100266670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Sacrificing_3
+      name: WaterElemental_Sacrificing_3
       rect:
         serializedVersion: 2
-        x: 503
+        x: 2048
         y: 0
-        width: 319
-        height: 483
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da8317261b63c6145b6cc90f1c93784f
-      internalID: -1160611832
+      spriteID: 037aaa604384b774eab7f324dcf5c4da
+      internalID: 71825631
       vertices: []
       indices: 
       edges: []
@@ -204,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FireElemental_Sacrificing_0: 756522318
-      FireElemental_Sacrificing_1: 1332210115
-      FireElemental_Sacrificing_2: -1034941863
-      FireElemental_Sacrificing_3: -1160611832
+      WaterElemental_Sacrificing_0: 1365337478
+      WaterElemental_Sacrificing_1: -65748667
+      WaterElemental_Sacrificing_2: 1100266670
+      WaterElemental_Sacrificing_3: 71825631
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

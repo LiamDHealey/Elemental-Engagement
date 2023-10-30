@@ -55,7 +55,7 @@ namespace ElementalEngagement.Combat
         /// Moves to the sacrifice location and then sacrifices itself to it by calling Sacrifice on the sacrifice location.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
-        public override void ExecuteCommand(RaycastHit hitUnderCursor)
+        public override void ExecuteCommand(RaycastHit hitUnderCursor, bool isAltCommand)
         {
             agent.isStopped = false;
             commandInProgress = true;
