@@ -125,6 +125,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
+            selectionManager.DeselectAll();
         }
 
         private void IssueCommand(CallbackContext context)
@@ -132,7 +133,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            throw new NotImplementedException();
+            selectionManager.IssueCommand(false);
         }
 
         private void IssueAltCommand(CallbackContext context)
@@ -140,7 +141,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            throw new NotImplementedException();
+            selectionManager.IssueCommand(true);
         }
 
         private void PlayAbility(CallbackContext context)
