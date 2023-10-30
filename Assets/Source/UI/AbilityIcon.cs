@@ -135,6 +135,7 @@ namespace ElementalEngagement.UI
         private void Update()
         {
             iconImage.sprite = ability?.icon ?? null;
+            if (ability == null) return;
 
             float currentCooldown = 0;
             if ((!manager?.abilityCooldowns.TryGetValue(ability, out currentCooldown)) ?? false)

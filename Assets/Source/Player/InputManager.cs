@@ -18,7 +18,7 @@ namespace ElementalEngagement
     {
         [Tooltip("The states each action is allowed to be used in")]
         [SerializeField] private List<ActionRequirements> _actionRequirements;
-        Dictionary<InputAction, StateFlags> actionRequirements;
+        Dictionary<string, StateFlags> actionRequirements;
 
         // The input component
         private PlayerInput input;
@@ -62,12 +62,12 @@ namespace ElementalEngagement
             uiInputHandler = GetComponent<UiInputHandler>();
 
             actionRequirements = _actionRequirements
-                .ToDictionary(requirement => requirement.action.action, requirement => requirement.states);
+                .ToDictionary(requirement => requirement.action.action.name, requirement => requirement.states);
         }
 
         private bool IsActionAllowed(CallbackContext context)
         {
-            return actionRequirements[context.action].HasFlag((StateFlags)state);
+            return actionRequirements[context.action.name].HasFlag((StateFlags)state);
         }
 
         // Update is called once per frame
@@ -114,7 +114,7 @@ namespace ElementalEngagement
         #region Bindings
         void Pan(InputAction action)
         {
-            if (!actionRequirements[action].HasFlag((StateFlags)state))
+            if (!actionRequirements[action.name].HasFlag((StateFlags)state))
                 return;
 
             panInputHandler.Pan(action.ReadValue<Vector2>());
@@ -178,7 +178,7 @@ namespace ElementalEngagement
 
         private void RotateAbility(InputAction action)
         {
-            if (!actionRequirements[action].HasFlag((StateFlags)state))
+            if (!actionRequirements[action.name].HasFlag((StateFlags)state))
                 return;
 
             abilityInputHandler.RotateAbility(action.ReadValue<Vector2>());

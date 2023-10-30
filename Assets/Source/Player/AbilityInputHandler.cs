@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using UnityEditor.Playables;
 using UnityEngine;
@@ -40,6 +41,17 @@ namespace ElementalEngagement.Player
 
         // Whether or not an ability is in the process of being selected.
         public bool isSelectionInProgress => currentSelection[0] != null && currentSelection[1] == null;
+
+        // Whether or not an ability is currently selected.
+        public MinorGod? selectionGod => currentSelection[0] switch
+        {
+            0 => MinorGod.Unaligned,
+            1 => MinorGod.Water,
+            2 => MinorGod.Fire,
+            3 => MinorGod.Earth,
+            _ => null,
+        };
+            
 
         // The ability that is currently selected
         public Ability selectedAbility => isAbilitySelected ? abilities[currentSelection[0].Value, currentSelection[1].Value] : null;
@@ -231,7 +243,6 @@ namespace ElementalEngagement.Player
 
         private void Update()
         {
-            Debug.Log($"{currentSelection[0]}, {currentSelection[1]}");
             List<Ability> keys = new List<Ability>(abilityCooldowns.Keys);
             foreach (Ability ability in keys)
             {
