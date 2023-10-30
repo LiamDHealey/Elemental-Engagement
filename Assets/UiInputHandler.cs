@@ -12,16 +12,20 @@ public class UiInputHandler : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
 
+    public bool isUIOpen { get; private set; } = false;
+
     public void Pause()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        isUIOpen = true;
     }
 
     public void Back()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        isUIOpen = false;
     }
 
     public void OpenGuide()

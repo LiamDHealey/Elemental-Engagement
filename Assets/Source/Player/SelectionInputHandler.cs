@@ -56,7 +56,6 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Selects the unit under the cursor.
         /// </summary>
-        /// <param name="context"> The context of the selection input. </param>
         public void Select()
         {
             if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)

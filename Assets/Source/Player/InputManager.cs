@@ -35,7 +35,22 @@ namespace ElementalEngagement
         // The UI manager
         private UiInputHandler uiInputHandler;
 
-        private State state = State.Default;
+        private State state
+        {
+            get
+            {
+                if (uiInputHandler.isUIOpen)
+                    return State.InMenu;
+                if (abilityInputHandler.isAbilitySelected)
+                    return State.AbilitySelected;
+                if (abilityInputHandler.isSelectionInProgress)
+                    return State.SelectingAbility;
+                if (selectionInputHandler.selectedObjects.Count > 0)
+                    return State.UnitsSelected;
+                else
+                    return State.Default;
+            }
+        }
 
         // Start is called before the first frame update
         private void Awake()
@@ -44,6 +59,7 @@ namespace ElementalEngagement
             selectionInputHandler = GetComponent<SelectionInputHandler>();
             abilityInputHandler = GetComponent<AbilityInputHandler>();
             panInputHandler = GetComponent<PanInputHandler>();
+            uiInputHandler = GetComponent<UiInputHandler>();
 
             actionRequirements = _actionRequirements
                 .ToDictionary(requirement => requirement.action.action, requirement => requirement.states);
@@ -98,11 +114,9 @@ namespace ElementalEngagement
         #region Bindings
         void Pan(InputAction action)
         {
-            Debug.Log("Pan");
             if (!actionRequirements[action].HasFlag((StateFlags)state))
                 return;
 
-            Debug.Log($"Pan: {action.ReadValue<Vector2>()}");
             panInputHandler.Pan(action.ReadValue<Vector2>());
         }
 

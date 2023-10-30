@@ -35,9 +35,14 @@ namespace ElementalEngagement.Player
         [Tooltip("The input to get the play bindings from.")]
         [SerializeField] private PlayerInput input;
 
-        // The currently selected ability
-        public Ability selectedAbility { get; private set; }
+        // Whether or not an ability is currently selected.
+        public bool isAbilitySelected => currentSelection[0] != null && currentSelection[1] != null;
 
+        // Whether or not an ability is in the process of being selected.
+        public bool isSelectionInProgress => currentSelection[0] != null && currentSelection[1] == null;
+
+        // The ability that is currently selected
+        public Ability selectedAbility => isAbilitySelected ? abilities[currentSelection[0].Value, currentSelection[1].Value] : null;
 
         // The current abilities' remaining cooldown times in seconds.
         private Dictionary<Ability, float> _abilityCooldowns = new Dictionary<Ability, float>();
@@ -45,6 +50,8 @@ namespace ElementalEngagement.Player
 
         // The allegaince of this.
         public Allegiance allegiance { get; private set; }
+
+
 
         // All the abilities available in this game.
         private HashSet<AbilityUnlock> abilityUnlocks;
@@ -145,7 +152,7 @@ namespace ElementalEngagement.Player
 
         public void PlayAbility()
         {
-            Ability ability = abilities[currentSelection[0].Value, currentSelection[1].Value];
+            Ability ability = selectedAbility;
 
             if (!unlockedAbilities.Contains(ability))
                 return;
