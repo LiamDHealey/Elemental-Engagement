@@ -28,7 +28,6 @@ MonoBehaviour:
     - favorThreshold: 1
       abilityTier: 3
       ability: {fileID: 11400000, guid: 223a2598774d1b8499f883c54d1789a5, type: 2}
-    _abilitiesPerTier: 03000000030000000200000001000000
     _spawnerTypes:
     - typeName: Basic
       favorToSpawnRate:
@@ -97,7 +96,6 @@ MonoBehaviour:
     - favorThreshold: 1
       abilityTier: 3
       ability: {fileID: 11400000, guid: 6e73397a2b1d709408ad3ce2b7228035, type: 2}
-    _abilitiesPerTier: 03000000030000000200000001000000
     _spawnerTypes:
     - typeName: Basic
       favorToSpawnRate:
@@ -166,7 +164,6 @@ MonoBehaviour:
     - favorThreshold: 1
       abilityTier: 3
       ability: {fileID: 11400000, guid: 35c1f10b66b6a0a4fb51e99d92d6d437, type: 2}
-    _abilitiesPerTier: 03000000030000000200000001000000
     _spawnerTypes:
     - typeName: Basic
       favorToSpawnRate:
@@ -222,13 +219,14 @@ MonoBehaviour:
       prefabToSpawn: {fileID: 2819691728172290092, guid: cd741a4fab9ec6f42935aaca5d2fff18, type: 3}
   - god: 0
     initialFavor: 0
-    _abilityUnlocks: []
-    _abilitiesPerTier: 
+    _abilityUnlocks:
+    - favorThreshold: 0
+      abilityTier: 0
+      ability: {fileID: 11400000, guid: e7e597d06803e244084695f7f3def76e, type: 2}
     _spawnerTypes: []
   - god: 4
     initialFavor: 1
     _abilityUnlocks: []
-    _abilitiesPerTier: 
     _spawnerTypes:
     - typeName: Default
       favorToSpawnRate:
@@ -256,3 +254,4 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
+  _abilitiesPerTier: e7030000030000000200000001000000

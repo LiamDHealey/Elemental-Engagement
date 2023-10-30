@@ -72,19 +72,19 @@ namespace ElementalEngagement.UI
             get => _selectedOverlayEnabled;
             set
             {
-                //if (_selectedOverlayEnabled == value)
-                //    return;
+                if (_selectedOverlayEnabled == value)
+                    return;
 
-                //_selectedOverlayEnabled = value;
+                _selectedOverlayEnabled = value;
 
-                //if (_selectedOverlayEnabled)
-                //{
-                //    onEnableSelectedOverlay?.Invoke();
-                //}
-                //else
-                //{
-                //    onDisableSelectedOverlay?.Invoke();
-                //}
+                if (_selectedOverlayEnabled)
+                {
+                    onSelected?.Invoke();
+                }
+                else
+                {
+                    onDeselected?.Invoke();
+                }
             }
         }
 
@@ -144,6 +144,8 @@ namespace ElementalEngagement.UI
             cooldownOverlayEnabled = currentCooldown != 0;
             if (cooldownOverlayEnabled)
                 onCooldownPercentChanged?.Invoke(currentCooldown/ability.cooldown);
+
+            selectedOverlayEnabled = manager?.selectedAbility == ability;
         }
 
         [System.Serializable]
