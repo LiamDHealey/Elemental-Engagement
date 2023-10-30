@@ -9,8 +9,23 @@ namespace ElementalEngagement.UI
     /// <summary>
     /// Used to display the icon of a single ability. Can also display it as being selected and on cooldown.
     /// </summary>
+    [ExecuteAlways]
     public class AbilityIcon : MonoBehaviour
     {
+        [Tooltip("The ability this is the icon for.")]
+        [SerializeField] private Ability _ability;
+        public Ability ability
+        {
+            get => _ability;
+            set
+            {
+                if (value == _ability)
+                    return;
+                _ability = value;
+                iconImage.sprite = _ability.icon;
+            }
+        }
+
         [Tooltip("The image used to display the ability icon.")]
         [SerializeField] private Image iconImage;
             
@@ -50,32 +65,6 @@ namespace ElementalEngagement.UI
 
 
 
-        [Header("God")]
-
-        [Tooltip("Invoked on start when this is an icon for the water god.")]
-        [SerializeField] private MinimizableEvent onStart_WaterGod;
-
-        [Tooltip("Invoked on start when this is an icon for the fire god.")]
-        [SerializeField] private MinimizableEvent onStart_FireGod;
-
-        [Tooltip("Invoked on start when this is an icon for the earth god.")]
-        [SerializeField] private MinimizableEvent onStart_EarthGod;
-
-
-        // The ability this is rending the icon for.
-        private Ability _ability;
-        public Ability ability
-        {
-            get => _ability;
-            set
-            {
-                if (value == _ability)
-                    return;
-                _ability = value;
-                iconImage.sprite = _ability.icon;
-            }
-        }
-
         // Set this to enable/disable the selected overlay
         private bool _selectedOverlayEnabled = false;
         public bool selectedOverlayEnabled
@@ -106,26 +95,49 @@ namespace ElementalEngagement.UI
             get => _cooldownOverlayEnabled;
             set
             {
-                //if (_cooldownOverlayEnabled == value)
-                //    return;
+                if (_cooldownOverlayEnabled == value)
+                    return;
 
-                //_cooldownOverlayEnabled = value;
+                _cooldownOverlayEnabled = value;
 
-                //if (_cooldownOverlayEnabled)
-                //{
-                //    onEnableCooldownOverlay?.Invoke();
-                //}
-                //else
-                //{
-                //    onDisableCooldownOverlay?.Invoke();
-                //}
+                if (_cooldownOverlayEnabled)
+                {
+                    onCooldownBegan?.Invoke();
+                }
+                else
+                {
+                    onCooldownEnded?.Invoke();
+                }
             }
         }
+        private void Awake()
+        {
+            if (!Application.IsPlaying(gameObject))
+                return;
 
+            Transform parent = transform.parent;
+            while (manager == null && parent != null)
+            {
+                manager = parent.GetComponent<AbilityManager>();
+                parent = parent.parent;
+            }
+            if (manager == null)
+            {
+                Debug.LogError("No Ability Manager Found");
+                return;
+            }
+
+            manager.onAbilityLocked.AddListener(ability => { if (ability == this.ability) onLocked?.Invoke(); });
+            manager.onAbilityUnlocked.AddListener(ability => { if (ability == this.ability) onUnlocked?.Invoke(); });
+            manager.onSelectedAbilityChanged.AddListener(ability => { (ability == this.ability ? onSelected : onDeselected)?.Invoke(); });
+        }
 
         private void Update()
         {
-            if(!manager.abilityCooldowns.TryGetValue(ability, out float currentCooldown))
+            iconImage.sprite = ability?.icon ?? null;
+
+            float currentCooldown = 0;
+            if ((!manager?.abilityCooldowns.TryGetValue(ability, out currentCooldown)) ?? false)
                 currentCooldown = 0;
 
             cooldownOverlayEnabled = currentCooldown != 0;

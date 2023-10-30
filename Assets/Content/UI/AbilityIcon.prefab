@@ -30,10 +30,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1573697477068244436}
+  - {fileID: 5594170182311652617}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e15d39de46134b41acdd2f557c31fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ability: {fileID: 0}
   iconImage: {fileID: 697279349726298175}
   manager: {fileID: 0}
   onLocked:
@@ -175,30 +177,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  onStart_WaterGod:
-    _:
-      m_PersistentCalls:
-        m_Calls: []
-  onStart_FireGod:
-    _:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5554326486297394493}
-          m_TargetAssemblyTypeName: ImageSetter, Assembly-CSharp
-          m_MethodName: SetImage
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 21300000, guid: 1f6158f5e41bbad4491a63071cb60677, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Sprite, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  onStart_EarthGod:
-    _:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &323691960987402326
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +327,6 @@ GameObject:
   - component: {fileID: 1573697477068244436}
   - component: {fileID: 6111027749415478806}
   - component: {fileID: 7687310695917028029}
-  - component: {fileID: 1412035905465438594}
   - component: {fileID: 4021698656153950517}
   m_Layer: 0
   m_Name: Background
@@ -369,8 +346,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 5594170182311652617}
+  m_Children: []
   m_Father: {fileID: 5186016698144260128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -416,19 +392,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1412035905465438594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840196511942173616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 1
 --- !u!114 &4021698656153950517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d033f9eb691b0924ca18edd425bb010a, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -716,7 +679,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6551468367104810538}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -726,7 +689,7 @@ RectTransform:
   - {fileID: 3792953044404289332}
   - {fileID: 2722590571024331434}
   - {fileID: 6715094732523570641}
-  m_Father: {fileID: 1573697477068244436}
+  m_Father: {fileID: 5186016698144260128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
