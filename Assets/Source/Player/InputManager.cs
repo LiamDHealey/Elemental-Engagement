@@ -18,7 +18,11 @@ namespace ElementalEngagement
     {
         [Tooltip("The states each action is allowed to be used in")]
         [SerializeField] private List<ActionRequirements> _actionRequirements;
-        Dictionary<string, StateFlags> actionRequirements;
+        private Dictionary<string, State> actionRequirements;
+
+
+        public IEnumerable<InputAction> availableActions => input.actions.Where(IsActionAllowed);
+
 
         // The input component
         private PlayerInput input;
@@ -42,9 +46,12 @@ namespace ElementalEngagement
                 if (uiInputHandler.isUIOpen)
                     return State.InMenu;
                 if (abilityInputHandler.isAbilitySelected)
-                    return State.AbilitySelected;
+                        return State.AbilitySelected;
                 if (abilityInputHandler.isSelectionInProgress)
-                    return State.SelectingAbility;
+                    if (selectionInputHandler.selectedObjects.Count > 0)
+                        return State.SelectingAbility | State.UnitsSelected;
+                    else
+                        return State.SelectingAbility;
                 if (selectionInputHandler.selectedObjects.Count > 0)
                     return State.UnitsSelected;
                 else
@@ -67,7 +74,14 @@ namespace ElementalEngagement
 
         private bool IsActionAllowed(CallbackContext context)
         {
-            return actionRequirements[context.action.name].HasFlag((StateFlags)state);
+            return IsActionAllowed(context.action);
+        }
+
+        private bool IsActionAllowed(InputAction action)
+        {
+            if (!actionRequirements.ContainsKey(action.name))
+                return false;
+            return actionRequirements[action.name].HasFlag((State)state);
         }
 
         // Update is called once per frame
@@ -114,7 +128,7 @@ namespace ElementalEngagement
         #region Bindings
         void Pan(InputAction action)
         {
-            if (!actionRequirements[action.name].HasFlag((StateFlags)state))
+            if (!IsActionAllowed(action))
                 return;
 
             panInputHandler.Pan(action.ReadValue<Vector2>());
@@ -178,7 +192,7 @@ namespace ElementalEngagement
 
         private void RotateAbility(InputAction action)
         {
-            if (!actionRequirements[action.name].HasFlag((StateFlags)state))
+            if (!IsActionAllowed(action))
                 return;
 
             abilityInputHandler.RotateAbility(action.ReadValue<Vector2>());
@@ -249,19 +263,11 @@ namespace ElementalEngagement
         private class ActionRequirements
         {
             public InputActionReference action;
-            public StateFlags states;
-        }
-        private enum State
-        {
-            Default = 1,
-            UnitsSelected = 2,
-            SelectingAbility = 4,
-            AbilitySelected = 8,
-            InMenu = 16
+            public State states;
         }
 
         [Flags]
-        private enum StateFlags
+        private enum State
         {
             None = 0,
             Default = 1,
