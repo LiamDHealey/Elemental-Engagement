@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class Flipper : MonoBehaviour
 {
-    public RectTransform[] flippedElements;
+    public RectTransform[] xFlippedElements;
+    public RectTransform[] yFlippedElements;
 
     public void SetFlipped(bool newFlipped)
     {
-        foreach (RectTransform flippedElement in flippedElements)
+        foreach (RectTransform flippedElement in xFlippedElements)
         {
-            flippedElement.localScale = new Vector3(newFlipped ? -1 : 1, 1);
+            flippedElement.localScale = new Vector3(newFlipped ? -1 : 1, flippedElement.localScale.y);
+        }
+        foreach (RectTransform flippedElement in yFlippedElements)
+        {
+            flippedElement.localScale = new Vector3(flippedElement.localScale.x, newFlipped ? -1 : 1);
         }
     }
 }
