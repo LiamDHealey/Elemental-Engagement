@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1.5
+  lifetime: 2
 --- !u!114 &8835529322014301733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,9 +99,9 @@ MonoBehaviour:
     amount: 3
     duration: 0.03
     source: {fileID: 668458363085926927}
-  attackInterval: 0.8
+  attackInterval: 0.5
   damageDelay: 0
-  waitBeforeDamage: 1
+  waitBeforeDamage: 0
   onAttackStart:
     m_PersistentCalls:
       m_Calls: []
@@ -232,7 +232,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.6
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -5147,7 +5147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1.5
+  lifetime: 2
 --- !u!114 &1972886686219970242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5168,9 +5168,9 @@ MonoBehaviour:
     amount: 3
     duration: 0.03
     source: {fileID: 193990396017921873}
-  attackInterval: 0.8
+  attackInterval: 0.5
   damageDelay: 0
-  waitBeforeDamage: 1
+  waitBeforeDamage: 0
   onAttackStart:
     m_PersistentCalls:
       m_Calls: []
@@ -5301,7 +5301,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.6
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -10194,7 +10194,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.6
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -15087,7 +15087,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.6
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -19955,7 +19955,7 @@ Transform:
   m_GameObject: {fileID: 7520094084802813353}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -17, z: 0}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -20005,7 +20005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1.5
+  lifetime: 2
 --- !u!114 &865892039160538150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20026,7 +20026,7 @@ MonoBehaviour:
     amount: 3
     duration: 0.03
     source: {fileID: 3169935085978601852}
-  attackInterval: 0.8
+  attackInterval: 0.5
   damageDelay: 0
   waitBeforeDamage: 1
   onAttackStart:
@@ -20181,7 +20181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1.5
+  lifetime: 2
 --- !u!114 &9080600493038592256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20202,9 +20202,9 @@ MonoBehaviour:
     amount: 3
     duration: 0.03
     source: {fileID: 821255246555842182}
-  attackInterval: 0.8
+  attackInterval: 0.5
   damageDelay: 0
-  waitBeforeDamage: 1
+  waitBeforeDamage: 0
   onAttackStart:
     m_PersistentCalls:
       m_Calls: []
@@ -20310,8 +20310,8 @@ Transform:
   m_GameObject: {fileID: 8428737361580685875}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.019825, y: 0.029866, z: 0}
-  m_LocalScale: {x: 1.0359368, y: 1.0359368, z: 1.0359368}
+  m_LocalPosition: {x: 0.0055294, y: 0.0083301, z: 0}
+  m_LocalScale: {x: 0.8436462, y: 0.8436462, z: 0.8436462}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4626684584867218309}
@@ -20357,7 +20357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1.5
+  lifetime: 2
 --- !u!114 &1996628986238383852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20378,9 +20378,9 @@ MonoBehaviour:
     amount: 3
     duration: 0.03
     source: {fileID: 6694636453870565659}
-  attackInterval: 0.8
+  attackInterval: 0.5
   damageDelay: 0
-  waitBeforeDamage: 1
+  waitBeforeDamage: 0
   onAttackStart:
     m_PersistentCalls:
       m_Calls: []
@@ -20533,7 +20533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 1.5
+  lifetime: 2
 --- !u!114 &8397472971095841651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20554,9 +20554,9 @@ MonoBehaviour:
     amount: 3
     duration: 0.03
     source: {fileID: 1634071219201201677}
-  attackInterval: 0.8
+  attackInterval: 0.5
   damageDelay: 0
-  waitBeforeDamage: 1
+  waitBeforeDamage: 0
   onAttackStart:
     m_PersistentCalls:
       m_Calls: []
@@ -20687,7 +20687,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.6
+    scalar: 0
     minScalar: 0
     maxCurve:
       serializedVersion: 2
