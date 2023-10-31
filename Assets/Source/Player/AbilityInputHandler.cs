@@ -212,17 +212,11 @@ namespace ElementalEngagement.Player
                 // Unlock new ability
                 int tier = abilityUnlock.abilityTier;
 
+
+                while (abilitiesInTiers.Count <= tier)
+                    abilitiesInTiers.Add(0);
+                abilitiesInTiers[tier]++;
                 unlockedAbilities.Add(ability);
-                if (abilitiesInTiers.Contains(tier))
-                {
-                    abilitiesInTiers[tier]++;
-                }
-                else
-                {
-                    while (abilitiesInTiers.Count < tier)
-                        abilitiesInTiers.Add(0);
-                    abilitiesInTiers.Add(1);
-                }
                 onAbilityUnlocked?.Invoke(ability);
 
                 // If tier not full
