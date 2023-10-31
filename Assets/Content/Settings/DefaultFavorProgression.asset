@@ -16,6 +16,10 @@ MonoBehaviour:
   - god: 1
     initialFavor: 0
     abilityUnlocks:
+    - favorThreshold: 0
+      thing: {fileID: 11400000, guid: ee66a1606be8c7e4687a1885570033c9, type: 2}
+    - favorThreshold: 0.25
+      thing: {fileID: 11400000, guid: 5670229e245433042a88393f87286140, type: 2}
     - favorThreshold: 1
       thing: {fileID: 11400000, guid: 223a2598774d1b8499f883c54d1789a5, type: 2}
     _spawnerTypes:
@@ -45,40 +49,14 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
-    - typeName: Advanced
-      favorToSpawnRate:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: Infinity
-          outSlope: Infinity
-          tangentMode: 103
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.1
-          inSlope: 1
-          outSlope: 1.8
-          tangentMode: 65
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      prefabToSpawn: {fileID: 2819691728172290092, guid: 9059bc288aea34d489796766cc705193, type: 3}
   - god: 2
     initialFavor: 0
     abilityUnlocks:
     - favorThreshold: 0
       thing: {fileID: 11400000, guid: c9954d57354497b4c98f15876e807255, type: 2}
-    - favorThreshold: 0
+    - favorThreshold: 0.25
       thing: {fileID: 11400000, guid: 6664ee7ea971d9c4d9ac34582922d649, type: 2}
-    - favorThreshold: 0
+    - favorThreshold: 1
       thing: {fileID: 11400000, guid: 6e73397a2b1d709408ad3ce2b7228035, type: 2}
     _spawnerTypes:
     - typeName: Basic
@@ -107,35 +85,13 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: 5bee485329d1334489f682c34dcfaa8d, type: 3}
-    - typeName: Advanced
-      favorToSpawnRate:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: Infinity
-          outSlope: Infinity
-          tangentMode: 103
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.1
-          inSlope: 1
-          outSlope: 1.8
-          tangentMode: 65
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      prefabToSpawn: {fileID: 2819691728172290092, guid: 0b3b56b551dc6404b9206d9afa59edcc, type: 3}
   - god: 3
     initialFavor: 0
     abilityUnlocks:
+    - favorThreshold: 0
+      thing: {fileID: 11400000, guid: 0ee055039c1862b40930c8bfb5af21cc, type: 2}
+    - favorThreshold: 0.25
+      thing: {fileID: 11400000, guid: a16f5827b2361264c9d774a32d9bb350, type: 2}
     - favorThreshold: 1
       thing: {fileID: 11400000, guid: 35c1f10b66b6a0a4fb51e99d92d6d437, type: 2}
     _spawnerTypes:
@@ -165,32 +121,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: e33413a2db3a5144c835803f95cb82c4, type: 3}
-    - typeName: Advanced
-      favorToSpawnRate:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: Infinity
-          outSlope: Infinity
-          tangentMode: 103
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.1
-          inSlope: 1
-          outSlope: 1.8
-          tangentMode: 65
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      prefabToSpawn: {fileID: 2819691728172290092, guid: cd741a4fab9ec6f42935aaca5d2fff18, type: 3}
   - god: 0
     initialFavor: 0
     abilityUnlocks:
