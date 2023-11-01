@@ -8,7 +8,7 @@ namespace ElementalEngagement.Player
     /// <summary>
     /// Pans this game object.
     /// </summary>
-    public class Panner : MonoBehaviour
+    public class PanInputHandler : MonoBehaviour
     {
         [Tooltip("The input to get pan input from.")]
         [SerializeField] private PlayerInput input;
@@ -19,9 +19,9 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Move this
         /// </summary>
-        private void Update()
+        public void Pan(Vector2 input)
         {
-            Vector2 delta = input.actions["Pan"].ReadValue<Vector2>() * panspeed * Time.deltaTime;
+            Vector2 delta = input * panspeed * Time.deltaTime;
             transform.position += new Vector3(delta.x, 0, delta.y);
         }
     }

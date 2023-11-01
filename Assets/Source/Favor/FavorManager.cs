@@ -22,7 +22,9 @@ namespace ElementalEngagement.Favor
 
         [Tooltip("How each god's favor unlocks things.")]
         [SerializeField] private FavorProgressionSettings _progressionSettings;
-        public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> progressionSettings { get => instance._progressionSettings.godProgressionSettings; }
+        public static FavorProgressionSettings progressionSettings => instance._progressionSettings;
+
+        public static ReadOnlyDictionary<MinorGod, FavorProgressionSettings.GodProgressionSettings> godProgressionSettings { get => instance._progressionSettings.godProgressionSettings; }
 
         // Stores the favor each god shows towards each player faction.
         [Tooltip("How much favor each god has for each player's faction.")]
@@ -66,25 +68,6 @@ namespace ElementalEngagement.Favor
         {
             instance._factionToFavor[(allegiance, god)] += deltaFavor;
             onFavorChanged?.Invoke(allegiance, god);
-        }
-
-
-        /// <summary>
-        /// Gets the unlocked abelites for this faction.
-        /// </summary>
-        /// <param name="faction"> The faction to get the unlocked abelites of. </param>
-        /// <returns> A collection of all the abelites that are unlocked. </returns>
-        public static ReadOnlyCollection<Ability> GetUnlockedAbilities(Faction faction)
-        {
-            return progressionSettings
-                .SelectMany(
-                    kvp => kvp.Value.abilityUnlocks,
-                    (kvp, abilityUnlock) => new { kvp.Value.god, abilityUnlock })
-                .Where(
-                    godAndAbility => godAndAbility.abilityUnlock.favorThreshold <= (factionToFavor.TryGetValue((faction, godAndAbility.god), out float favor) ? favor : 1f))
-                .Select(
-                    godAndAbility => godAndAbility.abilityUnlock.thing)
-                .ToList().AsReadOnly();
         }
     }
 }

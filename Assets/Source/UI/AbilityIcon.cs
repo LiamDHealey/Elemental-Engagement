@@ -9,34 +9,11 @@ namespace ElementalEngagement.UI
     /// <summary>
     /// Used to display the icon of a single ability. Can also display it as being selected and on cooldown.
     /// </summary>
+    [ExecuteAlways]
     public class AbilityIcon : MonoBehaviour
     {
-        [Tooltip("The image used to display the ability icon.")]
-        [SerializeField] private Image iconImage;
-            
-        [Tooltip("The manager this is showing the ability for.")]
-        public AbilityManager manager;
-
-
-
-        [Tooltip("Invoked when the selected overlay is enabled.")]
-        public UnityEvent onEnableSelectedOverlay;
-
-        [Tooltip("Invoked when the selected overlay is disabled.")]
-        public UnityEvent onDisableSelectedOverlay;
-
-        [Tooltip("Invoked when the cooldown overlay is enabled.")]
-        public UnityEvent onEnableCooldownOverlay;
-
-        [Tooltip("Invoked when the cooldown overlay is disabled.")]
-        public UnityEvent onDisableCooldownOverlay;
-
-        [Tooltip("Called every tick with the new cooldown percent passed in.")]
-        [SerializeField] private UnityEvent<float> onCooldownPercentChanged;
-
-
-        // The ability this is rending the icon for.
-        private Ability _ability;
+        [Tooltip("The ability this is the icon for.")]
+        [SerializeField] private Ability _ability;
         public Ability ability
         {
             get => _ability;
@@ -48,6 +25,45 @@ namespace ElementalEngagement.UI
                 iconImage.sprite = _ability.icon;
             }
         }
+
+        [Tooltip("The image used to display the ability icon.")]
+        [SerializeField] private Image iconImage;
+            
+        [Tooltip("The manager this is showing the ability for.")]
+        public AbilityInputHandler manager;
+
+
+
+        [Header("Unlocking/Locking")]
+
+        [Tooltip("Invoked when once when this is permanently locked.")]
+        [SerializeField] private MinimizableEvent onLocked;
+
+        [Tooltip("Invoked when once when this is permanently unlocked.")]
+        [SerializeField] private MinimizableEvent onUnlocked;
+
+
+        [Header("Selection")]
+
+        [Tooltip("Invoked when this ability is selected.")]
+        [SerializeField] private MinimizableEvent onSelected;
+
+        [Tooltip("Invoked when when this ability is deselected.")]
+        [SerializeField] private MinimizableEvent onDeselected;
+
+
+        [Header("Cooldowns")]
+
+        [Tooltip("Invoked when the cooldown has begun.")]
+        [SerializeField] private MinimizableEvent onCooldownBegan;
+
+        [Tooltip("Invoked when the cooldown ended.")]
+        [SerializeField] private MinimizableEvent onCooldownEnded;
+
+        [Tooltip("Called every tick with the new cooldown percent passed in.")]
+        [SerializeField] private MinimizableEvent<float> onCooldownPercentChanged;
+
+
 
         // Set this to enable/disable the selected overlay
         private bool _selectedOverlayEnabled = false;
@@ -63,11 +79,11 @@ namespace ElementalEngagement.UI
 
                 if (_selectedOverlayEnabled)
                 {
-                    onEnableSelectedOverlay?.Invoke();
+                    onSelected?.Invoke();
                 }
                 else
                 {
-                    onDisableSelectedOverlay?.Invoke();
+                    onDeselected?.Invoke();
                 }
             }
         }
@@ -86,24 +102,64 @@ namespace ElementalEngagement.UI
 
                 if (_cooldownOverlayEnabled)
                 {
-                    onEnableCooldownOverlay?.Invoke();
+                    onCooldownBegan?.Invoke();
                 }
                 else
                 {
-                    onDisableCooldownOverlay?.Invoke();
+                    onCooldownEnded?.Invoke();
                 }
             }
         }
+        private void Awake()
+        {
+            if (!Application.IsPlaying(gameObject))
+                return;
 
+            Transform parent = transform.parent;
+            while (manager == null && parent != null)
+            {
+                manager = parent.GetComponent<AbilityInputHandler>();
+                parent = parent.parent;
+            }
+            if (manager == null)
+            {
+                Debug.LogError("No Ability Manager Found");
+                return;
+            }
+
+            manager.onAbilityLocked.AddListener(ability => { if (ability == this.ability) onLocked?.Invoke(); });
+            manager.onAbilityUnlocked.AddListener(ability => { if (ability == this.ability) onUnlocked?.Invoke(); });
+            manager.onSelectedAbilityChanged.AddListener(ability => { (ability == this.ability ? onSelected : onDeselected)?.Invoke(); });
+        }
 
         private void Update()
         {
-            if(!manager.abilityCooldowns.TryGetValue(ability, out float currentCooldown))
+            iconImage.sprite = ability?.icon ?? null;
+            if (ability == null) return;
+
+            float currentCooldown = 0;
+            if ((!manager?.abilityCooldowns.TryGetValue(ability, out currentCooldown)) ?? false)
                 currentCooldown = 0;
 
             cooldownOverlayEnabled = currentCooldown != 0;
             if (cooldownOverlayEnabled)
                 onCooldownPercentChanged?.Invoke(currentCooldown/ability.cooldown);
+
+            selectedOverlayEnabled = manager?.selectedAbility == ability;
+        }
+
+        [System.Serializable]
+        private class MinimizableEvent<T>
+        {
+            public UnityEvent<T> _;
+            public void Invoke(T value) => _?.Invoke(value);
+        }
+
+        [System.Serializable]
+        private class MinimizableEvent
+        {
+            public UnityEvent _;
+            public void Invoke() => _?.Invoke();
         }
     }
 }

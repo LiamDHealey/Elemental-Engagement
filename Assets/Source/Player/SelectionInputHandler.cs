@@ -22,7 +22,7 @@ namespace ElementalEngagement.Player
     /// See also: CommandReciever
     /// </summary>
     [RequireComponent(typeof(Allegiance))]
-    public class SelectionManager : MonoBehaviour
+    public class SelectionInputHandler : MonoBehaviour
     {
         [Tooltip("The radius of the circular selection.")]
         [SerializeField] private float circularSelectionRadius = 10;
@@ -32,9 +32,6 @@ namespace ElementalEngagement.Player
 
         [Tooltip("The allegiance use to determining what is selectable.")]
         [SerializeField] private Allegiance allegiance;
-
-        [Tooltip("The cursor used to get the selection location from.")]
-        [SerializeField] private PlayerCursor cursor;
 
         [Tooltip("The game object to spawn at the selection location")]
         [SerializeField] private GameObject circularSelectionIndicator;
@@ -55,41 +52,11 @@ namespace ElementalEngagement.Player
         private List<Selectable> _selectedObjects = new List<Selectable>();
         public ReadOnlyCollection<Selectable> selectedObjects { get => _selectedObjects.AsReadOnly(); }
 
-        /// <summary>
-        /// Bind Controls
-        /// </summary>
-        private void Start()
-        {
-            circularSelectionIndicator.SetActive(false);
-            circularDeselectionIndicator.SetActive(false);
-
-            input.actions["Select"].performed += Select;
-            input.actions["CircularSelect"].performed += CircularSelectionStarted;
-            input.actions["SelectAll"].performed += SelectAll;
-            input.actions["DeselectAll"].performed += DeselectAll;
-            input.actions["IssueCommand"].performed += IssueCommand;
-            input.actions["IssueAltCommand"].performed += IssueAltCommand;
-        }
-
-        /// <summary>
-        /// Unbinds controls
-        /// </summary>
-        private void OnDestroy()
-        {
-            input.actions["Select"].performed -= Select;
-            input.actions["CircularSelect"].performed -= CircularSelectionStarted;
-            input.actions["SelectAll"].performed -= SelectAll;
-            input.actions["DeselectAll"].performed -= DeselectAll;
-            input.actions["IssueCommand"].performed -= IssueCommand;
-            input.actions["IssueAltCommand"].performed -= IssueAltCommand;
-        }
-
 
         /// <summary>
         /// Selects the unit under the cursor.
         /// </summary>
-        /// <param name="context"> The context of the selection input. </param>
-        private void Select(CallbackContext context)
+        public void Select()
         {
             if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)
             {
@@ -101,10 +68,10 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Begins selecting of units.
         /// </summary>
-        /// <param name="context"> The context of the selection input. </param>
-        private void CircularSelectionStarted(CallbackContext context)
+        /// <param name="isInProgress"> Will evaluate to true while the circular selection is in progress. </param>
+        public void StartCircularSelection(Func<bool> isInProgress)
         {
-            DeselectAll(context);
+            DeselectAll();
             StartCoroutine(UpdateSelection());
 
             /// <summary>
@@ -114,7 +81,7 @@ namespace ElementalEngagement.Player
             IEnumerator UpdateSelection()
             {
                 // Add to selection.
-                while (input.actions["CircularSelect"].inProgress)
+                while (isInProgress())
                 {
                     if (GetSelectableUnderCursor(out IEnumerable<Selectable> selectables, circularSelectionRadius, circularSelectionIndicator.transform))
                     {
@@ -139,7 +106,7 @@ namespace ElementalEngagement.Player
         /// Select all units of the selected types on screen.
         /// </summary>
         /// <param name="context"> The context of the selection input. </param>
-        private void SelectAll(CallbackContext context)
+        public void SelectAll()
         {
             
             throw new NotImplementedException();
@@ -150,7 +117,7 @@ namespace ElementalEngagement.Player
         /// Deselects all units.
         /// </summary>
         /// <param name="context"> The context of the selection input. </param>
-        private void DeselectAll(CallbackContext context)
+        public void DeselectAll()
         {
             IEnumerable<Selectable> selectedObjects = new List<Selectable>(_selectedObjects);
             foreach (Selectable selectedObject in selectedObjects)
@@ -160,26 +127,9 @@ namespace ElementalEngagement.Player
             }
         }
 
-
-        /// <summary>
-        /// Issues a command to all selected units.
-        /// </summary>
-        /// <param name="context"> The context of the command input. </param>
-        private void IssueCommand(CallbackContext context) => Command(false);
-
-
-        /// <summary>
-        /// Issues a alternate version of the command to all selected units.
-        /// </summary>
-        /// <param name="context"> The context of the command input. </param>
-        private void IssueAltCommand(CallbackContext context) => Command(true);
-
-
-
-        private void Command(bool isAltCommand)
+        public void IssueCommand(bool isAltCommand)
         {
-            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-                return;
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask);
 
 
@@ -215,8 +165,7 @@ namespace ElementalEngagement.Player
             selectables = null;
 
 
-            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-                return false;
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
 
 
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, circularMask);
@@ -252,11 +201,7 @@ namespace ElementalEngagement.Player
         /// <returns> True if there was a valid unit to select. </returns>
         private bool GetSelectableUnderCursor(out Selectable selectable)
         {
-            if (!cursor.RayUnderCursor(out Ray screenToWorldRay))
-            {
-                selectable = null;
-                return false;
-            }
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
 
             bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, selectableMask);
 

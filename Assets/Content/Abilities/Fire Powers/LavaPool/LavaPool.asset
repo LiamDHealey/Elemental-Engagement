@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: LavaPool
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: eda5ab258a1d1f1499a3470880e06607, type: 3}
-  cooldown: 45
-  prefabToSpawn: {fileID: 892193375256418651, guid: ae069d6ef23a6d64d98c12ceca96ee96, type: 3}
+  cooldown: 10
+  abilityPrefab: {fileID: 0}
+  previewPrefab: {fileID: 0}
   inheritPlayerAllegiance: 0
+  menuIndex: 2
+  submenuIndex: 0
