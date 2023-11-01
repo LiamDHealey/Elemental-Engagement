@@ -6,6 +6,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.DualShock;
+using UnityEngine.InputSystem.XInput;
 
 namespace ElementalEngagement.UI
 {
@@ -14,6 +16,11 @@ namespace ElementalEngagement.UI
         public TextMeshProUGUI template;
         public RectTransform controlsContainer;
         public InputActionReference[] actionsToIgnore;
+        public TMP_SpriteAsset keyboardSpriteAsset;
+        public TMP_SpriteAsset playStationSpriteAsset;
+        public TMP_SpriteAsset xBoxSpriteAsset;
+
+
         private InputManager inputManager;
         private PlayerInput input;
         private List<TextMeshProUGUI> textBoxes = new List<TextMeshProUGUI>();
@@ -43,13 +50,58 @@ namespace ElementalEngagement.UI
                     textBoxes.Add(newTextBox.GetComponent<TextMeshProUGUI>());
                 }
 
-                Debug.Log(action.bindings[0].groups);
-                IEnumerable<InputBinding> appropriateBindings = action.bindings.Where(b => b.groups.Contains(input.currentControlScheme));
-                string bindingName = appropriateBindings.Aggregate("", (name, binding) => name + binding.ToDisplayString(control: input.devices[0]));
 
-                textBoxes[index].text = $"{bindingName} - {action.name}";
+                
+
+
+                IEnumerable<InputBinding> appropriateBindings = action.bindings.Where(b => b.groups.Contains(input.currentControlScheme));
+
+                string bindingName;
+                if (input.devices.Any(device => device is DualShockGamepad))
+                {
+                    textBoxes[index].spriteAsset = playStationSpriteAsset;
+                    bindingName = GetBindingNameWithIcons();
+                }
+                else if (input.devices.Any(device => device is XInputController))
+                {
+                    textBoxes[index].spriteAsset = xBoxSpriteAsset;
+                    bindingName = GetBindingNameWithIcons();
+                }
+                else if (input.devices.Any(d => d is Keyboard))
+                {
+                    textBoxes[index].spriteAsset = keyboardSpriteAsset;
+                    bindingName = GetBindingNameWithIcons();
+                }
+                else
+                {
+                    bindingName = GetBindingName();
+                }
+
+                string bindingInteractions = appropriateBindings.First().interactions.Split('(')[0];
+                textBoxes[index].text = $"{bindingInteractions} {bindingName} - {action.name}";
 
                 index++;
+
+
+
+
+
+                string GetBindingNameWithIcons()
+                {
+                    return appropriateBindings
+                        .Aggregate("", (name, binding) =>
+                        {
+                            return name + $"<sprite name=\"{binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions, control: input.devices[0])}\">";
+                        });
+                }
+                string GetBindingName()
+                {
+                    return appropriateBindings
+                        .Aggregate("", (name, binding) =>
+                        {
+                            return name + binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions, control: input.devices[0]);
+                        });
+                }
             }
 
 
