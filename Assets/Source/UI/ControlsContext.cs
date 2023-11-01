@@ -107,7 +107,7 @@ namespace ElementalEngagement.UI
             }
 
 
-            while (textBoxes.Count >= index)
+            while (textBoxes.Count > index)
             {
                 Destroy(textBoxes[textBoxes.Count - 1].gameObject);
                 textBoxes.RemoveAt(textBoxes.Count - 1);

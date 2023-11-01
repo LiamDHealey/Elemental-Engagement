@@ -9,7 +9,7 @@ namespace ElementalEngagement.UI
     public class AbilitySelector : MonoBehaviour
     {
         [SerializeField] private RectTransform keyboardLayout;
-        [SerializeField] private RectTransform controlerLayout;
+        [SerializeField] private RectTransform controllerLayout;
 
 
         [SerializeField] private CopyLayout baseContainer;
@@ -22,34 +22,14 @@ namespace ElementalEngagement.UI
 
         private void Start()
         {
-            Transform parent = transform.parent;
-            while (manager == null && parent != null)
-            {
-                manager = parent.GetComponent<AbilityInputHandler>();
-                parent = parent.parent;
-            }
-            if (manager == null)
-            {
-                Debug.LogError("No Ability Manager Found");
-                return;
-            }
-
-            PlayerInput input = null;
-            parent = transform.parent;
-            while (input == null && parent != null)
-            {
-                input = parent.GetComponent<PlayerInput>();
-                parent = parent.parent;
-            }
-            if (input == null)
-            {
-                Debug.LogError("No Player Input Found");
-                return;
-            }
+            manager = GetComponentInParent<AbilityInputHandler>();
+            PlayerInput input = GetComponentInParent<PlayerInput>();
 
             switch (input.currentControlScheme)
             {
                 case "Keyboard&Mouse":
+                    keyboardLayout.gameObject.SetActive(true);
+                    controllerLayout.gameObject.SetActive(false);
                     baseContainer.source = keyboardLayout;
                     windContainer.source = keyboardLayout;
                     waterContainer.source = keyboardLayout;
@@ -59,11 +39,13 @@ namespace ElementalEngagement.UI
 
 
                 case "Gamepad":
-                    baseContainer.source = controlerLayout;
-                    windContainer.source = controlerLayout;
-                    waterContainer.source = controlerLayout;
-                    fireContainer.source = controlerLayout;
-                    earthContainer.source = controlerLayout;
+                    keyboardLayout.gameObject.SetActive(false);
+                    controllerLayout.gameObject.SetActive(true);
+                    baseContainer.source = controllerLayout;
+                    windContainer.source = controllerLayout;
+                    waterContainer.source = controllerLayout;
+                    fireContainer.source = controllerLayout;
+                    earthContainer.source = controllerLayout;
                     break;
 
 

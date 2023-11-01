@@ -265,35 +265,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionRequirements:
   - action: {fileID: 199333598385850884, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 28
+    requiredStates: 28
+    forbiddenStates: 0
   - action: {fileID: 855573486231213061, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 3
+    requiredStates: 0
+    forbiddenStates: 24
   - action: {fileID: -6643656372171967919, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 2
+    requiredStates: 2
+    forbiddenStates: 28
   - action: {fileID: 2331956728129708194, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 2
+    requiredStates: 2
+    forbiddenStates: 24
   - action: {fileID: -3569934808544085218, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 2
+    requiredStates: 2
+    forbiddenStates: 24
   - action: {fileID: 4506297038116039352, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 15
+    requiredStates: 0
+    forbiddenStates: 16
   - action: {fileID: 9043943157286235996, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: -1
+    requiredStates: 0
+    forbiddenStates: 0
   - action: {fileID: -2512094959512371099, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 8
+    requiredStates: 8
+    forbiddenStates: 16
   - action: {fileID: -4910851007293593000, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 8
+    requiredStates: 8
+    forbiddenStates: 16
   - action: {fileID: -3100612602435359187, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 3
+    requiredStates: 0
+    forbiddenStates: 24
   - action: {fileID: 473933517760620170, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 15
+    requiredStates: 0
+    forbiddenStates: 16
   - action: {fileID: -2696881729527809115, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 15
+    requiredStates: 0
+    forbiddenStates: 16
   - action: {fileID: 6063359813019220357, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 15
+    requiredStates: 0
+    forbiddenStates: 16
   - action: {fileID: 63266577171577474, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 15
+    requiredStates: 0
+    forbiddenStates: 16
   - action: {fileID: -78372480659900942, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    states: 3
+    requiredStates: 0
+    forbiddenStates: 24
 --- !u!1001 &2993327756894406537
 PrefabInstance:
   m_ObjectHideFlags: 0
