@@ -13,6 +13,8 @@ namespace ElementalEngagement.UI
 {
     public class ControlsContext : MonoBehaviour
     {
+        [Tooltip("Replaces {binding} with the button icons this is bound to, and replaces {action} with the name of the action.")]
+        public string format = "{binding} - {action}";
         public TextMeshProUGUI template;
         public RectTransform controlsContainer;
         public InputActionReference[] actionsToIgnore;
@@ -26,7 +28,7 @@ namespace ElementalEngagement.UI
         private List<TextMeshProUGUI> textBoxes = new List<TextMeshProUGUI>();
 
 
-        private void Awake()
+        private void Start()
         {
             inputManager = GetComponentInParent<InputManager>();
             input = GetComponentInParent<PlayerInput>();
@@ -78,7 +80,7 @@ namespace ElementalEngagement.UI
                 }
 
                 string bindingInteractions = appropriateBindings.First().interactions.Split('(')[0];
-                textBoxes[index].text = $"{bindingInteractions} {bindingName} - {action.name}";
+                textBoxes[index].text = format.Replace("{binding}", $"{bindingInteractions} {bindingName}").Replace("{action}", action.name);
 
                 index++;
 

@@ -110,23 +110,12 @@ namespace ElementalEngagement.UI
                 }
             }
         }
-        private void Awake()
+        private void Start()
         {
             if (!Application.IsPlaying(gameObject))
                 return;
 
-            Transform parent = transform.parent;
-            while (manager == null && parent != null)
-            {
-                manager = parent.GetComponent<AbilityInputHandler>();
-                parent = parent.parent;
-            }
-            if (manager == null)
-            {
-                Debug.LogError("No Ability Manager Found");
-                return;
-            }
-
+            manager = GetComponentInParent<AbilityInputHandler>();
             manager.onAbilityLocked.AddListener(ability => { if (ability == this.ability) onLocked?.Invoke(); });
             manager.onAbilityUnlocked.AddListener(ability => { if (ability == this.ability) onUnlocked?.Invoke(); });
             manager.onSelectedAbilityChanged.AddListener(ability => { (ability == this.ability ? onSelected : onDeselected)?.Invoke(); });
