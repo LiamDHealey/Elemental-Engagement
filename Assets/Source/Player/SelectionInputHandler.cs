@@ -108,8 +108,39 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         public void SelectAll()
         {
+            Debug.Log("SelectAll added!");
+            Ray corner1 = GetComponent<Camera>().ScreenPointToRay(GetComponent<Camera>().pixelRect.min);
+            Ray corner2 = GetComponent<Camera>().ScreenPointToRay(GetComponent<Camera>().pixelRect.max);
+
+            Vector3 corner1GroundPos = MathHelpers.IntersectWithGround(corner1);
+            Vector3 corner2GroundPos = MathHelpers.IntersectWithGround(corner2);
+
+            Rect intersectBox = new Rect(corner1GroundPos, corner2GroundPos - corner1GroundPos);
+
+            Collider[] hitColliders = Physics.OverlapBox(intersectBox.center, intersectBox.size / 2);
+
+            Debug.Log("Got hitColliders");
+
+            String currentSelectedTag = "";
+
+            if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)
+            {
+                currentSelectedTag = selectable.tag;
+            }
+
+            this.DeselectAll();
             
-            throw new NotImplementedException();
+            foreach (Collider collider in hitColliders)
+            {
+                if (collider.tag == currentSelectedTag)
+                {
+                    Debug.Log("Getting each collider");
+                    Selectable colliderSelect = collider.GetComponent<Selectable>();
+
+                    _selectedObjects.Add(colliderSelect);
+                    colliderSelect.isSelected = true;
+                }
+            }
         }
 
 
