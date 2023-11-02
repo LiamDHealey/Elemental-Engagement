@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88fccfb1b4740342b76ecda42b00388, type: 3}
+  m_Name: SpiritSwarm
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: b9ed9861aafe53b4ab139647a8eaf549, type: 3}
+  cooldown: 10
+  abilityPrefab: {fileID: 8176869283739848236, guid: c86ede4221b64f940be5e63fa4442680, type: 3}
+  previewPrefab: {fileID: 7520094084802813353, guid: 878668e64865fc5459bc93f3a90776e5, type: 3}
+  inheritPlayerAllegiance: 0
+  menuIndex: 1
+  submenuIndex: 3

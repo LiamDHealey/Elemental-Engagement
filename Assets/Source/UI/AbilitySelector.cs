@@ -1,71 +1,125 @@
-using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ElementalEngagement.UI
 {
-    /// <summary>
-    /// Displays all unlocked abilities for the given player, and show which is selected and which are on cooldown.
-    /// </summary>
-    [RequireComponent(typeof(RectTransform))]
     public class AbilitySelector : MonoBehaviour
     {
-        [Tooltip("The prefab used to show unlocked abilities & whether they are selected or on cooldown.")]
-        [SerializeField] private AbilityIcon abilityIconPrefab;
+        [SerializeField] private RectTransform keyboardLayout;
+        [SerializeField] private RectTransform controlerLayout;
 
-        [Tooltip("The manager this is showing the abilities for.")]
-        [SerializeField] private AbilityManager manager;
 
-        // A list of all the ability icons.
-        private List<AbilityIcon> abilityIcons =  new List<AbilityIcon>();
+        [SerializeField] private CopyLayout baseContainer;
+        [SerializeField] private CopyLayout windContainer;
+        [SerializeField] private CopyLayout waterContainer;
+        [SerializeField] private CopyLayout fireContainer;
+        [SerializeField] private CopyLayout earthContainer;
+        
+        private AbilityInputHandler manager;
 
-        /// <summary>
-        /// Activates the selected overlay for the ability icon at ability index, and deactivates it for all other abilities.
-        /// </summary>
-        /// <param name="abilityIndex"> The index of the ability in FavorManager.unlockedAbilities. </param>
-        public void SetSelectedAbility(int abilityIndex)
+        private void Start()
         {
-            for (int i = 0; i < abilityIcons.Count; i++)
+            Transform parent = transform.parent;
+            while (manager == null && parent != null)
             {
-                abilityIcons[i].selectedOverlayEnabled = abilityIndex == i;
+                manager = parent.GetComponent<AbilityInputHandler>();
+                parent = parent.parent;
+            }
+            if (manager == null)
+            {
+                Debug.LogError("No Ability Manager Found");
+                return;
+            }
+
+            PlayerInput input = null;
+            parent = transform.parent;
+            while (input == null && parent != null)
+            {
+                input = parent.GetComponent<PlayerInput>();
+                parent = parent.parent;
+            }
+            if (input == null)
+            {
+                Debug.LogError("No Player Input Found");
+                return;
+            }
+
+            switch (input.currentControlScheme)
+            {
+                case "Keyboard&Mouse":
+                    baseContainer.source = keyboardLayout;
+                    windContainer.source = keyboardLayout;
+                    waterContainer.source = keyboardLayout;
+                    fireContainer.source = keyboardLayout;
+                    earthContainer.source = keyboardLayout;
+                    break;
+
+
+                case "Gamepad":
+                    baseContainer.source = controlerLayout;
+                    windContainer.source = controlerLayout;
+                    waterContainer.source = controlerLayout;
+                    fireContainer.source = controlerLayout;
+                    earthContainer.source = controlerLayout;
+                    break;
+
+
+                default:
+                    Debug.LogWarning($"Unknown Control Scheme: {input.currentControlScheme}");
+                    break;
             }
         }
 
-        /// <summary>
-        /// Initializes all of the ability icons.
-        /// </summary>
-        private void Start()
+        private void Update()
         {
-            UpdateIcons();
-            FavorManager.onFavorChanged.AddListener(delegate { UpdateIcons(); });
-
-            void UpdateIcons()
+            switch (manager.selectionGod)
             {
-                ReadOnlyCollection<Combat.Ability> unlockedAbilities = FavorManager.GetUnlockedAbilities(manager.allegiance.faction);
+                case Favor.MinorGod.Unaligned:
+                    baseContainer.gameObject.SetActive(false);
+                    windContainer.gameObject.SetActive(true);
+                    waterContainer.gameObject.SetActive(false);
+                    fireContainer.gameObject.SetActive(false);
+                    earthContainer.gameObject.SetActive(false);
+                    break;
 
 
-                for (int i = 0; i < abilityIcons.Count; i++)
-                {
-                    abilityIcons[i].ability = unlockedAbilities[i];
-                }
+                case Favor.MinorGod.Fire:
+                    baseContainer.gameObject.SetActive(false);
+                    windContainer.gameObject.SetActive(false);
+                    waterContainer.gameObject.SetActive(false);
+                    fireContainer.gameObject.SetActive(true);
+                    earthContainer.gameObject.SetActive(false);
+                    break;
 
-                for (int i = abilityIcons.Count; i < unlockedAbilities.Count; i++)
-                {
-                    AbilityIcon newIcon = Instantiate(abilityIconPrefab.gameObject).GetComponent<AbilityIcon>();
-                    abilityIcons.Add(newIcon);
-                    newIcon.manager = manager;
-                    newIcon.transform.SetParent(transform, false);
-                    newIcon.ability = unlockedAbilities[i];
-                }
 
-                for (int i = unlockedAbilities.Count; i < abilityIcons.Count; i++)
-                {
-                    Destroy(abilityIcons[i].gameObject);
-                    abilityIcons.RemoveAt(i);
-                }
+                case Favor.MinorGod.Water:
+                    baseContainer.gameObject.SetActive(false);
+                    windContainer.gameObject.SetActive(false);
+                    waterContainer.gameObject.SetActive(true);
+                    fireContainer.gameObject.SetActive(false);
+                    earthContainer.gameObject.SetActive(false);
+                    break;
+
+
+                case Favor.MinorGod.Earth:
+                    baseContainer.gameObject.SetActive(false);
+                    windContainer.gameObject.SetActive(false);
+                    waterContainer.gameObject.SetActive(false);
+                    fireContainer.gameObject.SetActive(false);
+                    earthContainer.gameObject.SetActive(true);
+                    break;
+
+
+                default:
+                    baseContainer.gameObject.SetActive(true);
+                    windContainer.gameObject.SetActive(false);
+                    waterContainer.gameObject.SetActive(false);
+                    fireContainer.gameObject.SetActive(false);
+                    earthContainer.gameObject.SetActive(false);
+                    break;
             }
         }
     }

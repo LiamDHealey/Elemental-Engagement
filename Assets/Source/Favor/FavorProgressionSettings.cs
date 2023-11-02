@@ -18,6 +18,10 @@ namespace ElementalEngagement.Favor
         public ReadOnlyDictionary<MinorGod, GodProgressionSettings> godProgressionSettings { get => new ReadOnlyDictionary<MinorGod, GodProgressionSettings>(_godProgressionSettings.ToDictionary(s => s.god)); }
 
 
+        [Tooltip("The number of abilities allowed in each tier. Tier = index in the list.")]
+        [SerializeField] private List<int> _abilitiesPerTier = new List<int>() { 3, 3, 2, 1 };
+        public ReadOnlyCollection<int> abilitiesPerTier => _abilitiesPerTier.AsReadOnly();
+
 
 
 
@@ -34,7 +38,8 @@ namespace ElementalEngagement.Favor
             public float initialFavor;
 
             [Tooltip("What abilities are associated with this god and when they are unlocked.")]
-            public List<Unlock<Ability>> abilityUnlocks;
+            [SerializeField] private List<AbilityUnlock> _abilityUnlocks;
+            public ReadOnlyCollection<AbilityUnlock> abilityUnlocks => _abilityUnlocks.AsReadOnly();
 
             [Tooltip("All the ways this god's spawners can spawn units.")]
             [SerializeField] private List<SpawnerType> _spawnerTypes;
@@ -43,16 +48,19 @@ namespace ElementalEngagement.Favor
 
 
             /// <summary>
-            /// Stores the conditions for a thing to be spawned.
+            /// Stores the conditions an ability to be unlocked.
             /// </summary>
             [System.Serializable]
-            public class Unlock<T>
+            public class AbilityUnlock
             {
                 [Tooltip("The minimum favor required to spawn this.")] [Range(0, 1)]
                 public float favorThreshold;
 
-                [Tooltip("The thing to unlock.")]
-                public T thing;
+                [Tooltip("The ability tier this is in.")] [Min(0)]
+                public int abilityTier;
+
+                [Tooltip("The ability to unlock.")]
+                public Ability ability;
             }
 
             /// <summary>

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88fccfb1b4740342b76ecda42b00388, type: 3}
+  m_Name: LavaPool
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: eda5ab258a1d1f1499a3470880e06607, type: 3}
+  cooldown: 10
+  abilityPrefab: {fileID: 892193375256418651, guid: ae069d6ef23a6d64d98c12ceca96ee96, type: 3}
+  previewPrefab: {fileID: 7520094084802813353, guid: f9e7e7ee0c7799442b48da5da3218cad, type: 3}
+  inheritPlayerAllegiance: 0
+  menuIndex: 2
+  submenuIndex: 0

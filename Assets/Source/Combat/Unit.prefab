@@ -868,9 +868,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandPriority: 0
+  allegiance: {fileID: 7977147439944294568}
   agent: {fileID: 3600748324673135355}
-  movementTimeout: 1
-  movementTimeoutMaxDistance: 0.01
+  visionRange: {fileID: 2821754969731851486}
+  minMovementSpeed: 0.5
+  minMovementSpeedTimeout: 1
+  stoppingRange: 0
 --- !u!114 &8306161271482549596
 MonoBehaviour:
   m_ObjectHideFlags: 0

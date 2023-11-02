@@ -79,7 +79,7 @@ namespace ElementalEngagement.Favor
         private float spawnRate()
         {
                    //Accessing the GodProgressionSettings of the FavorManager
-            return FavorManager.progressionSettings[spawnAllegiance.god]
+            return FavorManager.godProgressionSettings[spawnAllegiance.god]
                    //Progressing from GodProgressionSettings to the Animation Curve
                    .spawnerTypes[spawnerType].favorToSpawnRate
                    //Evaluating the Animation Curve at the current Faction value
@@ -89,7 +89,7 @@ namespace ElementalEngagement.Favor
         private GameObject objectToSpawn()
         {
             //Accessing the GodProgressionSettings of the FavorManager
-            return FavorManager.progressionSettings[spawnAllegiance.god]
+            return FavorManager.godProgressionSettings[spawnAllegiance.god]
                    //Progressing from GodProgressionSettings to the Prefab to Spawn
                    .spawnerTypes[spawnerType].prefabToSpawn;
         }
