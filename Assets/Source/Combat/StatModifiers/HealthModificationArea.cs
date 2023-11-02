@@ -33,7 +33,7 @@ namespace ElementalEngagement.Combat
 
                 float hpPercent = health.hp / health.maxHp;
 
-                health.maxHp -= deltaMaxHp;
+                health.maxHp /= deltaMaxHp;
 
                 health.hp = health.maxHp * hpPercent;
             }
