@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 4229869321111341770}
   - component: {fileID: 8495704196627844067}
   - component: {fileID: 3543981119443874834}
-  - component: {fileID: 5671706823624897520}
   m_Layer: 0
   m_Name: PlayerControler
   m_TagString: Untagged
@@ -308,27 +307,8 @@ MonoBehaviour:
     requiredStates: 0
     forbiddenStates: 16
   - action: {fileID: -78372480659900942, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-<<<<<<< HEAD
     requiredStates: 0
     forbiddenStates: 24
-=======
-    states: 3
---- !u!114 &5671706823624897520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4381274470310263124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15a2f1f5233559c43b7a35c007db65df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
-  intensity: 1
-  isShaking: 0
->>>>>>> CameraShake
 --- !u!1001 &2993327756894406537
 PrefabInstance:
   m_ObjectHideFlags: 0

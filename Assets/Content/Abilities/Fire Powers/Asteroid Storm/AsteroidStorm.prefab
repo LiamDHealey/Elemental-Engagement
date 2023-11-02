@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 2.5
+  lifetime: 2
 --- !u!114 &8835529322014301733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 234040135209394935}
   damage:
-    amount: 3
+    amount: 7
     allegiance: {fileID: 234040135209394935}
   knockback:
     amount: 3
@@ -292,7 +292,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5147,7 +5147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3.5
+  lifetime: 2
 --- !u!114 &1972886686219970242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5162,7 +5162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 3498122609903024570}
   damage:
-    amount: 3
+    amount: 7
     allegiance: {fileID: 3498122609903024570}
   knockback:
     amount: 3
@@ -5361,7 +5361,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10254,7 +10254,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -15147,7 +15147,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -19935,10 +19935,10 @@ GameObject:
   - component: {fileID: 3169935085978601852}
   - component: {fileID: 8335957412197613769}
   - component: {fileID: -4413762488026342783}
+  - component: {fileID: 865892039160538150}
   - component: {fileID: 7785458032764344796}
   - component: {fileID: 7012133622005105386}
   - component: {fileID: 4952245712497268435}
-  - component: {fileID: 4236858772971300497}
   m_Layer: 2
   m_Name: AsteroidStorm
   m_TagString: Untagged
@@ -20005,7 +20005,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 7
+  lifetime: 5
+--- !u!114 &865892039160538150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7520094084802813353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allegiance: {fileID: 8335957412197613769}
+  damage:
+    amount: 7
+    allegiance: {fileID: 8335957412197613769}
+  knockback:
+    amount: 3
+    duration: 0.03
+    source: {fileID: 3169935085978601852}
+  attackInterval: 0.5
+  damageDelay: 0
+  waitBeforeDamage: 1
+  onAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onAttackDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  attackRange: {fileID: 7012133622005105386}
+  maxTargets: 999
 --- !u!135 &7785458032764344796
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20072,19 +20103,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4236858772971300497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7520094084802813353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4dc7f8a9849a404aa116abd0c506375, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shouldShake: 0
 --- !u!1 &7760047039117579482
 GameObject:
   m_ObjectHideFlags: 0
@@ -20163,7 +20181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 4.3
+  lifetime: 2
 --- !u!114 &9080600493038592256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20178,7 +20196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 5367453313618362824}
   damage:
-    amount: 3
+    amount: 7
     allegiance: {fileID: 5367453313618362824}
   knockback:
     amount: 3
@@ -20339,7 +20357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 5
+  lifetime: 2
 --- !u!114 &1996628986238383852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20354,7 +20372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 2738513357046875250}
   damage:
-    amount: 3
+    amount: 7
     allegiance: {fileID: 2738513357046875250}
   knockback:
     amount: 3
@@ -20515,7 +20533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
+  lifetime: 2
 --- !u!114 &8397472971095841651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20530,7 +20548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 3681299267156736134}
   damage:
-    amount: 3
+    amount: 7
     allegiance: {fileID: 3681299267156736134}
   knockback:
     amount: 3
@@ -20729,7 +20747,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
