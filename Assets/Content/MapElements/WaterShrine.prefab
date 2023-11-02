@@ -18,19 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: edc8a43e242e7c94db664b4811c7fdd3, type: 2}
     - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.95244265
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.95244265
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.95244265
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.21
+      value: 5.31
       objectReference: {fileID: 0}
     - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 23.47
       objectReference: {fileID: 0}
+    - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7091580252332748757, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: god
       value: 0
@@ -64,6 +68,10 @@ PrefabInstance:
       propertyPath: _faction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7779629695944107611, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 4267371172209825161}
     - target: {fileID: 8548424856781637128, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_Name
       value: WaterShrine
@@ -109,11 +117,52 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9132523939842744515, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: m_Size.x
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132523939842744515, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: m_Size.y
+      value: 20.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 9132523939842744515, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d16a1a2adbaf4644a8b7d95b65135b94, type: 3}
+      objectReference: {fileID: 507947051, guid: d16a1a2adbaf4644a8b7d95b65135b94, type: 3}
+    - target: {fileID: 9132523939842744515, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4979323060529684527, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4267371172209825161}
   m_SourcePrefab: {fileID: 100100000, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+--- !u!1 &6151624947257725421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4979323060529684527, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+  m_PrefabInstance: {fileID: 1172323189774234050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4267371172209825161
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151624947257725421}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8782b10463e89445bca118bbf2b41df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
