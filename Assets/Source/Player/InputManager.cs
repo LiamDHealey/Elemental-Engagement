@@ -18,7 +18,7 @@ namespace ElementalEngagement
     {
         [Tooltip("The states each action is allowed to be used in")]
         [SerializeField] private List<ActionRequirements> _actionRequirements;
-        private Dictionary<string, State> actionRequirements;
+        private Dictionary<string, ActionRequirements> actionRequirements;
 
 
         public IEnumerable<InputAction> availableActions => input.actions.Where(IsActionAllowed);
@@ -69,7 +69,7 @@ namespace ElementalEngagement
             uiInputHandler = GetComponent<UiInputHandler>();
 
             actionRequirements = _actionRequirements
-                .ToDictionary(requirement => requirement.action.action.name, requirement => requirement.states);
+                .ToDictionary(requirement => requirement.action.action.name);
         }
 
         private bool IsActionAllowed(CallbackContext context)
@@ -81,7 +81,9 @@ namespace ElementalEngagement
         {
             if (!actionRequirements.ContainsKey(action.name))
                 return false;
-            return actionRequirements[action.name].HasFlag((State)state);
+            ActionRequirements req = actionRequirements[action.name];
+            return (req.requiredStates == 0 || (req.requiredStates & state) > 0) &&
+                   (req.forbiddenStates & state) == 0;
         }
 
         // Update is called once per frame
@@ -243,17 +245,13 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            switch (state)
+            if (state.HasFlag(State.SelectingAbility) || state.HasFlag(State.AbilitySelected))
             {
-                case State.SelectingAbility:
-                    abilityInputHandler.ResetSelection();
-                    break;
-                case State.AbilitySelected:
-                    abilityInputHandler.ResetSelection();
-                    break;
-                case State.InMenu:
-                    uiInputHandler.Back();
-                    break;
+                abilityInputHandler.ResetSelection();
+            }
+            else if (state.HasFlag(State.InMenu))
+            {
+                uiInputHandler.Back();
             }
         }
         #endregion
@@ -263,7 +261,8 @@ namespace ElementalEngagement
         private class ActionRequirements
         {
             public InputActionReference action;
-            public State states;
+            public State requiredStates;
+            public State forbiddenStates;
         }
 
         [Flags]

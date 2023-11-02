@@ -9,13 +9,15 @@ namespace ElementalEngagement.UI
 {
     public class HumanArmyDetector : MonoBehaviour
     {
-        public Allegiance allegiance;
-
         public UnityEvent onFriendlyArmySpawned;
         public UnityEvent onHostileArmySpawned;
 
+        private Allegiance allegiance;
+
         private void Start()
         {
+            allegiance = GetComponentInParent<Allegiance>();
+
             FavorManager.onFavorChanged.AddListener(DetectArmySpawn);
 
             void DetectArmySpawn(Faction faction, MinorGod god)

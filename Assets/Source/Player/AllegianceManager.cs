@@ -15,6 +15,7 @@ namespace ElementalEngagement.Player
     /// </summary>
     public class AllegianceManager : MonoBehaviour
     {
+        [SerializeField] List<FactionToOverrides> factionsToOverrides = new List<FactionToOverrides>();
         HashSet<Faction> claimedFactions = new HashSet<Faction>();
 
         public void OnPlayerJoined(PlayerInput input)
@@ -27,6 +28,14 @@ namespace ElementalEngagement.Player
                 {
                     claimedFactions.Add(faction);
                     input.GetComponent<Allegiance>().faction = faction;
+
+                    FactionToOverrides overrides = factionsToOverrides.First(o => o.faction == faction);
+                    input.transform.position = overrides.spawnTransform.position;
+
+                    GameObject Hud = Instantiate(overrides.hud);
+                    Hud.transform.SetParent(input.transform);
+                    Hud.GetComponent<Canvas>().worldCamera = input.GetComponent<Camera>();
+
                     return;
                 }
             }
@@ -36,6 +45,14 @@ namespace ElementalEngagement.Player
         public void OnPlayerLeft(PlayerInput input)
         {
             claimedFactions.Remove(input.GetComponent<Allegiance>().faction);
+        }
+
+        [System.Serializable]
+        class FactionToOverrides
+        {
+            public Faction faction;
+            public Transform spawnTransform;
+            public GameObject hud;
         }
     }
 }
