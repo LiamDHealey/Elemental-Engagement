@@ -42,8 +42,6 @@ namespace ElementalEngagement.UI
                     newTextBox.SetActive(true);
                     textBoxes.Add(newTextBox.GetComponent<TextMeshProUGUI>());
                 }
-
-                Debug.Log(action.bindings[0].groups);
                 IEnumerable<InputBinding> appropriateBindings = action.bindings.Where(b => b.groups.Contains(input.currentControlScheme));
                 string bindingName = appropriateBindings.Aggregate("", (name, binding) => name + binding.ToDisplayString(control: input.devices[0]));
 
