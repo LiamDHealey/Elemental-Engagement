@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -12,18 +13,22 @@ public class UiInputHandler : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
 
+    public static UnityEvent<string> onMenuOpened = new UnityEvent<string>();
+
+    public static UnityEvent<string> onMenuClosed = new UnityEvent<string>();
+
     public bool isUIOpen { get; private set; } = false;
 
     public void Pause()
     {
-        pauseMenu.SetActive(true);
+        onMenuOpened?.Invoke("pauseMenu");
         Time.timeScale = 0f;
         isUIOpen = true;
     }
 
     public void Back()
     {
-        pauseMenu.SetActive(false);
+        onMenuClosed?.Invoke("pauseMenu");
         Time.timeScale = 1f;
         isUIOpen = false;
     }
