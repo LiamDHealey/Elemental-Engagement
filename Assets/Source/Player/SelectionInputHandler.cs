@@ -109,24 +109,15 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         public void SelectAll()
         {
-            Ray corner1 = GetComponent<Camera>().ScreenPointToRay(new Vector2(GetComponent<Camera>().pixelRect.height, 0));
-            Debug.DrawRay(corner1.origin, corner1.direction * 1000);
-            Ray corner2 = GetComponent<Camera>().ScreenPointToRay(new Vector2(0, GetComponent<Camera>().pixelRect.width));
-            Debug.DrawRay(corner2.origin, corner2.direction * 1000);
+            Ray center = GetComponent<Camera>().ScreenPointToRay(new Vector2(GetComponent<Camera>().pixelRect.width/2, GetComponent<Camera>().pixelRect.height/2));
 
-            Vector3 corner1GroundPos = MathHelpers.IntersectWithGround(corner1);
-            Vector3 corner2GroundPos = MathHelpers.IntersectWithGround(corner2);
+            Vector3 centerGroundPos = MathHelpers.IntersectWithGround(center);
+            centerGroundPos.y = 5;
+            Vector3 intersectBoxSize = new Vector3(GetComponent<Camera>().pixelRect.width/10, 0, GetComponent<Camera>().pixelRect.height/10);
 
-            Rect intersectBox = new Rect(corner1GroundPos.x, corner1GroundPos.z, corner1GroundPos.x - corner2GroundPos.x, corner2GroundPos.z - corner1GroundPos.z);
-            Debug.Log(intersectBox);
+            Bounds intersectBox = new Bounds(centerGroundPos, intersectBoxSize);
 
-
-            Collider[] hitColliders = Physics.OverlapBox(intersectBox.center, intersectBox.size / 2);
-
-            if (hitColliders.Length > 0)
-            {
-                Debug.Log("Got HitColliders: " + hitColliders.Length);
-            }
+            Collider[] hitColliders = Physics.OverlapBox(intersectBox.center, intersectBox.size);
 
             String currentSelectedTag = "";
 
@@ -135,24 +126,16 @@ namespace ElementalEngagement.Player
                 currentSelectedTag = selectable.tag;
             }
 
-            Debug.Log("currentSelectTag: " + currentSelectedTag);
+            this.DeselectAll();
 
-            DeselectAll();
-            
             foreach (Collider collider in hitColliders)
             {
-                Debug.Log("Getting each collider name: " + collider.name);
-
-                //Selectable colliderSelect = collider.GetComponent<Selectable>();
-
-                //Debug.Log("Getting each collider tag: " + colliderSelect.tag);
-
-                //if (colliderSelect.tag == currentSelectedTag)
-                //{
-
-                //    _selectedObjects.Add(colliderSelect);
-                //    colliderSelect.isSelected = true;
-                //}
+                if (collider.tag == currentSelectedTag)
+                {
+                    Selectable colliderSelect = collider.GetComponent<Selectable>();
+                    _selectedObjects.Add(colliderSelect);
+                    colliderSelect.isSelected = true;
+                }
             }
         }
 
