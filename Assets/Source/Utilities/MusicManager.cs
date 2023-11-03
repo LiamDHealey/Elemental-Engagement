@@ -25,6 +25,8 @@ namespace ElementalEngagement.Utilities
         [Tooltip("The music that will play on the menu")]
         [SerializeField] private List<AudioClip> menuMusic = new List<AudioClip>();
 
+        private Dictionary<AudioClip, AudioClip> tiedTracks = new Dictionary<AudioClip, AudioClip>();
+
 
 
         [Header("Low Intensity")]
