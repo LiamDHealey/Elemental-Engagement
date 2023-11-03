@@ -12,13 +12,7 @@ namespace ElementalEngagement.Combat
     public class SpeedModificationArea : StatModificationArea
     {
         [Tooltip("The amount that muultiplies to the speed of any navmesh agents in the area as a percent of its current value.")]
-        [SerializeField] private float deltaSpeed;
-
-        [Tooltip("The amount to add to the angular speed of any navmesh agents in the area as a percent of its current value.")]
-        [SerializeField] private float deltaAngularSpeed;
-
-        [Tooltip("The amount to add to the acceleration of any navmesh agents in the area as a percent of its current value.")]
-        [SerializeField] private float deltaAcceleration;
+        [SerializeField] private float speedMultiplier;
 
 
         void Start()
@@ -33,14 +27,12 @@ namespace ElementalEngagement.Combat
             {
                 Allegiance all = collider.GetComponent<Allegiance>();
 
-                NavMeshAgent speed = collider.GetComponent<NavMeshAgent>();
+                Movement movement = collider.GetComponent<Movement>();
 
-                if (speed == null || all == null)
+                if (movement == null || all == null)
                     return;
 
-                speed.speed /= deltaSpeed;
-                speed.angularSpeed /= deltaAngularSpeed;
-                speed.acceleration /= deltaAcceleration;
+                movement.speed /= speedMultiplier;
             }
         }
 
@@ -54,7 +46,7 @@ namespace ElementalEngagement.Combat
 
                 Allegiance all = collider.GetComponent<Allegiance>();
 
-                NavMeshAgent speed = collider.GetComponent<NavMeshAgent>();
+                Movement speed = collider.GetComponent<Movement>();
 
                 if (speed == null || all == null)
                     return;
@@ -67,9 +59,7 @@ namespace ElementalEngagement.Combat
                 //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
                 //    return;
 
-                speed.speed *= deltaSpeed;
-                speed.angularSpeed *= deltaAngularSpeed;
-                speed.acceleration *= deltaAcceleration;
+                speed.speed *= speedMultiplier;
             }
 
         /// <summary>
@@ -82,7 +72,7 @@ namespace ElementalEngagement.Combat
 
             Allegiance all = collider.GetComponent<Allegiance>();
 
-            NavMeshAgent speed = collider.GetComponent<NavMeshAgent>();
+            Movement speed = collider.GetComponent<Movement>();
 
             if (speed == null || all == null)
                 return;
@@ -95,9 +85,7 @@ namespace ElementalEngagement.Combat
             //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
             //    return;
 
-            speed.speed /= deltaSpeed;
-            speed.angularSpeed /= deltaAngularSpeed;
-            speed.acceleration /= deltaAcceleration;
+            speed.speed /= speedMultiplier;
         }
     }
 }

@@ -148,7 +148,7 @@ namespace ElementalEngagement.Player
                     .OrderByDescending(receiver => receiver.commandPriority)
                     .FirstOrDefault();
 
-                chosenReceiver?.ExecuteCommand(hit, isAltCommand);
+                chosenReceiver?.ExecuteCommand(hit, selectedObjects, isAltCommand);
             }
         }
 

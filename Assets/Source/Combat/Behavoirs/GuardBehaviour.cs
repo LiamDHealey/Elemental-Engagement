@@ -17,7 +17,7 @@ namespace ElementalEngagement.Combat
         [SerializeField] private BindableCollider visionRange;
 
         [Tooltip("The agent used to move this.")]
-        [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private Movement movement;
 
         [Tooltip("The allegiance of this. Leave null for this to chase any object with a health component.")]
         [SerializeField] private Allegiance allegiance;
@@ -75,8 +75,7 @@ namespace ElementalEngagement.Combat
                             // Return to starting area
                             if (attackableTargets.Count() == 0)
                             {
-                                agent.isStopped = false;
-                                agent.MoveTo(anchorBounds.center);
+                                movement.SetDestination(this, anchorBounds.center);
                             }
                             // Chase targets
                             else
@@ -93,8 +92,7 @@ namespace ElementalEngagement.Combat
                                             return closest;
                                     });
 
-                                agent.isStopped = SqrDistance(closetsTarget) < stoppingRange * stoppingRange;
-                                agent.MoveTo(closetsTarget.position);
+                                movement.SetDestination(this, closetsTarget.position, stoppingRange);
                             }
 
                             yield return null;

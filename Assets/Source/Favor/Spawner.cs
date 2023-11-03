@@ -59,16 +59,8 @@ namespace ElementalEngagement.Favor
             {
                 GameObject spawnedObject = Instantiate(objectToSpawn());
 
-                NavMeshQueryFilter filter = new NavMeshQueryFilter()
-                {
-                    agentTypeID = spawnedObject.GetComponent<NavMeshAgent>().agentTypeID,
-                    areaMask = spawnedObject.GetComponent<NavMeshAgent>().areaMask,
-                };
-
-                NavMesh.SamplePosition(spawnLocation.position, out NavMeshHit navMeshHit, 50f, filter);
-                spawnedObject.transform.position = navMeshHit.position;
-                Vector3 noise = new Vector3(Random.insideUnitCircle.x, 0, Random.insideUnitCircle.y);
-                spawnedObject.transform.position += noise;
+                Vector2 noise = Random.insideUnitCircle;
+                spawnedObject.transform.position = spawnLocation.position + new Vector3(noise.x, 0, noise.y);
                 spawnedObject.GetComponent<Allegiance>().faction = spawnAllegiance.faction;
                 onSpawned?.Invoke();
 
