@@ -11,80 +11,48 @@ namespace ElementalEngagement.Combat
     /// </summary>
     public class HealthModificationArea : StatModificationArea
     {
-        [Tooltip("The amount to add to the max hp of any health in the area as a percent of its current value. When entering and leaving this area units stay at the same % of max health.")]
-        [SerializeField] private float deltaMaxHp;
+        [Tooltip("The amount to multiply the max hp by. When entering and leaving this area units stay at the same % of max health.")]
+        [Min(0.00001f)]
+        [SerializeField] private float maxHpMultiplier = 1;
 
         private void Start()
         {
-            area.onTriggerEnter.AddListener(OnTriggerEnter);
-            area.onTriggerExit.AddListener(OnTriggerExit);
+            area.onTriggerEnter.AddListener(OnTriggerEntered);
+            area.onTriggerExit.AddListener(OnTriggerExited);
         }
         private void OnDestroy()
         {
             foreach (Collider collider in area.overlappingColliders)
             {
-                Health health = collider.GetComponent<Health>();
-
-                Allegiance all = collider.GetComponent<Allegiance>();
-
-                // Check if health is null.
-                if (health.Equals(null) || all == null)
-                    continue;
-
-                float hpPercent = health.hp / health.maxHp;
-
-                health.maxHp /= deltaMaxHp;
-
-                health.hp = health.maxHp * hpPercent;
+                OnTriggerExited(collider);
             }
         }
 
-        void OnTriggerEnter(Collider collider)
+        void OnTriggerEntered(Collider collider)
         {
             Health health = collider.GetComponent<Health>();
 
-            Allegiance all = collider.GetComponent<Allegiance>();
-
-            // Check if health is null.
-            if (health.Equals(null) || all == null)
+            if (health == null)
+                return;
+            if (!CanModify(collider))
                 return;
 
-            //// If collider allegiance does not equal area of effect's allegiance.
-            //if (all.faction == allegiance.faction)
-            //    return;
-
-            //// If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
-            //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
-            //    return;
-
             float hpPercent = health.hp / health.maxHp;
-
-            health.maxHp *= deltaMaxHp;
-
+            health.maxHp *= maxHpMultiplier;
             health.hp = health.maxHp * hpPercent;
         }
 
-        void OnTriggerExit(Collider collider)
+        void OnTriggerExited(Collider collider)
         {
-            Allegiance all = collider.GetComponent<Allegiance>();
-
             Health health = collider.GetComponent<Health>();
 
-            if (health == null || all == null)
+            if (health == null)
+                return;
+            if (!CanModify(collider))
                 return;
 
-            //// If collider allegiance does not equal area of effect's allegiance, or the area of effect's allegiance is unaligned.
-            //if (all.faction != allegiance.faction || allegiance.faction == Faction.Unaligned)
-            //    return;
-
-            //// If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
-            //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
-            //    return;
-
             float hpPercent = health.hp / health.maxHp;
-
-            health.maxHp /= deltaMaxHp;
-
+            health.maxHp /= maxHpMultiplier;
             health.hp = health.maxHp * hpPercent;
         }
     }

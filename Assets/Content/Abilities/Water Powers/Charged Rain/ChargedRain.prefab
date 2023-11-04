@@ -4984,7 +4984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _faction: 0
-  god: 2
+  god: 0
   onFactionChanged:
   - faction: 0
     onSelected:
@@ -5046,7 +5046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
-  deltaMaxHp: 0
+  maxHpMultiplier: 10
 --- !u!114 &8557279274171391393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5061,9 +5061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
-  deltaSpeed: 2
-  deltaAngularSpeed: 0
-  deltaAcceleration: 0
+  speedMultiplier: 10
 --- !u!114 &9142803568649359392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5078,9 +5076,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
-  damageMultiplier: 0
-  knockbackMultiplier: 0
-  attackIntervalMutliplier: 0
+  damageMultiplier: 1
+  knockbackMultiplier: 1
+  attackIntervalMultiplier: 1
 --- !u!114 &5686342651022301136
 MonoBehaviour:
   m_ObjectHideFlags: 0
