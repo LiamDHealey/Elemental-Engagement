@@ -132,6 +132,7 @@ public class Movement : MonoBehaviour
         agent = gameObject.AddComponent<NavMeshAgent>();
         agent.updatePosition = false;
         agent.updateRotation = false;
+
         agent.speed = 1f;
         for (int i = 0; i < NavMesh.GetSettingsCount(); i++)
         {
@@ -155,7 +156,6 @@ public class Movement : MonoBehaviour
 
         if (!destinationReached && agent.stoppingDistance >= (agent.destination - transform.position).magnitude)
         {
-            Debug.LogWarning("Dest");
             destinationReached = true;
             onDestinationReached?.Invoke();
             RemoveDestination(navigator);
