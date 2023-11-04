@@ -35,7 +35,7 @@ namespace ElementalEngagement.Combat
                 return false;
             if (hitUnderCursor.collider.GetComponent<Health>() == null)
                 return false;
-            if (hitUnderCursor.collider.GetComponent<Allegiance>().CheckFactionAllegiance(GetComponent<Allegiance>()))
+            if (hitUnderCursor.collider.GetComponent<Allegiance>()?.CheckFactionAllegiance(GetComponent<Allegiance>()) ?? false)
                 return false;
 
             return movement.CanMoveTo(hitUnderCursor.point);

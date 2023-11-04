@@ -127,7 +127,11 @@ public class Movement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
 
         if (!NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 1f, NavMesh.AllAreas))
-            throw new Exception("Movement component too far from mesh");
+        {
+            Debug.LogError("Movement component too far from mesh");
+            Invoke("Start", 1);
+            return;
+        }
         transform.position = hit.position;
         agent = gameObject.AddComponent<NavMeshAgent>();
         agent.updatePosition = false;
@@ -154,7 +158,7 @@ public class Movement : MonoBehaviour
             agent.nextPosition = transform.position;
         }
 
-        if (!destinationReached && agent.stoppingDistance >= (agent.destination - transform.position).magnitude)
+        if (!destinationReached && navigator != null && agent.stoppingDistance >= (agent.destination - transform.position).magnitude)
         {
             destinationReached = true;
             onDestinationReached?.Invoke();
