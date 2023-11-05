@@ -531,6 +531,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2992165918040679053, guid: 1f743728907bebb499e0223fa41efcad, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.0830078
+      objectReference: {fileID: 0}
     - target: {fileID: 4191382620064072073, guid: 1f743728907bebb499e0223fa41efcad, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7680,26 +7684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4749311790056545838, guid: 9d467b8bc657bec40b35862759b11af3, type: 3}
-      propertyPath: favorThreshold
-      value: 0.66
+    - target: {fileID: 4536596618203643565, guid: 9d467b8bc657bec40b35862759b11af3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4749311790056545838, guid: 9d467b8bc657bec40b35862759b11af3, type: 3}
-      propertyPath: highIntensityMusic.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749311790056545838, guid: 9d467b8bc657bec40b35862759b11af3, type: 3}
-      propertyPath: highIntensityMusic.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: e11838cd8628fd24d839ea43c87e3e1c, type: 3}
-    - target: {fileID: 4749311790056545838, guid: 9d467b8bc657bec40b35862759b11af3, type: 3}
-      propertyPath: lowIntensityStartClips.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4749311790056545838, guid: 9d467b8bc657bec40b35862759b11af3, type: 3}
-      propertyPath: lowIntensityStartClips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: dc39f78b00a870a4c928e7adb6ba558d, type: 3}
     - target: {fileID: 5514807935883956271, guid: 9d467b8bc657bec40b35862759b11af3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 51.050003
