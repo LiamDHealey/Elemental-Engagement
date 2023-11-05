@@ -86,6 +86,20 @@ public class Movement : MonoBehaviour
         if (navigator == null)
             throw new Exception("Navigator must be valid.");
 
+        if (agent == null)
+        {
+            StartCoroutine(CallAgain());
+            IEnumerator CallAgain()
+            {
+                while (agent == null)
+                {
+                    yield return null;
+                }
+                SetDestination(navigator, destination, stoppingDistance);
+            }
+            return;
+        }
+
         agent.stoppingDistance = stoppingDistance;
         agent.SetDestination(destination);
         this.navigator = navigator;

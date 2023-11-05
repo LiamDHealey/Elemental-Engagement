@@ -32,6 +32,9 @@ namespace ElementalEngagement.Combat
         [Tooltip("If the unit is stationary for this long the command will be canceled.")]
         [SerializeField] private float minMovementSpeedTimeout = 1f;
 
+        [Tooltip("Whether or not this should move to its rally point on start.")]
+        [SerializeField] private bool moveToRallyOnStart = true;
+
 
         // The targets currently in range.
         HashSet<Transform> validTargets = new HashSet<Transform>();
@@ -49,6 +52,13 @@ namespace ElementalEngagement.Combat
                 });
             visionRange.onTriggerExit.AddListener(
                 (collider) => validTargets.Remove(collider.transform));
+
+            if (moveToRallyOnStart && RallyPoint.tagsToRallyLocations.ContainsKey((allegiance.faction, tag)))
+            {
+                RaycastHit virtualHit = new RaycastHit();
+                virtualHit.point = RallyPoint.tagsToRallyLocations[(allegiance.faction, tag)].position;
+                ExecuteCommand(virtualHit, new ReadOnlyCollection<Selectable>(new List<Selectable>()), false);
+            }
         }
 
         /// <summary>
