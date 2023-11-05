@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
+using UnityEditor;
 
 namespace ElementalEngagement.Player
 {
@@ -108,8 +109,34 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         public void SelectAll()
         {
-            
-            throw new NotImplementedException();
+            Ray center = GetComponent<Camera>().ScreenPointToRay(new Vector2(GetComponent<Camera>().pixelRect.width/2, GetComponent<Camera>().pixelRect.height/2));
+
+            Vector3 centerGroundPos = MathHelpers.IntersectWithGround(center);
+            centerGroundPos.y = 5;
+            Vector3 intersectBoxSize = new Vector3(GetComponent<Camera>().pixelRect.width/10, 0, GetComponent<Camera>().pixelRect.height/10);
+
+            Bounds intersectBox = new Bounds(centerGroundPos, intersectBoxSize);
+
+            Collider[] hitColliders = Physics.OverlapBox(intersectBox.center, intersectBox.size);
+
+            String currentSelectedTag = "";
+
+            if (GetSelectableUnderCursor(out Selectable selectable))
+            {
+                currentSelectedTag = selectable.tag;
+            }
+
+            this.DeselectAll();
+
+            foreach (Collider collider in hitColliders)
+            {
+                if (collider.tag == currentSelectedTag)
+                {
+                    Selectable colliderSelect = collider.GetComponent<Selectable>();
+                    _selectedObjects.Add(colliderSelect);
+                    colliderSelect.isSelected = true;
+                }
+            }
         }
 
 
