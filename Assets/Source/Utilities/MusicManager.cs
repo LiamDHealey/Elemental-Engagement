@@ -19,21 +19,15 @@ namespace ElementalEngagement.Utilities
         [Tooltip("The exact name of the main menu scene")]
         [SerializeField] private string mainMenuSceneName;
 
-        [Tooltip("The sound that will be played right as the menu is opened.")]
-        [SerializeField] private List<AudioClip> menuStartClips = new List<AudioClip>();
-
         [Tooltip("The music that will play on the menu")]
-        [SerializeField] private List<AudioClip> menuMusic = new List<AudioClip>();
+        [SerializeField] private List<MusicTrack> menuMusic = new List<MusicTrack>();
 
 
 
         [Header("Low Intensity")]
 
-        [Tooltip("The sound that will be played right as low intensity music starts")]
-        [SerializeField] private List<AudioClip> lowIntensityStartClips = new List<AudioClip>();
-
         [Tooltip("The music that will play by default")]
-        [SerializeField] private List<AudioClip> lowIntensityMusic = new List<AudioClip>();
+        [SerializeField] private List<MusicTrack> lowIntensityMusic = new List<MusicTrack>();
 
 
 
@@ -41,21 +35,15 @@ namespace ElementalEngagement.Utilities
         [Tooltip("The favor that needs to be reached by one player for one god for the medium track to start.")] [Range(0f, 1f)]
         [SerializeField] private float favorThreshold = 0.5f;
 
-        [Tooltip("The sound that will be played right as medium intensity music starts")]
-        [SerializeField] private List<AudioClip> mediumIntensityStartClips = new List<AudioClip>();
-
         [Tooltip("The music that will play when a player's favor reaches the threshold")]
-        [SerializeField] private List<AudioClip> mediumIntensityMusic = new List<AudioClip>();
+        [SerializeField] private List<MusicTrack> mediumIntensityMusic = new List<MusicTrack>();
 
 
 
         [Header("High Intensity")]
 
-        [Tooltip("The sound that will be played right as high intensity music starts")]
-        [SerializeField] private List<AudioClip> highIntensityStartClips = new List<AudioClip>();
-
         [Tooltip("The music that will play once the human army is spawned.")]
-        [SerializeField] private List<AudioClip> highIntensityMusic = new List<AudioClip>();
+        [SerializeField] private List<MusicTrack> highIntensityMusic = new List<MusicTrack>();
 
         // Tracks the state of this machine
         private State state = State.Menu;
@@ -136,47 +124,55 @@ namespace ElementalEngagement.Utilities
         public static void StartMenuMusic()
         {
             instance.state = State.Menu;
-            instance.StartCoroutine(PlayMusic(State.Menu, instance.menuStartClips, instance.menuMusic));
+            instance.StartCoroutine(PlayMusic(State.Menu, instance.menuMusic));
         }
 
         public static void StartLowIntensityMusic()
         {
             instance.state = State.LowIntensity;
-            instance.StartCoroutine(PlayMusic(State.LowIntensity, instance.lowIntensityStartClips, instance.lowIntensityMusic));
+            instance.StartCoroutine(PlayMusic(State.LowIntensity, instance.lowIntensityMusic));
         }
 
         public static void StartMediumIntensityMusic()
         {
             instance.state = State.MediumIntensity;
-            instance.StartCoroutine(PlayMusic(State.MediumIntensity, instance.mediumIntensityStartClips, instance.mediumIntensityMusic));
+            instance.StartCoroutine(PlayMusic(State.MediumIntensity, instance.mediumIntensityMusic));
         }
 
         public static void StartHighIntensityMusic()
         {
             instance.state = State.HighIntensity;
-            instance.StartCoroutine(PlayMusic(State.HighIntensity, instance.highIntensityStartClips, instance.highIntensityMusic));
-
+            instance.StartCoroutine(PlayMusic(State.HighIntensity, instance.highIntensityMusic));
         }
 
 
-        private static IEnumerator PlayMusic(State state, List<AudioClip> startClips, List<AudioClip> music)
+        private static IEnumerator PlayMusic(State state, List<MusicTrack> music)
         {
-            AudioSource audioSource = instance.gameObject.AddComponent<AudioSource>();
+            int musicIndex = UnityEngine.Random.Range(0, music.Count);
+
+            GameObject container = new GameObject($"MusicPlayer_{state}_Track{musicIndex}");
+            container.transform.parent = instance.transform;
+            AudioSource audioSource = container.AddComponent<AudioSource>();
+            yield return null;
+
 
             // Play start clip
-            if (startClips.Count > 0)
+            if (music[musicIndex].introClip != null)
             {
-                audioSource.PlayOneShot(GetRandomClip(startClips));
+                audioSource.PlayOneShot(music[musicIndex].introClip);
+                while (audioSource.isPlaying)
+                {
+                    yield return null;
+                }
             }
 
             // Play music
+            audioSource.clip = music[musicIndex].mainClip;
+            audioSource.loop = true;
+            audioSource.Play();
             while (instance.state == state)
             {
                 yield return null;
-                if (audioSource.isPlaying)
-                    continue;
-
-                audioSource.PlayOneShot(GetRandomClip(music));
             }
 
             // Fade out music
@@ -184,11 +180,18 @@ namespace ElementalEngagement.Utilities
             while (audioSource.volume > 0)
             {
                 audioSource.volume -= fadeSpeed * Time.deltaTime;
+                yield return null;
             }
-            Destroy(audioSource);
-
-            AudioClip GetRandomClip(List<AudioClip> clips) => clips[UnityEngine.Random.Range(0, clips.Count-1)];
+            Destroy(audioSource.gameObject);
         }
         private enum State { Menu, LowIntensity, MediumIntensity, HighIntensity }
+
+
+        [System.Serializable]
+        private class MusicTrack
+        {
+            public AudioClip introClip;
+            public AudioClip mainClip;
+        }
     }
 }

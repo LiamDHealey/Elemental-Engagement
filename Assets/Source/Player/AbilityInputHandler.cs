@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -153,7 +152,7 @@ namespace ElementalEngagement.Player
             if (abilityPreview == null)
                 return;
 
-            abilityPreview.transform.forward = direction;
+            abilityPreview.transform.right = new Vector3(direction.x, 0, direction.y);
         }
 
         public void ResetSelection()

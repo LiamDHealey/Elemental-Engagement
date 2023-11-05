@@ -44,19 +44,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055937edebcfa2a4ba785571ad494af9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOutDuration: 2
+  fadeOutDuration: 10
   mainMenuSceneName: Main Menu
-  menuStartClips: []
   menuMusic:
-  - {fileID: 8300000, guid: 00b726e8900c3714695a4b6aa4a92dc6, type: 3}
-  lowIntensityStartClips:
-  - {fileID: 8300000, guid: 46a4f83f00db80b4aaaf5da8e430c44a, type: 3}
+  - introClip: {fileID: 0}
+    mainClip: {fileID: 8300000, guid: 00b726e8900c3714695a4b6aa4a92dc6, type: 3}
   lowIntensityMusic:
-  - {fileID: 8300000, guid: 01823e4686dd39047a493bc5c44f9933, type: 3}
-  favorThreshold: 0.5
-  mediumIntensityStartClips: []
+  - introClip: {fileID: 8300000, guid: 46a4f83f00db80b4aaaf5da8e430c44a, type: 3}
+    mainClip: {fileID: 8300000, guid: 01823e4686dd39047a493bc5c44f9933, type: 3}
+  - introClip: {fileID: 0}
+    mainClip: {fileID: 8300000, guid: dc39f78b00a870a4c928e7adb6ba558d, type: 3}
+  favorThreshold: 0.66
   mediumIntensityMusic:
-  - {fileID: 8300000, guid: f0698c5ff88684c4a822b00e6473280f, type: 3}
-  highIntensityStartClips: []
+  - introClip: {fileID: 0}
+    mainClip: {fileID: 8300000, guid: f0698c5ff88684c4a822b00e6473280f, type: 3}
   highIntensityMusic:
-  - {fileID: 8300000, guid: 2e5cb231e399e394f92c639f2f3a4284, type: 3}
+  - introClip: {fileID: 0}
+    mainClip: {fileID: 8300000, guid: 2e5cb231e399e394f92c639f2f3a4284, type: 3}
+  - introClip: {fileID: 0}
+    mainClip: {fileID: 8300000, guid: e11838cd8628fd24d839ea43c87e3e1c, type: 3}

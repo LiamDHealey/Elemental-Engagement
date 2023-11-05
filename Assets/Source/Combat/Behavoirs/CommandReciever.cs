@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using UnityEngine;
 
 namespace ElementalEngagement.Player
 {
@@ -25,8 +27,9 @@ namespace ElementalEngagement.Player
         /// Performs the given command a command from the selection manager. 
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
+        /// <param name="selectedObjects"> The other selected objects. </param>
         /// <param name="isAltCommand"> Whether or not this should execute the alternate version of this command (if it exists). </param>
-        public abstract void ExecuteCommand(RaycastHit hitUnderCursor, bool isAltCommand);
+        public abstract void ExecuteCommand(RaycastHit hitUnderCursor, ReadOnlyCollection<Selectable> selectedObjects, bool isAltCommand);
 
         /// <summary>
         /// Cancels any command this is currently performing.

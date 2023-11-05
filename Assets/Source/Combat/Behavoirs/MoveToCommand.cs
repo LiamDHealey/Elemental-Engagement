@@ -2,6 +2,7 @@ using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,7 +21,7 @@ namespace ElementalEngagement.Combat
         [SerializeField] private Allegiance allegiance;
 
         [Tooltip("The agent used to move this.")]
-        [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private Movement movement;
 
         [Tooltip("The area in which this will move towards unaligned health components when attack moving.")]
         [SerializeField] private BindableCollider visionRange;
@@ -31,8 +32,8 @@ namespace ElementalEngagement.Combat
         [Tooltip("If the unit is stationary for this long the command will be canceled.")]
         [SerializeField] private float minMovementSpeedTimeout = 1f;
 
-        [Tooltip("The distance away from the closet attack target to stop at when attack moving.")] [Min(0)]
-        [SerializeField] private float stoppingRange = 0f;
+        [Tooltip("Whether or not this should move to its rally point on start.")]
+        [SerializeField] private bool moveToRallyOnStart = true;
 
 
         // The targets currently in range.
@@ -51,6 +52,13 @@ namespace ElementalEngagement.Combat
                 });
             visionRange.onTriggerExit.AddListener(
                 (collider) => validTargets.Remove(collider.transform));
+
+            if (moveToRallyOnStart && RallyPoint.tagsToRallyLocations.ContainsKey((allegiance.faction, tag)))
+            {
+                RaycastHit virtualHit = new RaycastHit();
+                virtualHit.point = RallyPoint.tagsToRallyLocations[(allegiance.faction, tag)].position;
+                ExecuteCommand(virtualHit, new ReadOnlyCollection<Selectable>(new List<Selectable>()), false);
+            }
         }
 
         /// <summary>
@@ -66,21 +74,18 @@ namespace ElementalEngagement.Combat
             if (hitUnderCursor.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
                 return false;
 
-            NavMeshPath path = new NavMeshPath();
-            agent.CalculatePath(hitUnderCursor.point, path);
-            return path.status == NavMeshPathStatus.PathComplete;
+            return movement.CanMoveTo(hitUnderCursor.point);
         }
 
         /// <summary>
         /// Moves to the hit location.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
+        /// <param name="selectedObjects"> The other selected objects. </param>
         /// <param name="isAltCommand"> Whether or not this should execute the alternate version of this command (if it exists). </param>
-        public override void ExecuteCommand(RaycastHit hitUnderCursor, bool isAltCommand)
+        public override void ExecuteCommand(RaycastHit hitUnderCursor, ReadOnlyCollection<Selectable> selectedObjects, bool isAltCommand)
         {
-            agent.isStopped = false;
             commandInProgress = true;
-
 
             StartCoroutine(DestinationReached());
             IEnumerator DestinationReached()
@@ -95,14 +100,12 @@ namespace ElementalEngagement.Combat
                     // Move to target location
                     if (!isAltCommand || attackableTargets.Count() == 0)
                     {
-                        agent.isStopped = false;
-                        agent.MoveTo(hitUnderCursor.point);
-                        Debug.DrawRay(hitUnderCursor.point, Vector3.up, Color.red, 1);
+                        movement.SetDestination(this, hitUnderCursor.point);
 
                         // Min Movement Speed Timeout
-                        Vector3 lastPosition = agent.transform.position;
+                        Vector3 lastPosition = movement.transform.position;
                         yield return null;
-                        if ((lastPosition -  agent.transform.position).magnitude/Time.deltaTime < minMovementSpeed)
+                        if ((lastPosition -  movement.transform.position).magnitude/Time.deltaTime < minMovementSpeed)
                         {
                             if (startStationaryTime == null)
                             {
@@ -128,8 +131,7 @@ namespace ElementalEngagement.Combat
                                 SqrDistance(closest) < SqrDistance(next) ? next : closest);
 
 
-                        agent.isStopped = SqrDistance(closetsTarget) < stoppingRange * stoppingRange;
-                        agent.MoveTo(closetsTarget.position);
+                        movement.SetDestination(this, closetsTarget.position);
 
                         yield return null;
                     }
@@ -146,7 +148,7 @@ namespace ElementalEngagement.Combat
         public override void CancelCommand()
         {
             StopAllCoroutines();
-            agent.isStopped = true;
+            movement.RemoveDestination(this);
             commandInProgress = false;
         }
     }

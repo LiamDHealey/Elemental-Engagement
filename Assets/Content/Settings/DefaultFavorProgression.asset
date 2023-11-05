@@ -55,32 +55,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: 6f9f402f25e13474881f70f556b68df1, type: 3}
-    - typeName: Advanced
-      favorToSpawnRate:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: Infinity
-          outSlope: Infinity
-          tangentMode: 103
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.1
-          inSlope: 1
-          outSlope: 1.8
-          tangentMode: 65
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      prefabToSpawn: {fileID: 2819691728172290092, guid: 9059bc288aea34d489796766cc705193, type: 3}
   - god: 2
     initialFavor: 0
     _abilityUnlocks:
@@ -123,32 +97,6 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: 5bee485329d1334489f682c34dcfaa8d, type: 3}
-    - typeName: Advanced
-      favorToSpawnRate:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: Infinity
-          outSlope: Infinity
-          tangentMode: 103
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.1
-          inSlope: 1
-          outSlope: 1.8
-          tangentMode: 65
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      prefabToSpawn: {fileID: 2819691728172290092, guid: 0b3b56b551dc6404b9206d9afa59edcc, type: 3}
   - god: 3
     initialFavor: 0
     _abilityUnlocks:
@@ -191,38 +139,21 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       prefabToSpawn: {fileID: 2819691728172290092, guid: e33413a2db3a5144c835803f95cb82c4, type: 3}
-    - typeName: Advanced
-      favorToSpawnRate:
-        serializedVersion: 2
-        m_Curve:
-        - serializedVersion: 3
-          time: 0
-          value: 0
-          inSlope: Infinity
-          outSlope: Infinity
-          tangentMode: 103
-          weightedMode: 0
-          inWeight: 0
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.5
-          value: 0.1
-          inSlope: 1
-          outSlope: 1.8
-          tangentMode: 65
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        m_PreInfinity: 2
-        m_PostInfinity: 2
-        m_RotationOrder: 4
-      prefabToSpawn: {fileID: 2819691728172290092, guid: cd741a4fab9ec6f42935aaca5d2fff18, type: 3}
   - god: 0
     initialFavor: 0
     _abilityUnlocks:
     - favorThreshold: 0
       abilityTier: 0
       ability: {fileID: 11400000, guid: e7e597d06803e244084695f7f3def76e, type: 2}
+    - favorThreshold: 0
+      abilityTier: 0
+      ability: {fileID: 11400000, guid: efd69a82668095d40bc95137a3c60b73, type: 2}
+    - favorThreshold: 0
+      abilityTier: 0
+      ability: {fileID: 11400000, guid: c9200013e1ec231478a75a99769b2320, type: 2}
+    - favorThreshold: 0
+      abilityTier: 0
+      ability: {fileID: 11400000, guid: 2b8baa65e8bbb884f9fd077d1ad3c295, type: 2}
     _spawnerTypes: []
   - god: 4
     initialFavor: 1

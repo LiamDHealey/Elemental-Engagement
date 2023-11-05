@@ -98,6 +98,13 @@ namespace ElementalEngagement.UI
                 }
                 string GetBindingName()
                 {
+                    if (input.devices.Count == 0)
+                        return appropriateBindings
+                            .Aggregate("", (name, binding) =>
+                            {
+                                return name + binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions);
+                            });
+
                     return appropriateBindings
                         .Aggregate("", (name, binding) =>
                         {
