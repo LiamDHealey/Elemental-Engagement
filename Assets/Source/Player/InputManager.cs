@@ -237,7 +237,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            uiInputHandler.Pause();
+            UiInputHandler.onMenuOpened?.Invoke("pauseMenu");
         }
 
         private void Back(CallbackContext context)
@@ -251,7 +251,7 @@ namespace ElementalEngagement
             }
             else if (state.HasFlag(State.InMenu))
             {
-                uiInputHandler.Back();
+                UiInputHandler.onMenuClosed?.Invoke("pauseMenu");
             }
         }
         #endregion

@@ -14,33 +14,42 @@ public class UiInputHandler : MonoBehaviour
 
     [SerializeField] GameObject pauseMenu;
 
+    private int openMenus = 1;
+
     public static UnityEvent<string> onMenuOpened = new UnityEvent<string>();
 
     public static UnityEvent<string> onMenuClosed = new UnityEvent<string>();
 
     public bool isUIOpen { get; private set; } = false;
 
-    public void Pause()
+    private void Start()
     {
-        onMenuOpened?.Invoke("pauseMenu");
-        Time.timeScale = 0f;
-        isUIOpen = true;
+        onMenuOpened.AddListener(menuOpened);
+        onMenuClosed.AddListener(menuClosed);
     }
 
-    public void Back()
+    private void menuOpened(string name)
     {
-        onMenuClosed?.Invoke("pauseMenu");
-        Time.timeScale = 1f;
-        isUIOpen = false;
+        openMenus++;
     }
 
-    public void OpenGuide()
+    private void menuClosed(string name)
     {
-
+        openMenus--;
     }
 
-    public void GoToMainMenu()
+    private void Update()
     {
-        SceneManager.LoadSceneAsync("Content/Scenes/Main Menu");
+        if(openMenus > 0)
+        {
+            Time.timeScale = 0f;
+        }
+
+        else
+        {
+            Time.timeScale = 1.0f;
+        }
     }
+
+
 }
