@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
 
 public class UiInputHandler : MonoBehaviour
@@ -36,5 +37,10 @@ public class UiInputHandler : MonoBehaviour
     public void OpenGuide()
     {
 
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadSceneAsync("Content/Scenes/Main Menu");
     }
 }
