@@ -394,7 +394,6 @@ GameObject:
   - component: {fileID: 7928787025073165778}
   - component: {fileID: 7977147439944294568}
   - component: {fileID: 2280283077756958185}
-  - component: {fileID: 3600748324673135355}
   - component: {fileID: 106441613470632701}
   - component: {fileID: 3084716155162024372}
   - component: {fileID: 3685090205885791067}
@@ -403,6 +402,7 @@ GameObject:
   - component: {fileID: 7481136888690889076}
   - component: {fileID: 6997656361314388549}
   - component: {fileID: 6317284455027317297}
+  - component: {fileID: 1000893756457621722}
   m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
@@ -510,7 +510,7 @@ MonoBehaviour:
   onKnockbackBegin:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3600748324673135355}
+      - m_Target: {fileID: 1000893756457621722}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -520,12 +520,12 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   onKnockbackEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3600748324673135355}
+      - m_Target: {fileID: 1000893756457621722}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -581,7 +581,7 @@ MonoBehaviour:
             m_StringArgument: 1, 0, 0, 1
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 3600748324673135355}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
           m_MethodName: set_enabled
           m_Mode: 6
@@ -633,7 +633,7 @@ MonoBehaviour:
             m_StringArgument: 1, 1, 1, 1
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 3600748324673135355}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
           m_MethodName: set_enabled
           m_Mode: 6
@@ -685,7 +685,7 @@ MonoBehaviour:
             m_StringArgument: 0, 0, 0, 1
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 3600748324673135355}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
           m_MethodName: set_enabled
           m_Mode: 6
@@ -740,28 +740,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!195 &3600748324673135355
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5833595026407189285}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 3.25
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 0
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 8
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!136 &106441613470632701
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -868,9 +846,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandPriority: 0
-  agent: {fileID: 3600748324673135355}
-  movementTimeout: 1
-  movementTimeoutMaxDistance: 0.01
+  allegiance: {fileID: 7977147439944294568}
+  movement: {fileID: 1000893756457621722}
+  visionRange: {fileID: 2821754969731851486}
+  minMovementSpeed: 0.5
+  minMovementSpeedTimeout: 1
 --- !u!114 &8306161271482549596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,7 +864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visionRange: {fileID: 2821754969731851486}
-  agent: {fileID: 3600748324673135355}
+  movement: {fileID: 1000893756457621722}
   allegiance: {fileID: 7977147439944294568}
   stoppingRange: 6.25
 --- !u!114 &7481136888690889076
@@ -900,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandPriority: 1
-  agent: {fileID: 3600748324673135355}
+  movement: {fileID: 1000893756457621722}
   stoppingDistance: 10
   pathRefreshRate: 0.25
 --- !u!114 &6997656361314388549
@@ -916,7 +896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   commandPriority: 1
-  agent: {fileID: 3600748324673135355}
+  movement: {fileID: 1000893756457621722}
   allegiance: {fileID: 7977147439944294568}
   sacrificeHpValue: 0.001
   sacrificeRange: {fileID: 5389468287829788689}
@@ -978,6 +958,27 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 4, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1000893756457621722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833595026407189285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b21210aca46e6a49a1bd3ac0669e79a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onMovementPrevented:
+    m_PersistentCalls:
+      m_Calls: []
+  onMovementResumed:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestinationReached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7486104880870669279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1063,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &854166808930866116

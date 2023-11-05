@@ -106,17 +106,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireElemental_Walking_0
+      name: EarthElemental_Walking_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 512
-        width: 368
-        height: 512
+        x: 0
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 598791625f1d7644a858d68fe0be28e4
-      internalID: 794055560
+      spriteID: 547c5723ffc66db4fa4c965c844b7019
+      internalID: -464330627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Walking_1
+      name: EarthElemental_Walking_1
       rect:
         serializedVersion: 2
-        x: 584
-        y: 513
-        width: 368
-        height: 511
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc0c5323038a3594386ee9835ee65723
-      internalID: 234178005
+      spriteID: b1462ee2ea3229844868f0211e678623
+      internalID: -1790983420
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Walking_2
+      name: EarthElemental_Walking_2
       rect:
         serializedVersion: 2
-        x: 72
+        x: 0
         y: 0
-        width: 368
-        height: 512
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75c606a98bf5c7a49a401b09587336ed
-      internalID: 2101702659
+      spriteID: ded47307ffca1bf4994dffa2bc7b054e
+      internalID: 701899376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Walking_3
+      name: EarthElemental_Walking_3
       rect:
         serializedVersion: 2
-        x: 584
-        y: 1
-        width: 368
-        height: 511
+        x: 2048
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a50883798eef314080f82f717324fe7
-      internalID: 130570080
+      spriteID: b82f3c00e27eab94da0e0182bb6c07d4
+      internalID: 1956117947
       vertices: []
       indices: 
       edges: []
@@ -204,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FireElemental_Walking_0: 794055560
-      FireElemental_Walking_1: 234178005
-      FireElemental_Walking_2: 2101702659
-      FireElemental_Walking_3: 130570080
+      EarthElemental_Walking_0: -464330627
+      EarthElemental_Walking_1: -1790983420
+      EarthElemental_Walking_2: 701899376
+      EarthElemental_Walking_3: 1956117947
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

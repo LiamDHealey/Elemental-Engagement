@@ -30,7 +30,7 @@ namespace ElementalEngagement.UI
         [SerializeField] private Image iconImage;
             
         [Tooltip("The manager this is showing the ability for.")]
-        public AbilityManager manager;
+        public AbilityInputHandler manager;
 
 
 
@@ -72,19 +72,19 @@ namespace ElementalEngagement.UI
             get => _selectedOverlayEnabled;
             set
             {
-                //if (_selectedOverlayEnabled == value)
-                //    return;
+                if (_selectedOverlayEnabled == value)
+                    return;
 
-                //_selectedOverlayEnabled = value;
+                _selectedOverlayEnabled = value;
 
-                //if (_selectedOverlayEnabled)
-                //{
-                //    onEnableSelectedOverlay?.Invoke();
-                //}
-                //else
-                //{
-                //    onDisableSelectedOverlay?.Invoke();
-                //}
+                if (_selectedOverlayEnabled)
+                {
+                    onSelected?.Invoke();
+                }
+                else
+                {
+                    onDeselected?.Invoke();
+                }
             }
         }
 
@@ -110,23 +110,12 @@ namespace ElementalEngagement.UI
                 }
             }
         }
-        private void Awake()
+        private void Start()
         {
             if (!Application.IsPlaying(gameObject))
                 return;
 
-            Transform parent = transform.parent;
-            while (manager == null && parent != null)
-            {
-                manager = parent.GetComponent<AbilityManager>();
-                parent = parent.parent;
-            }
-            if (manager == null)
-            {
-                Debug.LogError("No Ability Manager Found");
-                return;
-            }
-
+            manager = GetComponentInParent<AbilityInputHandler>();
             manager.onAbilityLocked.AddListener(ability => { if (ability == this.ability) onLocked?.Invoke(); });
             manager.onAbilityUnlocked.AddListener(ability => { if (ability == this.ability) onUnlocked?.Invoke(); });
             manager.onSelectedAbilityChanged.AddListener(ability => { (ability == this.ability ? onSelected : onDeselected)?.Invoke(); });
@@ -135,6 +124,7 @@ namespace ElementalEngagement.UI
         private void Update()
         {
             iconImage.sprite = ability?.icon ?? null;
+            if (ability == null) return;
 
             float currentCooldown = 0;
             if ((!manager?.abilityCooldowns.TryGetValue(ability, out currentCooldown)) ?? false)
@@ -143,6 +133,8 @@ namespace ElementalEngagement.UI
             cooldownOverlayEnabled = currentCooldown != 0;
             if (cooldownOverlayEnabled)
                 onCooldownPercentChanged?.Invoke(currentCooldown/ability.cooldown);
+
+            selectedOverlayEnabled = manager?.selectedAbility == ability;
         }
 
         [System.Serializable]

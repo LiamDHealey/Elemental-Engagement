@@ -187,7 +187,7 @@ namespace ElementalEngagement.Utilities
             }
             Destroy(audioSource);
 
-            AudioClip GetRandomClip(List<AudioClip> clips) => clips[UnityEngine.Random.Range(0, clips.Count-1)];
+            AudioClip GetRandomClip(List<AudioClip> clips) => clips[UnityEngine.Random.Range(0, clips.Count)];
         }
         private enum State { Menu, LowIntensity, MediumIntensity, HighIntensity }
     }

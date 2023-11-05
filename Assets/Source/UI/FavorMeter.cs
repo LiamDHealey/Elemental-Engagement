@@ -17,11 +17,11 @@ namespace ElementalEngagement.UI
         [Tooltip("The god who's favor should be displayed.")]
         [SerializeField] private Favor.MinorGod god;
 
-        [Tooltip("The allegiance used to determine which player this displays the favor for.")]
-        [SerializeField] private Allegiance allegiance;
-
         [Tooltip("Called whenever the favor this meter is tracking changes.")]
         [SerializeField] private UnityEvent<float> onFavorChanged;
+
+        // The allegiance used to determine which player this displays the favor for.
+        private Allegiance allegiance;
 
         /// <summary>
         /// Create listener for the onFavorChanged event.
@@ -30,6 +30,8 @@ namespace ElementalEngagement.UI
         /// </summary>
         private void Start()
         {
+            allegiance = GetComponentInParent<Allegiance>();
+
             FavorManager.onFavorChanged.AddListener((faction,god)=>
             {
                 if (god == this.god && faction == allegiance.faction)

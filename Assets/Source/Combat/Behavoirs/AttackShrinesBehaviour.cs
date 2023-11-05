@@ -16,7 +16,7 @@ using UnityEngine.AI;
 public class AttackShrinesBehaviour : MonoBehaviour
 {
     [Tooltip("The agent used to move this.")]
-    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Movement movement;
 
     [Tooltip("The allegiance of this. Leave null for this to chase any object with a health component.")]
     [SerializeField] private Allegiance allegiance;
@@ -70,9 +70,7 @@ public class AttackShrinesBehaviour : MonoBehaviour
                                     return closest;
                             });
 
-                        agent.isStopped = SqrDistance(closetsTarget) < stoppingRange * stoppingRange;
-                        agent.MoveTo(closetsTarget.GetComponent<Spawner>().spawnLocation.position);
-                        Debug.Log(agent.pathStatus);    
+                        movement.SetDestination(this, closetsTarget.GetComponent<Spawner>().spawnLocation.position, stoppingRange);
                         yield return null;
                     }
                 }

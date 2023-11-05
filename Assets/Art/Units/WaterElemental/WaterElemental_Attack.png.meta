@@ -106,17 +106,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireElemental_Attack_0
+      name: WaterElemental_Attack_0
       rect:
         serializedVersion: 2
-        x: 72
-        y: 512
-        width: 368
-        height: 512
+        x: 0
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9553c1a40787b814094359556eefd526
-      internalID: 1819122187
+      spriteID: e1a157025d1c0e446832c26d3d3bee1a
+      internalID: -1619635666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Attack_1
+      name: WaterElemental_Attack_1
       rect:
         serializedVersion: 2
-        x: 648
-        y: 512
-        width: 304
-        height: 512
+        x: 2048
+        y: 2048
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +158,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 910bd1a17a8735d41b03d0149eb32cbb
-      internalID: 344217254
+      spriteID: 8ac85fb5c91f7b0438d49b78809ac023
+      internalID: 1229563731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Attack_2
+      name: WaterElemental_Attack_2
       rect:
         serializedVersion: 2
-        x: 138
+        x: 4096
+        y: 2048
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68d592fb4f07624190195bf6530e8cf
+      internalID: -1698032685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterElemental_Attack_3
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
-        width: 302
-        height: 512
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 697c82d5dccd7db4b9a62f35fbfb5c67
-      internalID: -1715497341
+      spriteID: ac8f996d0c04f7d4582d9f91a1c0b302
+      internalID: -1285810167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireElemental_Attack_3
+      name: WaterElemental_Attack_4
       rect:
         serializedVersion: 2
-        x: 650
+        x: 2048
         y: 0
-        width: 302
-        height: 512
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +221,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5186aee899d6a664dad58d7f5b1134f2
-      internalID: -1411936204
+      spriteID: f430949d0901c344f8d1b583bbedf671
+      internalID: -852064989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: WaterElemental_Attack_5
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0302db76e18fe1049955761f3773bfb4
+      internalID: -1996664016
       vertices: []
       indices: 
       edges: []
@@ -204,10 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FireElemental_Attack_0: 1819122187
-      FireElemental_Attack_1: 344217254
-      FireElemental_Attack_2: -1715497341
-      FireElemental_Attack_3: -1411936204
+      WaterElemental_Attack_0: -1619635666
+      WaterElemental_Attack_1: 1229563731
+      WaterElemental_Attack_2: -1698032685
+      WaterElemental_Attack_3: -1285810167
+      WaterElemental_Attack_4: -852064989
+      WaterElemental_Attack_5: -1996664016
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

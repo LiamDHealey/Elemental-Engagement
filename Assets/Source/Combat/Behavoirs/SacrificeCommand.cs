@@ -2,6 +2,7 @@ using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -15,7 +16,7 @@ namespace ElementalEngagement.Combat
     public class SacrificeCommand : CommandReceiver
     {
         [Tooltip("The agent used to move this.")]
-        [SerializeField] private NavMeshAgent agent;
+        [SerializeField] private Movement movement;
 
         [Tooltip("The allegiance of this. Can not be null.")]
         [SerializeField] private Allegiance allegiance;
@@ -55,11 +56,12 @@ namespace ElementalEngagement.Combat
         /// Moves to the sacrifice location and then sacrifices itself to it by calling Sacrifice on the sacrifice location.
         /// </summary>
         /// <param name="hitUnderCursor"> The hit result from under the cursor. </param>
-        public override void ExecuteCommand(RaycastHit hitUnderCursor)
+        /// <param name="selectedObjects"> The other selected objects. </param>
+        /// <param name="isAltCommand"> Whether or not this should execute the alternate version of this command (if it exists). </param>
+        public override void ExecuteCommand(RaycastHit hitUnderCursor, ReadOnlyCollection<Selectable> selectedObjects, bool isAltCommand)
         {
-            agent.isStopped = false;
             commandInProgress = true;
-            agent.MoveTo(hitUnderCursor.collider.transform.position);
+            movement.SetDestination(this, hitUnderCursor.collider.transform.position);
 
             targetSacrificeLocation = hitUnderCursor.collider;
             if (sacrificeRange.overlappingColliders.Contains(targetSacrificeLocation))
@@ -93,7 +95,7 @@ namespace ElementalEngagement.Combat
             if (collider != targetSacrificeLocation)
                 return;
 
-            agent.isStopped = true;
+            movement.PreventMovement(this);
             targetSacrificeLocation.GetComponent<SacrificeLocation>().StartSacrificing(this);
         }
 
@@ -106,7 +108,7 @@ namespace ElementalEngagement.Combat
             if (collider != targetSacrificeLocation)
                 return;
 
-            agent.isStopped = false;
+            movement.AllowMovement(this);
             onSacrificeEnd?.Invoke();
             targetSacrificeLocation.GetComponent<SacrificeLocation>().StopSacrificing(this);
         }
