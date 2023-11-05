@@ -11,37 +11,29 @@ namespace ElementalEngagement.Combat
     public class AttackModificationArea : StatModificationArea
     {
         [Tooltip("The amount to add to the damage of any attacks in the area as a percent of its current value.")]
-        [SerializeField] private float damageMultiplier;
+        [Min(0.00001f)]
+        [SerializeField] private float damageMultiplier = 1;
 
         [Tooltip("The amount to add to the knockback amount of any attacks in the area as a percent of its current value.")]
-        [SerializeField] private float knockbackMultiplier;
+        [Min(0.00001f)]
+        [SerializeField] private float knockbackMultiplier = 1;
 
         [Tooltip("The amount to add to the attack interval of any attacks in the area as a percent of its current value.")]
-        [SerializeField] private float attackIntervalMutliplier;
+        [Min(0.00001f)]
+        [SerializeField] private float attackIntervalMultiplier = 1;
 
 
         private void Start()
         {
-            area.onTriggerEnter.AddListener(OnTriggerEnter);
-            area.onTriggerExit.AddListener(OnTriggerExit);
+            area.onTriggerEnter.AddListener(OnTriggerEntered);
+            area.onTriggerExit.AddListener(OnTriggerExited);
         }
 
         public void OnDestroy()
         {
             foreach(Collider collider in area.overlappingColliders)
             {
-                Allegiance all = collider.GetComponent<Allegiance>();
-
-                Attack attack = collider.GetComponent<Attack>();
-
-                if (attack == null || all == null)
-                    return;
-
-                attack.damage.amount /= damageMultiplier;
-
-                attack.knockback.amount /= knockbackMultiplier;
-
-                attack.attackInterval /= attackIntervalMutliplier;
+                OnTriggerExited(collider);
             }
         }
 
@@ -51,27 +43,18 @@ namespace ElementalEngagement.Combat
         /// to that unit.
         /// </summary>
         /// <param name="collider"></param>
-        void OnTriggerEnter(Collider collider)
+        void OnTriggerEntered(Collider collider)
         {
-            Allegiance all = collider.GetComponent<Allegiance>();
-
             Attack attack = collider.GetComponent<Attack>();
 
-            if (attack == null || all == null)
+            if (attack == null)
+                return;
+            if (!CanModify(collider))
                 return;
 
-            //// If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
-            //if (all.faction != allegiance.faction || allegiance.faction == Faction.Unaligned)
-            //    return;
-
-            //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
-            //    return;
-
             attack.damage.amount *= damageMultiplier;
-
             attack.knockback.amount *= knockbackMultiplier;
-
-            attack.attackInterval *= attackIntervalMutliplier;
+            attack.attackInterval *= attackIntervalMultiplier;
         }
 
         /// <summary>
@@ -80,28 +63,18 @@ namespace ElementalEngagement.Combat
         /// to that unit.
         /// </summary>
         /// <param name="collider"></param>
-        void OnTriggerExit(Collider collider)
+        void OnTriggerExited(Collider collider)
         {
-            Allegiance all = collider.GetComponent<Allegiance>();
-
             Attack attack = collider.GetComponent<Attack>();
 
-            if (attack == null || all == null)
+            if (attack == null)
+                return;
+            if (!CanModify(collider))
                 return;
 
-            //// If collider allegiance does not equal area of effect's allegiance, or the area of effect's allegiance is unaligned.
-            //if (all.faction != allegiance.faction || allegiance.faction == Faction.Unaligned)
-            //    return;
-
-            //// If collider god is not equal to the area of effect's god, or the area of effect's god is unaligned.
-            //if (all.god != allegiance.god || allegiance.god == Favor.MinorGod.Unaligned)
-            //    return;
-
             attack.damage.amount /= damageMultiplier;
-
             attack.knockback.amount /= knockbackMultiplier;
-
-            attack.attackInterval /= attackIntervalMutliplier;
+            attack.attackInterval /= attackIntervalMultiplier;
         }
     }
 }
