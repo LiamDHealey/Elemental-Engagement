@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
     [Tooltip("The name of the menu this represents")]
-    [SerializeField] private string name;
+    [SerializeField] private string _menuName;
+    public string menuName => _menuName;
 
-    // Start is called before the first frame update
+    public bool isOpen => transform.GetChild(0).gameObject.activeSelf;
+
+
     void Start()
     {
-        UiInputHandler.onMenuOpened.AddListener(OpenMenu);
-        UiInputHandler.onMenuClosed.AddListener(CloseMenu);
-        
+        UIManager.onMenuOpened.AddListener(OpenMenu);
+        UIManager.onMenuClosed.AddListener(CloseMenu);        
     }
 
     private void OpenMenu(string menuName)
     {
-        if(menuName == name)
+        if(menuName == this._menuName)
         {
             transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -26,8 +25,8 @@ public class Menu : MonoBehaviour
 
     private void CloseMenu(string menuName) 
     { 
-        if(menuName == name) 
-        { 
+        if(menuName == this._menuName) 
+        {
             transform.GetChild(0).gameObject.SetActive(false);
         }
     }
