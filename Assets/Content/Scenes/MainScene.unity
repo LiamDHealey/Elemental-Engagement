@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (18)
+      value: NorthBridge1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -685,6 +685,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 674340280032488212, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
+--- !u!1 &112506472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112506473}
+  m_Layer: 0
+  m_Name: Ground
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112506473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112506472}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1628645824}
+  m_Father: {fileID: 472495647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &119687557 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653138074550990029, guid: 5bee485329d1334489f682c34dcfaa8d, type: 3}
@@ -763,6 +795,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e33413a2db3a5144c835803f95cb82c4, type: 3}
+--- !u!4 &163047880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
+  m_PrefabInstance: {fileID: 487238366}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &203534035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -829,7 +866,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (15)
+      value: NorthBridge6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -893,6 +930,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653138074550990029, guid: e33413a2db3a5144c835803f95cb82c4, type: 3}
   m_PrefabInstance: {fileID: 1257134771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &232904992 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
+  m_PrefabInstance: {fileID: 904804969}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &249886779 stripped
 Transform:
@@ -960,7 +1002,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 1
+  m_VoxelSize: 1.3333334
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c750e45294440434aafad5982085b167, type: 2}
   m_BuildHeightMesh: 0
@@ -991,7 +1033,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.33333334
+  m_VoxelSize: 0.6666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 49e5b312f14f86b4ca14357f1775d360, type: 2}
   m_BuildHeightMesh: 0
@@ -1281,7 +1323,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (14)
+      value: NorthBridge5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1829,7 +1871,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (17)
+      value: SouthBridge1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1942,7 +1984,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (20)
+      value: MiddleBridge2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2164,6 +2206,8 @@ Transform:
   - {fileID: 333527634}
   - {fileID: 2115108035}
   - {fileID: 527864164}
+  - {fileID: 112506473}
+  - {fileID: 1527489988}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &482076254
@@ -2245,11 +2289,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1527489988}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1789088
+      value: 2.178909
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.y
@@ -2257,11 +2301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.1789088
+      value: 2.178909
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 125.9
+      value: -88.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2564,7 +2608,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1527489988}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalScale.x
@@ -2580,7 +2624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 114.46735
+      value: -99.53265
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2958,6 +3002,11 @@ Transform:
   - {fileID: 1590797903}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &525910819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
+  m_PrefabInstance: {fileID: 1367426283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &527864163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,7 +3413,7 @@ GameObject:
   m_Component:
   - component: {fileID: 607832830}
   m_Layer: 7
-  m_Name: Terrain
+  m_Name: Bridges
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3892,7 +3941,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (12)
+      value: SouthBridge5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4224,11 +4273,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1527489988}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1789088
+      value: 2.178909
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.y
@@ -4236,11 +4285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.1789088
+      value: 2.178909
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 425.4
+      value: 211.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4670,7 +4719,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (9)
+      value: NorthBridge3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4920,7 +4969,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1527489988}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalScale.x
@@ -4936,7 +4985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 114.46735
+      value: -99.53265
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5325,7 +5374,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1527489988}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1c1a6b745e93169408206deec34082ca, type: 3}
       propertyPath: m_LocalScale.x
@@ -5341,7 +5390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c1a6b745e93169408206deec34082ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.174
+      value: -170.826
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c1a6b745e93169408206deec34082ca, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5357,15 +5406,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c1a6b745e93169408206deec34082ca, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c1a6b745e93169408206deec34082ca, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c1a6b745e93169408206deec34082ca, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1c1a6b745e93169408206deec34082ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5761,11 +5810,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1527489988}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.1789088
+      value: 2.178909
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.y
@@ -5773,11 +5822,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.1789088
+      value: 2.178909
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 109.2
+      value: -104.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6345,7 +6394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087419148660628678, guid: 5c43049fad46da5469df65a1eba98232, type: 3}
       propertyPath: _faction
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: 5c43049fad46da5469df65a1eba98232, type: 3}
       propertyPath: <integrity>k__BackingField
@@ -6517,7 +6566,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (11)
+      value: NorthBridge4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7228,7 +7277,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (13)
+      value: SouthBridge6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7372,7 +7421,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 112506473}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalScale.x
@@ -7388,11 +7437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 265
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7404,15 +7453,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7552,7 +7601,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1527489988}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalScale.x
@@ -7568,7 +7617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 435.9
+      value: 221.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7906,7 +7955,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (6)
+      value: NorthBridge2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7971,6 +8020,11 @@ MonoBehaviour:
   minSpeed: 0.3
   maxSpinRate: 0
   minSpinRate: 0
+--- !u!4 &1425625458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
+  m_PrefabInstance: {fileID: 752873515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1429347245 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7771054557393776144, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
@@ -8440,6 +8494,44 @@ MonoBehaviour:
   minSpeed: 0.3
   maxSpinRate: 45
   minSpinRate: 15
+--- !u!1 &1527489987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1527489988}
+  m_Layer: 0
+  m_Name: VisualOnly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1527489988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527489987}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 163047880}
+  - {fileID: 232904992}
+  - {fileID: 1425625458}
+  - {fileID: 2095224260}
+  - {fileID: 1989036952}
+  - {fileID: 525910819}
+  - {fileID: 1055145726}
+  m_Father: {fileID: 472495647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1527563699 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6930249640797549767, guid: 16cea43cf336be94e9a5f1b2b8501e9e, type: 3}
@@ -8598,6 +8690,11 @@ MonoBehaviour:
   minSpeed: 0.3
   maxSpinRate: 45
   minSpinRate: 15
+--- !u!4 &1628645824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 349704bb4ce202747971c415a5822dbf, type: 3}
+  m_PrefabInstance: {fileID: 1365422422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1646581362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9103,7 +9200,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (19)
+      value: MiddleBridge1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9642,7 +9739,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (2)
+      value: SouthBridge2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9688,6 +9785,11 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2653138074550990029, guid: e33413a2db3a5144c835803f95cb82c4, type: 3}
   m_PrefabInstance: {fileID: 1169983355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1989036952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
+  m_PrefabInstance: {fileID: 505244658}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2014767240 stripped
 Transform:
@@ -10036,6 +10138,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 63.455, y: -90, z: 0}
+--- !u!4 &2095224260 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4959dbca9ac0ca84180a90fbd990e368, type: 3}
+  m_PrefabInstance: {fileID: 873122598}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2111805224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10102,7 +10209,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (16)
+      value: SouthBridge4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10314,7 +10421,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d3b91a177544f4499798bf639c672a6, type: 2}
     - target: {fileID: 919132149155446097, guid: 3a1a2a1d4baf46c4fba553fd0aaa1b12, type: 3}
       propertyPath: m_Name
-      value: South Bridge (3)
+      value: SouthBridge3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10531,11 +10638,3 @@ SceneRoots:
   - {fileID: 700201741}
   - {fileID: 2078782935}
   - {fileID: 895860834}
-  - {fileID: 1365422422}
-  - {fileID: 487238366}
-  - {fileID: 904804969}
-  - {fileID: 752873515}
-  - {fileID: 873122598}
-  - {fileID: 505244658}
-  - {fileID: 1367426283}
-  - {fileID: 874838685}
