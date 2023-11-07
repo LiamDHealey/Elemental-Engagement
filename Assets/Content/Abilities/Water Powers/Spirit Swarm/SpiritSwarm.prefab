@@ -4843,6 +4843,7 @@ GameObject:
   - component: {fileID: 9118675805897069436}
   - component: {fileID: 2811049362678237505}
   - component: {fileID: 2918475226641877387}
+  - component: {fileID: 5413350263097762226}
   m_Layer: 0
   m_Name: SpiritSwarm
   m_TagString: Untagged
@@ -4895,8 +4896,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
-  damageMultiplier: 0
-  knockbackMultiplier: 0
+  damageMultiplier: 1
+  knockbackMultiplier: 1
   attackIntervalMultiplier: 0.75
 --- !u!114 &7050953722733766674
 MonoBehaviour:
@@ -4985,3 +4986,16 @@ MonoBehaviour:
     onSelected:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &5413350263097762226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8176869283739848236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 10

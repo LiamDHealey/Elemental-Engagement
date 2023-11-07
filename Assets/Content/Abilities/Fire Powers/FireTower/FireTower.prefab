@@ -5425,7 +5425,20 @@ MonoBehaviour:
       m_Calls: []
   onKilled:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9083011578323652702}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
+        m_MethodName: DestroyParent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7176149932437668644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5439,7 +5452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _faction: 0
-  god: 0
+  god: 1
   onFactionChanged:
   - faction: 0
     onSelected:
@@ -5448,11 +5461,35 @@ MonoBehaviour:
   - faction: 1
     onSelected:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 637090598971366715}
+          m_TargetAssemblyTypeName: ElementalEngagement.UI.HealthBar, Assembly-CSharp
+          m_MethodName: SetColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 1, 1, 1, 1
+            m_BoolArgument: 0
+          m_CallState: 2
   - faction: 2
     onSelected:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 637090598971366715}
+          m_TargetAssemblyTypeName: ElementalEngagement.UI.HealthBar, Assembly-CSharp
+          m_MethodName: SetColor
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 0, 0, 0, 1
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!65 &4221571647890579594
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5683,6 +5720,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bae706e231c75744fbe955af1264558e, type: 3}
+--- !u!114 &637090598971366715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6409054260665623454, guid: bae706e231c75744fbe955af1264558e, type: 3}
+  m_PrefabInstance: {fileID: 5775565678975155877}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7664527ec2619984d89e82a13031ee49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &645262675572324790 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
