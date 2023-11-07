@@ -32,7 +32,7 @@ public class PetrifySwapBehavior : MonoBehaviour
         {
             if (unit.GetType() == typeof(Unit))
             {
-                unit.GetComponent<Renderer>().material = petrifyMat;
+                Destroy(unit.GetComponent<Renderer>().material);
             }
         }
     }
