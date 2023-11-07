@@ -4844,6 +4844,7 @@ GameObject:
   - component: {fileID: 1317924507226698854}
   - component: {fileID: 8238808009166286647}
   - component: {fileID: 2991187041414704929}
+  - component: {fileID: 2258943031987325674}
   m_Layer: 0
   m_Name: Petrify
   m_TagString: Untagged
@@ -4942,9 +4943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 1317924507226698854}
   allegiance: {fileID: 7182556735942742344}
-  deltaSpeed: 0
-  deltaAngularSpeed: 0
-  deltaAcceleration: 0
+  speedMultiplier: 0.0001
 --- !u!114 &1317924507226698854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,7 +4982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 1317924507226698854}
   allegiance: {fileID: 7182556735942742344}
-  deltaMaxHp: 2
+  maxHpMultiplier: 2
 --- !u!114 &2991187041414704929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4996,8 +4995,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c461cdc6d775cce45ac78a68f3b83051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: {fileID: 0}
-  allegiance: {fileID: 0}
+  area: {fileID: 1317924507226698854}
+  allegiance: {fileID: 7182556735942742344}
   damageMultiplier: 0
   knockbackMultiplier: 0
-  attackIntervalMutliplier: 999999
+  attackIntervalMultiplier: 9999
+--- !u!114 &2258943031987325674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443267638344645966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb94abfb43d6824aa4cb677b2341bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: {fileID: 1317924507226698854}
+  allegiance: {fileID: 7182556735942742344}
+  petrifyMat: {fileID: 2100000, guid: 570dc8e555a62d84bae8c99389f43626, type: 2}
