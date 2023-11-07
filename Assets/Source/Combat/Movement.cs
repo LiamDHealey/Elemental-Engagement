@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 using Object = UnityEngine.Object;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -14,6 +15,8 @@ public class Movement : MonoBehaviour
 
     [Tooltip("The nav mesh this will use.")]
     public string agentType = "BasicElemental";
+    [Tooltip("The mask used to snap to the ground.")]
+    public LayerMask walkableMask;
     [Tooltip("The speed this will move at")]
     [SerializeField] private float _speed = 10;
     public float speed 
@@ -170,7 +173,11 @@ public class Movement : MonoBehaviour
     {
         if (!destinationReached && canMove && navigator != null)
         {
-            rigidbody.MovePosition(transform.position + Vector3.Scale(agent.desiredVelocity, new Vector3(1,0,1)).normalized * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime));
+            if (Physics.Raycast(transform.position + Vector3.up * 50, Vector3.down, out RaycastHit hit, 500f, walkableMask))
+            {
+                transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+            }
+            transform.position = (transform.position + (Vector3.Scale(agent.desiredVelocity, new Vector3(1, 0, 1)).normalized) * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime));
             agent.nextPosition = transform.position;
         }
 

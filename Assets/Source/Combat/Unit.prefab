@@ -772,7 +772,7 @@ Rigidbody:
   m_GameObject: {fileID: 5833595026407189285}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 50
+  m_Drag: 999999
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -851,6 +851,7 @@ MonoBehaviour:
   visionRange: {fileID: 2821754969731851486}
   minMovementSpeed: 0.5
   minMovementSpeedTimeout: 1
+  moveToRallyOnStart: 1
 --- !u!114 &8306161271482549596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,6 +971,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b21210aca46e6a49a1bd3ac0669e79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentType: BasicElemental
+  walkableMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _speed: 10
   onMovementPrevented:
     m_PersistentCalls:
       m_Calls: []
