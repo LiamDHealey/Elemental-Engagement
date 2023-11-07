@@ -1,39 +1,44 @@
+using ElementalEngagement.Combat;
+using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class PetrifySwapBehavior : MonoBehaviour
+public class PetrifySwapBehavior : StatModificationArea
 {
 
     [Tooltip("Material with the petrify texture that will be overlayed on the units.")]
     [SerializeField] Material petrifyMat;
 
 
-    void Start()
+    private void Start()
     {
-        petrifyMat = Resources.Load("Assets/Art/MapArt/Materials/EE_Textures_Petrify2.png", typeof(Material)) as Material;
+        area.onTriggerEnter.AddListener(OnTriggerEntered);
+        area.onTriggerExit.AddListener(OnTriggerExited);
     }
 
-    public void applyPetrifyMaterial(GameObject[] units)
+    private void OnTriggerEntered(Collider collider)
     {
-        foreach (GameObject unit in units)
-        {
-            if (unit.GetType() == typeof(Unit))
-            {
-                unit.GetComponent<Renderer>().material = petrifyMat;
-            }
-        }
+        applyPetrifyMaterial(collider.gameObject);
     }
 
-    public void removePetrifyMaterial(GameObject[] units)
+
+    private void OnTriggerExited(Collider collider)
     {
-        foreach (GameObject unit in units)
-        {
-            if (unit.GetType() == typeof(Unit))
-            {
-                Destroy(unit.GetComponent<Renderer>().material);
-            }
-        }
+        removePetrifyMaterial(collider.gameObject);
+    }
+
+    //Internal helper method to apply the petrify material to the unit
+    private void applyPetrifyMaterial(GameObject unit)
+    {
+        unit.GetComponent<Renderer>().material = petrifyMat;
+    }
+
+    //Internal helper method to remove the petrify material to the unit
+    private void removePetrifyMaterial(GameObject unit)
+    {
+        Destroy(unit.GetComponent<Renderer>().material);
     }
 }
