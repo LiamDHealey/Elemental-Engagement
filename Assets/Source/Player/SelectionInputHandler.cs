@@ -126,7 +126,10 @@ namespace ElementalEngagement.Player
                 currentSelectedTag = selectable.tag;
             }
 
-            this.DeselectAll();
+            if (selectable.isSelected)
+            {
+                this.DeselectAll();
+            }
 
             foreach (Collider collider in hitColliders)
             {
