@@ -10,11 +10,11 @@ namespace ElementalEngagement.UI
     {
         public void Open(string menuName)
         {
-            UiInputHandler.onMenuOpened?.Invoke(menuName);
+            UIManager.onMenuOpened?.Invoke(menuName);
         }
         public void Close(string menuName)
         {
-            UiInputHandler.onMenuClosed?.Invoke(menuName);
+            UIManager.onMenuClosed?.Invoke(menuName);
         }
     }
 }

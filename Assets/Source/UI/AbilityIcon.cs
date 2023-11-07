@@ -116,9 +116,22 @@ namespace ElementalEngagement.UI
                 return;
 
             manager = GetComponentInParent<AbilityInputHandler>();
-            manager.onAbilityLocked.AddListener(ability => { if (ability == this.ability) onLocked?.Invoke(); });
-            manager.onAbilityUnlocked.AddListener(ability => { if (ability == this.ability) onUnlocked?.Invoke(); });
+
             manager.onSelectedAbilityChanged.AddListener(ability => { (ability == this.ability ? onSelected : onDeselected)?.Invoke(); });
+
+            if (manager.IsAbilityLocked(ability))
+            {
+                onLocked?.Invoke();
+            }
+            else if (manager.IsAbilityUnlocked(ability))
+            {
+                onUnlocked?.Invoke();
+            }
+            else
+            {
+                manager.onAbilityLocked.AddListener(ability => { if (ability == this.ability) onLocked?.Invoke(); });
+                manager.onAbilityUnlocked.AddListener(ability => { if (ability == this.ability) onUnlocked?.Invoke(); });
+            }
         }
 
         private void Update()

@@ -13,7 +13,7 @@ using static UnityEngine.InputSystem.InputAction;
 namespace ElementalEngagement
 {
     [RequireComponent(typeof(PlayerInput), typeof(SelectionInputHandler), typeof(AbilityInputHandler))]
-    [RequireComponent(typeof(PanInputHandler), typeof(UiInputHandler))]
+    [RequireComponent(typeof(PanInputHandler))]
     public class InputManager : MonoBehaviour
     {
         [Tooltip("The states each action is allowed to be used in")]
@@ -36,14 +36,11 @@ namespace ElementalEngagement
         // The ability manager
         private PanInputHandler panInputHandler;
 
-        // The UI manager
-        private UiInputHandler uiInputHandler;
-
         private State state
         {
             get
             {
-                if (uiInputHandler.isUIOpen)
+                if (UIManager.isUIOpen)
                     return State.InMenu;
                 if (abilityInputHandler.isAbilitySelected)
                         return State.AbilitySelected;
@@ -66,7 +63,6 @@ namespace ElementalEngagement
             selectionInputHandler = GetComponent<SelectionInputHandler>();
             abilityInputHandler = GetComponent<AbilityInputHandler>();
             panInputHandler = GetComponent<PanInputHandler>();
-            uiInputHandler = GetComponent<UiInputHandler>();
 
             actionRequirements = _actionRequirements
                 .ToDictionary(requirement => requirement.action.action.name);
@@ -237,7 +233,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            UiInputHandler.onMenuOpened?.Invoke("pauseMenu");
+            UIManager.onMenuOpened?.Invoke("pauseMenu");
         }
 
         private void Back(CallbackContext context)
@@ -251,7 +247,7 @@ namespace ElementalEngagement
             }
             else if (state.HasFlag(State.InMenu))
             {
-                UiInputHandler.onMenuClosed?.Invoke("pauseMenu");
+                UIManager.onMenuClosed?.Invoke("pauseMenu");
             }
         }
         #endregion

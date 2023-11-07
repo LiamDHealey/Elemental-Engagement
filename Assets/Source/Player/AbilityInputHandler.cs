@@ -185,6 +185,9 @@ namespace ElementalEngagement.Player
             ResetSelection();
         }
 
+        public bool IsAbilityUnlocked(Ability ability) => unlockedAbilities?.Contains(ability) ?? false;
+        public bool IsAbilityLocked(Ability ability) => lockedAbilities?.Contains(ability) ?? false;
+
         /// <summary>
         /// Updates the ability unlock/locked status.
         /// </summary>
