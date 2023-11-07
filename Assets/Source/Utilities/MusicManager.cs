@@ -54,6 +54,7 @@ namespace ElementalEngagement.Utilities
         // Track the audio source of the music
         private static AudioSource audioSource = null;
 
+
         private void Awake()
         {
             if (instance == null)
@@ -111,6 +112,11 @@ namespace ElementalEngagement.Utilities
 
         public static void ResetMusic()
         {
+            foreach (Transform child in instance.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
             if (SceneManager.GetActiveScene().name == instance.mainMenuSceneName)
             {
                 StartMenuMusic();
@@ -160,19 +166,22 @@ namespace ElementalEngagement.Utilities
             if (music[musicIndex].introClip != null)
             {
                 audioSource.PlayOneShot(music[musicIndex].introClip);
-                while (audioSource.isPlaying)
+                while (audioSource.isPlaying && instance.state == state)
                 {
                     yield return null;
                 }
             }
 
-            // Play music
-            audioSource.clip = music[musicIndex].mainClip;
-            audioSource.loop = true;
-            audioSource.Play();
-            while (instance.state == state)
+            if(instance.state == state)
             {
-                yield return null;
+                // Play music
+                audioSource.clip = music[musicIndex].mainClip;
+                audioSource.loop = true;
+                audioSource.Play();
+                while (instance.state == state)
+                {
+                    yield return null;
+                }
             }
 
             // Fade out music

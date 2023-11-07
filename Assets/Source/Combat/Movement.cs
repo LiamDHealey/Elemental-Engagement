@@ -10,10 +10,12 @@ using Object = UnityEngine.Object;
 [RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour
 {
+
+
     [Tooltip("The nav mesh this will use.")]
     public string agentType = "BasicElemental";
     [Tooltip("The speed this will move at")]
-    private float _speed = 10;
+    [SerializeField] private float _speed = 10;
     public float speed 
     {
         get => _speed; 
