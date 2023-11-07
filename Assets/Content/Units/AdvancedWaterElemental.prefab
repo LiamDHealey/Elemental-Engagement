@@ -87,6 +87,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 8939088103229728973}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnWhirlpool
+          m_BoolArgument: 1
+        m_CallState: 2
   onAttackDamage:
     m_PersistentCalls:
       m_Calls:
@@ -5318,7 +5330,7 @@ PrefabInstance:
     - target: {fileID: 854166808930866116, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 965edb8baa8517041878cb7c4c2002fc, type: 2}
+      objectReference: {fileID: 9100000, guid: a6662dd0abfa1974d9ad1b24f01b7dae, type: 2}
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: _speed
       value: 15
@@ -5549,5 +5561,10 @@ MonoBehaviour:
 --- !u!4 &2653138074550990029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5982273917337833412, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+  m_PrefabInstance: {fileID: 8634695071115868937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8939088103229728973 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 854166808930866116, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
   m_PrefabInstance: {fileID: 8634695071115868937}
   m_PrefabAsset: {fileID: 0}
