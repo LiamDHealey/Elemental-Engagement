@@ -1,5 +1,6 @@
 using ElementalEngagement.Combat;
 using ElementalEngagement.Favor;
+using ElementalEngagement.Utilities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,9 @@ namespace ElementalEngagement.Player
     {
         [Tooltip("Called when the selected ability changes.")]
         public UnityEvent<Ability> onSelectedAbilityChanged;
+
+        [Tooltip("Called whenever the ability menu is navigated through")]
+        public UnityEvent onAbilityMenuChanged;
 
         [Tooltip("Called when an ability was played.")]
         public UnityEvent<Ability> onAbilityPlayed;
@@ -109,15 +113,16 @@ namespace ElementalEngagement.Player
                 .Where(unlock => unlock.favorThreshold <= 0)
                 .Select(unlock => unlock.ability)
                 .ToHashSet();
-            foreach (Ability unlockedAbility in unlockedAbilities)
+            /*foreach (Ability unlockedAbility in unlockedAbilities)
             {
                 onAbilityUnlocked?.Invoke(unlockedAbility);
-            }
+            }*/
         }
 
 
         public SelectionResult SelectAbility(int index)
         {
+            onAbilityMenuChanged?.Invoke();
             if (currentSelection[0] == null)
             {
                 currentSelection[0] = index;
