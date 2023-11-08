@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 8495704196627844067}
   - component: {fileID: 3543981119443874834}
   - component: {fileID: 2432912754186515058}
+  - component: {fileID: 5364357061601091884}
+  - component: {fileID: 7386582671790243304}
   m_Layer: 0
   m_Name: PlayerControler
   m_TagString: Untagged
@@ -132,7 +134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4229869321111341770}
-  panspeed: 100
+  panspeed: 300
+  bounds: {x: 50, y: 50}
+  startPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1686256207638245235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +343,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 1
+--- !u!54 &5364357061601091884
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381274470310263124}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!135 &7386582671790243304
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381274470310263124}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6440170233037415384
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +535,7 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 0371710d84b83fd4a8a14fa263088fcf, type: 3}
   - {fileID: 8300000, guid: 52e4cc87c4dc9734ca0b794bc1e5f8ed, type: 3}
+  interval: 0
 --- !u!1 &6691182579712443195
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: bf38ac1b27c58704fb393073c06630b4, type: 3}
+  interval: 0
 --- !u!1001 &2993327756894406537
 PrefabInstance:
   m_ObjectHideFlags: 0
