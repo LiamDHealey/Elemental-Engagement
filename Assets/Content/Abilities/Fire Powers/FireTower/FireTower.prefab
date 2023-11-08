@@ -5376,6 +5376,8 @@ GameObject:
   - component: {fileID: 4221571647890579594}
   - component: {fileID: 333101611646600440}
   - component: {fileID: 1617978890964141945}
+  - component: {fileID: 4987433312978584317}
+  - component: {fileID: 7129220299699923452}
   m_Layer: 0
   m_Name: FireTower
   m_TagString: Untagged
@@ -5426,16 +5428,28 @@ MonoBehaviour:
   onKilled:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 4929309723670271310}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 9083011578323652702}
         m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
           Assembly-CSharp
         m_MethodName: DestroyParent
-        m_Mode: 1
+        m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
+          m_IntArgument: 1
+          m_FloatArgument: 0.3333333
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -5571,6 +5585,40 @@ MonoBehaviour:
   attackRange: {fileID: 6429435630244052216}
   projectileSource: {fileID: 310147126815424902}
   projectileTemplate: {fileID: 3472519871759677579, guid: deef3d85de45bcd429ca4eae7be47589, type: 3}
+--- !u!95 &4987433312978584317
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192588107604640895}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8155379820567154a958b1345d2e110e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7129220299699923452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6192588107604640895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 120
 --- !u!1001 &5775565678975155877
 PrefabInstance:
   m_ObjectHideFlags: 0
