@@ -20005,7 +20005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 7
+  lifetime: 5
 --- !u!135 &7785458032764344796
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20085,6 +20085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shouldShake: 0
+  elapsedTime: 0
 --- !u!1 &7760047039117579482
 GameObject:
   m_ObjectHideFlags: 0
