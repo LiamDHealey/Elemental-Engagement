@@ -158,7 +158,7 @@ MonoBehaviour:
       - m_Target: {fileID: 3518492500183182867}
         m_TargetAssemblyTypeName: ElementalEngagement.Utilities.SoundEffectManager,
           Assembly-CSharp
-        m_MethodName: playRandomSound
+        m_MethodName: PlayRandomSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
       - m_Target: {fileID: 5205707291694591730}
         m_TargetAssemblyTypeName: ElementalEngagement.Utilities.SoundEffectManager,
           Assembly-CSharp
-        m_MethodName: playRandomSound
+        m_MethodName: PlayRandomSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -442,7 +442,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 7
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -534,7 +534,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 0371710d84b83fd4a8a14fa263088fcf, type: 3}
-  - {fileID: 8300000, guid: 52e4cc87c4dc9734ca0b794bc1e5f8ed, type: 3}
   interval: 0
   duration: 0
   playOnStart: 0
@@ -590,7 +589,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

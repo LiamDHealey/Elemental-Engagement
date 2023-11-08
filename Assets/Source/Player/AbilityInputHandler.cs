@@ -113,10 +113,10 @@ namespace ElementalEngagement.Player
                 .Where(unlock => unlock.favorThreshold <= 0)
                 .Select(unlock => unlock.ability)
                 .ToHashSet();
-            foreach (Ability unlockedAbility in unlockedAbilities)
-            {
-                onAbilityUnlocked?.Invoke(unlockedAbility);
-            }
+            //foreach (Ability unlockedAbility in unlockedAbilities)
+            //{
+            //    onAbilityUnlocked?.Invoke(unlockedAbility);
+            //}
         }
 
 

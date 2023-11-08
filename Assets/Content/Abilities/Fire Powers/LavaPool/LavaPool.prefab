@@ -4916,6 +4916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
+  detachBeforeDeath: []
 --- !u!114 &2175227927085092041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5149,7 +5150,7 @@ AudioSource:
   Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 57
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
