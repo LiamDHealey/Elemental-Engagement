@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CircularSelect",
+                    "name": "Circular Select",
                     "type": "Button",
                     "id": "fae07cbc-28c7-460f-b9aa-3c15d828f035",
                     "expectedControlType": "Button",
@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectAll",
+                    "name": "Select All",
                     "type": "Button",
                     "id": "430b3381-8930-4aa6-b76e-52b49de8f5a9",
                     "expectedControlType": "Button",
@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "IssueCommand",
+                    "name": "Issue Command",
                     "type": "Button",
                     "id": "33735e59-ce10-49a9-a92b-e1b0e233d4bd",
                     "expectedControlType": "Button",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "IssueAltCommand",
+                    "name": "Attack Move",
                     "type": "Button",
                     "id": "ce269ce6-7922-43d1-8d30-bd8c4df88be9",
                     "expectedControlType": "Button",
@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PlayAbility",
+                    "name": "Play Ability",
                     "type": "Button",
                     "id": "6cbc48d6-8bb8-43f4-adbd-6dd9ed683ec6",
                     "expectedControlType": "Button",
@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RotateAbility",
+                    "name": "Rotate Ability",
                     "type": "Value",
                     "id": "fbe6a0f1-395b-4f4b-92cc-59de8f2743bc",
                     "expectedControlType": "Vector2",
@@ -78,7 +78,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "SelectAbility0",
+                    "name": "Select Ability 0",
                     "type": "Button",
                     "id": "6249c00f-46c6-410e-ade3-d16f254cbb6a",
                     "expectedControlType": "Button",
@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectAbility1",
+                    "name": "Select Ability 1",
                     "type": "Button",
                     "id": "9b077dd5-b595-45fa-bf93-d4c92cda0795",
                     "expectedControlType": "Button",
@@ -96,7 +96,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectAbility2",
+                    "name": "Select Ability 2",
                     "type": "Button",
                     "id": "04c7e4d7-0bd8-4fc8-ba00-5baffe48582b",
                     "expectedControlType": "Button",
@@ -105,7 +105,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SelectAbility3",
+                    "name": "Select Ability 3",
                     "type": "Button",
                     "id": "fdcd1da8-36d6-4026-aed5-61177245e894",
                     "expectedControlType": "Button",
@@ -114,7 +114,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PauseGame",
+                    "name": "Pause Game",
                     "type": "Button",
                     "id": "8149229d-0975-497b-8115-0012af21f5ab",
                     "expectedControlType": "Button",
@@ -123,7 +123,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DeselectAll",
+                    "name": "Deselect All",
                     "type": "Button",
                     "id": "4cfbb6a4-697d-4d11-855b-99257be26475",
                     "expectedControlType": "Button",
@@ -237,7 +237,7 @@
                     "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "IssueCommand",
+                    "action": "Issue Command",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -248,7 +248,7 @@
                     "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "IssueCommand",
+                    "action": "Issue Command",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -259,7 +259,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SelectAbility0",
+                    "action": "Select Ability 0",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -270,7 +270,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SelectAbility0",
+                    "action": "Select Ability 0",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -281,7 +281,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SelectAbility1",
+                    "action": "Select Ability 1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -292,7 +292,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SelectAbility1",
+                    "action": "Select Ability 1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -303,7 +303,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SelectAbility2",
+                    "action": "Select Ability 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -314,7 +314,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SelectAbility2",
+                    "action": "Select Ability 2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -325,7 +325,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SelectAbility3",
+                    "action": "Select Ability 3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -336,7 +336,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SelectAbility3",
+                    "action": "Select Ability 3",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -347,7 +347,7 @@
                     "interactions": "MultiTap",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "SelectAll",
+                    "action": "Select All",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -358,7 +358,7 @@
                     "interactions": "MultiTap",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "SelectAll",
+                    "action": "Select All",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -369,7 +369,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "IssueAltCommand",
+                    "action": "Attack Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -380,7 +380,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "IssueAltCommand",
+                    "action": "Attack Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -391,7 +391,7 @@
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "CircularSelect",
+                    "action": "Circular Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -402,7 +402,7 @@
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "CircularSelect",
+                    "action": "Circular Select",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -413,7 +413,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "PauseGame",
+                    "action": "Pause Game",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -424,7 +424,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "PauseGame",
+                    "action": "Pause Game",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -435,7 +435,7 @@
                     "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "PlayAbility",
+                    "action": "Play Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -446,7 +446,7 @@
                     "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "PlayAbility",
+                    "action": "Play Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -457,7 +457,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "RotateAbility",
+                    "action": "Rotate Ability",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -468,7 +468,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateAbility",
+                    "action": "Rotate Ability",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -479,7 +479,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "RotateAbility",
+                    "action": "Rotate Ability",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -490,7 +490,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "RotateAbility",
+                    "action": "Rotate Ability",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -501,7 +501,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "RotateAbility",
+                    "action": "Rotate Ability",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -512,7 +512,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "RotateAbility",
+                    "action": "Rotate Ability",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -545,7 +545,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "DeselectAll",
+                    "action": "Deselect All",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -556,7 +556,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "DeselectAll",
+                    "action": "Deselect All",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
