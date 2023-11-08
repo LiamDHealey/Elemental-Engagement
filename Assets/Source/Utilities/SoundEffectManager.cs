@@ -28,14 +28,6 @@ namespace ElementalEngagement.Utilities
         [Tooltip("How Long to fade out the sound to play")]
         [SerializeField]private float fadeOutDuration;
 
-        private void Start()
-        {
-            if (playOnStart) 
-            {
-                PlayForDuration();
-            }
-        }
-
         private bool continuePlaying = false;
 
         // Track the audio source of the music
@@ -46,10 +38,18 @@ namespace ElementalEngagement.Utilities
             audioSource = GetComponent<AudioSource>();
         }
 
+
+        private void Start()
+        {
+            if (playOnStart) 
+            {
+                PlayForDuration();
+            }
+        }
+
         public void PlayForDuration()
         {
-            AudioClip clipToPlay = GetRandomClip(audioClips);
-            audioSource.PlayOneShot(clipToPlay);
+            PlayRandomSound();
             StartCoroutine(StopAfterDelay(duration));
         }
 
@@ -61,7 +61,7 @@ namespace ElementalEngagement.Utilities
         public void PlayOnInterval()
         {
             AudioClip clipToPlay = GetRandomClip(audioClips);
-            continuePlaying = false;
+            continuePlaying = true;
             StartCoroutine(EffectOnInterval(clipToPlay));
 
         }
@@ -81,9 +81,11 @@ namespace ElementalEngagement.Utilities
             yield return new WaitForSeconds(delay);
 
             float startVolume = audioSource.volume;
+            Debug.Log("Starting At " + startVolume);
             while (audioSource.volume > 0)
             {
                 audioSource.volume -= startVolume * Time.deltaTime / fadeOutDuration;
+                Debug.Log("Current volume during fade is: " + audioSource.volume);
                 yield return null;
             }
 

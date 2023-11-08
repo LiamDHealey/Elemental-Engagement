@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3976493763990587048}
   - component: {fileID: 2768700722565699224}
   m_Layer: 2
-  m_Name: Sound Effect Manager
+  m_Name: Sound Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.513
   m_Pitch: 1
   Loop: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   interval: 0
   duration: 8
   playOnStart: 1
-  fadeOutDuration: 1
+  fadeOutDuration: 2
 --- !u!1 &3174267399244063760
 GameObject:
   m_ObjectHideFlags: 0
@@ -5114,9 +5114,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8722458803927370995}
   - {fileID: 128783558549254781}
   - {fileID: 1669583222864096319}
-  - {fileID: 8722458803927370995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8335957412197613769
@@ -5159,6 +5159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
+  detachBeforeDeath: []
 --- !u!135 &7785458032764344796
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5194,6 +5195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
+  affectsEnemies: 0
   maxHpMultiplier: 10
 --- !u!114 &8557279274171391393
 MonoBehaviour:
@@ -5209,6 +5211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
+  affectsEnemies: 0
   speedMultiplier: 3
 --- !u!114 &9142803568649359392
 MonoBehaviour:
@@ -5224,6 +5227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 5686342651022301136}
   allegiance: {fileID: 8335957412197613769}
+  affectsEnemies: 0
   damageMultiplier: 1
   knockbackMultiplier: 1
   attackIntervalMultiplier: 1
