@@ -53,7 +53,12 @@ namespace ElementalEngagement.Player
         private List<Selectable> _selectedObjects = new List<Selectable>();
         public ReadOnlyCollection<Selectable> selectedObjects { get => _selectedObjects.AsReadOnly(); }
 
+        private Camera camera;
 
+        private void Awake()
+        {
+            camera = GetComponent<Camera>();
+        }
         /// <summary>
         /// Selects the unit under the cursor.
         /// </summary>
@@ -109,17 +114,17 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         public void SelectAll()
         {
-            Ray center = GetComponent<Camera>().ScreenPointToRay(new Vector2(GetComponent<Camera>().pixelRect.width/2, GetComponent<Camera>().pixelRect.height/2));
+            Ray cornerRay = camera.ScreenPointToRay(camera.pixelRect.size);
+            Vector3 cornerPos = MathHelpers.IntersectWithGround(cornerRay);
 
-            Vector3 centerGroundPos = MathHelpers.IntersectWithGround(center);
-            centerGroundPos.y = 5;
-            Vector3 intersectBoxSize = new Vector3(GetComponent<Camera>().pixelRect.width/10, 0, GetComponent<Camera>().pixelRect.height/10);
+            Vector3 centerGroundPos = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
 
-            Bounds intersectBox = new Bounds(centerGroundPos, intersectBoxSize);
+            Vector3 extent = (cornerPos - centerGroundPos);
+            extent = new Vector3(Mathf.Abs(extent.x), 50, Mathf.Abs(extent.z)) * 0.6f;
+            
+            Collider[] hitColliders = Physics.OverlapBox(centerGroundPos, extent);
 
-            Collider[] hitColliders = Physics.OverlapBox(intersectBox.center, intersectBox.size);
-
-            String currentSelectedTag = "";
+            string currentSelectedTag = "";
 
             if (GetSelectableUnderCursor(out Selectable selectable))
             {

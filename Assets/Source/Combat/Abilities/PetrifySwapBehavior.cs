@@ -13,26 +13,50 @@ public class PetrifySwapBehavior : StatModificationArea
     [Tooltip("Material with the petrify texture that will be overlayed on the units.")]
     [SerializeField] Material petrifyMat;
 
-    [Tooltip("Material with the team glow that is stored when the trigger enters and re-applied once the trigger exits. DO NOT TOUCH THIS UNLESS YOU'RE EDITING THE ACTUAL SCRIPT!")]
-    [SerializeField] Material storedMat;
+    //Queue of materials to re-apply to units once they leave the petrify radius.
+    private Dictionary<Collider, Material> storedMats;
 
     private void Start()
     {
+        storedMats = new Dictionary<Collider, Material>();
         area.onTriggerEnter.AddListener(OnTriggerEntered);
         area.onTriggerExit.AddListener(OnTriggerExited);
     }
 
+    private void OnDestroy()
+    {
+        if (storedMats != null)
+        {
+            Debug.Log("StoredMats is not null");
+            foreach (Collider key in storedMats.Keys)
+            {
+                var colliderUnit = key.gameObject.GetComponentInChildren<SpriteRenderer>();
+                colliderUnit.material = storedMats[key];
+                key.gameObject.GetComponentInChildren<Animator>().enabled = true;
+            }
+        }
+    }
+
     private void OnTriggerEntered(Collider collider)
     {
-        Debug.Log(collider.gameObject.name + " entered");
-        storedMat = collider.gameObject.GetComponent<Renderer>().material;
-        collider.gameObject.GetComponent<Renderer>().material = petrifyMat;
+        var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
+        if (colliderUnit != null)
+        {
+            storedMats.Add(collider, new Material(colliderUnit.material));
+            Debug.Log("Added material!" + collider.gameObject.name);
+            colliderUnit.material = petrifyMat;
+            collider.gameObject.GetComponentInChildren<Animator>().enabled = false;
+        }
     }
 
 
     private void OnTriggerExited(Collider collider)
     {
-        Debug.Log(collider.gameObject.name + " exited");
-        collider.gameObject.GetComponent<Renderer>().material = storedMat;
+        var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
+        if (colliderUnit != null && storedMats.ContainsKey(collider))
+        {
+            collider.gameObject.GetComponentInChildren<SpriteRenderer>().material = storedMats[collider];
+            collider.gameObject.GetComponentInChildren<Animator>().enabled = true;
+        }
     }
 }
