@@ -86,34 +86,34 @@ namespace ElementalEngagement
         private void Start()
         {
             input.actions["Select"].performed += Select;
-            input.actions["CircularSelect"].performed += CircularSelect;
-            input.actions["SelectAll"].performed += SelectAll;
-            input.actions["DeselectAll"].performed += DeselectAll;
-            input.actions["IssueCommand"].performed += IssueCommand;
-            input.actions["IssueAltCommand"].performed += IssueAltCommand;
-            input.actions["PlayAbility"].performed += PlayAbility;
-            input.actions["SelectAbility0"].performed += SelectAbility0;
-            input.actions["SelectAbility1"].performed += SelectAbility1;
-            input.actions["SelectAbility2"].performed += SelectAbility2;
-            input.actions["SelectAbility3"].performed += SelectAbility3;
-            input.actions["PauseGame"].performed += PauseGame;
+            input.actions["Circular Select"].performed += CircularSelect;
+            input.actions["Select All"].performed += SelectAll;
+            input.actions["Deselect All"].performed += DeselectAll;
+            input.actions["Issue Command"].performed += IssueCommand;
+            input.actions["Attack Move"].performed += IssueAltCommand;
+            input.actions["Play Ability"].performed += PlayAbility;
+            input.actions["Select Ability 0"].performed += SelectAbility0;
+            input.actions["Select Ability 1"].performed += SelectAbility1;
+            input.actions["Select Ability 2"].performed += SelectAbility2;
+            input.actions["Select Ability 3"].performed += SelectAbility3;
+            input.actions["Pause Game"].performed += PauseGame;
             input.actions["Back"].performed += Back;
         }
 
         private void OnDestroy()
         {
             input.actions["Select"].performed -= Select;
-            input.actions["CircularSelect"].performed -= CircularSelect;
-            input.actions["SelectAll"].performed -= SelectAll;
-            input.actions["DeselectAll"].performed -= DeselectAll;
-            input.actions["IssueCommand"].performed -= IssueCommand;
-            input.actions["IssueAltCommand"].performed -= IssueAltCommand;
-            input.actions["PlayAbility"].performed -= PlayAbility;
-            input.actions["SelectAbility0"].performed -= SelectAbility0;
-            input.actions["SelectAbility1"].performed -= SelectAbility1;
-            input.actions["SelectAbility2"].performed -= SelectAbility2;
-            input.actions["SelectAbility3"].performed -= SelectAbility3;
-            input.actions["PauseGame"].performed -= PauseGame;
+            input.actions["Circular Select"].performed -= CircularSelect;
+            input.actions["Select All"].performed -= SelectAll;
+            input.actions["Deselect All"].performed -= DeselectAll;
+            input.actions["Issue Command"].performed -= IssueCommand;
+            input.actions["Attack Move"].performed -= IssueAltCommand;
+            input.actions["Play Ability"].performed -= PlayAbility;
+            input.actions["Select Ability 0"].performed -= SelectAbility0;
+            input.actions["Select Ability 1"].performed -= SelectAbility1;
+            input.actions["Select Ability 2"].performed -= SelectAbility2;
+            input.actions["Select Ability 3"].performed -= SelectAbility3;
+            input.actions["Pause Game"].performed -= PauseGame;
             input.actions["Back"].performed -= Back;
         }
 
