@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 2.6666667
+  m_VoxelSize: 2
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 414c1fc304f8f84419baa162b88f42a9, type: 2}
   m_BuildHeightMesh: 0
@@ -1697,7 +1697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087419148660628678, guid: 594fcd8e65324ac44986138940f0026f, type: 3}
       propertyPath: _faction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: 594fcd8e65324ac44986138940f0026f, type: 3}
       propertyPath: <integrity>k__BackingField
@@ -3322,6 +3322,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 0}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!82 &602058248
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6784,11 +6787,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087419148660628678, guid: ba6973d4976d0574db19bef1e897264d, type: 3}
       propertyPath: _faction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: ba6973d4976d0574db19bef1e897264d, type: 3}
       propertyPath: favorGainRate
-      value: 0.005
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: ba6973d4976d0574db19bef1e897264d, type: 3}
       propertyPath: requiredCapturePoints
@@ -9023,6 +9026,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: ea6774703e9f22f42a71b9abd7ca8287, type: 3}
+      propertyPath: favorGainRate
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167516863568249919, guid: ea6774703e9f22f42a71b9abd7ca8287, type: 3}
       propertyPath: <integrity>k__BackingField
       value: 50
       objectReference: {fileID: 0}
@@ -9571,7 +9578,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: ea6774703e9f22f42a71b9abd7ca8287, type: 3}
       propertyPath: favorGainRate
-      value: 0.007
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7167516863568249919, guid: ea6774703e9f22f42a71b9abd7ca8287, type: 3}
+      propertyPath: gainFavorWhileDecapping
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: ea6774703e9f22f42a71b9abd7ca8287, type: 3}
       propertyPath: <integrity>k__BackingField
