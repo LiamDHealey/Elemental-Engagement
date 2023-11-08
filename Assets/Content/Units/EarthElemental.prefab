@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2f74802a9eb68ff498afe58af0d02cf5, type: 3}
   - {fileID: 8300000, guid: 9ae625ca3f48cad4ba55c95416272a0a, type: 3}
   - {fileID: 8300000, guid: e589864967c2d394189e00666b806edb, type: 3}
+  interval: 0
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280283077756958185, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: playRandomSound
+      value: PlayRandomSound
       objectReference: {fileID: 0}
     - target: {fileID: 2280283077756958185, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onSelected.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -283,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playRandomSound
+      value: PlayRandomSound
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -396,3 +397,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 11748ac8de7eefb4185d3202eb56e812, type: 3}
+  interval: 0
