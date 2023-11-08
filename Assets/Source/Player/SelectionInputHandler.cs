@@ -124,12 +124,12 @@ namespace ElementalEngagement.Player
             if (GetSelectableUnderCursor(out Selectable selectable))
             {
                 currentSelectedTag = selectable.tag;
+                if (selectable.isSelected)
+                {
+                    this.DeselectAll();
+                }
             }
 
-            if (selectable.isSelected)
-            {
-                this.DeselectAll();
-            }
 
             foreach (Collider collider in hitColliders)
             {
