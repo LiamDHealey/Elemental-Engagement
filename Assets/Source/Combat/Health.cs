@@ -59,7 +59,10 @@ namespace ElementalEngagement.Combat
         /// </summary>
         /// <param name="damage"> The damage to take. </param>
         public void TakeDamage(Damage damage)
-        {            
+        {
+            if (hp <= 0)
+                return;
+
             for(int i =0; i < damageMultipliers.Count; i++)
             {
                 if (damageMultipliers[i].incomingAffiliation.Equals(damage.allegiance))

@@ -16,10 +16,10 @@ namespace ElementalEngagement.Utilities
         private void Awake()
         {
             var allegiance = GetComponentInParent<Allegiance>();
-            allegiance.onFactionChanged
+            allegiance?.onFactionChanged
                 .First(fe => fe.faction == Faction.PlayerOne)
                 .onSelected.AddListener(() => SetColor(Color.white));
-            allegiance.onFactionChanged
+            allegiance?.onFactionChanged
                 .First(fe => fe.faction == Faction.PlayerTwo)
                 .onSelected.AddListener(() => SetColor(Color.black));
         }

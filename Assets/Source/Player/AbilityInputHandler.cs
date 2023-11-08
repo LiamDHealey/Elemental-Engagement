@@ -175,7 +175,7 @@ namespace ElementalEngagement.Player
         {
             Ability ability = selectedAbility;
 
-            if (!unlockedAbilities.Contains(ability))
+            if (!unlockedAbilities.Contains(ability) || _abilityCooldowns.ContainsKey(ability))
                 return;
 
             _abilityCooldowns.Add(ability, ability.cooldown);
