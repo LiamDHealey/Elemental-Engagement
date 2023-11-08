@@ -11,9 +11,22 @@ namespace ElementalEngagement.Utilities
     {
         [Tooltip("The amount of time this will exist for in seconds.")] [Min(0)]
         [SerializeField] private float lifetime = 1;
+
+        [Tooltip("Game objects to detach before death")]
+        [SerializeField] private List<GameObject> detachBeforeDeath;
+
         void Start ()
         {
-            Destroy(gameObject, lifetime);
+            Invoke("Detach", lifetime);
+        }
+
+        private void Detach()
+        {
+            for(int i = 0; i < detachBeforeDeath.Count; i++)
+            {
+                detachBeforeDeath[i].transform.parent = null;
+            }
+            Destroy(gameObject);
         }
     }
 }

@@ -19,6 +19,23 @@ namespace ElementalEngagement.Utilities
         [Tooltip("If using an interval, defines how often to play the sound")]
         [SerializeField] float interval;
 
+        [Tooltip("If using a duration, defines how long to play the sound")]
+        [SerializeField] float duration;
+
+        [Tooltip("Check this box to play the sound for the duration on start")]
+        [SerializeField] bool playOnStart;
+
+        [Tooltip("How Long to fade out the sound to play")]
+        [SerializeField]private float fadeOutDuration;
+
+        private void Start()
+        {
+            if (playOnStart) 
+            {
+                PlayForDuration();
+            }
+        }
+
         private bool continuePlaying = false;
 
         // Track the audio source of the music
@@ -29,9 +46,11 @@ namespace ElementalEngagement.Utilities
             audioSource = GetComponent<AudioSource>();
         }
 
-        public void PlayForDuration(int duration)
+        public void PlayForDuration()
         {
             AudioClip clipToPlay = GetRandomClip(audioClips);
+            audioSource.PlayOneShot(clipToPlay);
+            StartCoroutine(StopAfterDelay(duration));
         }
 
         public void PlayRandomSound()
@@ -54,7 +73,23 @@ namespace ElementalEngagement.Utilities
 
         public void stopSound()
         {
+            StartCoroutine(StopAfterDelay(0));
+        }
+
+        IEnumerator StopAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
+            float startVolume = audioSource.volume;
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= startVolume * Time.deltaTime / fadeOutDuration;
+                yield return null;
+            }
+
+
             audioSource.Stop();
+            audioSource.volume = startVolume;
         }
 
         IEnumerator EffectOnInterval(AudioClip clipToPlay)
