@@ -35,7 +35,7 @@ public class AttackShrinesBehaviour : MonoBehaviour
 
         foreach (Transform shrine in shrines)
         {
-            shrine.GetComponent<Health>().onDamaged.AddListener(delegate { shrines.Remove(shrine); });
+            shrine.GetComponent<Health>().onKilled.AddListener(delegate { shrines.Remove(shrine); });
         }
 
         // Waits until this is idle then moves to visible targets.

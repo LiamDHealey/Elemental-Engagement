@@ -1,5 +1,7 @@
+using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -11,6 +13,17 @@ namespace ElementalEngagement.Utilities
     [RequireComponent(typeof(SpriteRenderer))]
     public class Outline : MonoBehaviour
     {
+        private void Awake()
+        {
+            var allegiance = GetComponentInParent<Allegiance>();
+            allegiance.onFactionChanged
+                .First(fe => fe.faction == Faction.PlayerOne)
+                .onSelected.AddListener(() => SetColor(Color.white));
+            allegiance.onFactionChanged
+                .First(fe => fe.faction == Faction.PlayerTwo)
+                .onSelected.AddListener(() => SetColor(Color.black));
+        }
+
         public void SetColor(string color)
         {
             string[] rgba = color.Split(", ");
