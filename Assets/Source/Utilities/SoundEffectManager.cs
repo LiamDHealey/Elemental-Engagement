@@ -16,6 +16,11 @@ namespace ElementalEngagement.Utilities
         [Tooltip("The List of Sound Effects this object can play")]
         [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
 
+        [Tooltip("If using an interval, defines how often to play the sound")]
+        [SerializeField] float interval;
+
+        private bool continuePlaying = false;
+
         // Track the audio source of the music
         private static AudioSource audioSource = null;
 
@@ -24,9 +29,31 @@ namespace ElementalEngagement.Utilities
             audioSource = GetComponent<AudioSource>();
         }
 
-        public void playRandomSound()
+        public void PlayRandomSound()
         {
             audioSource.PlayOneShot(GetRandomClip(audioClips));
+        }
+
+        public void PlayOnInterval()
+        {
+            AudioClip clipToPlay = GetRandomClip(audioClips);
+            continuePlaying = false;
+            StartCoroutine(EffectOnInterval(clipToPlay));
+
+        }
+
+        public void stopPlayOnInterval()
+        {
+            continuePlaying = false;
+        }
+
+        IEnumerator EffectOnInterval(AudioClip clipToPlay)
+        {
+            while(continuePlaying)
+            {
+                audioSource.PlayOneShot(clipToPlay);
+                yield return new WaitForSeconds(interval);
+            }
         }
 
         AudioClip GetRandomClip(List<AudioClip> clips) => clips[UnityEngine.Random.Range(0, clips.Count)];
