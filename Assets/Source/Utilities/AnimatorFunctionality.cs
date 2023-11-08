@@ -31,7 +31,14 @@ namespace ElementalEngagement.Utilities
         /// <summary>
         /// Destroys this component's game object
         /// </summary>
-        public void DestroySelf(float delay)
+        public void DestroySelf()
+        {
+            Destroy(gameObject);
+        }
+        /// <summary>
+        /// Destroys this component's game object
+        /// </summary>
+        public void DelayedDestroySelf(float delay)
         {
             Destroy(gameObject, delay);
         }
@@ -39,7 +46,15 @@ namespace ElementalEngagement.Utilities
         /// <summary>
         /// Destroys the parent game object of this.
         /// </summary>
-        public void DestroyParent(float delay)
+        public void DestroyParent()
+        {
+            Destroy(transform.parent.gameObject);
+        }
+
+        /// <summary>
+        /// Destroys the parent game object of this.
+        /// </summary>
+        public void DelayedDestroyParent(float delay)
         {
             Destroy(transform.parent.gameObject, delay);
         }

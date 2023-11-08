@@ -5462,7 +5462,7 @@ MonoBehaviour:
       - m_Target: {fileID: 9083011578323652702}
         m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
           Assembly-CSharp
-        m_MethodName: DestroyParent
+        m_MethodName: DelayedDestroyParent
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5638,6 +5638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 120
+  detachBeforeDeath: []
 --- !u!1001 &5775565678975155877
 PrefabInstance:
   m_ObjectHideFlags: 0
