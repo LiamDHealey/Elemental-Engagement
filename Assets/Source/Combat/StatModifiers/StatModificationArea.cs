@@ -17,11 +17,13 @@ namespace ElementalEngagement.Combat
         [Tooltip("The allegiance of this, buffs only thing that align with this. Leave null to buff anything. Leave allegiance category unaligned to ignore that category.")]
         [SerializeField] protected Allegiance allegiance;
 
+        [Tooltip("Whether this effects allies or enemies.")]
+        [SerializeField] protected bool affectsEnemies = false;
 
         protected bool CanModify(Collider collider)
         {
             Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
-            return (allegiance.faction == colliderAllegiance?.faction || allegiance.faction == Faction.Unaligned)
+            return ((affectsEnemies != (allegiance.faction == colliderAllegiance?.faction)) || allegiance.faction == Faction.Unaligned)
                 && (allegiance.god == colliderAllegiance?.god || allegiance.god == MinorGod.Unaligned);
         }
     }

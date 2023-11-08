@@ -42,6 +42,9 @@ public class PetrifySwapBehavior : StatModificationArea
         var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
         if (colliderUnit != null)
         {
+            if (!CanModify(collider))
+                return;
+
             storedMats.Add(collider, new Material(colliderUnit.material));
             Debug.Log("Added material!" + collider.gameObject.name);
             colliderUnit.material = petrifyMat;
@@ -55,6 +58,9 @@ public class PetrifySwapBehavior : StatModificationArea
         var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
         if (colliderUnit != null && storedMats.ContainsKey(collider))
         {
+            if (!CanModify(collider))
+                return;
+
             collider.gameObject.GetComponentInChildren<SpriteRenderer>().material = storedMats[collider];
             collider.gameObject.GetComponentInChildren<Animator>().enabled = true;
         }
