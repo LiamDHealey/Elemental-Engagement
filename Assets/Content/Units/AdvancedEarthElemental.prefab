@@ -5031,6 +5031,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ec2d06f0d564e694fb7255c6ea9601aa, type: 3}
   - {fileID: 8300000, guid: 67d556026cc22884c8cf84c8dd8c4e18, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5062,6 +5065,10 @@ PrefabInstance:
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: _speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: agentType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1963687948699551391, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5443,6 +5450,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 36ae21fed4bf15f43a9faa683ff3c32d, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!95 &8939088103229728973 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 854166808930866116, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}

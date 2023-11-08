@@ -145,6 +145,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20ae5b06c70d5ee4c837d4c6d4216bd6, type: 3}
   - {fileID: 8300000, guid: a6564ab1557d0c846ad83012fd3c5065, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1 &8173043067904831342
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +292,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: ab5968b5047ba2d41bb3815e73925e4c, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 4fc25a71c9ddc4246ab17eb02a4f4a1c, type: 2}
+    - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: agentType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1291757304422249541, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_IsActive
       value: 0

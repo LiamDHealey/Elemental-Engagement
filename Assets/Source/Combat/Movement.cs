@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
 
 
     [Tooltip("The nav mesh this will use.")]
-    public string agentType = "BasicElemental";
+    public int agentType = 0;
     [Tooltip("The mask used to snap to the ground.")]
     public LayerMask walkableMask;
     [Tooltip("The speed this will move at")]
@@ -156,15 +156,7 @@ public class Movement : MonoBehaviour
         agent.updatePosition = false;
         agent.updateRotation = false;
 
-        agent.speed = 1f;
-        for (int i = 0; i < NavMesh.GetSettingsCount(); i++)
-        {
-            if (NavMesh.GetSettingsNameFromID(NavMesh.GetSettingsByIndex(i).agentTypeID) == agentType)
-            {
-                agent.agentTypeID = NavMesh.GetSettingsByIndex(i).agentTypeID;
-            }
-
-        }
+        agent.agentTypeID = NavMesh.GetSettingsByIndex(agentType).agentTypeID;
         agent.acceleration = 99999f;
 
     }

@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4229869321111341770}
-  panspeed: 300
+  panspeed: 100
   bounds: {x: 250, y: 350}
   startPos: {x: 267.7718, y: 0, z: 0.420105}
 --- !u!114 &1686256207638245235
@@ -536,6 +536,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0371710d84b83fd4a8a14fa263088fcf, type: 3}
   - {fileID: 8300000, guid: 52e4cc87c4dc9734ca0b794bc1e5f8ed, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1 &6691182579712443195
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +683,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: bf38ac1b27c58704fb393073c06630b4, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1001 &2993327756894406537
 PrefabInstance:
   m_ObjectHideFlags: 0

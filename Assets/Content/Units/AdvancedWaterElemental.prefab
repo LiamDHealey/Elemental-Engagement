@@ -5126,6 +5126,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: b31ea16b1e03a174f968e4de3a6c51d7, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1 &4470831107179997546
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,6 +5273,9 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: dc662796803f7d64a9db4feeb63eb0a2, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1 &6868302159246053560
 GameObject:
   m_ObjectHideFlags: 0
@@ -5478,6 +5484,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 135e7cc8499ceab43bf7b222225fde3e, type: 3}
   - {fileID: 8300000, guid: dae7558dfc17c2149a8f3ac44c774cc2, type: 3}
   interval: 0
+  duration: 0
+  playOnStart: 0
+  fadeOutDuration: 0
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5509,6 +5518,10 @@ PrefabInstance:
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: _speed
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: agentType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1963687948699551391, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchorMax.x
