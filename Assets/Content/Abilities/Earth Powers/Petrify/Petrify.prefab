@@ -4840,8 +4840,8 @@ GameObject:
   - component: {fileID: 7182556735942742344}
   - component: {fileID: 115877209806484559}
   - component: {fileID: 2053923146161944034}
-  - component: {fileID: 2703345964869744913}
   - component: {fileID: 1317924507226698854}
+  - component: {fileID: 2703345964869744913}
   - component: {fileID: 8238808009166286647}
   - component: {fileID: 2991187041414704929}
   - component: {fileID: 2258943031987325674}
@@ -4929,21 +4929,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2703345964869744913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443267638344645966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 399c254cab40e024f8fe24d546cb9f99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  area: {fileID: 1317924507226698854}
-  allegiance: {fileID: 7182556735942742344}
-  speedMultiplier: 0.0001
 --- !u!114 &1317924507226698854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4968,6 +4953,22 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2703345964869744913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443267638344645966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399c254cab40e024f8fe24d546cb9f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: {fileID: 1317924507226698854}
+  allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 1
+  speedMultiplier: 0.0001
 --- !u!114 &8238808009166286647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4982,6 +4983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 1317924507226698854}
   allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 1
   maxHpMultiplier: 2
 --- !u!114 &2991187041414704929
 MonoBehaviour:
@@ -4997,6 +4999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 1317924507226698854}
   allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 1
   damageMultiplier: 0
   knockbackMultiplier: 0
   attackIntervalMultiplier: 9999
@@ -5014,5 +5017,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 1317924507226698854}
   allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 1
   petrifyMat: {fileID: -876546973899608171, guid: 2652aae1e96a34049af1e43e8e243c34, type: 3}
-  storedMat: {fileID: 0}
