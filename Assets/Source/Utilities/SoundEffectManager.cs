@@ -29,6 +29,11 @@ namespace ElementalEngagement.Utilities
             audioSource = GetComponent<AudioSource>();
         }
 
+        public void PlayForDuration(int duration)
+        {
+            AudioClip clipToPlay = GetRandomClip(audioClips);
+        }
+
         public void PlayRandomSound()
         {
             audioSource.PlayOneShot(GetRandomClip(audioClips));
@@ -45,6 +50,11 @@ namespace ElementalEngagement.Utilities
         public void stopPlayOnInterval()
         {
             continuePlaying = false;
+        }
+
+        public void stopSound()
+        {
+            audioSource.Stop();
         }
 
         IEnumerator EffectOnInterval(AudioClip clipToPlay)
