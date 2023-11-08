@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2a2777b5c972be04b847ba79f8e9b083, type: 3}
   - {fileID: 8300000, guid: 61658e22cc86c124190e08658f1ec37c, type: 3}
   - {fileID: 8300000, guid: a14fd5233f2688840ac5bcd4dd849bc3, type: 3}
+  interval: 0
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,10 +158,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 0d7e89bd62730b14eb7007e57f5c7642, type: 2}
-    - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: _speed
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 1963687948699551391, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -206,10 +203,6 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: _maxHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: damageMultipliers.Array.data[0].multiplier
       value: 1
       objectReference: {fileID: 0}
@@ -248,14 +241,6 @@ PrefabInstance:
     - target: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Acceleration
       value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: damage.amount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: attackInterval
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.size
@@ -384,3 +369,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: dc662796803f7d64a9db4feeb63eb0a2, type: 3}
+  interval: 0

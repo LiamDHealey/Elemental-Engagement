@@ -145,6 +145,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4382f0ab9ff441f47bc6a34e6636c6fa, type: 3}
   - {fileID: 8300000, guid: f67b11e0fdc33d14ab0864bc6a381492, type: 3}
   - {fileID: 8300000, guid: 1b644b3746dce7c4898fbda91028fe26, type: 3}
+  interval: 0
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -157,10 +158,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 99f71e863b2982b409465af0ac871b2f, type: 2}
-    - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: _speed
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 1291757304422249541, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -210,10 +207,6 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: _maxHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: damageMultipliers.Array.data[1].multiplier
       value: 2
       objectReference: {fileID: 0}
@@ -232,14 +225,6 @@ PrefabInstance:
     - target: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Acceleration
       value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: damage.amount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: attackInterval
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.size
@@ -381,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: cce8972c90cfed24b8b63436f0246249, type: 3}
+  interval: 0
 --- !u!114 &6278808062657777621 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
