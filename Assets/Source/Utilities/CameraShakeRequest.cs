@@ -27,6 +27,5 @@ public class CameraShakeRequest : MonoBehaviour
     {
         CameraShake.isShaking = false;
     }
-    //public bool isShaking   { set => CameraShake.isShaking = isTrue; }
 
 }
