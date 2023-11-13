@@ -16,13 +16,16 @@ namespace ElementalEngagement.Utilities
         [Tooltip("The List of Sound Effects this object can play")]
         [SerializeField] List<AudioClip> audioClips = new List<AudioClip>();
 
-        [Tooltip("If using an interval, defines how often to play the sound")]
+        [Tooltip("Sets the effects to loop or play once")]
+        [SerializeField] bool loop;
+
+        [Tooltip("If looping, defines how often to play the sound")]
         [SerializeField] float interval;
 
         [Tooltip("If using a duration, defines how long to play the sound")]
         [SerializeField] float duration;
 
-        [Tooltip("Check this box to play the sound for the duration on start")]
+        [Tooltip("Check this box to play the sound for the duration/begin looping if applicable on start")]
         [SerializeField] bool playOnStart;
 
         [Tooltip("How Long to fade out the sound to play")]
@@ -45,6 +48,10 @@ namespace ElementalEngagement.Utilities
             {
                 PlayForDuration();
             }
+            else if(loop)
+            {
+                PlayOnInterval(); ;
+            }
         }
 
         public void PlayForDuration()
@@ -63,7 +70,6 @@ namespace ElementalEngagement.Utilities
             AudioClip clipToPlay = GetRandomClip(audioClips);
             continuePlaying = true;
             StartCoroutine(EffectOnInterval(clipToPlay));
-
         }
 
         public void stopPlayOnInterval()
