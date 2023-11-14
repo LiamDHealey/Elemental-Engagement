@@ -39,7 +39,7 @@ namespace ElementalEngagement.Combat
         {
             if(validTargets.Count == 0)
             {
-                movement.AllowMovement(this);
+                movement?.AllowMovement(this);
             }
         }
         /// <summary>
@@ -60,7 +60,7 @@ namespace ElementalEngagement.Combat
                 allegiance.faction == otherAllegiance.faction) 
                 return;
 
-            movement.PreventMovement(this);
+            movement?.PreventMovement(this);
             validTargets.Add(other);
             StartCoroutine(DamageOverTime());
 
