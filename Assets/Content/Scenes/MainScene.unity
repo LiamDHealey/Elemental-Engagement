@@ -561,6 +561,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.52305603
       objectReference: {fileID: 0}
+    - target: {fileID: 6948623071127326808, guid: 1f743728907bebb499e0223fa41efcad, type: 3}
+      propertyPath: worldspaceBounds.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948623071127326808, guid: 1f743728907bebb499e0223fa41efcad, type: 3}
+      propertyPath: worldspaceBounds.m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948623071127326808, guid: 1f743728907bebb499e0223fa41efcad, type: 3}
+      propertyPath: worldspaceBounds.m_Extent.y
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948623071127326808, guid: 1f743728907bebb499e0223fa41efcad, type: 3}
+      propertyPath: worldspaceBounds.m_Extent.z
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 7296408001643710717, guid: 1f743728907bebb499e0223fa41efcad, type: 3}
       propertyPath: sceneToLoad
       value: Content/Scenes/Main Menu
@@ -3321,6 +3337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 0}
+  loop: 0
   interval: 0
   duration: 0
   playOnStart: 0
