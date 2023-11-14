@@ -12,11 +12,16 @@ namespace ElementalEngagement.Combat
     /// </summary>
     public class AOEAttack : Attack
     {
+
+        [Tooltip("The agent used to move this.")]
+        [SerializeField] private Movement movement;
+
         [Tooltip("The collider in which the target must be within to take damage.")]
         [SerializeField] private BindableCollider attackRange;
 
         [Tooltip("The maximum number of things this can hit at once.")] [Min(1)]
         [SerializeField] private int maxTargets = 1;
+
 
         // Contains a list of all valid things for this aoe to hit.
         private List<Collider> validTargets = new List<Collider>();
@@ -30,6 +35,13 @@ namespace ElementalEngagement.Combat
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
         }
 
+        private void OnTriggerExit(Collider other)
+        {
+            if(validTargets.Count == 0)
+            {
+                movement.AllowMovement(this);
+            }
+        }
         /// <summary>
         /// Starts damaging other if not aligned and in range.
         /// </summary>
@@ -48,6 +60,7 @@ namespace ElementalEngagement.Combat
                 allegiance.faction == otherAllegiance.faction) 
                 return;
 
+            movement.PreventMovement(this);
             validTargets.Add(other);
             StartCoroutine(DamageOverTime());
 

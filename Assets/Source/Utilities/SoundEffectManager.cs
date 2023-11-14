@@ -32,6 +32,7 @@ namespace ElementalEngagement.Utilities
         [SerializeField]private float fadeOutDuration;
 
         private bool continuePlaying = false;
+        private bool currentlyPlaying = false;
 
         // Track the audio source of the music
         private static AudioSource audioSource = null;
@@ -46,11 +47,22 @@ namespace ElementalEngagement.Utilities
         {
             if (playOnStart) 
             {
-                PlayForDuration();
+                if(loop)
+                {
+                    PlayOnInterval();
+                }
+                else
+                {
+                    PlayForDuration();
+                }
             }
-            else if(loop)
+        }
+
+        private void Update()
+        {
+            if(audioSource == null)
             {
-                PlayOnInterval(); ;
+                Destroy(gameObject);
             }
         }
 
@@ -67,14 +79,18 @@ namespace ElementalEngagement.Utilities
 
         public void PlayOnInterval()
         {
-            AudioClip clipToPlay = GetRandomClip(audioClips);
-            continuePlaying = true;
-            StartCoroutine(EffectOnInterval(clipToPlay));
+            if(!currentlyPlaying)
+            {
+                currentlyPlaying = true;
+                continuePlaying = true;
+                StartCoroutine(EffectOnInterval());
+            }
         }
 
         public void stopPlayOnInterval()
         {
             continuePlaying = false;
+            currentlyPlaying = false;
         }
 
         public void stopSound()
@@ -100,11 +116,11 @@ namespace ElementalEngagement.Utilities
             audioSource.volume = startVolume;
         }
 
-        IEnumerator EffectOnInterval(AudioClip clipToPlay)
+        IEnumerator EffectOnInterval()
         {
             while(continuePlaying)
             {
-                audioSource.PlayOneShot(clipToPlay);
+                audioSource.PlayOneShot(GetRandomClip(audioClips));
                 yield return new WaitForSeconds(interval);
             }
         }

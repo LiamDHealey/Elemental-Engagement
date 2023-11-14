@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    // Whether or not this can curranty move
+    // Whether or not this can currantly move
     public bool canMove => movementPreventers.Count == 0;
     // Called when something prevents this from moving.
     public UnityEvent onMovementPrevented;
@@ -55,9 +55,12 @@ public class Movement : MonoBehaviour
     {
         if (preventer == null)
             throw new Exception("Preventer must be valid.");
+
+        Debug.Log(canMove, this);
         
         if (canMove)
         {
+            //Debug.Log(preventer.ToString() + gameObject.ToString(), this);
             onMovementPrevented?.Invoke();
         }
 
