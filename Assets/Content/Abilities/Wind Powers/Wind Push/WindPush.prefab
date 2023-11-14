@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 75570655c5c39b04080b359be8f5d165, type: 3}
+  loop: 0
   interval: 0
   duration: 4
   playOnStart: 1
@@ -5053,6 +5054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+  detachBeforeDeath: []
 --- !u!114 &865892039160538150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5082,6 +5084,7 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 269073783852043837}
   maxTargets: 9999
 --- !u!135 &7785458032764344796

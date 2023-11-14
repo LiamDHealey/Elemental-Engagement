@@ -58,13 +58,13 @@ namespace ElementalEngagement.Utilities
             }
         }
 
-        private void Update()
-        {
-            if(audioSource == null)
-            {
-                Destroy(gameObject);
-            }
-        }
+        //private void Update()
+        //{
+        //    if (audioSource == null)
+        //    {
+        //        Destroy(this);
+        //    }
+        //}
 
         public void PlayForDuration()
         {
@@ -103,14 +103,12 @@ namespace ElementalEngagement.Utilities
             yield return new WaitForSeconds(delay);
 
             float startVolume = audioSource.volume;
-            Debug.Log("Starting At " + startVolume);
             while (audioSource.volume > 0)
             {
                 audioSource.volume -= startVolume * Time.deltaTime / fadeOutDuration;
-                Debug.Log("Current volume during fade is: " + audioSource.volume);
+                Debug.Log("Current volume during fade is: " + audioSource.volume + audioSource.name + " On " + audioSource.gameObject.transform.parent.name);
                 yield return null;
             }
-
 
             audioSource.Stop();
             audioSource.volume = startVolume;

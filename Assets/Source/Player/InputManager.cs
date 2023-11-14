@@ -136,6 +136,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
+
             selectionInputHandler.Select();
         }
 
