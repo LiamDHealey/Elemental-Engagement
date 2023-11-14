@@ -15,12 +15,16 @@ public class DelayStart : MonoBehaviour
         // make a list of all children
         Transform[] ChildrenTransforms = this.gameObject.GetComponentsInChildren<Transform>();
         foreach (Transform t in ChildrenTransforms)
+        {
             if (0 == t.childCount)
                 t.gameObject.SetActive(false); // disable the children
+        }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(.05f);
 
         foreach (Transform t in ChildrenTransforms)
-            t.gameObject.SetActive(true);      // restore all the disabled objects in the list (even the parent)
+        {
+            t.gameObject.SetActive(true);  // restore all the disabled objects in the list (even the parent)
+        }
     }
 }
