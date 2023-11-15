@@ -219,12 +219,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allegiance: {fileID: 4950871531199550200}
-  requiredCapturePoints: 10
-  requiredDecapturePoints: 10
+  requiredCapturePoints: 25
+  requiredDecapturePoints: 25
   capturePointSettings: []
-  sacrificeDamage: 4
+  sacrificeDamage: 1
   sacrificeInterval: 0.5
-  neutralLockoutTime: 4
+  neutralLockoutTime: 5
   favorGainRate: 0.005
   gainFavorWhileDecapping: 1
   onCaptured:

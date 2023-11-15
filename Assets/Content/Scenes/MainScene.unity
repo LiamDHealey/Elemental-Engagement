@@ -6808,7 +6808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: ba6973d4976d0574db19bef1e897264d, type: 3}
       propertyPath: favorGainRate
-      value: 0.004
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 7167516863568249919, guid: ba6973d4976d0574db19bef1e897264d, type: 3}
       propertyPath: requiredCapturePoints
@@ -7156,6 +7156,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 874254607}
     m_Modifications:
+    - target: {fileID: 991939784751142010, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
+      propertyPath: _maxHP
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5378492904543549314, guid: 46fd01ee2af8ed4499a8611ab0ffd2c9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
