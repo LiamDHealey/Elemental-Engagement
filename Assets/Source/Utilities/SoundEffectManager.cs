@@ -58,14 +58,6 @@ namespace ElementalEngagement.Utilities
             }
         }
 
-        //private void Update()
-        //{
-        //    if (audioSource == null)
-        //    {
-        //        Destroy(this);
-        //    }
-        //}
-
         public void PlayForDuration()
         {
             PlayRandomSound();
