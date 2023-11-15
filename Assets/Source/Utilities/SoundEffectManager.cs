@@ -35,7 +35,7 @@ namespace ElementalEngagement.Utilities
         private bool currentlyPlaying = false;
 
         // Track the audio source of the music
-        private static AudioSource audioSource = null;
+        private AudioSource audioSource = null;
 
         private void Awake()
         {
