@@ -9,7 +9,7 @@ namespace ElementalEngagement.Player
     /// <summary>
     /// Pans this game object.
     /// </summary>
-    public class PanInputHandler : MonoBehaviour
+    public class CameraMovementHandler : MonoBehaviour
     {
         [Tooltip("The input to get pan input from.")]
         [SerializeField] private PlayerInput input;

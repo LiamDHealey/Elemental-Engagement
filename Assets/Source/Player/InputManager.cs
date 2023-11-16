@@ -12,7 +12,7 @@ using static UnityEngine.InputSystem.InputAction;
 namespace ElementalEngagement
 {
     [RequireComponent(typeof(PlayerInput), typeof(SelectionInputHandler), typeof(AbilityInputHandler))]
-    [RequireComponent(typeof(PanInputHandler))]
+    [RequireComponent(typeof(CameraMovementHandler))]
     public class InputManager : MonoBehaviour
     {
         [Tooltip("The states each action is allowed to be used in")]
@@ -33,7 +33,7 @@ namespace ElementalEngagement
         private AbilityInputHandler abilityInputHandler;
 
         // The ability manager
-        private PanInputHandler panInputHandler;
+        private CameraMovementHandler panInputHandler;
 
         private State state
         {
@@ -61,7 +61,7 @@ namespace ElementalEngagement
             input = GetComponent<PlayerInput>();
             selectionInputHandler = GetComponent<SelectionInputHandler>();
             abilityInputHandler = GetComponent<AbilityInputHandler>();
-            panInputHandler = GetComponent<PanInputHandler>();
+            panInputHandler = GetComponent<CameraMovementHandler>();
 
             actionRequirements = _actionRequirements
                 .ToDictionary(requirement => requirement.action.action.name);
