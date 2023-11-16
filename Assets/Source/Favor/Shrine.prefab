@@ -267,8 +267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5fa28ea532fe3e43bcd8bb481229944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerType: Basic
+  objectToSpawn: {fileID: 0}
   spawnLocation: {fileID: 6548466361993315904}
+  baseInterval: 20
   onSpawned:
     m_PersistentCalls:
       m_Calls: []
