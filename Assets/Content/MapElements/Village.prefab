@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: 1081702928140884416}
   - component: {fileID: 2644298900408784393}
   - component: {fileID: 7390618738266607070}
+  - component: {fileID: 7616482325849392988}
   m_Layer: 0
   m_Name: PlayerTwoSpawner
   m_TagString: Untagged
@@ -681,13 +682,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4427925096904058718}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5fa28ea532fe3e43bcd8bb481229944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerType: Default
+  objectToSpawn: {fileID: 2819691728172290092, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
   spawnLocation: {fileID: 1081702928140884416}
+  baseInterval: 0.01
   onSpawned:
     m_PersistentCalls:
       m_Calls:
@@ -703,6 +705,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7616482325849392988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427925096904058718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4371873893d074ab9430d0428c4e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFriendlyArmySpawned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4427925096904058718}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onHostileArmySpawned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4841983116390579529
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +746,7 @@ GameObject:
   - component: {fileID: 4341319483591416959}
   - component: {fileID: 5984935828323550209}
   - component: {fileID: 7764497168422592014}
+  - component: {fileID: 927837598130780244}
   m_Layer: 0
   m_Name: PlayerOneSpawner
   m_TagString: Untagged
@@ -770,13 +803,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841983116390579529}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5fa28ea532fe3e43bcd8bb481229944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerType: Default
+  objectToSpawn: {fileID: 2819691728172290092, guid: d9336df1da8a4154c82a5cf9975b311a, type: 3}
   spawnLocation: {fileID: 4341319483591416959}
+  baseInterval: 0.01
   onSpawned:
     m_PersistentCalls:
       m_Calls:
@@ -792,6 +826,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &927837598130780244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841983116390579529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4371873893d074ab9430d0428c4e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFriendlyArmySpawned:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4427925096904058718}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onHostileArmySpawned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7294259808723287923
 GameObject:
   m_ObjectHideFlags: 0
