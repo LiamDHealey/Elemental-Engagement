@@ -121,7 +121,7 @@ namespace ElementalEngagement.Player
 
             Vector3 extent = (cornerPos - centerGroundPos);
             extent = new Vector3(Mathf.Abs(extent.x), 50, Mathf.Abs(extent.z)) * 0.6f;
-            
+
             Collider[] hitColliders = Physics.OverlapBox(centerGroundPos, extent);
 
             string currentSelectedTag = "";
@@ -131,7 +131,7 @@ namespace ElementalEngagement.Player
                 currentSelectedTag = selectable.tag;
                 if (selectable.isSelected)
                 {
-                    this.DeselectAll();
+                    DeselectAll();
                 }
             }
 
