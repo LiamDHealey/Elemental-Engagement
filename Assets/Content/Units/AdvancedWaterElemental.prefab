@@ -140,6 +140,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  movement: {fileID: 0}
   attackRange: {fileID: 5492152974625980174}
   maxTargets: 1
 --- !u!135 &4499735010822195332
@@ -5125,6 +5126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: b31ea16b1e03a174f968e4de3a6c51d7, type: 3}
+  loop: 0
   interval: 0
   duration: 0
   playOnStart: 0
@@ -5190,6 +5192,7 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 5492152974625980174}
   maxTargets: 242
 --- !u!1001 &8634695071115868937
@@ -5476,6 +5479,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: iconSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerOneIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: ec6f9ce5aca49f4449351cffc3ba54dd, type: 3}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerTwoIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: dbb93ee8849d3124bb4211475a000d1e, type: 3}
     - target: {fileID: 6808801920505254747, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.72

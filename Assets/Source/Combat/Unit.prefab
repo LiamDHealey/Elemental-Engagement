@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 6997656361314388549}
   - component: {fileID: 6317284455027317297}
   - component: {fileID: 1000893756457621722}
+  - component: {fileID: 6091431539345917494}
   m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
@@ -830,7 +831,6 @@ MonoBehaviour:
   movement: {fileID: 1000893756457621722}
   attackRange: {fileID: 5389468287829788689}
   maxTargets: 1
-  attackDelay: 1
 --- !u!114 &172367160331058577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,6 +983,22 @@ MonoBehaviour:
   onDestinationReached:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6091431539345917494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833595026407189285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddfcfd6f707f264d84d2153435963ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconSize: 7
+  unalignedIcon: {fileID: 0}
+  playerOneIcon: {fileID: 21300000, guid: aa51a995a2d9dee4aa71bf810f3edd09, type: 3}
+  playerTwoIcon: {fileID: 21300000, guid: 33d6b2801a5e6964588d4c3d02f29fba, type: 3}
 --- !u!1 &6237159483480382592
 GameObject:
   m_ObjectHideFlags: 0
