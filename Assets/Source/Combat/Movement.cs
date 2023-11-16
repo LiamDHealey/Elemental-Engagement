@@ -1,3 +1,4 @@
+using ElementalEngagement.Combat;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -171,8 +172,15 @@ public class Movement : MonoBehaviour
             if (Physics.Raycast(transform.position + Vector3.up * 50, Vector3.down, out RaycastHit hit, 500f, walkableMask))
             {
                 transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+                transform.position += (Vector3.Scale(agent.desiredVelocity, new Vector3(1, 0, 1)).normalized)
+                                    * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime);
             }
-            transform.position = (transform.position + (Vector3.Scale(agent.desiredVelocity, new Vector3(1, 0, 1)).normalized) * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime));
+            else
+            {
+                NavMesh.SamplePosition(transform.position, out NavMeshHit navHit, 1000f, NavMesh.AllAreas);
+                transform.position += (navHit.position - transform.position).normalized * speed * 5 * Time.deltaTime;
+            }
+
             agent.nextPosition = transform.position;
         }
 
