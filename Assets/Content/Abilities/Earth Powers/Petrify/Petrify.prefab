@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: e3b2a6d1e5eb75846aae00a4672959cc, type: 3}
+  loop: 0
   interval: 0
   duration: 6
   playOnStart: 1
@@ -5056,6 +5057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 7
+  detachBeforeDeath: []
 --- !u!135 &2053923146161944034
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5116,7 +5118,7 @@ MonoBehaviour:
   area: {fileID: 1317924507226698854}
   allegiance: {fileID: 7182556735942742344}
   affectsEnemies: 1
-  speedMultiplier: 0.0001
+  speedMultiplier: 0.00001
 --- !u!114 &8238808009166286647
 MonoBehaviour:
   m_ObjectHideFlags: 0
