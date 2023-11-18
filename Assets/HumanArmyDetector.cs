@@ -29,12 +29,10 @@ namespace ElementalEngagement.UI
                 {
                     if (allegiance.faction == faction)
                     {
-                        Debug.Log(allegiance.faction.ToString() + "Friendly");
                         onFriendlyArmySpawned?.Invoke();
                     }
                     else
                     {
-                        Debug.Log(allegiance.faction.ToString() + "Hostile");
                         onHostileArmySpawned?.Invoke();
                     }
                     FavorManager.onFavorChanged.RemoveListener(DetectArmySpawn);
