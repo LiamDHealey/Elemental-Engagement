@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 573a059f6241b404a9e5a2382db8b1e0, type: 3}
+  loop: 0
   interval: 0
   duration: 5
   playOnStart: 1
@@ -195,6 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 30
+  detachBeforeDeath: []
 --- !u!114 &3617530182488720133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +212,7 @@ MonoBehaviour:
   gameObjects:
   - {fileID: 7520094084802813353, guid: e7fc5f266a42d1040a7bd837894f05be, type: 3}
   distance: 20
-  maxLength: 500
+  maxLength: 40
 --- !u!114 &2517666764437258382
 MonoBehaviour:
   m_ObjectHideFlags: 0
