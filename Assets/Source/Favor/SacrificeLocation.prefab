@@ -181,6 +181,8 @@ GameObject:
   - component: {fileID: 209188727104258757}
   - component: {fileID: 607684488052902251}
   - component: {fileID: 4950871531199550200}
+  - component: {fileID: 904461068107047736}
+  - component: {fileID: 4506725277355709073}
   m_Layer: 9
   m_Name: SacrificeLocation
   m_TagString: Untagged
@@ -225,7 +227,7 @@ MonoBehaviour:
   sacrificeDamage: 1
   sacrificeInterval: 0.5
   neutralLockoutTime: 5
-  favorGainRate: 0.005
+  favorGainRate: 0.003
   gainFavorWhileDecapping: 1
   onCaptured:
     m_PersistentCalls:
@@ -317,6 +319,35 @@ MonoBehaviour:
     onSelected:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &904461068107047736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065649901808501139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddfcfd6f707f264d84d2153435963ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconSize: 20
+  unalignedIcon: {fileID: 0}
+  playerOneIcon: {fileID: 0}
+  playerTwoIcon: {fileID: 0}
+--- !u!114 &4506725277355709073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065649901808501139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f85d4fc6c6c284791b5aefad104231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRateMultiplier: 1.5
 --- !u!1001 &2790677313329122656
 PrefabInstance:
   m_ObjectHideFlags: 0

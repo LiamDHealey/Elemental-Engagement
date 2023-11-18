@@ -140,8 +140,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  movement: {fileID: 0}
   attackRange: {fileID: 5492152974625980174}
   maxTargets: 1
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!135 &4499735010822195332
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5125,6 +5128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: b31ea16b1e03a174f968e4de3a6c51d7, type: 3}
+  loop: 0
   interval: 0
   duration: 0
   playOnStart: 0
@@ -5190,8 +5194,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 5492152974625980174}
   maxTargets: 242
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5202,19 +5209,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Height
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Radius
-      value: 4.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Center.y
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Center.z
-      value: 0
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 854166808930866116, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Controller
@@ -5222,7 +5229,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: a6662dd0abfa1974d9ad1b24f01b7dae, type: 2}
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: _speed
-      value: 7
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: agentType
@@ -5347,6 +5354,10 @@ PrefabInstance:
     - target: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Acceleration
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: maxTargets
+      value: 9999999
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: damage.amount
@@ -5476,6 +5487,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: iconSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerOneIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: ec6f9ce5aca49f4449351cffc3ba54dd, type: 3}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerTwoIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: dbb93ee8849d3124bb4211475a000d1e, type: 3}
     - target: {fileID: 6808801920505254747, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.72

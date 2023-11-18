@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Height
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Center.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 854166808930866116, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Controller
       value: 
@@ -232,6 +244,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerOneIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: d9dcea83c13805644992a7096f62b74e, type: 3}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerTwoIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: f5bebca374781ae459c5fc2dd50b62b3, type: 3}
     - target: {fileID: 7008560567426600776, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: audioClips.Array.size
       value: 1

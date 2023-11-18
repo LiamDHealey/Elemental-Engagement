@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 8715321656192180978}
   - component: {fileID: 2125978576373769656}
   - component: {fileID: 4004314516147337774}
+  - component: {fileID: 4764695332680005016}
   m_Layer: 9
   m_Name: Shrine
   m_TagString: Untagged
@@ -266,8 +267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5fa28ea532fe3e43bcd8bb481229944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnerType: Basic
+  objectToSpawn: {fileID: 0}
   spawnLocation: {fileID: 6548466361993315904}
+  baseInterval: 20
   onSpawned:
     m_PersistentCalls:
       m_Calls: []
@@ -395,6 +397,22 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &4764695332680005016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548424856781637128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fddfcfd6f707f264d84d2153435963ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  iconSize: 20
+  unalignedIcon: {fileID: 0}
+  playerOneIcon: {fileID: 0}
+  playerTwoIcon: {fileID: 0}
 --- !u!1001 &8934355830195491216
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2577,6 +2577,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: eb179b76c07d638478d0a3bbb33714d9, type: 2}
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: _speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: agentType
       value: 2
       objectReference: {fileID: 0}
@@ -3317,6 +3321,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: canAttackAndMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3408,6 +3416,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: iconSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerOneIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: e7b4bbbcf258aa94fadee71cd7b22fd8, type: 3}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerTwoIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 73e527c384b6ad64885f9805ddb855a0, type: 3}
     - target: {fileID: 6317284455027317297, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Shape
       value: 1
@@ -3695,7 +3715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 8806642813228639187}
   allegiance: {fileID: 1828492509368982433}
-  stoppingRange: 5
+  stoppingRange: 1
 --- !u!1 &5922358353365032170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2730563324831770595, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}

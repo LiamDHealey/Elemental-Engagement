@@ -27,7 +27,14 @@ namespace ElementalEngagement.UI
 
                 if (FavorManager.factionToFavor[(faction, god)] >= 1)
                 {
-                    (allegiance.faction == faction ? onFriendlyArmySpawned : onHostileArmySpawned)?.Invoke();
+                    if (allegiance.faction == faction)
+                    {
+                        onFriendlyArmySpawned?.Invoke();
+                    }
+                    else
+                    {
+                        onHostileArmySpawned?.Invoke();
+                    }
                     FavorManager.onFavorChanged.RemoveListener(DetectArmySpawn);
                 }
             }

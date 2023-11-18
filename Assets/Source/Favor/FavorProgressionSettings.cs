@@ -41,11 +41,6 @@ namespace ElementalEngagement.Favor
             [SerializeField] private List<AbilityUnlock> _abilityUnlocks;
             public ReadOnlyCollection<AbilityUnlock> abilityUnlocks => _abilityUnlocks.AsReadOnly();
 
-            [Tooltip("All the ways this god's spawners can spawn units.")]
-            [SerializeField] private List<SpawnerType> _spawnerTypes;
-            public ReadOnlyDictionary<string, SpawnerType> spawnerTypes { get => new ReadOnlyDictionary<string, SpawnerType>(_spawnerTypes.ToDictionary(s => s.typeName)); }
-
-
 
             /// <summary>
             /// Stores the conditions an ability to be unlocked.
@@ -61,22 +56,6 @@ namespace ElementalEngagement.Favor
 
                 [Tooltip("The ability to unlock.")]
                 public Ability ability;
-            }
-
-            /// <summary>
-            /// Stores info related to a single spawner type.
-            /// </summary>
-            [System.Serializable]
-            public class SpawnerType
-            {
-                [Tooltip("The name used by spawner to pick these settings")]
-                [SerializeField] public string typeName = "Default";
-
-                [Tooltip("How the spawn rate (in units/second) changes as the favor increases. Favor is normalized 0-1.")]
-                [SerializeField] public AnimationCurve favorToSpawnRate;
-
-                [Tooltip("The prefab to instantiate when this spawns a thing.")]
-                [SerializeField] public GameObject prefabToSpawn;
             }
         }
     }

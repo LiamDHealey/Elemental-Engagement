@@ -4896,19 +4896,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Height
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Radius
-      value: 5.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Center.y
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 106441613470632701, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Center.z
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 854166808930866116, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Controller
@@ -4916,7 +4916,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 337b086301b7d394da8eba0b247f15db, type: 2}
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: _speed
-      value: 4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: agentType
@@ -4976,15 +4976,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.67830455
+      value: 0.5763825
       objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.67830455
+      value: 0.5763825
       objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.67830455
+      value: 0.5763825
       objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4992,7 +4992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.05
+      value: 5.09
       objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5017,6 +5017,10 @@ PrefabInstance:
     - target: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Acceleration
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: maxTargets
+      value: 99999999
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: damageDelay
@@ -5226,6 +5230,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: iconSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerOneIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: a7339f4cbcb5a154ea6a9f1f5929bb05, type: 3}
+    - target: {fileID: 6091431539345917494, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: playerTwoIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 60ebc83b060877b4981bdae20a1d6416, type: 3}
     - target: {fileID: 7008560567426600776, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: audioClips.Array.size
       value: 1

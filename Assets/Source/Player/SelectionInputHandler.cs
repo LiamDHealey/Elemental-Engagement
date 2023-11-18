@@ -77,7 +77,7 @@ namespace ElementalEngagement.Player
         /// <param name="isInProgress"> Will evaluate to true while the circular selection is in progress. </param>
         public void StartCircularSelection(Func<bool> isInProgress)
         {
-            DeselectAll();
+            //DeselectAll();
             StartCoroutine(UpdateSelection());
 
             /// <summary>
@@ -138,7 +138,8 @@ namespace ElementalEngagement.Player
 
             foreach (Collider collider in hitColliders)
             {
-                if (collider.tag == currentSelectedTag)
+                Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
+                if (collider.tag == currentSelectedTag && colliderAllegiance.faction == allegiance.faction)
                 {
                     Selectable colliderSelect = collider.GetComponent<Selectable>();
                     _selectedObjects.Add(colliderSelect);

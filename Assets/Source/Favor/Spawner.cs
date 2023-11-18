@@ -15,11 +15,14 @@ namespace ElementalEngagement.Favor
     [RequireComponent(typeof(Player.Allegiance))]
     public class Spawner : MonoBehaviour
     {
-        [Tooltip("The name used to determine this spawner's settings. Setting are stored in the favor progression settings.")]
-        [SerializeField] private string spawnerType = "Default";
+        [Tooltip("The thing to spawn")]
+        [SerializeField] private GameObject objectToSpawn;
 
         [Tooltip("The location to spawn the units at.")]
         [SerializeField] public Transform spawnLocation;
+
+        [Tooltip("The time between each spawn before any multipliers are applied.")]
+        [SerializeField] public float baseInterval = 5f;
 
         [Tooltip("The location to spawn the units at.")]
         public UnityEvent onSpawned;
@@ -35,7 +38,7 @@ namespace ElementalEngagement.Favor
         /// </summary>
         public void Awake()
         {
-            spawnAllegiance = GetComponent<Player.Allegiance>();
+            spawnAllegiance = GetComponent<Allegiance>();
             timeSinceLastSpawn = 0;
         }
 
@@ -44,20 +47,12 @@ namespace ElementalEngagement.Favor
         /// </summary>
         public void Update()
         {
-            float spawnInterval;
-            if(spawnRate() != 0.0)
-            {
-                spawnInterval = 1 / spawnRate();
-            }
-            else
-            {
-                return; 
-            }
-
+            float spawnInterval = baseInterval / SpawnrateProvider.GetSpawnrateMultiplier(spawnAllegiance);
+            
             timeSinceLastSpawn += Time.deltaTime;
             if(timeSinceLastSpawn >= spawnInterval)
             {
-                GameObject spawnedObject = Instantiate(objectToSpawn());
+                GameObject spawnedObject = Instantiate(objectToSpawn);
 
                 Vector2 noise = Random.insideUnitCircle;
                 spawnedObject.transform.position = spawnLocation.position + new Vector3(noise.x, 0, noise.y);
@@ -66,24 +61,6 @@ namespace ElementalEngagement.Favor
 
                 timeSinceLastSpawn = 0;
             }
-        }
-
-        private float spawnRate()
-        {
-                   //Accessing the GodProgressionSettings of the FavorManager
-            return FavorManager.godProgressionSettings[spawnAllegiance.god]
-                   //Progressing from GodProgressionSettings to the Animation Curve
-                   .spawnerTypes[spawnerType].favorToSpawnRate
-                   //Evaluating the Animation Curve at the current Faction value
-                   .Evaluate(FavorManager.factionToFavor[(spawnAllegiance.faction, spawnAllegiance.god)]);
-        }
-
-        private GameObject objectToSpawn()
-        {
-            //Accessing the GodProgressionSettings of the FavorManager
-            return FavorManager.godProgressionSettings[spawnAllegiance.god]
-                   //Progressing from GodProgressionSettings to the Prefab to Spawn
-                   .spawnerTypes[spawnerType].prefabToSpawn;
         }
     }
 }

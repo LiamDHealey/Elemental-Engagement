@@ -428,6 +428,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 904461068107047736, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: playerOneIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: e9811896c6a444e47baf1b896848acea, type: 3}
+    - target: {fileID: 904461068107047736, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: playerTwoIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 572f928194e13ce4b94ddb3d3f0630f4, type: 3}
+    - target: {fileID: 904461068107047736, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
+      propertyPath: unalignedIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b9074055d3532642817ea6747425299, type: 3}
     - target: {fileID: 1295301410343901759, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -635,10 +647,6 @@ PrefabInstance:
     - target: {fileID: 5081262603137984299, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
-      propertyPath: favorGainRate
-      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 7014076263548193281, guid: 4c817eb1db6bb8242bf2a313fe158d12, type: 3}
       propertyPath: sacrificeInterval
