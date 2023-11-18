@@ -77,7 +77,7 @@ namespace ElementalEngagement.Player
         /// <param name="isInProgress"> Will evaluate to true while the circular selection is in progress. </param>
         public void StartCircularSelection(Func<bool> isInProgress)
         {
-            DeselectAll();
+            //DeselectAll();
             StartCoroutine(UpdateSelection());
 
             /// <summary>
