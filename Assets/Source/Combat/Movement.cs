@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour
         if (preventer == null)
             throw new Exception("Preventer must be valid.");
 
-        Debug.Log(canMove, this);
+        Debug.Log(preventer);
         
         if (canMove)
         {

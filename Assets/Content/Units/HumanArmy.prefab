@@ -3317,6 +3317,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: canAttackAndMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3707,7 +3711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 8806642813228639187}
   allegiance: {fileID: 1828492509368982433}
-  stoppingRange: 5
+  stoppingRange: 1
 --- !u!1 &5922358353365032170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2730563324831770595, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}

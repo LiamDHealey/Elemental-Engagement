@@ -22,6 +22,12 @@ namespace ElementalEngagement.Combat
         [Tooltip("The maximum number of things this can hit at once.")] [Min(1)]
         [SerializeField] private int maxTargets = 1;
 
+        [Tooltip("Whether this can attack and move at the same time")]
+        [SerializeField] private bool canAttackAndMove = false;
+
+        [Tooltip("How long a unit will be stopped for after attacking.")]
+        [SerializeField] private float stopDuration = 0.5f;
+
 
         // Contains a list of all valid things for this aoe to hit.
         private List<Collider> validTargets = new List<Collider>();
@@ -35,13 +41,6 @@ namespace ElementalEngagement.Combat
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            if(validTargets.Count == 0)
-            {
-                movement?.AllowMovement(this);
-            }
-        }
         /// <summary>
         /// Starts damaging other if not aligned and in range.
         /// </summary>
@@ -60,7 +59,6 @@ namespace ElementalEngagement.Combat
                 allegiance.faction == otherAllegiance.faction) 
                 return;
 
-            movement?.PreventMovement(this);
             validTargets.Add(other);
             StartCoroutine(DamageOverTime());
 
@@ -91,6 +89,12 @@ namespace ElementalEngagement.Combat
                         if (validTargets.Count <= maxTargets || validTargets.IndexOf(other) < maxTargets)
                         {
                             onAttackStart?.Invoke();
+                            if (!canAttackAndMove)
+                            {
+                                CancelInvoke("AllowMovement");
+                                movement?.PreventMovement(this);
+                                Invoke("AllowMovement", stopDuration);
+                            }
 
                             if (damageDelay > 0)
                                 yield return new WaitForSeconds(damageDelay);
@@ -108,5 +112,7 @@ namespace ElementalEngagement.Combat
                 }
             }
         }
+
+        private void AllowMovement() => movement?.AllowMovement(this);
     }
 }
