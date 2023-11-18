@@ -48,7 +48,7 @@ namespace ElementalEngagement.Favor
         public void Update()
         {
             float spawnInterval = baseInterval / SpawnrateProvider.GetSpawnrateMultiplier(spawnAllegiance);
-
+            
             timeSinceLastSpawn += Time.deltaTime;
             if(timeSinceLastSpawn >= spawnInterval)
             {

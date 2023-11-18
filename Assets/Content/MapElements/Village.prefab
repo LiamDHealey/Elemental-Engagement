@@ -693,9 +693,9 @@ MonoBehaviour:
   onSpawned:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4427925096904058718}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 7390618738266607070}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -720,9 +720,9 @@ MonoBehaviour:
   onFriendlyArmySpawned:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4427925096904058718}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 7390618738266607070}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -841,9 +841,9 @@ MonoBehaviour:
   onFriendlyArmySpawned:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4427925096904058718}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
+      - m_Target: {fileID: 7764497168422592014}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
