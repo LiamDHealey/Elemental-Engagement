@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 2.5
+  detachBeforeDeath: []
 --- !u!114 &8835529322014301733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 234040135209394935}
   damage:
-    amount: 3
+    amount: 5
     allegiance: {fileID: 234040135209394935}
   knockback:
     amount: 3
@@ -108,8 +109,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 995275647833398919}
   maxTargets: 999
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!135 &6482236068002490565
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5148,6 +5152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 3.5
+  detachBeforeDeath: []
 --- !u!114 &1972886686219970242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5162,7 +5167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 3498122609903024570}
   damage:
-    amount: 3
+    amount: 5
     allegiance: {fileID: 3498122609903024570}
   knockback:
     amount: 3
@@ -5177,8 +5182,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 3557790986421664722}
   maxTargets: 999
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!135 &1103870813999893325
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15174,6 +15182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 4b1dc1a375c796d49a6e5ff88267cce0, type: 3}
+  loop: 0
   interval: 0
   duration: 10
   playOnStart: 1
@@ -20154,6 +20163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+  detachBeforeDeath: []
 --- !u!135 &7785458032764344796
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20313,6 +20323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 4.3
+  detachBeforeDeath: []
 --- !u!114 &9080600493038592256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20327,7 +20338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 5367453313618362824}
   damage:
-    amount: 3
+    amount: 5
     allegiance: {fileID: 5367453313618362824}
   knockback:
     amount: 3
@@ -20342,8 +20353,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 6424589756571059484}
   maxTargets: 999
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!135 &1683184467717652711
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20489,6 +20503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+  detachBeforeDeath: []
 --- !u!114 &1996628986238383852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20503,7 +20518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 2738513357046875250}
   damage:
-    amount: 3
+    amount: 5
     allegiance: {fileID: 2738513357046875250}
   knockback:
     amount: 3
@@ -20518,8 +20533,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 3975878478859051958}
   maxTargets: 999
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!135 &3504194135386199408
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20665,6 +20683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 3
+  detachBeforeDeath: []
 --- !u!114 &8397472971095841651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20679,7 +20698,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 3681299267156736134}
   damage:
-    amount: 3
+    amount: 5
     allegiance: {fileID: 3681299267156736134}
   knockback:
     amount: 3
@@ -20694,8 +20713,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 5641013848812430732}
   maxTargets: 999
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!135 &5211642837953828646
 SphereCollider:
   m_ObjectHideFlags: 0
