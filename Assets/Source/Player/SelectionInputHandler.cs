@@ -138,7 +138,8 @@ namespace ElementalEngagement.Player
 
             foreach (Collider collider in hitColliders)
             {
-                if (collider.tag == currentSelectedTag)
+                Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
+                if (collider.tag == currentSelectedTag && colliderAllegiance.faction == allegiance.faction)
                 {
                     Selectable colliderSelect = collider.GetComponent<Selectable>();
                     _selectedObjects.Add(colliderSelect);
