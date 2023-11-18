@@ -11,7 +11,7 @@ namespace ElementalEngagement
     /// Allows on trigger enter and exit events to be bound to.
     /// </summary>
     [RequireComponent(typeof(Collider))]
-    public class BindableCollider : MonoBehaviour
+    public class BindableCollider : MonoBehaviour, IAbilityCollider
     {
         // Called when on trigger enter is called.
         public UnityEvent<Collider> onTriggerEnter = new UnityEvent<Collider>();
@@ -26,6 +26,8 @@ namespace ElementalEngagement
         // Contains all of the currently overlapping colliders in the order they entered this trigger.
         private List<Collider> _overlappingColliders = new List<Collider>();
         public ReadOnlyCollection<Collider> overlappingColliders => new ReadOnlyCollection<Collider>(_overlappingColliders);
+
+        bool IAbilityCollider.isColliding { get => _overlappingColliders.Count > 0; set { } }
 
         /// <summary>
         /// Invokes event and tracks overlapping colliders.
@@ -53,6 +55,7 @@ namespace ElementalEngagement
         /// <param name="other"> THe collider now being overlapped. </param>
         private void OnCollisionEnter(Collision collision)
         {
+            Debug.Log(collision);
             _overlappingColliders.Add(collision.collider);
             onCollisionEnter?.Invoke(collision);
         }

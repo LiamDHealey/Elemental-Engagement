@@ -178,6 +178,9 @@ namespace ElementalEngagement.Player
             if (!unlockedAbilities.Contains(ability) || _abilityCooldowns.ContainsKey(ability))
                 return;
 
+            if (abilityPreview.GetComponent<IAbilityCollider>()?.isColliding ?? false)
+                return;
+
             _abilityCooldowns.Add(ability, ability.cooldown);
 
             GameObject abilityObject = Instantiate(ability.abilityPrefab);
