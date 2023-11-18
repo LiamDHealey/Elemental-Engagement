@@ -34,5 +34,13 @@ namespace ElementalEngagement.Player
                 Mathf.Clamp(transform.position.z + delta.y, startPos.z - bounds.y, startPos.z + bounds.y)
                 );
         }
+
+        /// <summary>
+        /// Zoom this
+        /// </summary>
+        public void Zoom(Vector2 input)
+        {
+            Debug.Log("Zooming: " +  input);
+        }
     }
 }

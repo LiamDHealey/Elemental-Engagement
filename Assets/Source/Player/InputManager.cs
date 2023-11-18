@@ -97,6 +97,8 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed += SelectAbility3;
             input.actions["PauseGame"].performed += PauseGame;
             input.actions["Back"].performed += Back;
+            input.actions["ZoomIn"].performed += ZoomIn;
+            input.actions["ZoomOut"].performed += ZoomOut;
         }
 
         private void OnDestroy()
@@ -114,6 +116,8 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed -= SelectAbility3;
             input.actions["PauseGame"].performed -= PauseGame;
             input.actions["Back"].performed -= Back;
+            input.actions["ZoomIn"].performed -= ZoomIn;
+            input.actions["ZoomOut"].performed -= ZoomOut;
         }
 
         private void Update()
@@ -249,6 +253,23 @@ namespace ElementalEngagement
                 UIManager.onMenuClosed?.Invoke("pauseMenu");
             }
         }
+
+        void ZoomIn(CallbackContext context)
+        {
+            if (!IsActionAllowed(context))
+                return;
+
+            panInputHandler.Zoom(Vector2.one);
+        }
+
+        void ZoomOut(CallbackContext context)
+        {
+            if (!IsActionAllowed(context))
+                return;
+
+            panInputHandler.Zoom(Vector2.one);
+        }
+
         #endregion
 
 
