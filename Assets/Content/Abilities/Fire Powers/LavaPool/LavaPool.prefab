@@ -4946,8 +4946,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: 4768377344330554530}
   maxTargets: 999999
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!135 &4983747383856469153
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5141,7 +5144,7 @@ AudioSource:
   m_GameObject: {fileID: 8990417236770823666}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5013442392518472263, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -5242,6 +5245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 1b7a7b17b4b7dfb4aa0623b02f0f2743, type: 3}
+  loop: 0
   interval: 0
   duration: 9
   playOnStart: 1

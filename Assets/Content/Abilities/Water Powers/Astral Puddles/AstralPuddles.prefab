@@ -5331,6 +5331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 8
+  detachBeforeDeath: []
 --- !u!114 &-5063303175824295892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5360,8 +5361,11 @@ MonoBehaviour:
   onAttackDamage:
     m_PersistentCalls:
       m_Calls: []
+  movement: {fileID: 0}
   attackRange: {fileID: -4213034578456349486}
   maxTargets: 9999999
+  canAttackAndMove: 0
+  stopDuration: 0.5
 --- !u!65 &-3938491904902389067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5449,7 +5453,7 @@ AudioSource:
   m_GameObject: {fileID: 8146003592913679394}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6109395203753245808, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -5550,6 +5554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: f357bb7870c4f674a9d729c2b69bda70, type: 3}
+  loop: 0
   interval: 0
   duration: 7
   playOnStart: 1
