@@ -65,7 +65,7 @@ namespace ElementalEngagement.Combat
 
             for(int i = 0; i < damageMultipliers.Count; i++)
             {
-                if (damageMultipliers[i].incomingAffiliation.Equals(damage.allegiance.god))
+                if (damageMultipliers[i].incomingAffiliation.Equals(damage.allegiance?.god))
                 {
                     damage.amount *= damageMultipliers[i].multiplier;
                 }
