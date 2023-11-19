@@ -15,17 +15,18 @@ namespace ElementalEngagement.UI
     {
         [Tooltip("Replaces {binding} with the button icons this is bound to, and replaces {action} with the name of the action.")]
         public string format = "{binding} - {action}";
-        public TextMeshProUGUI template;
+        public GameObject template;
         public RectTransform controlsContainer;
-        public InputActionReference[] actionsToIgnore;
         public TMP_SpriteAsset keyboardSpriteAsset;
         public TMP_SpriteAsset playStationSpriteAsset;
         public TMP_SpriteAsset xBoxSpriteAsset;
+        [SerializeField] private List<Control> allowedControls;
 
 
         private InputManager inputManager;
         private PlayerInput input;
         private List<TextMeshProUGUI> textBoxes = new List<TextMeshProUGUI>();
+        private List<GameObject> containers = new List<GameObject>();
 
 
         private void Start()
@@ -41,7 +42,8 @@ namespace ElementalEngagement.UI
             int index = 0;
             foreach (InputAction action in actions)
             {
-                if (actionsToIgnore.Any(actionRef => actionRef.action.name == action.name))
+                Control control = allowedControls.FirstOrDefault(ctrl => ctrl.action.action.name == action.name);
+                if (control == null)
                     continue;
 
                 if (textBoxes.Count <= index)
@@ -49,7 +51,8 @@ namespace ElementalEngagement.UI
                     GameObject newTextBox = Instantiate(template.gameObject);
                     newTextBox.transform.SetParent(controlsContainer.transform, false);
                     newTextBox.SetActive(true);
-                    textBoxes.Add(newTextBox.GetComponent<TextMeshProUGUI>());
+                    containers.Add(newTextBox);
+                    textBoxes.Add(newTextBox.GetComponentInChildren<TextMeshProUGUI>());
                 }
 
 
@@ -80,7 +83,9 @@ namespace ElementalEngagement.UI
                 }
 
                 string bindingInteractions = appropriateBindings.First().interactions.Split('(')[0];
-                textBoxes[index].text = format.Replace("{binding}", $"{bindingInteractions} {bindingName}").Replace("{action}", action.name);
+                textBoxes[index].text = format
+                    .Replace("{binding}", control.includeInteractions ? $"{bindingInteractions} {bindingName}" : bindingName)
+                    .Replace("{action}", control.displayName);
 
                 index++;
 
@@ -114,11 +119,23 @@ namespace ElementalEngagement.UI
             }
 
 
-            while (textBoxes.Count > index)
+            while (containers.Count > index)
             {
-                Destroy(textBoxes[textBoxes.Count - 1].gameObject);
+                Destroy(containers[textBoxes.Count - 1].gameObject);
                 textBoxes.RemoveAt(textBoxes.Count - 1);
+                containers.RemoveAt(textBoxes.Count - 1);
             }
+        }
+
+
+
+        [System.Serializable]
+        private class Control
+        {
+            public InputActionReference action;
+            public string displayName;
+            [Tooltip("Whether or not to include the interaction (ex: Hold, Tap, MultiTap)")]
+            public bool includeInteractions;
         }
     }
 }
