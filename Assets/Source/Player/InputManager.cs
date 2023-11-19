@@ -118,15 +118,16 @@ namespace ElementalEngagement
 
         private void Update()
         {
-            Pan(input.actions["Pan"]);
-            RotateAbility(input.actions["RotateAbility"]);
             if (input.actions["ZoomIn"].inProgress)
             {
                 ZoomIn(input.actions["ZoomIn"]);
-            } else if (input.actions["ZoomOut"].inProgress)
+            }
+            else if (input.actions["ZoomOut"].inProgress)
             {
                 ZoomOut(input.actions["ZoomOut"]);
             }
+            Pan(input.actions["Pan"]);
+            RotateAbility(input.actions["RotateAbility"]);
         }
 
         #region Bindings
