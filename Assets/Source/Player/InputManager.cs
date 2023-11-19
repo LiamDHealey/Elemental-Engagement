@@ -259,7 +259,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            panInputHandler.Zoom(Vector2.one);
+            panInputHandler.Zoom(Vector2.one, (() => context.action.inProgress));
         }
 
         void ZoomOut(CallbackContext context)
@@ -267,7 +267,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            panInputHandler.Zoom(Vector2.one);
+            panInputHandler.Zoom(-Vector2.one, (() => context.action.inProgress));
         }
 
         #endregion
