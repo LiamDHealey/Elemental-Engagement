@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 namespace ElementalEngagement.Utilities
 {
@@ -33,13 +34,26 @@ namespace ElementalEngagement.Utilities
 
         private bool continuePlaying = false;
         private bool currentlyPlaying = false;
+        private float startingVolume = 0f;
+
+        [Tooltip("The Exact Name of the exposed volume parameter from the AudioMixer that the source is connected to")]
+        [SerializeField] private string volumeParam = "godPowerVolume";
 
         // Track the audio source of the music
-        private static AudioSource audioSource = null;
+        private AudioSource audioSource = null;
+
+        private AudioMixer audioMixer = null;
+
+        private void OnDestroy()
+        {
+            audioMixer.SetFloat(volumeParam, startingVolume);
+        }
 
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            audioMixer = audioSource.outputAudioMixerGroup.audioMixer;
+            audioMixer.GetFloat(volumeParam, out  startingVolume);
         }
 
 
@@ -102,18 +116,7 @@ namespace ElementalEngagement.Utilities
         {
             yield return new WaitForSeconds(delay);
 
-            float startVolume = audioSource.volume;
-            Debug.Log("Starting At " + startVolume);
-            while (audioSource.volume > 0)
-            {
-                audioSource.volume -= startVolume * Time.deltaTime / fadeOutDuration;
-                Debug.Log("Current volume during fade is: " + audioSource.volume);
-                yield return null;
-            }
-
-
-            audioSource.Stop();
-            audioSource.volume = startVolume;
+            StartCoroutine(FadeAudioMixer.StartFade(audioMixer, volumeParam, fadeOutDuration, 0.00f));
         }
 
         IEnumerator EffectOnInterval()

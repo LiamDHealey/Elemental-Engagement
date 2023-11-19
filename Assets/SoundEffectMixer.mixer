@@ -80,6 +80,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-2673068563970094990
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: d1e10c4550e899040af9b3214633a4a8
+  m_EffectName: Attenuation
+  m_MixLevel: eec6f068ccf03f54781a5ca679fa8c04
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-2498731050013769044
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -94,6 +108,25 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &-2394924372905956061
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI Sounds
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 580ba853edb379244909c0bdf91c80cb
+  m_Children: []
+  m_Volume: c63cd09f47858bb4e8c1b22a5ade5014
+  m_Pitch: 46a13cd969129ea4bbc9b19dedeed04b
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2673068563970094990}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &-730257303043351927
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -159,6 +192,7 @@ AudioMixerController:
     - 462eb4df3e69cb340a5c0f6548f4f55f
     - 0260bf3bf316f1d44855bb8576bf624c
     - 5ed928756feb4794e83a1a70e1251b93
+    - 580ba853edb379244909c0bdf91c80cb
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -174,6 +208,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -5882773309803352941}
   - {fileID: 5133048094844425449}
+  - {fileID: -2394924372905956061}
   m_Volume: 13172378f593ef540aa024a1b00b05ce
   m_Pitch: fe0890ef9f320f643a1f39ecec7a44b7
   m_Send: 00000000000000000000000000000000
@@ -208,6 +243,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: e0a3479c3c34aef4bace60ad574073c8
   m_FloatValues:
     ac035ef169eec834087814c3e35ce95a: 5.1526933
+    64ba7cd25b55eca4480273ee896519c5: -10.345207
     a7d44d749e0e61441a2ef5fd65ed5087: 0.13552584
   m_TransitionOverrides: {}
 --- !u!243 &96492217876547054
