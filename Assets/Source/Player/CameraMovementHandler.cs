@@ -39,7 +39,7 @@ namespace ElementalEngagement.Player
         /// <summary>
         /// Zoom this
         /// </summary>
-        public void Zoom(Vector2 input, Func<bool> isInProgress)
+        public void Zoom(Vector2 input)
         {
             Vector2 delta = input * panspeed * Time.deltaTime;
 

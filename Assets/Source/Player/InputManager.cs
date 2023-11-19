@@ -97,8 +97,6 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed += SelectAbility3;
             input.actions["PauseGame"].performed += PauseGame;
             input.actions["Back"].performed += Back;
-            input.actions["ZoomIn"].performed += ZoomIn;
-            input.actions["ZoomOut"].performed += ZoomOut;
         }
 
         private void OnDestroy()
@@ -116,14 +114,19 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed -= SelectAbility3;
             input.actions["PauseGame"].performed -= PauseGame;
             input.actions["Back"].performed -= Back;
-            input.actions["ZoomIn"].performed -= ZoomIn;
-            input.actions["ZoomOut"].performed -= ZoomOut;
         }
 
         private void Update()
         {
             Pan(input.actions["Pan"]);
             RotateAbility(input.actions["RotateAbility"]);
+            if (input.actions["ZoomIn"].inProgress)
+            {
+                ZoomIn(input.actions["ZoomIn"]);
+            } else if (input.actions["ZoomOut"].inProgress)
+            {
+                ZoomOut(input.actions["ZoomOut"]);
+            }
         }
 
         #region Bindings
@@ -254,20 +257,19 @@ namespace ElementalEngagement
             }
         }
 
-        void ZoomIn(CallbackContext context)
+        void ZoomIn(InputAction action)
         {
-            if (!IsActionAllowed(context))
+            if (!IsActionAllowed(action))
                 return;
-
-            panInputHandler.Zoom(Vector2.one, (() => context.action.inProgress));
+            panInputHandler.Zoom(new Vector2(0, action.ReadValue<float>()));
         }
 
-        void ZoomOut(CallbackContext context)
+        void ZoomOut(InputAction action)
         {
-            if (!IsActionAllowed(context))
+            if (!IsActionAllowed(action))
                 return;
 
-            panInputHandler.Zoom(-Vector2.one, (() => context.action.inProgress));
+            panInputHandler.Zoom(-new Vector2(0, action.ReadValue<float>()));
         }
 
         #endregion
