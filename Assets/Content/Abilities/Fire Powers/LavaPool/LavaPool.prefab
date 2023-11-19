@@ -5150,10 +5150,10 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 57
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -5247,6 +5247,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1b7a7b17b4b7dfb4aa0623b02f0f2743, type: 3}
   loop: 0
   interval: 0
-  duration: 9
+  duration: 8
   playOnStart: 1
-  fadeOutDuration: 1
+  fadeOutDuration: 2
+  volumeParam: lavaPuddleVolume

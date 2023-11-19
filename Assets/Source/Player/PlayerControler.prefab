@@ -489,6 +489,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  volumeParam: godPowerVolume
 --- !u!1 &6691182579712443195
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +532,7 @@ AudioSource:
   m_GameObject: {fileID: 6691182579712443195}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -2394924372905956061, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
+  OutputAudioMixerGroup: {fileID: 360822912817992477, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -637,6 +638,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  volumeParam: godPowerVolume
 --- !u!1 &8361649208543269712
 GameObject:
   m_ObjectHideFlags: 0
