@@ -49,8 +49,8 @@ namespace ElementalEngagement.Player
         public MinorGod? selectionGod => currentSelection[0] switch
         {
             0 => MinorGod.Unaligned,
-            1 => MinorGod.Water,
-            2 => MinorGod.Fire,
+            1 => MinorGod.Fire,
+            2 => MinorGod.Water,
             3 => MinorGod.Earth,
             _ => null,
         };
