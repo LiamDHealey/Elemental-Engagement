@@ -42,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 6587405141950388664}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 96492217876547054, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -143,10 +143,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: 7a57b6e63e789ad4e8100ca139ee0626, type: 3}
+  loop: 0
   interval: 0
   duration: 9
   playOnStart: 1
   fadeOutDuration: 1
+  volumeParam: spiritSwarmVolume
 --- !u!1 &6607328154304511375
 GameObject:
   m_ObjectHideFlags: 0
@@ -5029,6 +5031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
+  affectsEnemies: 0
   maxHpMultiplier: 1.5
 --- !u!114 &5608733842328156764
 MonoBehaviour:
@@ -5044,6 +5047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
+  affectsEnemies: 0
   damageMultiplier: 1
   knockbackMultiplier: 1
   attackIntervalMultiplier: 0.75
@@ -5061,6 +5065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
+  affectsEnemies: 0
   speedMultiplier: 1.5
 --- !u!135 &9118675805897069436
 SphereCollider:
@@ -5147,3 +5152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
+  detachBeforeDeath: []
