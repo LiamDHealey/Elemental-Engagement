@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloatyRock : MonoBehaviour
+public class Cloud : MonoBehaviour
 {
     [SerializeField][Min(0)] float maxHeight = 15f;
     [SerializeField][Min(0)] float minHeight = 3f;
