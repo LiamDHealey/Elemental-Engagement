@@ -42,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 2413734652229893427}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1899778086643261091, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.708
@@ -148,6 +148,7 @@ MonoBehaviour:
   duration: 5
   playOnStart: 1
   fadeOutDuration: 0
+  volumeParam: mountainWallVolume
 --- !u!1 &7520094084802813353
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +214,10 @@ MonoBehaviour:
   - {fileID: 7520094084802813353, guid: e7fc5f266a42d1040a7bd837894f05be, type: 3}
   distance: 20
   maxLength: 40
+  blockerDistance: 20
+  blockerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2517666764437258382
 MonoBehaviour:
   m_ObjectHideFlags: 0

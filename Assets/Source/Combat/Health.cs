@@ -55,7 +55,7 @@ namespace ElementalEngagement.Combat
         }
 
         /// <summary>
-        /// Cases this to take damage.
+        /// Causes this to take damage.
         /// </summary>
         /// <param name="damage"> The damage to take. </param>
         public void TakeDamage(Damage damage)
@@ -63,9 +63,9 @@ namespace ElementalEngagement.Combat
             if (hp <= 0)
                 return;
 
-            for(int i =0; i < damageMultipliers.Count; i++)
+            for(int i = 0; i < damageMultipliers.Count; i++)
             {
-                if (damageMultipliers[i].incomingAffiliation.Equals(damage.allegiance))
+                if (damageMultipliers[i].incomingAffiliation.Equals(damage.allegiance?.god))
                 {
                     damage.amount *= damageMultipliers[i].multiplier;
                 }

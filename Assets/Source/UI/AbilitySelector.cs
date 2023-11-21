@@ -14,8 +14,8 @@ namespace ElementalEngagement.UI
 
         [SerializeField] private CopyLayout baseContainer;
         [SerializeField] private CopyLayout windContainer;
-        [SerializeField] private CopyLayout waterContainer;
         [SerializeField] private CopyLayout fireContainer;
+        [SerializeField] private CopyLayout waterContainer;
         [SerializeField] private CopyLayout earthContainer;
         
         private AbilityInputHandler manager;
