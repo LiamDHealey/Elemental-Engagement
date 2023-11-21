@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace ElementalEngagement.Player
@@ -18,9 +20,33 @@ namespace ElementalEngagement.Player
         [Tooltip("The speed multiplier for panning.")]
         [SerializeField] private float panspeed = 1f;
 
+        [Tooltip("The camera boundary for the Grasslands map")]
+        [SerializeField] private Vector3 map1Bounds;
+        [Tooltip("The camera boundary for the Desert map")]
+        [SerializeField] private Vector3 map2Bounds;
+        [Tooltip("The camera boundary for the Tundra map")]
+        [SerializeField] private Vector3 map3Bounds;
+
         [SerializeField] private Vector3 bounds;
 
         [SerializeField] Vector3 startPos;
+
+        private void Start()
+        {
+            UnityEngine.SceneManagement.Scene currentMap = SceneManager.GetActiveScene();
+            if (currentMap.name == "GrasslandMap")
+            {
+                bounds = map1Bounds;
+            }
+            else if (currentMap.name == "DesertMap")
+            {
+                bounds = map2Bounds;
+            }
+            else if (currentMap.name == "TundraMap")
+            {
+                bounds = map3Bounds;
+            }
+        }
 
         /// <summary>
         /// Move this
