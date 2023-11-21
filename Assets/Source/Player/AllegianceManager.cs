@@ -34,7 +34,15 @@ namespace ElementalEngagement.Player
 
                     GameObject Hud = Instantiate(overrides.hud);
                     Hud.transform.SetParent(input.transform);
-                    Hud.GetComponent<Canvas>().worldCamera = input.GetComponent<Camera>();
+
+                    Camera camera = input.GetComponent<Camera>();
+                    Hud.GetComponent<Canvas>().worldCamera = camera;
+
+                    RectTransform childRect = ((RectTransform)Hud.transform.GetChild(0));
+                    childRect.anchorMin = camera.rect.min;
+                    childRect.anchorMax = camera.rect.max;
+                    childRect.offsetMin = Vector2.zero;
+                    childRect.offsetMax = Vector2.zero;
 
                     return;
                 }

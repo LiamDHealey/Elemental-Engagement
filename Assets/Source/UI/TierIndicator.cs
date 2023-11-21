@@ -29,20 +29,27 @@ namespace ElementalEngagement.UI
                 image.enabled = false;
             }
 
-            abilityHandler.onAbilityUnlocked.AddListener(
-                delegate
-                {
-                    if (abilityHandler.abilitiesInTiers.Count <= tier)
-                        return;
+            abilityHandler.onAbilityUnlocked.AddListener(delegate{ UpdateIndicator(); });
+            UpdateIndicator();
 
-                    int current = abilityHandler.abilitiesInTiers[tier];
-                    text.text = $"{current}/{max}";
-                    foreach (Image image in images)
-                    {
-                        image.enabled = true;
-                        image.sprite = tierSprites[current - 1];
-                    }
-                });
+
+            void UpdateIndicator()
+            {
+
+                int current = abilityHandler.abilitiesInTiers.Count > tier 
+                            ? abilityHandler.abilitiesInTiers[tier] 
+                            : 0;
+                text.text = $"{current}/{max}";
+
+
+                if (abilityHandler.abilitiesInTiers.Count <= tier)
+                    return;
+                foreach (Image image in images)
+                {
+                    image.enabled = true;
+                    image.sprite = tierSprites[current - 1];
+                }
+            }
         }
     }
 }
