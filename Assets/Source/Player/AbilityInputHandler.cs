@@ -147,6 +147,15 @@ namespace ElementalEngagement.Player
 
             return SelectionResult.AbilityNotAvailable;
         }
+
+        public void FixedUpdate()
+        {
+            if (abilityPreview != null)
+            {
+                abilityPreview.transform.position = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
+            }
+        }
+
         public enum SelectionResult { SubmenuOpened, Success, AbilityNotAvailable }
 
         public void RotateAbility(Vector2 direction)

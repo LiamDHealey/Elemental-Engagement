@@ -132,9 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4229869321111341770}
-  panspeed: 150
-  bounds: {x: 250, y: 350}
-  startPos: {x: 267.7718, y: 0, z: 0.420105}
+  panspeed: 100
+  bounds: {x: 250, y: 70, z: 350}
+  startPos: {x: 267.7718, y: 10, z: 0.420105}
 --- !u!114 &1686256207638245235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +328,12 @@ MonoBehaviour:
   - action: {fileID: -78372480659900942, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
     requiredStates: 0
     forbiddenStates: 24
+  - action: {fileID: 7540805248521350263, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
+    requiredStates: 0
+    forbiddenStates: 16
+  - action: {fileID: 138137138081731157, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
+    requiredStates: 0
+    forbiddenStates: 16
 --- !u!114 &2432912754186515058
 MonoBehaviour:
   m_ObjectHideFlags: 0
