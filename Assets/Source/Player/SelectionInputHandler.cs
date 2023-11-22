@@ -176,7 +176,9 @@ namespace ElementalEngagement.Player
 
                 CommandReceiver[] receivers = selectable.GetComponents<CommandReceiver>();
                 foreach (CommandReceiver receiver in receivers)
+                {
                     receiver.CancelCommand();
+                }
 
                 // Get highest priority receiver that can execute this command.
                 CommandReceiver chosenReceiver = receivers
@@ -188,7 +190,19 @@ namespace ElementalEngagement.Player
             }
         }
 
-
+        /// <summary>
+        /// Returns true if there is a selectable object under the cursor.
+        /// This method is used for differentiating between selecting a unit and issuing a command.
+        /// </summary>
+        /// <returns> True if there is a selectable object under the cursor. </returns>
+        public bool isThereSelectable()
+        {
+            if (GetSelectableUnderCursor(out Selectable selectable))
+            {
+                return true;
+            }
+            return false;
+        }
 
 
         /// <summary>

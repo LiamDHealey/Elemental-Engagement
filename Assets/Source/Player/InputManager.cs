@@ -175,8 +175,10 @@ namespace ElementalEngagement
         {
             if (!IsActionAllowed(context))
                 return;
-
-            selectionInputHandler.IssueCommand(false);
+            if (!selectionInputHandler.isThereSelectable())
+            {
+                selectionInputHandler.IssueCommand(false);
+            }
         }
 
         private void IssueAltCommand(CallbackContext context)
@@ -184,7 +186,10 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            selectionInputHandler.IssueCommand(true);
+            if (!selectionInputHandler.isThereSelectable())
+            {
+                selectionInputHandler.IssueCommand(true);
+            }
         }
 
         private void PlayAbility(CallbackContext context)
