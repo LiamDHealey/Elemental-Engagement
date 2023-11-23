@@ -59,7 +59,7 @@ MonoBehaviour:
     source: {fileID: 0}
   attackInterval: 9
   damageDelay: 3
-  waitBeforeDamage: 1
+  waitBeforeDamage: 0
   onAttackStart:
     m_PersistentCalls:
       m_Calls:
@@ -142,7 +142,7 @@ MonoBehaviour:
         m_CallState: 2
   movement: {fileID: 0}
   attackRange: {fileID: 5492152974625980174}
-  maxTargets: 1
+  maxTargets: 9999999
   canAttackAndMove: 0
   stopDuration: 0.5
 --- !u!135 &4499735010822195332
@@ -5367,6 +5367,10 @@ PrefabInstance:
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: attackInterval
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: waitBeforeDamage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.size
