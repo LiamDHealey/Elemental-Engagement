@@ -20,11 +20,14 @@ namespace ElementalEngagement.Player
         [Tooltip("The speed multiplier for panning.")]
         [SerializeField] private float panspeed = 1f;
 
-        [Tooltip("The camera boundary for the Grasslands map")]
+        [Tooltip("The speed multiplier for zooming.")]
+        [SerializeField] private float zoomspeed = 1f;
+
+        [Tooltip("The camera boundary for the Grasslands map. Y-axis is for zoom height. The bigger the Y-axis, the farther one can zoom out.")]
         [SerializeField] private Vector3 map1Bounds;
-        [Tooltip("The camera boundary for the Desert map")]
+        [Tooltip("The camera boundary for the Desert map. Y-axis is for zoom height. The bigger the Y-axis, the farther one can zoom out.")]
         [SerializeField] private Vector3 map2Bounds;
-        [Tooltip("The camera boundary for the Tundra map")]
+        [Tooltip("The camera boundary for the Tundra map. Y-axis is for zoom height. The bigger the Y-axis, the farther one can zoom out.")]
         [SerializeField] private Vector3 map3Bounds;
 
         [SerializeField] private Vector3 bounds;
@@ -67,7 +70,7 @@ namespace ElementalEngagement.Player
         /// </summary>
         public void Zoom(Vector2 input)
         {
-            Vector2 delta = input * panspeed * Time.deltaTime;
+            Vector2 delta = input * zoomspeed * Time.deltaTime;
 
             transform.position = new Vector3(
                 transform.position.x,
