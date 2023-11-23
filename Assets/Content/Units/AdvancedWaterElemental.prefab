@@ -5027,7 +5027,7 @@ AudioSource:
   m_GameObject: {fileID: 2827556410178655127}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 7336646985617231151, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.588
@@ -5132,8 +5132,8 @@ MonoBehaviour:
   interval: 0
   duration: 0
   playOnStart: 0
-  fadeOutDuration: 0
-  volumeParam: godPowerVolume
+  fadeOutDuration: 0.5
+  volumeParam: whirlpoolVolume
 --- !u!1 &6868302159246053560
 GameObject:
   m_ObjectHideFlags: 0

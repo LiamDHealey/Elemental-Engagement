@@ -30,7 +30,7 @@ namespace ElementalEngagement.Utilities
         [SerializeField] bool playOnStart;
 
         [Tooltip("How Long to fade out the sound to play")]
-        [SerializeField]private float fadeOutDuration;
+        [SerializeField]private float fadeOutDuration = 1f;
 
         private bool continuePlaying = false;
         private bool currentlyPlaying = false;
@@ -88,6 +88,7 @@ namespace ElementalEngagement.Utilities
 
         public void PlayRandomSound()
         {
+            audioMixer.SetFloat(volumeParam, startingVolume);
             audioSource.PlayOneShot(GetRandomClip(audioClips));
         }
 
@@ -109,7 +110,7 @@ namespace ElementalEngagement.Utilities
 
         public void stopSound()
         {
-            StartCoroutine(StopAfterDelay(0));
+            StartCoroutine(FadeAudioMixer.StartFade(audioMixer, volumeParam, fadeOutDuration, 0.00f));
         }
 
         IEnumerator StopAfterDelay(float delay)
