@@ -61,7 +61,7 @@ namespace ElementalEngagement.Player
             transform.position = new Vector3(
                 Mathf.Clamp(transform.position.x + delta.x, startPos.x - bounds.x, startPos.x + bounds.x), 
                 transform.position.y,
-                Mathf.Clamp(transform.position.z + delta.y, startPos.z - bounds.z, startPos.z + bounds.z)
+                Mathf.Clamp(transform.position.z + delta.y, startPos.z - bounds.z, (startPos.z + bounds.z)-30)
                 );
         }
 
