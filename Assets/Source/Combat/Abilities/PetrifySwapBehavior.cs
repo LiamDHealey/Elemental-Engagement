@@ -18,18 +18,20 @@ public class PetrifySwapBehavior : StatusEffect
     private Dictionary<Collider, Material> storedMats;
 
     private Collider[] collidersToEffect;
+
     private void Start()
     {
         storedMats = new Dictionary<Collider, Material>();
-        area.overlappingColliders.CopyTo(collidersToEffect, area.overlappingColliders.Count);
-
+        collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);
         foreach (Collider collider in collidersToEffect)
         {
             var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
             if (colliderUnit != null)
             {
                 if (!CanModify(collider))
-                    return;
+                    continue;
+                if (collider.GetComponent<Movement>() == null)
+                    continue;
 
                 storedMats.Add(collider, new Material(colliderUnit.material));
                 Debug.Log("Added material!" + collider.gameObject.name);

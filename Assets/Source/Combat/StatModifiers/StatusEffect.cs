@@ -15,7 +15,7 @@ namespace ElementalEngagement.Combat
         [SerializeField] Lifetime lifetime;
 
         [Tooltip("The area this effects things in.")]
-        [SerializeField] protected BindableCollider area;
+        [SerializeField] protected SphereCollider area;
 
         [Tooltip("The allegiance of this, buffs only thing that align with this. Leave null to buff anything. Leave allegiance category unaligned to ignore that category.")]
         [SerializeField] protected Allegiance allegiance;

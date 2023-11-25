@@ -28,15 +28,15 @@ namespace ElementalEngagement.Combat
 
         private void Start()
         {
-            area.overlappingColliders.CopyTo(collidersToEffect, area.overlappingColliders.Count);
+            collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);
             foreach (Collider collider in collidersToEffect)
             {
                 Attack attack = collider.GetComponent<Attack>();
 
                 if (attack == null)
-                    return;
+                    continue;
                 if (!CanModify(collider))
-                    return;
+                    continue;
 
                 attack.damage.amount *= damageMultiplier;
                 attack.knockback.amount *= knockbackMultiplier;
@@ -51,9 +51,9 @@ namespace ElementalEngagement.Combat
                 Attack attack = collider.GetComponent<Attack>();
 
                 if (attack == null)
-                    return;
+                    continue;
                 if (!CanModify(collider))
-                    return;
+                    continue;
 
                 attack.damage.amount /= damageMultiplier;
                 attack.knockback.amount /= knockbackMultiplier;
