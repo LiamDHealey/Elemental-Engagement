@@ -26,6 +26,9 @@ namespace ElementalEngagement.Combat
 
         private Collider[] collidersToEffect;
 
+        /// <summary>
+        /// Checks all objects in the area of effect and applies proper changes to each one
+        /// </summary>
         private void Start()
         {
             collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);
@@ -44,6 +47,9 @@ namespace ElementalEngagement.Combat
             }
         }
 
+        /// <summary>
+        /// Same as start, but restores values to original
+        /// </summary>
         public void OnDestroy()
         {
             foreach (Collider collider in collidersToEffect)
