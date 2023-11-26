@@ -18,26 +18,6 @@ namespace ElementalEngagement.UI
         [SerializeField] Slider slider;
 
         /// <summary>
-        /// Sets the fill color of this bar.
-        /// </summary>
-        /// <param name="color"> Color formatted as a string: "r, b, g, a" where rgba values are floats 0-1. </param>
-        public void SetColor(string color)
-        {
-            string[] rgba = color.Split(", ");
-
-            slider.fillRect.GetComponent<Image>().color = new Color(float.Parse(rgba[0]), float.Parse(rgba[1]), float.Parse(rgba[2]), float.Parse(rgba[3]));
-        }
-
-        /// <summary>
-        /// Sets the fill color of this bar.
-        /// </summary>
-        /// <param name="color"> The color of the bar. </param>
-        public void SetColor(Color color)
-        {
-            slider.fillRect.GetComponent<Image>().color = color;
-        }
-
-        /// <summary>
         /// Updates slider.
         /// </summary>
         private void Update()
