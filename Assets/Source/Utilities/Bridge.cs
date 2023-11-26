@@ -24,7 +24,6 @@ public class Bridge : MonoBehaviour
     public GameObject bottomCenterEdge;
     public GameObject bottomRightCorner;
 
-    private List<GameObject> segments = new List<GameObject>();
 
     private void Start()
     {
@@ -34,29 +33,11 @@ public class Bridge : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Ground");
 
-        foreach (GameObject segment in segments)
+
+        while(transform.childCount > 0)
         {
-            if (!Application.isPlaying)
-            {
-                DestroyImmediate(segment);
-            }
-            else
-            {
-                Destroy(segment);
-            }
+            DestroyImmediate(transform.GetChild(0).gameObject);
         }
-        foreach (GameObject child in transform)
-        {
-            if (!Application.isPlaying)
-            {
-                DestroyImmediate(child);
-            }
-            else
-            {
-                Destroy(child);
-            }
-        }
-        segments.Clear();
 
         boxCollider.size = new Vector3(segmentSize.x * bridgeSize.x, 1, segmentSize.y * bridgeSize.y);
         boxCollider.center = new Vector3(0, -0.5f, 0);
@@ -108,7 +89,6 @@ public class Bridge : MonoBehaviour
                     newSegment = Instantiate(middleCenterFloor, transform);
                 }
 
-                segments.Add(newSegment);
                 newSegment.transform.localPosition = new Vector3(segmentSize.x * x - boxCollider.size.x/2f + segmentSize.x/2, 0, segmentSize.y * z - boxCollider.size.z / 2f + segmentSize.y / 2);
             }
         }
