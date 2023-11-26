@@ -53,6 +53,7 @@ AudioMixerGroupController:
   m_GroupID: 163d3f3d812279543941972e040ad642
   m_Children:
   - {fileID: -527510015293295238}
+  - {fileID: 7336646985617231151}
   m_Volume: ac035ef169eec834087814c3e35ce95a
   m_Pitch: 4d9a30322da55cc438611cac58e3d2d1
   m_Send: 00000000000000000000000000000000
@@ -225,6 +226,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 76578250a36420e47a7616218721e767
+    name: whirlpoolVolume
   - guid: a9ebdbd74f3dabf488b94ac7c46bb18f
     name: asteroidSwarmVolume
   - guid: 64ba7cd25b55eca4480273ee896519c5
@@ -264,6 +267,7 @@ AudioMixerController:
     - 580ba853edb379244909c0bdf91c80cb
     - 50f8568270764364ba8d7164cfd436c6
     - d16aa742575253946bd21b5c400bb306
+    - 8d0426fdb5888cc439df01a38613defe
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -575,6 +579,25 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &7336646985617231151
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Advanced Water Whirlpool
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 8d0426fdb5888cc439df01a38613defe
+  m_Children: []
+  m_Volume: 76578250a36420e47a7616218721e767
+  m_Pitch: fc5fdbd1960e36e4bb29cbe8afc85349
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 8380206691252762988}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &8005987681330906958
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -618,6 +641,20 @@ AudioMixerEffectController:
   m_EffectID: 5ec24ff22f7c25948a2cbaca1e5a4b9b
   m_EffectName: Attenuation
   m_MixLevel: 660a9b5796ef7a94ab6b183a9efd91d7
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &8380206691252762988
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0cbd1156fb9f7b548aab708450ce0cfd
+  m_EffectName: Attenuation
+  m_MixLevel: bdd5c3af8422d254d979fd7adb5b3dde
   m_Parameters: []
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0

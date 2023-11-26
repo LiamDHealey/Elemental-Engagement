@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5077423330656512254}
   - component: {fileID: 279417264775036107}
+  - component: {fileID: 4900005997633498074}
   m_Layer: 7
   m_Name: Bridge
   m_TagString: Untagged
@@ -29,10 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6709906181456369264}
-  - {fileID: 1395550365003879405}
-  - {fileID: 5059634391540389472}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &279417264775036107
@@ -54,173 +52,29 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.306555, y: 0.26550686, z: 4.09}
-  m_Center: {x: 0.0067453384, y: -0.7118973, z: 0}
---- !u!1 &2975272147782761388
-GameObject:
+  m_Size: {x: 10, y: 1, z: 4}
+  m_Center: {x: 0, y: -0.5, z: 0}
+--- !u!114 &4900005997633498074
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5059634391540389472}
-  - component: {fileID: 8250046139802481080}
-  m_Layer: 7
-  m_Name: RailingCollider (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5059634391540389472
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975272147782761388}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.46}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5077423330656512254}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8250046139802481080
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2975272147782761388}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_GameObject: {fileID: 2950752008492173866}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 9.42, y: 2.33, z: 0.41}
-  m_Center: {x: 0, y: 0, z: 2.24}
---- !u!1 &7393017866981484966
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1395550365003879405}
-  - component: {fileID: 3246304857145609603}
-  m_Layer: 7
-  m_Name: RailingCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1395550365003879405
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7393017866981484966}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5077423330656512254}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3246304857145609603
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7393017866981484966}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 9.42, y: 2.33, z: 0.41}
-  m_Center: {x: 0, y: 0, z: 2.24}
---- !u!1001 &5244065714219336599
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5077423330656512254}
-    m_Modifications:
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2203132440104308573, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-      propertyPath: m_Name
-      value: Grasslands Bridge New
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
---- !u!4 &6709906181456369264 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1574230053258974695, guid: 478914a853b18e24889cbf7d4d45c58d, type: 3}
-  m_PrefabInstance: {fileID: 5244065714219336599}
-  m_PrefabAsset: {fileID: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316aee11048f03c4d9b6c644372ce8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segmentSize: {x: 1, y: 1}
+  bridgeSize: {x: 10, y: 4}
+  boxCollider: {fileID: 279417264775036107}
+  topLeftCorner: {fileID: 4029550264723762429, guid: 49e6815cb9de82b40b4726166cc1c133, type: 3}
+  topCenterEdge: {fileID: 4029550264723762429, guid: 49e6815cb9de82b40b4726166cc1c133, type: 3}
+  topRightCorner: {fileID: 4029550264723762429, guid: 5e44dda5af721bc4dae11e6c576de1e6, type: 3}
+  middleLeftEdge: {fileID: 4029550264723762429, guid: 62dd6378c42640545b897761bf9b5d78, type: 3}
+  middleCenterFloor: {fileID: 4029550264723762429, guid: 5fa009d3222421845a5bb5dc401e9c0a, type: 3}
+  middleRightEdge: {fileID: 4029550264723762429, guid: f521d40dd79049e48b32f1c06bbea7aa, type: 3}
+  bottomLeftCorner: {fileID: 4029550264723762429, guid: 2f1ff8f1c2c980b4d88a70323d1c69d2, type: 3}
+  bottomCenterEdge: {fileID: 4029550264723762429, guid: 37c374c7ae2fe914f89bac8f51e9dd83, type: 3}
+  bottomRightCorner: {fileID: 4029550264723762429, guid: 5fa231c4a5840b140b4de2c1b00c4c16, type: 3}

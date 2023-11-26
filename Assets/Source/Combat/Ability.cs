@@ -27,5 +27,8 @@ namespace ElementalEngagement.Combat
 
         [Tooltip("Which slot in the submenu this is in.")] [Range(0, 3)]
         public int submenuIndex;
+
+        [Tooltip("Whether or not this collides with things")]
+        public bool hasCollision = false;
     }
 }

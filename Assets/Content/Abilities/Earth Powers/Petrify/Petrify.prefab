@@ -4990,10 +4990,11 @@ GameObject:
   - component: {fileID: 115877209806484559}
   - component: {fileID: 2053923146161944034}
   - component: {fileID: 1317924507226698854}
-  - component: {fileID: 2703345964869744913}
-  - component: {fileID: 8238808009166286647}
-  - component: {fileID: 2991187041414704929}
   - component: {fileID: 2258943031987325674}
+  - component: {fileID: 380600556824786905}
+  - component: {fileID: 7856951303938890441}
+  - component: {fileID: 6410045552159906728}
+  - component: {fileID: 2458655150535919218}
   m_Layer: 0
   m_Name: Petrify
   m_TagString: Untagged
@@ -5104,56 +5105,6 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2703345964869744913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443267638344645966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 399c254cab40e024f8fe24d546cb9f99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  area: {fileID: 1317924507226698854}
-  allegiance: {fileID: 7182556735942742344}
-  affectsEnemies: 1
-  speedMultiplier: 0.00001
---- !u!114 &8238808009166286647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443267638344645966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c073fdf8081ff41b7df36ccddf7a03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  area: {fileID: 1317924507226698854}
-  allegiance: {fileID: 7182556735942742344}
-  affectsEnemies: 1
-  maxHpMultiplier: 2
---- !u!114 &2991187041414704929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8443267638344645966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c461cdc6d775cce45ac78a68f3b83051, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  area: {fileID: 1317924507226698854}
-  allegiance: {fileID: 7182556735942742344}
-  affectsEnemies: 1
-  damageMultiplier: 0
-  knockbackMultiplier: 0
-  attackIntervalMultiplier: 9999
 --- !u!114 &2258943031987325674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5166,7 +5117,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb94abfb43d6824aa4cb677b2341bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area: {fileID: 1317924507226698854}
+  lifetime: {fileID: 115877209806484559}
+  area: {fileID: 2053923146161944034}
   allegiance: {fileID: 7182556735942742344}
   affectsEnemies: 1
   petrifyMat: {fileID: -876546973899608171, guid: 2652aae1e96a34049af1e43e8e243c34, type: 3}
+--- !u!114 &380600556824786905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443267638344645966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4f9f1627fafef49bab70450ce42eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: {fileID: 115877209806484559}
+  area: {fileID: 2053923146161944034}
+  allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 1
+  damageMultiplier: 0.00001
+  knockbackMultiplier: 0.00001
+  attackIntervalMultiplier: 9999
+--- !u!114 &7856951303938890441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443267638344645966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf83da3a0063fc41b5643729792f6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: {fileID: 115877209806484559}
+  area: {fileID: 2053923146161944034}
+  allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 1
+  maxHpMultiplier: 2
+--- !u!114 &6410045552159906728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443267638344645966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd52935024ccc547a858fe98d835837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: {fileID: 115877209806484559}
+  area: {fileID: 2053923146161944034}
+  allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 1
+  speedMultiplier: 0.00001
+--- !u!114 &2458655150535919218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443267638344645966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692e64d18b35ed742a52ba8f1b10825d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: {fileID: 1317924507226698854}
+  allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 0
+  VFXPrefab: {fileID: 0}

@@ -2,12 +2,13 @@ using ElementalEngagement.Combat;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.UI.CanvasScaler;
 
-public class PetrifySwapBehavior : StatModificationArea
+public class PetrifySwapBehavior : StatusEffect
 {
 
     [Tooltip("Material with the petrify texture that will be overlayed on the units.")]
@@ -16,11 +17,28 @@ public class PetrifySwapBehavior : StatModificationArea
     //Queue of materials to re-apply to units once they leave the petrify radius.
     private Dictionary<Collider, Material> storedMats;
 
+    private Collider[] collidersToEffect;
+
     private void Start()
     {
         storedMats = new Dictionary<Collider, Material>();
-        area.onTriggerEnter.AddListener(OnTriggerEntered);
-        area.onTriggerExit.AddListener(OnTriggerExited);
+        collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);
+        foreach (Collider collider in collidersToEffect)
+        {
+            var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
+            if (colliderUnit != null)
+            {
+                if (!CanModify(collider))
+                    continue;
+                if (collider.GetComponent<Movement>() == null)
+                    continue;
+
+                storedMats.Add(collider, new Material(colliderUnit.material));
+                Debug.Log("Added material!" + collider.gameObject.name);
+                colliderUnit.material = petrifyMat;
+                collider.gameObject.GetComponentInChildren<Animator>().enabled = false;
+            }
+        }
     }
 
     private void OnDestroy()
@@ -34,35 +52,6 @@ public class PetrifySwapBehavior : StatModificationArea
                 colliderUnit.material = storedMats[key];
                 key.gameObject.GetComponentInChildren<Animator>().enabled = true;
             }
-        }
-    }
-
-    private void OnTriggerEntered(Collider collider)
-    {
-        var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
-        if (colliderUnit != null)
-        {
-            if (!CanModify(collider))
-                return;
-
-            storedMats.Add(collider, new Material(colliderUnit.material));
-            Debug.Log("Added material!" + collider.gameObject.name);
-            colliderUnit.material = petrifyMat;
-            collider.gameObject.GetComponentInChildren<Animator>().enabled = false;
-        }
-    }
-
-
-    private void OnTriggerExited(Collider collider)
-    {
-        var colliderUnit = collider.gameObject.GetComponentInChildren<SpriteRenderer>();
-        if (colliderUnit != null && storedMats.ContainsKey(collider))
-        {
-            if (!CanModify(collider))
-                return;
-
-            collider.gameObject.GetComponentInChildren<SpriteRenderer>().material = storedMats[collider];
-            collider.gameObject.GetComponentInChildren<Animator>().enabled = true;
         }
     }
 }
