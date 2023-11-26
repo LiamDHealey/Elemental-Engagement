@@ -5180,7 +5180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 1828492509368982433}
   damage:
-    amount: 1
+    amount: 1.5
     allegiance: {fileID: 1828492509368982433}
   knockback:
     amount: -6.666667
@@ -5315,6 +5315,10 @@ PrefabInstance:
     - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: damageMultipliers.Array.data[2].multiplier
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.x
@@ -5562,6 +5566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6997656361314388549, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+    - {fileID: 3685090205885791067, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
     m_RemovedGameObjects:
     - {fileID: 4055073139529189887, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
     m_AddedGameObjects:
