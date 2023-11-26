@@ -4994,6 +4994,7 @@ GameObject:
   - component: {fileID: 380600556824786905}
   - component: {fileID: 7856951303938890441}
   - component: {fileID: 6410045552159906728}
+  - component: {fileID: 2458655150535919218}
   m_Layer: 0
   m_Name: Petrify
   m_TagString: Untagged
@@ -5174,3 +5175,19 @@ MonoBehaviour:
   allegiance: {fileID: 7182556735942742344}
   affectsEnemies: 1
   speedMultiplier: 0.00001
+--- !u!114 &2458655150535919218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8443267638344645966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692e64d18b35ed742a52ba8f1b10825d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: {fileID: 1317924507226698854}
+  allegiance: {fileID: 7182556735942742344}
+  affectsEnemies: 0
+  VFXPrefab: {fileID: 0}
