@@ -186,6 +186,10 @@ namespace ElementalEngagement.Favor
                                 state = State.Neutral;
                                 allegiance.faction = Faction.Unaligned;
                                 remainingNeutralTime = neutralLockoutTime;
+                                foreach(Faction faction in new List<Faction>(capturePoints.Keys))
+                                {
+                                    capturePoints[faction] = 0;
+                                }
                                 onDecaptured?.Invoke();
                                 if (settings.allowCapture)
                                 {

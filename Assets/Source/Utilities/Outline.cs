@@ -22,6 +22,9 @@ namespace ElementalEngagement.Utilities
             allegiance?.onFactionChanged
                 .First(fe => fe.faction == Faction.PlayerTwo)
                 .onSelected.AddListener(() => SetColor(Color.black));
+            allegiance?.onFactionChanged
+                .First(fe => fe.faction == Faction.Unaligned)
+                .onSelected.AddListener(() => SetColor(Color.clear));
         }
 
         public void SetColor(string color)
