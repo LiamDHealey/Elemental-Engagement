@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
 using UnityEditor;
+using ElementalEngagement.Combat;
 
 namespace ElementalEngagement.Player
 {
@@ -27,6 +28,9 @@ namespace ElementalEngagement.Player
     {
         [Tooltip("The radius of the circular selection.")]
         [SerializeField] private float circularSelectionRadius = 10;
+
+        [Tooltip("The radius to select a single unit in. (Should be the same as the UI circle")]
+        [SerializeField] private float regularSelectionRadius = 10;
 
         [Tooltip("The input component that this will get mouse data from.")]
         [SerializeField] private PlayerInput input;
@@ -64,7 +68,7 @@ namespace ElementalEngagement.Player
         /// </summary>
         public void Select()
         {
-            if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)
+            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius) && !selectable.isSelected)
             {
                 _selectedObjects.Add(selectable);
                 selectable.isSelected = true;
@@ -126,7 +130,7 @@ namespace ElementalEngagement.Player
 
             string currentSelectedTag = "";
 
-            if (GetSelectableUnderCursor(out Selectable selectable))
+            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius))
             {
                 currentSelectedTag = selectable.tag;
                 if (selectable.isSelected)
@@ -197,7 +201,7 @@ namespace ElementalEngagement.Player
         /// <returns> True if there is a selectable object under the cursor. </returns>
         public bool isThereSelectable()
         {
-            if (GetSelectableUnderCursor(out Selectable selectable))
+            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius))
             {
                 return true;
             }
@@ -249,11 +253,11 @@ namespace ElementalEngagement.Player
         /// </summary>
         /// <param name="selectable"> The unit that was under the ray. </param>
         /// <returns> True if there was a valid unit to select. </returns>
-        private bool GetSelectableUnderCursor(out Selectable selectable)
+        private bool GetSelectableUnderCursor(out Selectable selectable, float radius)
         {
             Ray screenToWorldRay = new Ray(transform.position, transform.forward);
 
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, selectableMask);
+            bool result = Physics.SphereCast(screenToWorldRay, radius, out RaycastHit hit, 99999f, selectableMask);
 
             selectable = hit.collider?.GetComponent<Selectable>();
 

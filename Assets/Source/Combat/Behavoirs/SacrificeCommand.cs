@@ -37,6 +37,7 @@ namespace ElementalEngagement.Combat
         // The last sacrifice location this was commanded to sacrifice to.
         private Collider targetSacrificeLocation;
 
+
         /// <summary>
         /// Tests if an sacrifice command is followable.
         /// </summary>

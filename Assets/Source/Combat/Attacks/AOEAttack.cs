@@ -97,14 +97,19 @@ namespace ElementalEngagement.Combat
                         validTargets.RemoveAt(i);
                 }
 
+
                 int maxIndex = Mathf.Min(maxTargets, validTargets.Count);
+
+                if (maxIndex > 0)
+                {
+                    onAttackStart?.Invoke();
+                }
 
                 for (int i = 0; i < maxIndex; i++)
                 {   
                     Health health = validTargets[i].GetComponent<Health>();
                     KnockbackReceiver knockbackReceiver = validTargets[i].GetComponent<KnockbackReceiver>();
 
-                    onAttackStart?.Invoke();
                     Debug.Log("Attack Started for " + this.ToString() + this.transform.parent);
 
                     if (!canAttackAndMove)
