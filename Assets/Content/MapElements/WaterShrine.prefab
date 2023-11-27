@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: edc8a43e242e7c94db664b4811c7fdd3, type: 2}
+    - target: {fileID: 2535445037499553411, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4764695332680005016, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: playerOneIcon
       value: 
@@ -28,6 +32,14 @@ PrefabInstance:
       propertyPath: playerTwoIcon
       value: 
       objectReference: {fileID: 21300000, guid: 3c6565c4aadd2d5499c18be2361870d0, type: 3}
+    - target: {fileID: 4880878148820215473, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880878148820215473, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5298598599648437548, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.39317402
@@ -73,16 +85,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5408962099320127878, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5408962099320127878, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
-      propertyPath: m_AnchorMax.y
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7091580252332748757, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: god
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7091580252332748757, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: faction

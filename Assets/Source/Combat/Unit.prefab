@@ -639,18 +639,6 @@ MonoBehaviour:
             m_StringArgument: 0, 0, 0, 0
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 8312703971645420823}
-          m_TargetAssemblyTypeName: ElementalEngagement.UI.HealthBar, Assembly-CSharp
-          m_MethodName: SetColor
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 1, 0, 0, 1
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
           m_MethodName: set_enabled
@@ -679,18 +667,6 @@ MonoBehaviour:
             m_StringArgument: 1, 1, 1, 1
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 8312703971645420823}
-          m_TargetAssemblyTypeName: ElementalEngagement.UI.HealthBar, Assembly-CSharp
-          m_MethodName: SetColor
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 1, 1, 1, 1
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 9207352464830974425}
           m_TargetAssemblyTypeName: ElementalEngagement.Utilities.SpriteColor, Assembly-CSharp
           m_MethodName: SetColor
@@ -709,18 +685,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 6329092609386425010}
           m_TargetAssemblyTypeName: Outline, Assembly-CSharp
-          m_MethodName: SetColor
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 0, 0, 0, 1
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 8312703971645420823}
-          m_TargetAssemblyTypeName: ElementalEngagement.UI.HealthBar, Assembly-CSharp
           m_MethodName: SetColor
           m_Mode: 5
           m_Arguments:
@@ -1258,12 +1222,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 234178005, guid: a0429d0e730df2c4095a651d25f666d7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 20.485003, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -1325,14 +1289,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5982273917337833412}
     m_Modifications:
-    - target: {fileID: 1535089726803382314, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707386870458220364, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2527524241045839502, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_Name
       value: HealthBar
@@ -1342,10 +1298,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3525556639119249430, guid: bae706e231c75744fbe955af1264558e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4053637251632674593, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3525556639119249430, guid: bae706e231c75744fbe955af1264558e, type: 3}
+    - target: {fileID: 4053637251632674593, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -1375,23 +1335,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 215.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.024999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.024999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.024999999
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1403,15 +1351,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.54
+      value: -2.74
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97464526
+      value: 0.7618234
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22375593
+      value: 0.64778477
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1427,11 +1375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.52
+      value: 2.16
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 25.859
+      value: 80.75
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1441,42 +1389,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6409054260665623454, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: healthToDisplay
       value: 
       objectReference: {fileID: 2375182342915241180}
-    - target: {fileID: 6418125800119652861, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6418125800119652861, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6941960448084190459, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bae706e231c75744fbe955af1264558e, type: 3}
---- !u!114 &8312703971645420823 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6409054260665623454, guid: bae706e231c75744fbe955af1264558e, type: 3}
-  m_PrefabInstance: {fileID: 3147207846044292745}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7664527ec2619984d89e82a13031ee49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8322546842097471898 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}

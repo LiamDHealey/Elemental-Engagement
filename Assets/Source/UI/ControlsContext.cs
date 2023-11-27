@@ -123,7 +123,7 @@ namespace ElementalEngagement.UI
             {
                 Destroy(containers[textBoxes.Count - 1].gameObject);
                 textBoxes.RemoveAt(textBoxes.Count - 1);
-                containers.RemoveAt(textBoxes.Count - 1);
+                containers.RemoveAt(containers.Count - 1);
             }
         }
 
