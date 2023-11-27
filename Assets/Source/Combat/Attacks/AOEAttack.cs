@@ -28,6 +28,12 @@ namespace ElementalEngagement.Combat
         [Tooltip("How long a unit will be stopped for after attacking.")]
         [SerializeField] private float stopDuration = 0.5f;
 
+        private float timeRemainingToAttack;
+
+        //Private tracker for waitBeforeDamage that can be set to true to start the cycle after 
+        //the initial check
+        private bool needsToWait;
+
 
         // Contains a list of all valid things for this aoe to hit.
         private List<Collider> validTargets = new List<Collider>();
@@ -37,6 +43,8 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Awake()
         {
+            needsToWait = waitBeforeDamage;
+            timeRemainingToAttack = attackInterval;
             attackRange.onTriggerEnter.AddListener( collider => { TriggerEntered(collider); });
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
         }
@@ -56,63 +64,90 @@ namespace ElementalEngagement.Combat
 
             // If the target is aligned with this attack
             if (allegiance != null && otherAllegiance != null &&
-                allegiance.faction == otherAllegiance.faction) 
+                allegiance.faction == otherAllegiance.faction)
                 return;
 
             validTargets.Add(other);
-            StartCoroutine(DamageOverTime());
+        }
 
-            /// <summary>
-            /// Deals damage at the appropriate interval.
-            /// </summary>
-            IEnumerator DamageOverTime()
+        private void Update()
+        {
+            if (!enabled)
+                return;
+            if(validTargets.Count == 0)
             {
-                while (true)
+                if (timeRemainingToAttack > 0)
+                    timeRemainingToAttack -= Time.deltaTime;
+                else
+                    timeRemainingToAttack = attackInterval;
+
+                return;
+            }
+
+            if(needsToWait && timeRemainingToAttack > 0)
+            {
+                timeRemainingToAttack -= Time.deltaTime;
+                return;
+            }
+            else if (timeRemainingToAttack <= 0 || !needsToWait)
+            {
+                for(int i = validTargets.Count - 1; i >= 0; i--)
                 {
-                    if (!enabled)
-                    {
-                        yield return null;
-                        continue;
-                    }
-
-                    if (waitBeforeDamage)
-                        yield return new WaitForSeconds(attackInterval);
-
-                    while (enabled && validTargets.Contains(other))
-                    {
-                        if (other == null)
-                        {
-                            validTargets.Remove(other);
-                            yield break;
-                        }
-
-                        if (validTargets.Count <= maxTargets || validTargets.IndexOf(other) < maxTargets)
-                        {
-                            onAttackStart?.Invoke();
-                            if (!canAttackAndMove)
-                            {
-                                CancelInvoke("AllowMovement");
-                                movement?.PreventMovement(this);
-                                Invoke("AllowMovement", stopDuration);
-                            }
-
-                            if (damageDelay > 0)
-                                yield return new WaitForSeconds(damageDelay);
-
-                            health?.TakeDamage(damage);
-                            knockbackReceiver?.ReceiveKnockback(knockback);
-                            onAttackDamage?.Invoke();
-                        }
-
-                        yield return new WaitForSeconds(attackInterval - damageDelay);
-                    }
-
-                    if (enabled)
-                        yield break;
+                    if (validTargets[i] == null)
+                        validTargets.RemoveAt(i);
                 }
+
+                int maxIndex = Mathf.Min(maxTargets, validTargets.Count);
+
+                for (int i = 0; i < maxIndex; i++)
+                {   
+                    Health health = validTargets[i].GetComponent<Health>();
+                    KnockbackReceiver knockbackReceiver = validTargets[i].GetComponent<KnockbackReceiver>();
+
+                    onAttackStart?.Invoke();
+                    Debug.Log("Attack Started for " + this.ToString() + this.transform.parent);
+
+                    if (!canAttackAndMove)
+                    {
+                        CancelInvoke("AllowMovement");
+                        movement?.PreventMovement(this);
+                        Invoke("AllowMovement", stopDuration);
+                    }
+
+                    if (damageDelay > 0)
+                    {
+                        StartCoroutine(WaitForDamage(validTargets[i]));
+                    }
+                    else
+                    {
+                        health?.TakeDamage(damage);
+                        knockbackReceiver?.ReceiveKnockback(knockback);
+                        onAttackDamage?.Invoke();
+                    }
+                }
+
+                timeRemainingToAttack = attackInterval;
+                needsToWait = true;
             }
         }
 
+        IEnumerator WaitForDamage(Collider other)
+        {
+            yield return new WaitForSeconds(damageDelay);
+
+            if(other == null)
+            {
+                onAttackDamage?.Invoke();
+                yield break;
+            }
+
+            Health health = other.GetComponent<Health>();
+            KnockbackReceiver knockbackReceiver = other.GetComponent<KnockbackReceiver>();
+
+            health?.TakeDamage(damage);
+            knockbackReceiver?.ReceiveKnockback(knockback);
+            onAttackDamage?.Invoke();
+        }
         private void AllowMovement() => movement?.AllowMovement(this);
     }
 }

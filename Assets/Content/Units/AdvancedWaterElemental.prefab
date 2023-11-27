@@ -142,7 +142,7 @@ MonoBehaviour:
         m_CallState: 2
   movement: {fileID: 0}
   attackRange: {fileID: 5492152974625980174}
-  maxTargets: 9999999
+  maxTargets: 1
   canAttackAndMove: 0
   stopDuration: 0.5
 --- !u!135 &4499735010822195332
@@ -5027,7 +5027,7 @@ AudioSource:
   m_GameObject: {fileID: 2827556410178655127}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 7336646985617231151, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
+  OutputAudioMixerGroup: {fileID: -5882773309803352941, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.588
@@ -5133,7 +5133,8 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0.5
-  volumeParam: whirlpoolVolume
+  useMixer: 0
+  volumeParam: 
 --- !u!1 &6868302159246053560
 GameObject:
   m_ObjectHideFlags: 0

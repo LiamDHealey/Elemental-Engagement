@@ -20,4 +20,20 @@ public class FadeAudioMixer : MonoBehaviour
             yield return null;
         }
     }
+
+    public static IEnumerator StartSourceFade(AudioSource source, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float currentVol = source.volume;
+
+        float targetValue = Mathf.Clamp(targetVolume, 0.0001f, 1);
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            float newVol = Mathf.Lerp(currentVol, targetValue, currentTime / duration);
+            source.volume = newVol;
+            yield return null;
+        }
+    }
 }
