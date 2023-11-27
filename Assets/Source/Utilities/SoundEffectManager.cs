@@ -32,9 +32,13 @@ namespace ElementalEngagement.Utilities
         [Tooltip("How Long to fade out the sound to play")]
         [SerializeField]private float fadeOutDuration = 1f;
 
+        [Tooltip("Whether or not to use the audioMixer to fade this source")]
+        [SerializeField] private bool useMixer = true;
+
         private bool continuePlaying = false;
         private bool currentlyPlaying = false;
-        private float startingVolume = 0f;
+        private float startingMixerVolume = 0f;
+        private float startingSourceVolume = 0f;
 
         [Tooltip("The Exact Name of the exposed volume parameter from the AudioMixer that the source is connected to")]
         [SerializeField] private string volumeParam = "godPowerVolume";
@@ -46,14 +50,15 @@ namespace ElementalEngagement.Utilities
 
         private void OnDestroy()
         {
-            audioMixer.SetFloat(volumeParam, startingVolume);
+            audioMixer.SetFloat(volumeParam, startingMixerVolume);
         }
 
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            startingSourceVolume = audioSource.volume;
             audioMixer = audioSource.outputAudioMixerGroup.audioMixer;
-            audioMixer.GetFloat(volumeParam, out  startingVolume);
+            audioMixer.GetFloat(volumeParam, out  startingMixerVolume);
         }
 
 
@@ -88,7 +93,10 @@ namespace ElementalEngagement.Utilities
 
         public void PlayRandomSound()
         {
-            audioMixer.SetFloat(volumeParam, startingVolume);
+            if(!useMixer)
+                audioSource.volume = startingSourceVolume;
+
+            audioMixer.SetFloat(volumeParam, startingMixerVolume);
             audioSource.PlayOneShot(GetRandomClip(audioClips));
         }
 
@@ -110,12 +118,24 @@ namespace ElementalEngagement.Utilities
 
         public void stopSound()
         {
+            if(!useMixer)
+            {
+                StartCoroutine(FadeAudioMixer.StartSourceFade(audioSource, fadeOutDuration, 0.00f));
+                return;
+            }
+
             StartCoroutine(FadeAudioMixer.StartFade(audioMixer, volumeParam, fadeOutDuration, 0.00f));
         }
 
         IEnumerator StopAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
+
+            if (!useMixer)
+            {
+                StartCoroutine(FadeAudioMixer.StartSourceFade(audioSource, duration, 0.00f));
+                yield break;
+            }
 
             StartCoroutine(FadeAudioMixer.StartFade(audioMixer, volumeParam, fadeOutDuration, 0.00f));
         }

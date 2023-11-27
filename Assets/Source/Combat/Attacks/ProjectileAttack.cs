@@ -24,26 +24,64 @@ namespace ElementalEngagement.Combat
         // Contains a list of all valid things for this aoe to hit.
         private List<Collider> validTargets = new List<Collider>();
 
+        private float timeRemainingToAttack;
+
+        //Private tracker for waitBeforeDamage that can be set to true to start the cycle after 
+        //the initial check
+        private bool needsToWait;
+
         /// <summary>
         /// Binds events
         /// </summary>
         private void Awake()
         {
+            needsToWait = waitBeforeDamage;
+            timeRemainingToAttack = attackInterval;
             attackRange.onTriggerEnter.AddListener(TriggerEntered);
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
         }
 
-
-        private void OnEnable()
+        private void Update()
         {
-            foreach (Collider target in validTargets)
+            if (!enabled)
+                return;
+            if (validTargets.Count == 0)
             {
-                TriggerEntered(target);
+                if (timeRemainingToAttack > 0)
+                    timeRemainingToAttack -= Time.deltaTime;
+                else
+                    timeRemainingToAttack = attackInterval;
+
+                return;
             }
-        }
-        private void OnDisable()
-        {
-            StopAllCoroutines();
+
+            if (needsToWait && timeRemainingToAttack > 0)
+            {
+                timeRemainingToAttack -= Time.deltaTime;
+                return;
+            }
+            else if (timeRemainingToAttack <= 0 || !needsToWait)
+            {
+                while (validTargets[0] == null)
+                {
+                    validTargets.RemoveAt(0);
+                }
+                if(validTargets.Count == 0)
+                    return;
+
+                onAttackStart?.Invoke();
+                Projectile projectile = Instantiate(projectileTemplate.gameObject).GetComponent<Projectile>();
+                projectile.transform.SetPositionAndRotation(projectileSource.position, projectileSource.rotation);
+                projectile.target = validTargets[0].transform;
+                projectile.source = this;
+
+                timeRemainingToAttack = attackInterval;
+                needsToWait = true;
+            }
+            else
+            {
+                timeRemainingToAttack -= Time.deltaTime;
+            }
         }
 
         /// <summary>
@@ -64,37 +102,6 @@ namespace ElementalEngagement.Combat
                 allegiance.faction == otherAllegiance.faction) { return; }
 
             validTargets.Add(other);
-
-            StartCoroutine(FireProjectile());
-
-            /// <summary>
-            /// Deals damage at the appropriate interval.
-            /// </summary>
-            IEnumerator FireProjectile()
-            {
-                if (waitBeforeDamage)
-                    yield return new WaitForSeconds(attackInterval);
-
-                while (validTargets.Contains(other))
-                {
-                    if (other == null)
-                    {
-                        validTargets.Remove(other);
-                        yield break;
-                    }
-
-                    if (validTargets[0] == other)
-                    {
-                        onAttackStart?.Invoke();
-                        Projectile projectile = Instantiate(projectileTemplate.gameObject).GetComponent<Projectile>();
-                        projectile.transform.SetPositionAndRotation(projectileSource.position, projectileSource.rotation);
-                        projectile.target = other.transform;
-                        projectile.source = this;
-                    }
-
-                    yield return new WaitForSeconds(attackInterval - damageDelay);
-                }
-            }
         }
     }
 }
