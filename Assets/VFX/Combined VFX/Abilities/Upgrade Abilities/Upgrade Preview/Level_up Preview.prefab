@@ -980,7 +980,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 3
+        scalar: 1
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1030,7 +1030,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 2
+      cycleCount: 0
       repeatInterval: 0.15
       probability: 1
   SizeModule:
@@ -5946,7 +5946,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 4
+      cycleCount: 0
       repeatInterval: 0.15
       probability: 1
   SizeModule:
@@ -9855,12 +9855,12 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4557073698308409215}
   serializedVersion: 8
-  lengthInSec: 1.5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
-  cullingMode: 0
+  cullingMode: 2
   ringBufferMode: 0
-  ringBufferLoopRange: {x: 0, y: 1}
+  ringBufferLoopRange: {x: 1, y: 1}
   emitterVelocityMode: 0
   looping: 1
   prewarm: 0
@@ -10794,7 +10794,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: 1.5
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -10859,21 +10859,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.3223412
-          inSlope: 1.2356579
-          outSlope: 1.2356579
+          value: 1
+          inSlope: -1.106839
+          outSlope: -1.106839
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.19067974
+          outWeight: 0.587775
         - serializedVersion: 3
-          time: 0.13333063
-          value: 0.91941375
-          inSlope: 1.1306854
-          outSlope: 1.1306854
+          time: 0.12684564
+          value: 1
+          inSlope: 0.012483976
+          outSlope: 0.012483976
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.63781273
           outWeight: 0.7755502
         - serializedVersion: 3
           time: 0.23188347
