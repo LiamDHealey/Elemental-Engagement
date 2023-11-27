@@ -101,6 +101,7 @@ MonoBehaviour:
   lifetime: 3
   detachBeforeDeath:
   - {fileID: 8308067290544138848}
+  - {fileID: 8028523890096563650}
 --- !u!114 &4594358166897870817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +416,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
+--- !u!1 &8028523890096563650 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557073698510574151, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
+  m_PrefabInstance: {fileID: 5789079982765438853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8028523890096563655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557073698510574146, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
