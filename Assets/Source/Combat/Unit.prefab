@@ -147,6 +147,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: 
 --- !u!1 &1291757304422249541
 GameObject:
@@ -821,7 +822,7 @@ MonoBehaviour:
     duration: 0
     source: {fileID: 5982273917337833412}
   attackInterval: 1.5
-  damageDelay: 0
+  damageDelay: 0.25
   waitBeforeDamage: 1
   onAttackStart:
     m_PersistentCalls:
@@ -1145,6 +1146,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: 
 --- !u!1 &7486104880870669279
 GameObject:
