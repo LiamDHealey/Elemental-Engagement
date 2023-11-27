@@ -132,6 +132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4866895333096718403}
     m_Modifications:
+    - target: {fileID: 1014069755944457747, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 4557073698510574146, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
