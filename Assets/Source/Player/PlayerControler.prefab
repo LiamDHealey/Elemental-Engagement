@@ -134,7 +134,7 @@ MonoBehaviour:
   input: {fileID: 4229869321111341770}
   panspeed: 160
   zoomspeed: 50
-  map1PositiveBounds: {x: 200, y: 70, z: 300}
+  map1PositiveBounds: {x: 200, y: 70, z: 270}
   map1NegativeBounds: {x: 200, y: 70, z: 300}
   map2PositiveBounds: {x: 300, y: 70, z: 400}
   map2NegativeBounds: {x: 300, y: 70, z: 400}
@@ -501,6 +501,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: godPowerVolume
 --- !u!1 &6691182579712443195
 GameObject:
@@ -650,6 +651,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: godPowerVolume
 --- !u!1 &8361649208543269712
 GameObject:
