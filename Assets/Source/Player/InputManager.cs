@@ -267,7 +267,7 @@ namespace ElementalEngagement
         {
             if (!IsActionAllowed(action))
                 return;
-            panInputHandler.Zoom(new Vector2(0, action.ReadValue<float>()));
+            panInputHandler.Zoom(-new Vector2(0, action.ReadValue<float>()));
         }
 
         void ZoomOut(InputAction action)
@@ -275,7 +275,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(action))
                 return;
 
-            panInputHandler.Zoom(-new Vector2(0, action.ReadValue<float>()));
+            panInputHandler.Zoom(new Vector2(0, action.ReadValue<float>()));
         }
 
         #endregion

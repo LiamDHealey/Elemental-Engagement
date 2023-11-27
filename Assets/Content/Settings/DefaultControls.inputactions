@@ -141,7 +141,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ZoomIn",
+                    "name": "ZoomOut",
                     "type": "Value",
                     "id": "3c0542a7-efa2-4063-8e83-2c1d6b0c337d",
                     "expectedControlType": "Double",
@@ -150,7 +150,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ZoomOut",
+                    "name": "Zoomin",
                     "type": "Value",
                     "id": "a142c363-207a-41a9-ae8d-1f6f447b7c68",
                     "expectedControlType": "Double",
@@ -585,7 +585,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ZoomIn",
+                    "action": "ZoomOut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -596,7 +596,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ZoomIn",
+                    "action": "ZoomOut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -607,7 +607,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ZoomOut",
+                    "action": "Zoomin",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -618,7 +618,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ZoomOut",
+                    "action": "Zoomin",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
