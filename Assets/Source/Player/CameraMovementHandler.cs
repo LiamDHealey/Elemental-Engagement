@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 namespace ElementalEngagement.Player
 {
     /// <summary>
-    /// Pans this game object.
+    /// Pans & Zooms this game object.
     /// </summary>
     public class CameraMovementHandler : MonoBehaviour
     {
@@ -22,6 +22,9 @@ namespace ElementalEngagement.Player
 
         [Tooltip("The speed multiplier for zooming.")]
         [SerializeField] private float zoomspeed = 1f;
+
+        [Tooltip("The closest on the Y axis this object can zoom.")]
+        [SerializeField] private float zoomY = 10f;
 
         [Tooltip("The camera boundary for the Grasslands map. Y-axis is for zoom height. The bigger the Y-axis, the farther one can zoom out.")]
         [SerializeField] private Vector3 map1PositiveBounds;
@@ -86,7 +89,7 @@ namespace ElementalEngagement.Player
 
             transform.position = new Vector3(
                 transform.position.x,
-                Mathf.Clamp(transform.position.y + delta.y, startPos.y, startPos.y + boundsPositive.y),
+                Mathf.Clamp(transform.position.y + delta.y, zoomY, startPos.y + boundsPositive.y),
                 transform.position.z
                 );
         }
