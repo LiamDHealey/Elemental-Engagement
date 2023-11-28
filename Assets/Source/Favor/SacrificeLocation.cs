@@ -94,7 +94,7 @@ namespace ElementalEngagement.Favor
 
             for(int i = unitsToUpdate.Count - 1; i >= 0; i--)
             {
-                if (unitsToUpdate[i] == null)
+                if (unitsToUpdate[i].unit == null)
                 {
                     unitsToUpdate.RemoveAt(i);
                 }
