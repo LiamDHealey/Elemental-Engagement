@@ -333,6 +333,7 @@ MonoBehaviour:
   duration: 5
   playOnStart: 1
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: godPowerVolume
 --- !u!114 &6404981250907850213
 MonoBehaviour:
@@ -484,15 +485,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4557073698510574146, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
       propertyPath: m_LocalScale.x
-      value: 15
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4557073698510574146, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
       propertyPath: m_LocalScale.y
-      value: 8.75
+      value: 0.8750001
       objectReference: {fileID: 0}
     - target: {fileID: 4557073698510574146, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
       propertyPath: m_LocalScale.z
-      value: 15
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4557073698510574146, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
       propertyPath: m_LocalPosition.x
