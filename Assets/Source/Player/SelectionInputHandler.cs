@@ -59,9 +59,16 @@ namespace ElementalEngagement.Player
 
         private Camera camera;
 
+        private bool selectedThisTick = false;
+
         private void Awake()
         {
             camera = GetComponent<Camera>();
+        }
+
+        private void Update()
+        {
+            selectedThisTick = false;
         }
         /// <summary>
         /// Selects the unit under the cursor.
@@ -72,6 +79,7 @@ namespace ElementalEngagement.Player
             {
                 _selectedObjects.Add(selectable);
                 selectable.isSelected = true;
+                selectedThisTick = true;
             }
         }
 
@@ -102,6 +110,7 @@ namespace ElementalEngagement.Player
 
                             _selectedObjects.Add(selectable);
                             selectable.isSelected = true;
+                            selectedThisTick = true;
                         }
                     }
 
@@ -148,6 +157,7 @@ namespace ElementalEngagement.Player
                     Selectable colliderSelect = collider.GetComponent<Selectable>();
                     _selectedObjects.Add(colliderSelect);
                     colliderSelect.isSelected = true;
+                    selectedThisTick = true;
                 }
             }
         }
@@ -170,9 +180,20 @@ namespace ElementalEngagement.Player
         public void IssueCommand(bool isAltCommand)
         {
             Ray screenToWorldRay = new Ray(transform.position, transform.forward);
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask);
+            if (!Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask))
+                return;
 
+            if (selectedThisTick)
+                return;
 
+            for (int i = 0; i < selectedObjects.Count; i++)
+            {
+                if (_selectedObjects[i] == null)
+                {
+                    _selectedObjects.RemoveAt(i);
+                    i--;
+                }
+            }
             foreach (Selectable selectable in selectedObjects)
             {
                 if (selectable == null)
@@ -192,20 +213,6 @@ namespace ElementalEngagement.Player
 
                 chosenReceiver?.ExecuteCommand(hit, selectedObjects, isAltCommand);
             }
-        }
-
-        /// <summary>
-        /// Returns true if there is a selectable object under the cursor.
-        /// This method is used for differentiating between selecting a unit and issuing a command.
-        /// </summary>
-        /// <returns> True if there is a selectable object under the cursor. </returns>
-        public bool isThereSelectable()
-        {
-            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius))
-            {
-                return true;
-            }
-            return false;
         }
 
 

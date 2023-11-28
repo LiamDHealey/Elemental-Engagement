@@ -62,7 +62,7 @@ namespace ElementalEngagement.Combat
         public override void ExecuteCommand(RaycastHit hitUnderCursor, ReadOnlyCollection<Selectable> selectedObjects, bool isAltCommand)
         {
             commandInProgress = true;
-            movement.SetDestination(this, hitUnderCursor.collider.transform.position);
+            movement.SetDestination(this, SelectDestination(hitUnderCursor, selectedObjects));
 
             targetSacrificeLocation = hitUnderCursor.collider;
             if (sacrificeRange.overlappingColliders.Contains(targetSacrificeLocation))
@@ -112,6 +112,25 @@ namespace ElementalEngagement.Combat
             movement.AllowMovement(this);
             onSacrificeEnd?.Invoke();
             targetSacrificeLocation.GetComponent<SacrificeLocation>().StopSacrificing(this);
+        }
+
+        protected override List<Vector3> GetDestinations(RaycastHit hit, ReadOnlyCollection<Selectable> selectedObjects, float unitWidth = -10f)
+        {
+            List<Vector3> destinations = new List<Vector3>(selectedObjects.Count);
+            Vector3 averageLocation = Vector3.zero;
+            foreach (Selectable obj in selectedObjects)
+            {
+                averageLocation += obj.transform.position;
+            }
+            averageLocation /= selectedObjects.Count;
+            Vector3 direction = (averageLocation - hit.point).normalized;
+
+            for (int i = 0; i < selectedObjects.Count; i++)
+            {
+                destinations.Add(hit.collider.bounds.center + Quaternion.AngleAxis(i * 360 / selectedObjects.Count, Vector3.up) * direction * (hit.collider.bounds.extents.x));
+            }
+
+            return destinations;
         }
     }
 }

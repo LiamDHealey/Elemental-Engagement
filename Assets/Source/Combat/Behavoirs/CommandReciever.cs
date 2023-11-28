@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using UnityEngine;
 
 namespace ElementalEngagement.Player
@@ -35,5 +36,33 @@ namespace ElementalEngagement.Player
         /// Cancels any command this is currently performing.
         /// </summary>
         public abstract void CancelCommand();
+        protected virtual List<Vector3> GetDestinations(RaycastHit hit, ReadOnlyCollection<Selectable> selectedObjects, float unitWidth = 5f) 
+        { 
+            return selectedObjects.Select(_ => hit.point).ToList(); 
+        }
+        protected Vector3 SelectDestination(RaycastHit hit, ReadOnlyCollection<Selectable> selectedObjects)
+        {
+            List<Vector3> destinations = GetDestinations(hit, selectedObjects);
+            Vector3 selectedDestination = destinations[0];
+
+            foreach (Selectable otherUnit in selectedObjects.OrderByDescending(selected => Vector3.Distance(selected.transform.position, hit.point)))
+            {
+                selectedDestination = destinations[0];
+                foreach (Vector3 destination in destinations)
+                {
+                    if (Vector3.Distance(otherUnit.transform.position, destination)
+                        <
+                        Vector3.Distance(otherUnit.transform.position, selectedDestination))
+                    {
+                        selectedDestination = destination;
+                    }
+                }
+
+                destinations.Remove(selectedDestination);
+                if (otherUnit.gameObject == gameObject)
+                    break;
+            }
+            return selectedDestination;
+        }
     }
 }
