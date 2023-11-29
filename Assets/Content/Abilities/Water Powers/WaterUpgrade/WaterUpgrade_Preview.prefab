@@ -33,7 +33,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8788174471170833372}
+  - {fileID: 2357020949315555995}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2756907128550111007
@@ -78,7 +78,7 @@ MonoBehaviour:
   area: {fileID: 8316062372576559003}
   allegiance: {fileID: 2756907128550111007}
   affectsEnemies: 0
-  VFXPrefab: {fileID: 4557073698510574151, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
+  VFXPrefab: {fileID: 4557073698510574151, guid: fbe2541c9282caa428c0b4688e8bc9d1, type: 3}
 --- !u!135 &861763004668478023
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!1001 &5100366696426023326
+--- !u!1001 &2272110485772173529
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -133,8 +133,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 4866895333096718403}
     m_Modifications:
     - target: {fileID: 1014069755944457747, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014069755944457747, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
+      propertyPath: InitialModule.startSpeed.minScalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014069755944457747, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014069755944457747, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
-      value: 0.75
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2637087935648934469, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].repeatInterval
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2637087935648934469, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4557073698510574146, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
       propertyPath: m_LocalScale.x
@@ -201,8 +221,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
---- !u!4 &8788174471170833372 stripped
+--- !u!4 &2357020949315555995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557073698510574146, guid: dc37c591e9994e243a9ae7f349754198, type: 3}
-  m_PrefabInstance: {fileID: 5100366696426023326}
+  m_PrefabInstance: {fileID: 2272110485772173529}
   m_PrefabAsset: {fileID: 0}
