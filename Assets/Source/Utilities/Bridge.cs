@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -94,6 +96,8 @@ public class Bridge : MonoBehaviour
         }
     }
 }
+
+#if UNITY_EDITOR
 [CustomEditor(typeof(Bridge))]
 class DecalMeshHelperEditor : Editor
 {
@@ -105,3 +109,4 @@ class DecalMeshHelperEditor : Editor
         base.OnInspectorGUI();
     }
 }
+#endif
