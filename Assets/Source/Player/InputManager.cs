@@ -204,7 +204,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            Debug.Log("Stop!");
+            selectionInputHandler.StopSelectedCommands();
         }
 
         private void PlayAbility(CallbackContext context)

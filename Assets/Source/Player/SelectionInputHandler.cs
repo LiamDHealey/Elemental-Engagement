@@ -236,6 +236,23 @@ namespace ElementalEngagement.Player
             }
         }
 
+        /// <summary>
+        /// Stop all selected units from performing their current command.
+        /// </summary>
+        public void StopSelectedCommands()
+        {
+            foreach (Selectable selectable in selectedObjects)
+            {
+                if (selectable == null)
+                    continue;
+
+                CommandReceiver[] receivers = selectable.GetComponents<CommandReceiver>();
+                foreach (CommandReceiver receiver in receivers)
+                {
+                    receiver.CancelCommand();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets the selectable unit under the ray cursor.
