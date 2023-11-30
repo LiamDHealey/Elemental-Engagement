@@ -11,6 +11,8 @@ using System;
 using Unity.VisualScripting;
 using UnityEditor;
 using ElementalEngagement.Combat;
+using UnityEditor.MemoryProfiler;
+using UnityEditor.Experimental.GraphView;
 
 namespace ElementalEngagement.Player
 {
@@ -162,6 +164,38 @@ namespace ElementalEngagement.Player
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SelectEverything()
+        {
+            UnityEngine.Object[] tempList = Resources.FindObjectsOfTypeAll(typeof(GameObject));
+
+            foreach (UnityEngine.Object obj in tempList)
+            {
+                if (obj is GameObject)
+                {
+                    GameObject gameObj = (GameObject)obj;
+                    bool isUnit = gameObj.tag == "Fire" || gameObj.tag == "Water" || gameObj.tag == "Earth" || gameObj.tag == "AdvancedFire" || gameObj.tag == "AdvancedWater" || gameObj.tag == "AdvancedEarth";
+                    if (isUnit)
+                    {
+                        Selectable unitSelectable = gameObj.GetComponent<Selectable>();
+                        Allegiance unitAllegiance = gameObj.GetComponent<Allegiance>();
+
+                        Debug.Log("Unit allegiance equals our allegiance: " + (unitAllegiance == allegiance));
+
+                        if (unitAllegiance.CheckFactionAllegiance(allegiance))
+                        {
+                            _selectedObjects.Add(unitSelectable);
+                            unitSelectable.isSelected = true;
+                            selectedThisTick = true;
+                        }
+
+                    }
+                }
+            }
+            
+        }
 
         /// <summary>
         /// Deselects all units.
