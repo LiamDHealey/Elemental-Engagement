@@ -165,36 +165,23 @@ namespace ElementalEngagement.Player
         }
 
         /// <summary>
-        /// 
+        /// Selects every unit in the game.
         /// </summary>
         public void SelectEverything()
         {
-            UnityEngine.Object[] tempList = Resources.FindObjectsOfTypeAll(typeof(GameObject));
+            Selectable[] allSelectables = FindObjectsOfType<Selectable>();
 
-            foreach (UnityEngine.Object obj in tempList)
+            foreach (Selectable select in allSelectables)
             {
-                if (obj is GameObject)
+                Allegiance unitAllegiance = select.GetComponent<Allegiance>();
+
+                if (unitAllegiance.CheckFactionAllegiance(allegiance))
                 {
-                    GameObject gameObj = (GameObject)obj;
-                    bool isUnit = gameObj.tag == "Fire" || gameObj.tag == "Water" || gameObj.tag == "Earth" || gameObj.tag == "AdvancedFire" || gameObj.tag == "AdvancedWater" || gameObj.tag == "AdvancedEarth";
-                    if (isUnit)
-                    {
-                        Selectable unitSelectable = gameObj.GetComponent<Selectable>();
-                        Allegiance unitAllegiance = gameObj.GetComponent<Allegiance>();
-
-                        Debug.Log("Unit allegiance equals our allegiance: " + (unitAllegiance == allegiance));
-
-                        if (unitAllegiance.CheckFactionAllegiance(allegiance))
-                        {
-                            _selectedObjects.Add(unitSelectable);
-                            unitSelectable.isSelected = true;
-                            selectedThisTick = true;
-                        }
-
-                    }
+                    _selectedObjects.Add(select);
+                    select.isSelected = true;
+                    selectedThisTick = true;
                 }
             }
-            
         }
 
         /// <summary>
