@@ -157,6 +157,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SelectEverything",
+                    "type": "Button",
+                    "id": "d5d269b5-255b-4985-b402-008cb732a368",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -619,6 +628,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Zoomin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "549e870f-5c46-42ae-8724-432920bd9e1f",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEverything",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40d30d38-cba3-4e52-8621-621e1b8e3386",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEverything",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

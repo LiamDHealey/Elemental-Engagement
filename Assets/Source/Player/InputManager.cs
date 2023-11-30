@@ -97,6 +97,7 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed += SelectAbility3;
             input.actions["PauseGame"].performed += PauseGame;
             input.actions["Back"].performed += Back;
+            input.actions["SelectEverything"].performed += SelectEverything;
         }
 
         private void OnDestroy()
@@ -114,6 +115,7 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed -= SelectAbility3;
             input.actions["PauseGame"].performed -= PauseGame;
             input.actions["Back"].performed -= Back;
+            input.actions["SelectEverything"].performed -= SelectEverything;
         }
 
         private void Update()
@@ -161,6 +163,14 @@ namespace ElementalEngagement
                 return;
 
             selectionInputHandler.SelectAll();
+        }
+
+        private void SelectEverything(CallbackContext context)
+        {
+            if (!IsActionAllowed(context))
+                return;
+
+            selectionInputHandler.SelectEverything();
         }
 
         private void DeselectAll(CallbackContext context)

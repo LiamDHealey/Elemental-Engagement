@@ -11,6 +11,8 @@ using System;
 using Unity.VisualScripting;
 using UnityEditor;
 using ElementalEngagement.Combat;
+using UnityEditor.MemoryProfiler;
+using UnityEditor.Experimental.GraphView;
 
 namespace ElementalEngagement.Player
 {
@@ -162,6 +164,25 @@ namespace ElementalEngagement.Player
             }
         }
 
+        /// <summary>
+        /// Selects every unit in the game.
+        /// </summary>
+        public void SelectEverything()
+        {
+            Selectable[] allSelectables = FindObjectsOfType<Selectable>();
+
+            foreach (Selectable select in allSelectables)
+            {
+                Allegiance unitAllegiance = select.GetComponent<Allegiance>();
+
+                if (unitAllegiance.CheckFactionAllegiance(allegiance))
+                {
+                    _selectedObjects.Add(select);
+                    select.isSelected = true;
+                    selectedThisTick = true;
+                }
+            }
+        }
 
         /// <summary>
         /// Deselects all units.
