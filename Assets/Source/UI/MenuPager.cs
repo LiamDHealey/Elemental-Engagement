@@ -12,6 +12,7 @@ namespace ElementalEngagement.UI
         [SerializeField] private Button nextButton;
         [SerializeField] private Button prevButton;
         [SerializeField] private List<GameObject> menus;
+        [SerializeField] private bool isTabbedList;
 
 
         [SerializeField] private int _menuIndex;
@@ -52,6 +53,16 @@ namespace ElementalEngagement.UI
 
         private void Start()
         {
+            if(isTabbedList) 
+            {
+                //TODO: Create a template game object that holds a button. Set that button's listener with the following lambda
+                //Also, Add a menu pager to each of the Menu Containers in Unity that can then cycle through the pages
+
+                for (int i = 0; i < 10; i++)
+                {
+                    GetComponent<Button>().onClick.AddListener(() => menuIndex = i);
+                }
+            }
             foreach (GameObject menu in menus)
             {
                 menu.SetActive(false);
