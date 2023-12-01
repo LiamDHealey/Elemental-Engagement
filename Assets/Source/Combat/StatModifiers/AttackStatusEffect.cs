@@ -26,11 +26,31 @@ namespace ElementalEngagement.Combat
 
         private Collider[] collidersToEffect;
 
+        private void OnTransformParentChanged()
+        {
+            if (gameObject.transform.parent == null) { Destroy(this); }
+        }
+
         /// <summary>
         /// Checks all objects in the area of effect and applies proper changes to each one
         /// </summary>
         private void Start()
         {
+            if (singleTarget)
+            {
+                Attack attack = gameObject.transform.parent.GetComponent<Attack>();
+
+                if (attack == null)
+                    return;
+                if (!CanModify(gameObject.transform.parent.GetComponent<Collider>()))
+                    return;
+
+                attack.damage.amount *= damageMultiplier;
+                attack.knockback.amount *= knockbackMultiplier;
+                attack.attackInterval *= attackIntervalMultiplier;
+                return;
+            }
+
             collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);
             foreach (Collider collider in collidersToEffect)
             {
@@ -52,6 +72,23 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
+            if (gameObject.transform.parent == null) { return; }
+
+            if (singleTarget)
+            {
+                Attack attack = gameObject.transform.parent.GetComponent<Attack>();
+
+                if (attack == null)
+                    return;
+                if (!CanModify(gameObject.transform.parent.GetComponent<Collider>()))
+                    return;
+
+                attack.damage.amount /= damageMultiplier;
+                attack.knockback.amount /= knockbackMultiplier;
+                attack.attackInterval /= attackIntervalMultiplier;
+                return;
+            }
+
             foreach (Collider collider in collidersToEffect)
             {
                 Attack attack = collider.GetComponent<Attack>();

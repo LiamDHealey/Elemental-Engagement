@@ -1,5 +1,113 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4312484013452010680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5546514377240980260}
+  - component: {fileID: 8692442144417976685}
+  - component: {fileID: 8099918555011541522}
+  - component: {fileID: 7798995050514806848}
+  - component: {fileID: 7081362138654116538}
+  m_Layer: 0
+  m_Name: SpiritStatusEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5546514377240980260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312484013452010680}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1805021995339549647}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8692442144417976685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312484013452010680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d4f9f1627fafef49bab70450ce42eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: {fileID: 8099918555011541522}
+  area: {fileID: 0}
+  allegiance: {fileID: 2918475226641877387}
+  affectsEnemies: 0
+  singleTarget: 1
+  damageMultiplier: 1
+  knockbackMultiplier: 1
+  attackIntervalMultiplier: 0.75
+--- !u!114 &8099918555011541522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312484013452010680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 5
+  detachBeforeDeath: []
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7798995050514806848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312484013452010680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd52935024ccc547a858fe98d835837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: {fileID: 8099918555011541522}
+  area: {fileID: 0}
+  allegiance: {fileID: 2918475226641877387}
+  affectsEnemies: 0
+  singleTarget: 1
+  speedMultiplier: 1.5
+--- !u!114 &7081362138654116538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4312484013452010680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf83da3a0063fc41b5643729792f6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: {fileID: 8099918555011541522}
+  area: {fileID: 0}
+  allegiance: {fileID: 2918475226641877387}
+  affectsEnemies: 0
+  singleTarget: 1
+  maxHpMultiplier: 1.5
 --- !u!1 &6587405141950388664
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +256,7 @@ MonoBehaviour:
   duration: 9
   playOnStart: 1
   fadeOutDuration: 1
+  useMixer: 1
   volumeParam: spiritSwarmVolume
 --- !u!1 &6607328154304511375
 GameObject:
@@ -4993,6 +5102,7 @@ GameObject:
   - component: {fileID: 2811049362678237505}
   - component: {fileID: 2918475226641877387}
   - component: {fileID: 5413350263097762226}
+  - component: {fileID: 4699835222002754706}
   m_Layer: 0
   m_Name: SpiritSwarm
   m_TagString: Untagged
@@ -5015,6 +5125,7 @@ Transform:
   m_Children:
   - {fileID: 46551698166220054}
   - {fileID: 2404375999265130304}
+  - {fileID: 5546514377240980260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5097197072287485689
@@ -5152,4 +5263,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
-  detachBeforeDeath: []
+  detachBeforeDeath:
+  - {fileID: 4312484013452010680}
+  onDetached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4312484013452010680}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &4699835222002754706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8176869283739848236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a11aa04a41684eb48b44da00f49003fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area: {fileID: 2811049362678237505}
+  template: {fileID: 4312484013452010680}
+  allegiance: {fileID: 2918475226641877387}
