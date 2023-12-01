@@ -53,6 +53,11 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
+            if (!enabled)
+            {
+                return;
+            }
+
             if (singleTarget)
             {
                 Movement speed = gameObject.transform.parent.GetComponent<Movement>();

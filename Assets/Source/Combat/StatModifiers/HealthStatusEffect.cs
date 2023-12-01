@@ -59,6 +59,9 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void OnDestroy()
         {
+            if(!enabled)
+                return;
+
             if (singleTarget)
             {
                 Health health = gameObject.transform.parent.GetComponent<Health>();

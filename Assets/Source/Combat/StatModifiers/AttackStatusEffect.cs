@@ -67,6 +67,11 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
+            if(!enabled)
+            {
+                return;
+            }
+
             if (singleTarget)
             {
                 Attack attack = gameObject.transform.parent.GetComponent<Attack>();

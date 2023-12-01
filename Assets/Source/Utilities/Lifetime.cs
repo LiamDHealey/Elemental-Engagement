@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace ElementalEngagement.Utilities
 {
@@ -15,6 +16,8 @@ namespace ElementalEngagement.Utilities
         [Tooltip("Game objects to detach before death")]
         [SerializeField] private List<GameObject> detachBeforeDeath;
 
+        public UnityEvent onDetached;
+
         void Start ()
         {
             Invoke("Detach", lifetime);
@@ -25,9 +28,12 @@ namespace ElementalEngagement.Utilities
             for(int i = 0; i < detachBeforeDeath.Count; i++)
             {
                 detachBeforeDeath[i].transform.parent = null;
+                onDetached?.Invoke();
             }
 
             Destroy(gameObject);
         }
+
+
     }
 }
