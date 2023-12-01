@@ -163,13 +163,8 @@ namespace ElementalEngagement
         {
             if (!IsActionAllowed(context))
                 return;
-            if (selectionInputHandler.selectedObjects.Count <= 1)
-            {
-                selectionInputHandler.Select();
-            } else
-            {
-                selectionInputHandler.SelectAll();
-            }
+
+            selectionInputHandler.SelectAll();
         }
 
         private void SelectEverything(CallbackContext context)

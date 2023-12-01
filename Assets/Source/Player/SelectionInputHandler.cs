@@ -13,6 +13,7 @@ using UnityEditor;
 using ElementalEngagement.Combat;
 using UnityEditor.MemoryProfiler;
 using UnityEditor.Experimental.GraphView;
+using ElementalEngagement.UI;
 
 namespace ElementalEngagement.Player
 {
@@ -81,6 +82,11 @@ namespace ElementalEngagement.Player
             {
                 _selectedObjects.Add(selectable);
                 selectable.isSelected = true;
+                Debug.Log(selectable.gameObject.name);
+                if (selectable.gameObject.GetComponent<HealthBar>() != null )
+                {
+                    selectable.gameObject.GetComponent<HealthBar>().FadeIn();
+                }
                 selectedThisTick = true;
             }
         }

@@ -17,11 +17,15 @@ namespace ElementalEngagement.UI
         [Tooltip("The slider to display the health on.")]
         [SerializeField] Slider slider;
 
+        //CanvasGroup used for fading the health bar in and out
+        CanvasGroup canvasGroup;
+
         /// <summary>
         /// When spawned, fade the health slider out
         /// </summary>
         private void Start()
         {
+            canvasGroup = GetComponent<CanvasGroup>();
             FadeOut();
         }
 
@@ -38,17 +42,17 @@ namespace ElementalEngagement.UI
         /// <summary>
         /// Fades the health slider in if not visible.
         /// </summary>
-        private void FadeIn()
+        public void FadeIn()
         {
-            slider.gameObject.SetActive(true);
+            canvasGroup.alpha = 1;
         }
 
         /// <summary>
         /// Fades the health slider out if visible.
         /// </summary>
-        private void FadeOut()
+        public void FadeOut()
         {
-            slider.gameObject.SetActive(false);
+            canvasGroup.alpha = 0;
         }
     } 
 }
