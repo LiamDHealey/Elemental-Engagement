@@ -86,7 +86,7 @@ MonoBehaviour:
   allegiance: {fileID: 2918475226641877387}
   affectsEnemies: 0
   singleTarget: 1
-  speedMultiplier: 10
+  speedMultiplier: 20
 --- !u!114 &7081362138654116538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5174,7 +5174,7 @@ MonoBehaviour:
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
   affectsEnemies: 0
-  speedMultiplier: 10
+  speedMultiplier: 20
 --- !u!135 &9118675805897069436
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5260,7 +5260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 10
-  detachBeforeDeath: []
+  detachBeforeDeath:
+  - {fileID: 4312484013452010680}
 --- !u!114 &4699835222002754706
 MonoBehaviour:
   m_ObjectHideFlags: 0

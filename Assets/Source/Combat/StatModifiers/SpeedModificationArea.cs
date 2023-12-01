@@ -26,7 +26,8 @@ namespace ElementalEngagement.Combat
         {
             foreach (Collider collider in area.overlappingColliders)
             {
-                OnTriggerExited(collider);
+                if (collider != null)
+                    OnTriggerExited(collider);
             }
         }
 

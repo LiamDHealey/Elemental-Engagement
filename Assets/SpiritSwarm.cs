@@ -11,7 +11,7 @@ public class SpiritSwarm : MonoBehaviour
 {
 
     [Tooltip("The Collider used to detect collisions")]
-    [SerializeField] protected BindableCollider area;
+    [SerializeField] private BindableCollider area;
 
     [Tooltip("The GameObject Status Effect to apply")]
     [SerializeField] private GameObject template;
@@ -27,13 +27,13 @@ public class SpiritSwarm : MonoBehaviour
 
     public void RemoveStatusEffect(Collider collider)
     {
-        if(transform.GetComponentsInChildren<AttackStatusEffect>() != null)
+        if(collider.transform.GetComponentsInChildren<AttackStatusEffect>() != null)
         {
             AttackStatusEffect[] effects = collider.transform.GetComponentsInChildren<AttackStatusEffect>();
 
             foreach(AttackStatusEffect effect in effects) 
             {
-                if (effect.transform.parent.name == "SpiritStatusEffect")
+                if (effect.gameObject.name == "SpiritStatusEffect(Clone)")
                 {
                     Destroy(effect.gameObject);
                 }
@@ -58,7 +58,8 @@ public class SpiritSwarm : MonoBehaviour
     {
         foreach(Collider unit in area.overlappingColliders)
         {
-            AssignStatusEffect(unit);
+            if (unit != null)
+                AssignStatusEffect(unit);
         }
     }
 }
