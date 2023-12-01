@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3474260284025376702}
   - component: {fileID: 198434608448038436}
   - component: {fileID: 7747982907440526146}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Petrify_Preview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,11 +101,11 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &198434608448038436
 MonoBehaviour:
@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126807559546944569}
   - component: {fileID: 4686234662442738684}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7782166094987459738}
   - component: {fileID: 6569320830591641509}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Petrify Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -141,6 +141,8 @@ namespace ElementalEngagement.Player
 
                 abilityPreview = Instantiate(ability.previewPrefab);
                 abilityPreview.transform.SetParent(transform);
+                if (ability.inheritPlayerAllegiance && abilityPreview.GetComponent<Allegiance>() != null)
+                    abilityPreview.GetComponent<Allegiance>().faction = allegiance.faction;
 
                 abilityPreview.transform.position = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
                 return SelectionResult.Success;
