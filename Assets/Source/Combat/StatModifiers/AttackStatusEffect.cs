@@ -26,16 +26,13 @@ namespace ElementalEngagement.Combat
 
         private Collider[] collidersToEffect;
 
-        private void OnTransformParentChanged()
-        {
-            if (gameObject.transform.parent == null) { Destroy(this); }
-        }
-
         /// <summary>
         /// Checks all objects in the area of effect and applies proper changes to each one
         /// </summary>
         private void Start()
         {
+            if (gameObject.transform.parent == null) { return; }
+
             if (singleTarget)
             {
                 Attack attack = gameObject.transform.parent.GetComponent<Attack>();
