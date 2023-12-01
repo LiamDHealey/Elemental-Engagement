@@ -18,6 +18,14 @@ namespace ElementalEngagement.UI
         [SerializeField] Slider slider;
 
         /// <summary>
+        /// When spawned, fade the health slider out
+        /// </summary>
+        private void Start()
+        {
+            FadeOut();
+        }
+
+        /// <summary>
         /// Updates slider.
         /// </summary>
         private void Update()
@@ -25,6 +33,22 @@ namespace ElementalEngagement.UI
             slider.minValue = 0;
             slider.maxValue = healthToDisplay.maxHp;
             slider.value = healthToDisplay.hp;
+        }
+
+        /// <summary>
+        /// Fades the health slider in if not visible.
+        /// </summary>
+        private void FadeIn()
+        {
+            slider.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// Fades the health slider out if visible.
+        /// </summary>
+        private void FadeOut()
+        {
+            slider.gameObject.SetActive(false);
         }
     } 
 }
