@@ -69,6 +69,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 5
   detachBeforeDeath: []
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7798995050514806848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +89,7 @@ MonoBehaviour:
   allegiance: {fileID: 2918475226641877387}
   affectsEnemies: 0
   singleTarget: 1
-  speedMultiplier: 20
+  speedMultiplier: 1.5
 --- !u!114 &7081362138654116538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5174,7 +5177,7 @@ MonoBehaviour:
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
   affectsEnemies: 0
-  speedMultiplier: 20
+  speedMultiplier: 1.5
 --- !u!135 &9118675805897069436
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5262,6 +5265,21 @@ MonoBehaviour:
   lifetime: 10
   detachBeforeDeath:
   - {fileID: 4312484013452010680}
+  onDetached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4312484013452010680}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &4699835222002754706
 MonoBehaviour:
   m_ObjectHideFlags: 0

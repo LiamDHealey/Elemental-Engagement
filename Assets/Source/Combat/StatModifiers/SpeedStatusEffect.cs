@@ -20,6 +20,7 @@ namespace ElementalEngagement.Combat
         /// </summary>
         void Start()
         {
+            if(gameObject.transform.parent == null) { return; }
 
             if(singleTarget)
             {
@@ -53,6 +54,8 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
+            if (gameObject.transform.parent == null) { return; }
+
             if (singleTarget)
             {
                 Movement speed = gameObject.transform.parent.GetComponent<Movement>();

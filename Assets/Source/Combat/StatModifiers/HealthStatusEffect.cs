@@ -22,6 +22,7 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Start()
         {
+            if (gameObject.transform.parent == null) { return; }
 
             if (singleTarget)
             {
@@ -59,6 +60,8 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void OnDestroy()
         {
+            if (gameObject.transform.parent == null) { return; }
+
             if (singleTarget)
             {
                 Health health = gameObject.transform.parent.GetComponent<Health>();

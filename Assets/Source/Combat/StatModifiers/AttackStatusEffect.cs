@@ -31,7 +31,9 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Start()
         {
-            if(singleTarget)
+            if (gameObject.transform.parent == null) { return; }
+
+            if (singleTarget)
             {
                 Attack attack = gameObject.transform.parent.GetComponent<Attack>();
 
@@ -67,6 +69,8 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
+            if (gameObject.transform.parent == null) { return; }
+
             if (singleTarget)
             {
                 Attack attack = gameObject.transform.parent.GetComponent<Attack>();
