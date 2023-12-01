@@ -8,8 +8,8 @@ namespace ElementalEngagement.UI
 {
     public class MinimapIcon : MonoBehaviour
     {
-        
-        public float iconSize = 10f;
+        [SerializeField] private float _iconSize = 10f;
+        public float iconSize => _iconSize * transform.localScale.x;
         public Sprite icon => GetComponent<Allegiance>()?.faction switch
         {
             Faction.Unaligned => unalignedIcon,
