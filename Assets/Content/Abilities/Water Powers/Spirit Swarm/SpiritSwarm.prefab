@@ -71,6 +71,7 @@ MonoBehaviour:
   detachBeforeDeath: []
   onDetached:
     m_PersistentCalls:
+<<<<<<< Updated upstream
       m_Calls:
       - m_Target: {fileID: 4312484013452010680}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -84,6 +85,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+=======
+      m_Calls: []
+>>>>>>> Stashed changes
 --- !u!114 &7798995050514806848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5280,6 +5284,7 @@ MonoBehaviour:
   onDetached:
     m_PersistentCalls:
       m_Calls:
+<<<<<<< Updated upstream
       - m_Target: {fileID: 8692442144417976685}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
@@ -5316,6 +5321,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+=======
+>>>>>>> Stashed changes
       - m_Target: {fileID: 4312484013452010680}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive

@@ -22,6 +22,8 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Start()
         {
+            if (gameObject.transform.parent == null)
+                return;
 
             if (singleTarget)
             {
@@ -59,7 +61,11 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void OnDestroy()
         {
+<<<<<<< Updated upstream
             if(!enabled)
+=======
+            if (gameObject.transform.parent == null)
+>>>>>>> Stashed changes
                 return;
 
             if (singleTarget)

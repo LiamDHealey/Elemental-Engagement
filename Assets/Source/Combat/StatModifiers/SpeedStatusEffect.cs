@@ -20,8 +20,10 @@ namespace ElementalEngagement.Combat
         /// </summary>
         void Start()
         {
+            if (gameObject.transform.parent == null)
+                return;
 
-            if(singleTarget)
+            if (singleTarget)
             {
                 Movement speed= gameObject.transform.parent.GetComponent<Movement>();
 
@@ -53,10 +55,15 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
+<<<<<<< Updated upstream
             if (!enabled)
             {
                 return;
             }
+=======
+            if (gameObject.transform.parent == null)
+                return;
+>>>>>>> Stashed changes
 
             if (singleTarget)
             {
