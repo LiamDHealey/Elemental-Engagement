@@ -98,6 +98,7 @@ namespace ElementalEngagement
             input.actions["PauseGame"].performed += PauseGame;
             input.actions["Back"].performed += Back;
             input.actions["SelectEverything"].performed += SelectEverything;
+            input.actions["Stop"].performed += Stop;
         }
 
         private void OnDestroy()
@@ -116,6 +117,7 @@ namespace ElementalEngagement
             input.actions["PauseGame"].performed -= PauseGame;
             input.actions["Back"].performed -= Back;
             input.actions["SelectEverything"].performed -= SelectEverything;
+            input.actions["Stop"].performed -= Stop;
         }
 
         private void Update()
@@ -195,6 +197,14 @@ namespace ElementalEngagement
                 return;
 
             selectionInputHandler.IssueCommand(true);
+        }
+
+        private void Stop(CallbackContext context)
+        {
+            if (!IsActionAllowed(context))
+                return;
+
+            selectionInputHandler.StopSelectedCommands();
         }
 
         private void PlayAbility(CallbackContext context)
