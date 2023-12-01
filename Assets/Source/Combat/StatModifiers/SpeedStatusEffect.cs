@@ -20,6 +20,20 @@ namespace ElementalEngagement.Combat
         /// </summary>
         void Start()
         {
+
+            if(singleTarget)
+            {
+                Movement speed= gameObject.transform.parent.GetComponent<Movement>();
+
+                if (speed == null)
+                    return;
+                if (!CanModify(gameObject.transform.parent.GetComponent<Collider>()))
+                    return;
+
+                speed.speed *= speedMultiplier;
+                return;
+            }
+
             collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);
             foreach (Collider collider in collidersToEffect)
             {
@@ -39,7 +53,20 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
-            foreach(Collider collider in collidersToEffect)
+            if (singleTarget)
+            {
+                Movement speed = gameObject.transform.parent.GetComponent<Movement>();
+
+                if (speed == null)
+                    return;
+                if (!CanModify(gameObject.transform.parent.GetComponent<Collider>()))
+                    return;
+
+                speed.speed /= speedMultiplier;
+                return;
+            }
+
+            foreach (Collider collider in collidersToEffect)
             {
                 Movement speed = collider.GetComponent<Movement>();
 

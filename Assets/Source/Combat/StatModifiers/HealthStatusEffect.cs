@@ -22,6 +22,22 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Start()
         {
+
+            if (singleTarget)
+            {
+                Health health = gameObject.transform.parent.GetComponent<Health>();
+
+                if (health == null)
+                    return;
+                if (!CanModify(gameObject.transform.parent.GetComponent<Collider>()))
+                    return;
+
+                float hpPercent = health.hp / health.maxHp;
+                health.maxHp *= maxHpMultiplier;
+                health.hp = health.maxHp * hpPercent;
+                return;
+            }
+
             collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);
             foreach (Collider collider in collidersToEffect)
             {
@@ -43,6 +59,21 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void OnDestroy()
         {
+            if (singleTarget)
+            {
+                Health health = gameObject.transform.parent.GetComponent<Health>();
+
+                if (health == null)
+                    return;
+                if (!CanModify(gameObject.transform.parent.GetComponent<Collider>()))
+                    return;
+
+                float hpPercent = health.hp / health.maxHp;
+                health.maxHp /= maxHpMultiplier;
+                health.hp = health.maxHp * hpPercent;
+                return;
+            }
+
             foreach (Collider collider in collidersToEffect)
             {
                 Health health = collider.GetComponent<Health>();

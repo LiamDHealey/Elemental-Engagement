@@ -26,6 +26,7 @@ namespace ElementalEngagement.Utilities
             {
                 detachBeforeDeath[i].transform.parent = null;
             }
+
             Destroy(gameObject);
         }
     }
