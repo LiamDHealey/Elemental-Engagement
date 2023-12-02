@@ -81,8 +81,10 @@ namespace ElementalEngagement.Combat
 
             if(hp <= 0)
                 onKilled?.Invoke();
-
-            StartCoroutine(showHealthBar());
+            if (gameObject.GetComponent<Selectable>() != null && !gameObject.GetComponent<Selectable>().isSelected)
+            {
+                StartCoroutine(showHealthBar());
+            }
         }
 
         /// <summary>
