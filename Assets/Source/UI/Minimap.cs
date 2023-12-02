@@ -13,6 +13,11 @@ namespace ElementalEngagement.UI
 
         private RectTransform rectTransform => (RectTransform)transform;
         private readonly List<Image> icons = new List<Image>();
+        private Vector2 backgroundSize;
+        private void Start()
+        {
+            backgroundSize = new Vector2(GetComponent<Image>().sprite.texture.width, GetComponent<Image>().sprite.texture.height);
+        }
 
         // Update is called once per frame
         void Update()
@@ -37,7 +42,7 @@ namespace ElementalEngagement.UI
                 Vector3 boundsRelativePosition = (icon.transform.position - worldspaceBounds.center);
                 iconTransform.anchoredPosition = new Vector2((boundsRelativePosition.x / worldspaceBounds.extents.x) * rectTransform.rect.size.x,
                                                              (boundsRelativePosition.z / worldspaceBounds.extents.z) * rectTransform.rect.size.y);
-                iconTransform.sizeDelta = new Vector2(icon.iconSize, icon.iconSize);
+                iconTransform.sizeDelta = new Vector2(icon.iconSize, icon.iconSize) * rectTransform.rect.size / backgroundSize;
                 icons[i].sprite = icon.icon;
 
                 i++;

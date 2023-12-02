@@ -102,6 +102,9 @@ MonoBehaviour:
   lifetime: 3
   detachBeforeDeath:
   - {fileID: 5181311022840208509}
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8862274553379073966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +352,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 5
   detachBeforeDeath: []
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &6823000820552555540
 PrefabInstance:
   m_ObjectHideFlags: 0

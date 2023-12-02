@@ -1,4 +1,5 @@
 using ElementalEngagement.Player;
+using ElementalEngagement.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,6 +17,8 @@ namespace ElementalEngagement.Combat
         [Tooltip("The VFX to add to any units inside of the area.")]
 
         public GameObject VFXPrefab;
+
+        public float destroyDelay;
         private Dictionary<Collider, GameObject> unitsToVFX = new Dictionary<Collider, GameObject>();
 
         void Start()
@@ -42,9 +45,17 @@ namespace ElementalEngagement.Combat
             if (!CanModify(collider))
                 return;
 
-            GameObject vfx = Instantiate(VFXPrefab, collider.transform);
 
-            unitsToVFX.Add(collider, vfx);
+            if (unitsToVFX.ContainsKey(collider) && unitsToVFX[collider] != null && unitsToVFX[collider].GetComponent<Lifetime>() != null)
+            {
+                Destroy(unitsToVFX[collider].GetComponent<Lifetime>());
+            }
+            else
+            {
+                GameObject vfx = Instantiate(VFXPrefab, collider.transform);
+                unitsToVFX.Remove(collider);
+                unitsToVFX.Add(collider, vfx);
+            }
         }
 
         /// <summary>
@@ -58,9 +69,7 @@ namespace ElementalEngagement.Combat
             if (!CanModify(collider))
                 return;
 
-            unitsToVFX.Remove(collider, out GameObject vfxDestroy);
-
-            Destroy(vfxDestroy);
+            unitsToVFX[collider].AddComponent<Lifetime>().lifetime = destroyDelay;
         }
     }
 }
