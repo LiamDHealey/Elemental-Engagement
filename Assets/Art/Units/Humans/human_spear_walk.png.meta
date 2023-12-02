@@ -181,8 +181,8 @@ TextureImporter:
       name: human_spear_walk_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 4096
+        y: 2048
         width: 2048
         height: 2048
       alignment: 0
@@ -202,7 +202,7 @@ TextureImporter:
       name: human_spear_walk_3
       rect:
         serializedVersion: 2
-        x: 2048
+        x: 0
         y: 0
         width: 2048
         height: 2048
@@ -215,6 +215,48 @@ TextureImporter:
       bones: []
       spriteID: 4675f5f36502f6e4e9fa05e46cc8a03a
       internalID: -1053597134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: human_spear_walk_4
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6645659a2b614f74986f127308a9f479
+      internalID: 1066203425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: human_spear_walk_5
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 0
+        width: 2048
+        height: 2048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2632b41f204c6e4dab6dfd3734ac254
+      internalID: -116593922
       vertices: []
       indices: 
       edges: []
@@ -234,6 +276,8 @@ TextureImporter:
       human_spear_walk_1: -686055236
       human_spear_walk_2: -34027812
       human_spear_walk_3: -1053597134
+      human_spear_walk_4: 1066203425
+      human_spear_walk_5: -116593922
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
