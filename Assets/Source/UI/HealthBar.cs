@@ -71,7 +71,11 @@ namespace ElementalEngagement.UI
         /// </summary>
         public void FadeOut()
         {
-            StartCoroutine(FadeOutCoroutine());
+            bool isHumanArmy = (gameObject.transform.parent.name == "HumanArmy(Clone)");
+            if (!isHumanArmy)
+            {
+                StartCoroutine(FadeOutCoroutine());
+            }
         }
 
         /// <summary>
