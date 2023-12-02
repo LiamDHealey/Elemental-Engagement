@@ -16,7 +16,10 @@ namespace ElementalEngagement.Combat
         [Tooltip("The VFX to add to any units inside of the area.")]
 
         public GameObject VFXPrefab;
+
+        public float destroyDelay;
         private Dictionary<Collider, GameObject> unitsToVFX = new Dictionary<Collider, GameObject>();
+        private Dictionary<Collider, IEnumerator> unitsToDestroyCalls = new Dictionary<Collider, IEnumerator>();
 
         void Start()
         {
@@ -42,9 +45,17 @@ namespace ElementalEngagement.Combat
             if (!CanModify(collider))
                 return;
 
-            GameObject vfx = Instantiate(VFXPrefab, collider.transform);
 
-            unitsToVFX.Add(collider, vfx);
+            if (unitsToVFX.ContainsKey(collider))
+            {
+                StopCoroutine(unitsToDestroyCalls[collider]);
+                unitsToDestroyCalls.Remove(collider);
+            }
+            else
+            {
+                GameObject vfx = Instantiate(VFXPrefab, collider.transform);
+                unitsToVFX.Add(collider, vfx);
+            }
         }
 
         /// <summary>
@@ -58,8 +69,16 @@ namespace ElementalEngagement.Combat
             if (!CanModify(collider))
                 return;
 
-            unitsToVFX.Remove(collider, out GameObject vfxDestroy);
+            unitsToDestroyCalls.Add(collider, DelayedDestroy(collider));
+            StartCoroutine(unitsToDestroyCalls[collider]);
+        }
 
+        IEnumerator DelayedDestroy(Collider collider)
+        {
+            yield return new WaitForSeconds(destroyDelay);
+
+            unitsToVFX.Remove(collider, out GameObject vfxDestroy);
+            unitsToDestroyCalls.Remove(collider);
             Destroy(vfxDestroy);
         }
     }
