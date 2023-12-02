@@ -21,7 +21,7 @@ namespace ElementalEngagement.UI
         CanvasGroup canvasGroup;
 
         /// <summary>
-        /// When spawned, fade the health slider out
+        /// When spawned, fade the health slider out and instantiate the canvasGroup
         /// </summary>
         private void Start()
         {
@@ -44,7 +44,21 @@ namespace ElementalEngagement.UI
         /// </summary>
         public void FadeIn()
         {
-            canvasGroup.alpha = 1;
+            StartCoroutine(FadeInCoroutine());
+        }
+
+        /// <summary>
+        /// Coroutine to perform a *fancy* fade in animation
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator FadeInCoroutine()
+        {
+            canvasGroup.alpha = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                canvasGroup.alpha += 0.1f;
+                yield return new WaitForSeconds(0.01f);
+            }
         }
 
         /// <summary>
@@ -52,7 +66,21 @@ namespace ElementalEngagement.UI
         /// </summary>
         public void FadeOut()
         {
-            canvasGroup.alpha = 0;
+            StartCoroutine(FadeOutCoroutine());
+        }
+
+        /// <summary>
+        /// Coroutine to perform a *fancy* fade in animation
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator FadeOutCoroutine()
+        {
+            canvasGroup.alpha = 1;
+            for (int i = 0; i < 10; i++)
+            {
+                canvasGroup.alpha -= 0.1f;
+                yield return new WaitForSeconds(0.01f);
+            }
         }
     } 
 }

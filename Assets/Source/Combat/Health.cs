@@ -1,7 +1,9 @@
 using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
+using ElementalEngagement.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -44,6 +46,8 @@ namespace ElementalEngagement.Combat
         [Tooltip("Called once when this has been killed.")]
         public UnityEvent onKilled;
 
+        //Timer for fading the health bar out after taking damage
+        System.Timers.Timer damageTimer;
 
         // The current number of health points this has.
         public float hp
@@ -77,8 +81,19 @@ namespace ElementalEngagement.Combat
 
             if(hp <= 0)
                 onKilled?.Invoke();
+
+            StartCoroutine(showHealthBar());
         }
 
+        /// <summary>
+        /// Show the health bar for a set amount of seconds
+        /// </summary>
+        IEnumerator showHealthBar()
+        {
+            gameObject.GetComponentInChildren<HealthBar>().FadeIn();
+            yield return new WaitForSeconds(5f);
+            gameObject.GetComponentInChildren<HealthBar>().FadeOut();
+        }
 
         /// <summary>
         /// Used for determine how things resist damage.
