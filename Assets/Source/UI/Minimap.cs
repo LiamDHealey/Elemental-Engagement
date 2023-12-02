@@ -33,6 +33,7 @@ namespace ElementalEngagement.UI
                     GameObject iconObject = new GameObject("MinimapIcon", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
                     iconObject.transform.SetParent(transform);
                     icons.Add(iconObject.GetComponent<Image>());
+                    icons[icons.Count - 1].maskable = false;
                 }
 
 
