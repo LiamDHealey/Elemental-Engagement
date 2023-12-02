@@ -198,8 +198,11 @@ namespace ElementalEngagement.Player
             IEnumerable<Selectable> selectedObjects = new List<Selectable>(_selectedObjects);
             foreach (Selectable selectedObject in selectedObjects)
             {
+                if (selectedObject)
+                {
+                    selectedObject.gameObject.GetComponentInChildren<HealthBar>().FadeOut();
+                }
                 _selectedObjects.Remove(selectedObject);
-                selectedObject.gameObject.GetComponentInChildren<HealthBar>().FadeOut();
                 selectedObject.isSelected = false;
             }
         }

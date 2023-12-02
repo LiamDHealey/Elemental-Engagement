@@ -40,14 +40,14 @@ namespace ElementalEngagement.Combat
         [Tooltip("The amounts damage will be multiplied depending on the incoming damage's allegiance.")]
         [SerializeField] private List<DamageMultiplier> damageMultipliers;
 
+        [Tooltip("How long the health bar shows up when damage is taken")]
+        [SerializeField] public float damageHealthBarTime;
+
         [Tooltip("Called when this is damaged.")]
         public UnityEvent<Damage> onDamaged;
 
         [Tooltip("Called once when this has been killed.")]
         public UnityEvent onKilled;
-
-        //Timer for fading the health bar out after taking damage
-        System.Timers.Timer damageTimer;
 
         // The current number of health points this has.
         public float hp
@@ -91,7 +91,7 @@ namespace ElementalEngagement.Combat
         IEnumerator showHealthBar()
         {
             gameObject.GetComponentInChildren<HealthBar>().FadeIn();
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(damageHealthBarTime);
             gameObject.GetComponentInChildren<HealthBar>().FadeOut();
         }
 
