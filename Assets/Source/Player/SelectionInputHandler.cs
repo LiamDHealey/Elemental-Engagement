@@ -13,6 +13,7 @@ using UnityEditor;
 using ElementalEngagement.Combat;
 using UnityEditor.MemoryProfiler;
 using UnityEditor.Experimental.GraphView;
+using ElementalEngagement.UI;
 
 namespace ElementalEngagement.Player
 {
@@ -80,6 +81,7 @@ namespace ElementalEngagement.Player
             if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius) && !selectable.isSelected)
             {
                 _selectedObjects.Add(selectable);
+                selectable.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
                 selectable.isSelected = true;
                 selectedThisTick = true;
             }
@@ -111,6 +113,7 @@ namespace ElementalEngagement.Player
                                 continue;
 
                             _selectedObjects.Add(selectable);
+                            selectable.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
                             selectable.isSelected = true;
                             selectedThisTick = true;
                         }
@@ -158,6 +161,7 @@ namespace ElementalEngagement.Player
                 {
                     Selectable colliderSelect = collider.GetComponent<Selectable>();
                     _selectedObjects.Add(colliderSelect);
+                    colliderSelect.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
                     colliderSelect.isSelected = true;
                     selectedThisTick = true;
                 }
@@ -178,6 +182,7 @@ namespace ElementalEngagement.Player
                 if (unitAllegiance.CheckFactionAllegiance(allegiance))
                 {
                     _selectedObjects.Add(select);
+                    select.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
                     select.isSelected = true;
                     selectedThisTick = true;
                 }
@@ -193,6 +198,10 @@ namespace ElementalEngagement.Player
             IEnumerable<Selectable> selectedObjects = new List<Selectable>(_selectedObjects);
             foreach (Selectable selectedObject in selectedObjects)
             {
+                if (selectedObject)
+                {
+                    selectedObject.gameObject.GetComponentInChildren<HealthBar>().FadeOut();
+                }
                 _selectedObjects.Remove(selectedObject);
                 selectedObject.isSelected = false;
             }
