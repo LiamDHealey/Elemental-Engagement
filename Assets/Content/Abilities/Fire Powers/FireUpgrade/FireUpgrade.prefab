@@ -101,7 +101,10 @@ MonoBehaviour:
   lifetime: 3
   detachBeforeDeath:
   - {fileID: 8308067290544138848}
-  - {fileID: 0}
+  - {fileID: 4130308488578274863}
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4594358166897870817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 5
   detachBeforeDeath: []
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &462806217543287912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -420,6 +426,11 @@ PrefabInstance:
 --- !u!4 &4130308488578274858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557073698510574146, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
+  m_PrefabInstance: {fileID: 462806217543287912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4130308488578274863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4557073698510574151, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
   m_PrefabInstance: {fileID: 462806217543287912}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5961048296587745512
