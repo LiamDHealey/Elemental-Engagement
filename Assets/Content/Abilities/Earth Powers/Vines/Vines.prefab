@@ -83,6 +83,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 12
   detachBeforeDeath: []
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!135 &3541152659342582462
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -102,7 +105,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 12
+  m_Radius: 16
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3313091710761478470
 MonoBehaviour:
