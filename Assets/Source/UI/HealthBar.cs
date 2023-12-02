@@ -17,6 +17,23 @@ namespace ElementalEngagement.UI
         [Tooltip("The slider to display the health on.")]
         [SerializeField] Slider slider;
 
+        //CanvasGroup used for fading the health bar in and out
+        CanvasGroup canvasGroup;
+
+        /// <summary>
+        /// When spawned, fade the health slider out and instantiate the canvasGroup
+        /// </summary>
+        private void Start()
+        {
+            bool isShrine = (gameObject.transform.parent.name == "Player1FireShrine") || (gameObject.transform.parent.name == "Player1WaterShrine") || (gameObject.transform.parent.name == "Player1EarthShrine") || (gameObject.transform.parent.name == "Player2FireShrine") || (gameObject.transform.parent.name == "Player2WaterShrine") || (gameObject.transform.parent.name == "Player2EarthShrine");
+            bool isHumanArmy = (gameObject.transform.parent.name == "HumanArmy(Clone)");
+            canvasGroup = GetComponent<CanvasGroup>();
+            if (!isShrine && !isHumanArmy)
+            {
+                FadeOut();
+            }
+        }
+
         /// <summary>
         /// Updates slider.
         /// </summary>
@@ -25,6 +42,51 @@ namespace ElementalEngagement.UI
             slider.minValue = 0;
             slider.maxValue = healthToDisplay.maxHp;
             slider.value = healthToDisplay.hp;
+        }
+
+        /// <summary>
+        /// Fades the health slider in if not visible.
+        /// </summary>
+        public void FadeIn()
+        {
+            StartCoroutine(FadeInCoroutine());
+        }
+
+        /// <summary>
+        /// Coroutine to perform a *fancy* fade in animation
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator FadeInCoroutine()
+        {
+            canvasGroup.alpha = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                canvasGroup.alpha += 0.1f;
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
+        /// <summary>
+        /// Fades the health slider out if visible.
+        /// </summary>
+        public void FadeOut()
+        {
+            StartCoroutine(FadeOutCoroutine());
+        }
+
+        /// <summary>
+        /// Coroutine to perform a *fancy* fade in animation
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator FadeOutCoroutine()
+        {
+            canvasGroup.alpha = 1;
+            for (int i = 0; i < 10; i++)
+            {
+                canvasGroup.alpha -= 0.1f;
+                yield return new WaitForSeconds(0.01f);
+            }
+            StopCoroutine(FadeOutCoroutine());
         }
     } 
 }
