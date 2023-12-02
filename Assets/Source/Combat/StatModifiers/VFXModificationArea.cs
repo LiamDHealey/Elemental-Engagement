@@ -1,4 +1,5 @@
 using ElementalEngagement.Player;
+using ElementalEngagement.Utilities;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -19,7 +20,6 @@ namespace ElementalEngagement.Combat
 
         public float destroyDelay;
         private Dictionary<Collider, GameObject> unitsToVFX = new Dictionary<Collider, GameObject>();
-        private Dictionary<Collider, IEnumerator> unitsToDestroyCalls = new Dictionary<Collider, IEnumerator>();
 
         void Start()
         {
@@ -46,14 +46,14 @@ namespace ElementalEngagement.Combat
                 return;
 
 
-            if (unitsToVFX.ContainsKey(collider))
+            if (unitsToVFX.ContainsKey(collider) && unitsToVFX[collider] != null && unitsToVFX[collider].GetComponent<Lifetime>() != null)
             {
-                StopCoroutine(unitsToDestroyCalls[collider]);
-                unitsToDestroyCalls.Remove(collider);
+                Destroy(unitsToVFX[collider].GetComponent<Lifetime>());
             }
             else
             {
                 GameObject vfx = Instantiate(VFXPrefab, collider.transform);
+                unitsToVFX.Remove(collider);
                 unitsToVFX.Add(collider, vfx);
             }
         }
@@ -69,17 +69,7 @@ namespace ElementalEngagement.Combat
             if (!CanModify(collider))
                 return;
 
-            unitsToDestroyCalls.Add(collider, DelayedDestroy(collider));
-            StartCoroutine(unitsToDestroyCalls[collider]);
-        }
-
-        IEnumerator DelayedDestroy(Collider collider)
-        {
-            yield return new WaitForSeconds(destroyDelay);
-
-            unitsToVFX.Remove(collider, out GameObject vfxDestroy);
-            unitsToDestroyCalls.Remove(collider);
-            Destroy(vfxDestroy);
+            unitsToVFX[collider].AddComponent<Lifetime>().lifetime = destroyDelay;
         }
     }
 }

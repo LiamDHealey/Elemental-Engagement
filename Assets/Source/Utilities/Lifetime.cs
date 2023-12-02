@@ -11,16 +11,20 @@ namespace ElementalEngagement.Utilities
     public class Lifetime : MonoBehaviour
     {
         [Tooltip("The amount of time this will exist for in seconds.")] [Min(0)]
-        [SerializeField] private float lifetime = 1;
+        [SerializeField] public float lifetime = 1;
 
         [Tooltip("Game objects to detach before death")]
-        [SerializeField] private List<GameObject> detachBeforeDeath;
+        [SerializeField] private List<GameObject> detachBeforeDeath = new List<GameObject>();
 
         public UnityEvent onDetached;
 
-        void Start ()
+        private void Update()
         {
-            Invoke("Detach", lifetime);
+            lifetime -= Time.deltaTime;
+            if (lifetime <= 0)
+            {
+                Detach();
+            }
         }
 
         private void Detach()
