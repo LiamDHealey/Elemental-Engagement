@@ -141,7 +141,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ZoomIn",
+                    "name": "ZoomOut",
                     "type": "Value",
                     "id": "3c0542a7-efa2-4063-8e83-2c1d6b0c337d",
                     "expectedControlType": "Double",
@@ -150,13 +150,31 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ZoomOut",
+                    "name": "Zoomin",
                     "type": "Value",
                     "id": "a142c363-207a-41a9-ae8d-1f6f447b7c68",
                     "expectedControlType": "Double",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SelectEverything",
+                    "type": "Button",
+                    "id": "d5d269b5-255b-4985-b402-008cb732a368",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Stop",
+                    "type": "Button",
+                    "id": "1680801c-ea79-45d5-bd5c-4c59c12756dd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -585,7 +603,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ZoomIn",
+                    "action": "ZoomOut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -596,7 +614,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ZoomIn",
+                    "action": "ZoomOut",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -607,7 +625,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ZoomOut",
+                    "action": "Zoomin",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -618,7 +636,62 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "ZoomOut",
+                    "action": "Zoomin",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "549e870f-5c46-42ae-8724-432920bd9e1f",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEverything",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "40d30d38-cba3-4e52-8621-621e1b8e3386",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectEverything",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88da2919-41b2-4d1b-8d87-13f2a12fd213",
+                    "path": "<Keyboard>/backquote",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9882fa03-3325-4742-9545-584c511c0b4f",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07b237f8-8727-4878-b224-5a5b74681a2a",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

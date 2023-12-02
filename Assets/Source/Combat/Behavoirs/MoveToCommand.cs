@@ -1,8 +1,10 @@
 using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -71,9 +73,6 @@ namespace ElementalEngagement.Combat
             if (hitUnderCursor.collider == null)
                 return false;
 
-            if (hitUnderCursor.collider.gameObject.layer != LayerMask.NameToLayer("Ground"))
-                return false;
-
             return movement.CanMoveTo(hitUnderCursor.point);
         }
 
@@ -86,6 +85,9 @@ namespace ElementalEngagement.Combat
         public override void ExecuteCommand(RaycastHit hitUnderCursor, ReadOnlyCollection<Selectable> selectedObjects, bool isAltCommand)
         {
             commandInProgress = true;
+
+            Vector3 selectedDestination = SelectDestination(hitUnderCursor, selectedObjects);
+
 
             StartCoroutine(DestinationReached());
             IEnumerator DestinationReached()
@@ -100,7 +102,7 @@ namespace ElementalEngagement.Combat
                     // Move to target location
                     if (!isAltCommand || attackableTargets.Count() == 0)
                     {
-                        movement.SetDestination(this, hitUnderCursor.point);
+                        movement.SetDestination(this, selectedDestination);
 
                         // Min Movement Speed Timeout
                         Vector3 lastPosition = movement.transform.position;
@@ -140,6 +142,40 @@ namespace ElementalEngagement.Combat
 
                 CancelCommand();
             }
+        }
+
+        protected override List<Vector3> GetDestinations(RaycastHit hit, ReadOnlyCollection<Selectable> selectedObjects, float unitWidth)
+        {
+            List<Vector3> destinations = new List<Vector3>();
+            int layer = 0;
+            int angle = 0;
+
+            const int spotsPerLayer = 4;
+            Vector3 point = new Vector3(hit.point.x, 0, hit.point.z);
+            while (destinations.Count < selectedObjects.Count)
+            {
+                Vector3 destination = layer == 0 
+                                    ? point
+                                    : point + Quaternion.AngleAxis(360f / (spotsPerLayer * layer) * angle, Vector3.up) * (Vector3.right * unitWidth * layer);
+                if (NavMesh.SamplePosition(destination, out NavMeshHit navHit, 1f, NavMesh.AllAreas))
+                {
+                    destinations.Add(navHit.position);
+                }
+
+                angle++;
+                if (angle >= layer * spotsPerLayer)
+                {
+                    angle = 0;
+                    layer++;
+                }
+
+                if (layer > 100)
+                {
+                    throw new Exception("Couldn't find enough destinations");
+                }
+            }
+
+            return destinations;
         }
 
         /// <summary>

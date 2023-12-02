@@ -1,3 +1,4 @@
+using ElementalEngagement.UI;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +23,6 @@ namespace ElementalEngagement.Player
 
         [Tooltip("Called when this has been deselected..")]
         public UnityEvent onDeselected;
-
-
 
         // Whether or not this is currently selected.
         private bool _isSelected = false;

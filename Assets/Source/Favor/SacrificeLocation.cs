@@ -3,6 +3,7 @@ using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -60,7 +61,10 @@ namespace ElementalEngagement.Favor
         public float decapturePoints { get; private set; } = 0;
 
         // Dictionary of coroutines currently being run associated with the unit running it.
-        private Dictionary<SacrificeCommand, IEnumerator> sacrificeCoroutines = new Dictionary<SacrificeCommand, IEnumerator>();
+        private Dictionary<SacrificeCommand, IEnumerator>  sacrificeCoroutines = new Dictionary<SacrificeCommand, IEnumerator>();
+
+        //List of all units that have ever sacrificed and their cooldown
+        private List<SacrificingUnit> unitsToUpdate = new List<SacrificingUnit>();
 
         // The amount of time remaining.
         public float remainingNeutralTime = 0f;
@@ -86,9 +90,164 @@ namespace ElementalEngagement.Favor
                 FavorManager.ModifyFavor(allegiance.faction, allegiance.god, favorGainRate * Time.deltaTime);
             }
             remainingNeutralTime -= Time.deltaTime;
+
+            for(int i = unitsToUpdate.Count - 1; i >= 0; i--)
+            {
+                if (unitsToUpdate[i].unit == null)
+                {
+                    unitsToUpdate.RemoveAt(i);
+                }
+            }
+
+            SacrificeCurrentUnits();
         }
 
-        
+        private void SacrificeCurrentUnits()
+        {
+            MinorGod unitGod;
+            Faction unitFaction;
+            Health unitHealth;
+            MinorGodToCapturePoints settings;
+
+            foreach(SacrificingUnit targetUnit in unitsToUpdate)
+            {
+                if(!targetUnit.isActive)
+                {
+                    continue;
+                }
+
+                unitGod = targetUnit.unit.GetComponent<Allegiance>().god;
+                unitFaction = targetUnit.unit.GetComponent<Allegiance>().faction;
+                unitHealth = targetUnit.unit.GetComponent<Health>();
+                settings = capturePointSettings.First(m => m.minorGod == unitGod);
+
+                switch (state)
+                {
+                    case State.Neutral:
+                        if (settings.allowCapture && remainingNeutralTime <= 0)
+                        {
+                            if (targetUnit.timeToWait <= 0)
+                            {
+                                state = State.Capturing;
+                                foreach (var capturePoint in new Dictionary<Faction, float>(capturePoints))
+                                {
+                                    capturePoints[unitFaction] = 0f;
+                                }
+                                capturePoints[unitFaction] = settings.capturePointsPerSacrifice;
+                                unitHealth.TakeDamage(new Damage(sacrificeDamage));
+                                StartUnitSacrificing(targetUnit);
+                            }
+                        }
+                        else
+                        {
+                            StopUnitSacrificing(targetUnit);
+                        }
+                        break;
+
+                    case State.Capturing:
+                        if (settings.allowCapture)
+                        {
+                            if (targetUnit.timeToWait <= 0)
+                            {
+                                capturePoints[unitFaction] += settings.capturePointsPerSacrifice;
+                                unitHealth.TakeDamage(new Damage(sacrificeDamage));
+                                if (capturePoints[unitFaction] >= requiredCapturePoints)
+                                {
+                                    state = State.Captured;
+                                    allegiance.faction = unitFaction;
+                                    onCaptured?.Invoke();
+                                    StopUnitSacrificing(targetUnit);
+                                }
+                                else
+                                {
+                                    StartUnitSacrificing(targetUnit);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            StopUnitSacrificing(targetUnit);
+                        }
+                        break;
+
+                    case State.Decapturing:
+                        if (unitFaction != allegiance.faction && settings.allowDecapture)
+                        {
+                            if (targetUnit.timeToWait <= 0)
+                            {
+                                decapturePoints += settings.decapturePointsPerSacrifice;
+                                unitHealth.TakeDamage(new Damage(sacrificeDamage));
+                                if (decapturePoints >= requiredDecapturePoints)
+                                {
+                                    state = State.Neutral;
+                                    allegiance.faction = Faction.Unaligned;
+                                    remainingNeutralTime = neutralLockoutTime;
+                                    foreach (Faction faction in new List<Faction>(capturePoints.Keys))
+                                    {
+                                        capturePoints[faction] = 0;
+                                    }
+                                    onDecaptured?.Invoke();
+                                    if (settings.allowCapture)
+                                    {
+                                        StartUnitSacrificing(targetUnit);
+                                    }
+                                    else
+                                    {
+                                        StopUnitSacrificing(targetUnit);
+                                    }
+                                }
+                                else
+                                {
+                                    StartUnitSacrificing(targetUnit);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            StopUnitSacrificing(targetUnit);
+                        }
+                        break;
+
+                    case State.Captured:
+                        if (settings.allowDecapture && allegiance.faction != unitFaction)
+                        {
+                            if(targetUnit.timeToWait <= 0)
+                            {
+                                decapturePoints = settings.decapturePointsPerSacrifice;
+                                unitHealth.TakeDamage(new Damage(sacrificeDamage));
+                                state = State.Decapturing;
+                                StartUnitSacrificing(targetUnit);
+                            }
+                        }
+                        else
+                        {
+                            StopUnitSacrificing(targetUnit);
+                        }
+                        break;
+                }
+                targetUnit.timeToWait -= Time.deltaTime;
+            }
+        }
+
+        private void StartUnitSacrificing(SacrificingUnit targetUnit)
+        {
+            targetUnit.resetCooldown();
+            if (!targetUnit.isActive)
+            {
+                targetUnit.isActive = true;
+                targetUnit.unit.onSacrificeBegin?.Invoke();
+            }
+        }
+
+        private void StopUnitSacrificing(SacrificingUnit targetUnit)
+        {
+            if (targetUnit.isActive)
+            {
+                targetUnit.isActive = false;
+                targetUnit.unit.onSacrificeEnd?.Invoke();
+            }
+        }
+
         public bool IsGainingFavor()
         {
             return state == State.Captured || (gainFavorWhileDecapping && state == State.Decapturing);
@@ -101,156 +260,18 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StartSacrificing(SacrificeCommand unitToSacrifice)
         {
-            IEnumerator sacrificeCoroutine = SacrificeUnits(unitToSacrifice);
-            sacrificeCoroutines.Add(unitToSacrifice, sacrificeCoroutine);
-            StartCoroutine(sacrificeCoroutines[unitToSacrifice]);
+            for (int i = 0; i < unitsToUpdate.Count; i++)
+            {
+                if (unitsToUpdate[i].unit.Equals(unitToSacrifice))
+                {
+                    unitsToUpdate[i].isActive = true;
+                    return;
+                }
+            }
+             
+            unitsToUpdate.Add(new SacrificingUnit(unitToSacrifice, sacrificeInterval));
         }
 
-        /// <summary>
-        /// Coroutine for sacrificing units. Runs infinitely at every sacrificeInterval until stopped
-        /// by another method.
-        /// </summary>
-        /// <param name="targetUnit">The unit that will be calling on this coroutine.</param>
-        /// <param name="isSacrificing">If the coroutine is being started, set to true. If being stopped, set to false</param>
-        /// <returns></returns>
-        private IEnumerator SacrificeUnits(SacrificeCommand targetUnit)
-        {
-            bool unitSacrificing = false;
-            MinorGod unitGod = targetUnit.GetComponent<Allegiance>().god;
-            Faction unitFaction = targetUnit.GetComponent<Allegiance>().faction;
-            Health unitUealth = targetUnit.GetComponent<Health>();
-            MinorGodToCapturePoints settings = capturePointSettings.First(m => m.minorGod == unitGod);
-            WaitForSeconds wait = new WaitForSeconds(sacrificeInterval);
-
-
-            while (targetUnit)
-            {
-                switch (state)
-                {
-                    case State.Neutral:
-                        if (settings.allowCapture && remainingNeutralTime <= 0)
-                        {
-                            state = State.Capturing;
-                            foreach (var capturePoint in new Dictionary<Faction, float>(capturePoints))
-                            {
-                                capturePoints[unitFaction] = 0f;
-                            }
-                            capturePoints[unitFaction] = settings.capturePointsPerSacrifice;
-                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                            StartUnitSacrificing();
-                            yield return wait;
-                        }
-                        else
-                        {
-                            StopUnitSacrificing();
-                            yield return null;
-                        }
-                        break;
-                        
-
-
-                    case State.Capturing:
-                        if (settings.allowCapture)
-                        {
-                            capturePoints[unitFaction] += settings.capturePointsPerSacrifice;
-                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                            if (capturePoints[unitFaction] >= requiredCapturePoints)
-                            {
-                                state = State.Captured;
-                                allegiance.faction = unitFaction;
-                                onCaptured?.Invoke();
-                                StopUnitSacrificing();
-                            }
-                            else
-                            {
-                                StartUnitSacrificing();
-                            }
-                            yield return wait;
-                        }
-                        else
-                        {
-                            StopUnitSacrificing();
-                            yield return null;
-                        }
-                        break;
-
-
-
-                    case State.Decapturing:
-                        if (unitFaction != allegiance.faction && settings.allowDecapture)
-                        {
-                            decapturePoints += settings.decapturePointsPerSacrifice;
-                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                            if (decapturePoints >= requiredDecapturePoints)
-                            {
-                                state = State.Neutral;
-                                allegiance.faction = Faction.Unaligned;
-                                remainingNeutralTime = neutralLockoutTime;
-                                onDecaptured?.Invoke();
-                                if (settings.allowCapture)
-                                {
-                                    StartUnitSacrificing();
-                                }
-                                else
-                                {
-                                    StopUnitSacrificing();
-                                }
-                            }
-                            else
-                            {
-                                StartUnitSacrificing();
-                            }
-                            yield return wait;
-                        }
-                        else
-                        {
-                            StopUnitSacrificing();
-                            yield return null;
-                        }
-                        break;
-
-
-
-
-                    case State.Captured:
-                        if (settings.allowDecapture && allegiance.faction != unitFaction)
-                        {
-                            decapturePoints = settings.decapturePointsPerSacrifice;
-                            unitUealth.TakeDamage(new Damage(sacrificeDamage));
-                            state = State.Decapturing;
-                            StartUnitSacrificing();
-                            yield return wait;
-                        }
-                        else
-                        {
-                            StopUnitSacrificing();
-                            yield return null;
-                        }
-                        break;
-                }
-            }
-
-
-
-
-            void StartUnitSacrificing()
-            {
-                if (!unitSacrificing)
-                {
-                    unitSacrificing = true;
-                    targetUnit.onSacrificeBegin?.Invoke();
-                }
-            }
-
-            void StopUnitSacrificing()
-            {
-                if (unitSacrificing)
-                {
-                    unitSacrificing = false;
-                    targetUnit.onSacrificeEnd?.Invoke();
-                }
-            }
-        }
 
         /// <summary>
         /// Causes this to stop trying to sacrifice a unit.
@@ -258,11 +279,12 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
-            if (sacrificeCoroutines.ContainsKey(unitToSacrifice))
+            for(int i = 0; i < unitsToUpdate.Count; i++) 
             {
-                IEnumerator coroutineToStop = sacrificeCoroutines[unitToSacrifice];
-                StopCoroutine(coroutineToStop);
-                sacrificeCoroutines.Remove(unitToSacrifice);
+                if (unitsToUpdate[i].unit.Equals(unitToSacrifice))
+                {
+                    unitsToUpdate[i].isActive = false;
+                }
             }
         }
 
@@ -295,6 +317,31 @@ namespace ElementalEngagement.Favor
 
             [Tooltip("Whether units associated with this god can decapture this location.")]
             public bool allowDecapture = true;
+        }
+
+        private class SacrificingUnit
+        {
+            public SacrificeCommand unit { get; set; }
+
+            public float timeToWait { get; set; }
+
+            private float cooldown;
+
+            public bool isActive { get; set; }
+
+
+            public SacrificingUnit(SacrificeCommand unit, float cooldown)
+            {
+                this.unit = unit;
+                timeToWait = 0;
+                this.cooldown = cooldown;
+                isActive = true;
+            }
+
+            public void resetCooldown()
+            {
+                timeToWait = cooldown;
+            }
         }
     }
 }

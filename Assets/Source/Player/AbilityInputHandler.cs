@@ -81,7 +81,8 @@ namespace ElementalEngagement.Player
         private HashSet<Ability> lockedAbilities = new HashSet<Ability>();
 
         // The number of unlocked abilities in each tier.
-        private List<int> abilitiesInTiers = new List<int>();
+        private List<int> _abilitiesInTiers = new List<int>();
+        public ReadOnlyCollection<int> abilitiesInTiers;
 
         // The currently selected abilities.
         private readonly int?[] currentSelection = { null, null };
@@ -94,7 +95,7 @@ namespace ElementalEngagement.Player
         private void Start()
         {
             FavorManager.onFavorChanged.AddListener(OnFavorChanged);
-
+            abilitiesInTiers = new ReadOnlyCollection<int>(_abilitiesInTiers);
 
 
             abilityUnlocks = FavorManager.godProgressionSettings.Values
@@ -140,6 +141,8 @@ namespace ElementalEngagement.Player
 
                 abilityPreview = Instantiate(ability.previewPrefab);
                 abilityPreview.transform.SetParent(transform);
+                if (ability.inheritPlayerAllegiance && abilityPreview.GetComponent<Allegiance>() != null)
+                    abilityPreview.GetComponent<Allegiance>().faction = allegiance.faction;
 
                 abilityPreview.transform.position = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
                 return SelectionResult.Success;
@@ -187,7 +190,7 @@ namespace ElementalEngagement.Player
             if (!unlockedAbilities.Contains(ability) || _abilityCooldowns.ContainsKey(ability))
                 return;
 
-            if (abilityPreview.GetComponent<IAbilityCollider>()?.isColliding ?? false)
+            if (ability.hasCollision && (abilityPreview.GetComponent<IAbilityCollider>()?.isColliding ?? false))
                 return;
 
             _abilityCooldowns.Add(ability, ability.cooldown);
@@ -232,14 +235,14 @@ namespace ElementalEngagement.Player
                 int tier = abilityUnlock.abilityTier;
 
 
-                while (abilitiesInTiers.Count <= tier)
-                    abilitiesInTiers.Add(0);
-                abilitiesInTiers[tier]++;
+                while (_abilitiesInTiers.Count <= tier)
+                    _abilitiesInTiers.Add(0);
+                _abilitiesInTiers[tier]++;
                 unlockedAbilities.Add(ability);
                 onAbilityUnlocked?.Invoke(ability);
 
                 // If tier not full
-                if (abilitiesInTiers[tier] < FavorManager.progressionSettings.abilitiesPerTier[tier])
+                if (_abilitiesInTiers[tier] < FavorManager.progressionSettings.abilitiesPerTier[tier])
                     continue;
 
                 // Lock other abilities in tier

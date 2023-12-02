@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circularSelectionRadius: 10
+  regularSelectionRadius: 2.5
   input: {fileID: 4229869321111341770}
   allegiance: {fileID: 558593958030879408}
   circularSelectionIndicator: {fileID: 5165861323404850447}
@@ -132,12 +133,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4229869321111341770}
-  panspeed: 100
-  zoomspeed: 100
-  map1Bounds: {x: 200, y: 70, z: 300}
-  map2Bounds: {x: 300, y: 70, z: 350}
-  map3Bounds: {x: 450, y: 70, z: 550}
-  bounds: {x: 250, y: 70, z: 350}
+  panspeed: 160
+  zoomspeed: 50
+  zoomY: 20
+  map1PositiveBounds: {x: 200, y: 70, z: 270}
+  map1NegativeBounds: {x: 200, y: 70, z: 300}
+  map2PositiveBounds: {x: 340, y: 70, z: 270}
+  map2NegativeBounds: {x: 340, y: 70, z: 400}
+  map3PositiveBounds: {x: 525, y: 70, z: 460}
+  map3NegativeBounds: {x: 425, y: 70, z: 605}
   startPos: {x: 267.7718, y: 10, z: 0.420105}
 --- !u!114 &1686256207638245235
 MonoBehaviour:
@@ -338,6 +342,12 @@ MonoBehaviour:
   - action: {fileID: 138137138081731157, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
     requiredStates: 0
     forbiddenStates: 16
+  - action: {fileID: -1680983843003722035, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
+    requiredStates: 0
+    forbiddenStates: 24
+  - action: {fileID: 4945754695445653006, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
+    requiredStates: 2
+    forbiddenStates: 24
 --- !u!114 &2432912754186515058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +509,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: godPowerVolume
 --- !u!1 &6691182579712443195
 GameObject:
@@ -648,6 +659,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: godPowerVolume
 --- !u!1 &8361649208543269712
 GameObject:

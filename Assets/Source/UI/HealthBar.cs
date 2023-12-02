@@ -17,24 +17,21 @@ namespace ElementalEngagement.UI
         [Tooltip("The slider to display the health on.")]
         [SerializeField] Slider slider;
 
-        /// <summary>
-        /// Sets the fill color of this bar.
-        /// </summary>
-        /// <param name="color"> Color formatted as a string: "r, b, g, a" where rgba values are floats 0-1. </param>
-        public void SetColor(string color)
-        {
-            string[] rgba = color.Split(", ");
-
-            slider.fillRect.GetComponent<Image>().color = new Color(float.Parse(rgba[0]), float.Parse(rgba[1]), float.Parse(rgba[2]), float.Parse(rgba[3]));
-        }
+        //CanvasGroup used for fading the health bar in and out
+        CanvasGroup canvasGroup;
 
         /// <summary>
-        /// Sets the fill color of this bar.
+        /// When spawned, fade the health slider out and instantiate the canvasGroup
         /// </summary>
-        /// <param name="color"> The color of the bar. </param>
-        public void SetColor(Color color)
+        private void Start()
         {
-            slider.fillRect.GetComponent<Image>().color = color;
+            bool isShrine = (gameObject.transform.parent.name == "Player1FireShrine") || (gameObject.transform.parent.name == "Player1WaterShrine") || (gameObject.transform.parent.name == "Player1EarthShrine") || (gameObject.transform.parent.name == "Player2FireShrine") || (gameObject.transform.parent.name == "Player2WaterShrine") || (gameObject.transform.parent.name == "Player2EarthShrine");
+            bool isHumanArmy = (gameObject.transform.parent.name == "HumanArmy(Clone)");
+            canvasGroup = GetComponent<CanvasGroup>();
+            if (!isShrine && !isHumanArmy)
+            {
+                FadeOut();
+            }
         }
 
         /// <summary>
@@ -45,6 +42,51 @@ namespace ElementalEngagement.UI
             slider.minValue = 0;
             slider.maxValue = healthToDisplay.maxHp;
             slider.value = healthToDisplay.hp;
+        }
+
+        /// <summary>
+        /// Fades the health slider in if not visible.
+        /// </summary>
+        public void FadeIn()
+        {
+            StartCoroutine(FadeInCoroutine());
+        }
+
+        /// <summary>
+        /// Coroutine to perform a *fancy* fade in animation
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator FadeInCoroutine()
+        {
+            canvasGroup.alpha = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                canvasGroup.alpha += 0.1f;
+                yield return new WaitForSeconds(0.01f);
+            }
+        }
+
+        /// <summary>
+        /// Fades the health slider out if visible.
+        /// </summary>
+        public void FadeOut()
+        {
+            StartCoroutine(FadeOutCoroutine());
+        }
+
+        /// <summary>
+        /// Coroutine to perform a *fancy* fade in animation
+        /// </summary>
+        /// <returns></returns>
+        IEnumerator FadeOutCoroutine()
+        {
+            canvasGroup.alpha = 1;
+            for (int i = 0; i < 10; i++)
+            {
+                canvasGroup.alpha -= 0.1f;
+                yield return new WaitForSeconds(0.01f);
+            }
+            StopCoroutine(FadeOutCoroutine());
         }
     } 
 }

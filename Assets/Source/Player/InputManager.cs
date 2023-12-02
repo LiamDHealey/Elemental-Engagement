@@ -97,6 +97,8 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed += SelectAbility3;
             input.actions["PauseGame"].performed += PauseGame;
             input.actions["Back"].performed += Back;
+            input.actions["SelectEverything"].performed += SelectEverything;
+            input.actions["Stop"].performed += Stop;
         }
 
         private void OnDestroy()
@@ -114,6 +116,8 @@ namespace ElementalEngagement
             input.actions["SelectAbility3"].performed -= SelectAbility3;
             input.actions["PauseGame"].performed -= PauseGame;
             input.actions["Back"].performed -= Back;
+            input.actions["SelectEverything"].performed -= SelectEverything;
+            input.actions["Stop"].performed -= Stop;
         }
 
         private void Update()
@@ -163,6 +167,14 @@ namespace ElementalEngagement
             selectionInputHandler.SelectAll();
         }
 
+        private void SelectEverything(CallbackContext context)
+        {
+            if (!IsActionAllowed(context))
+                return;
+
+            selectionInputHandler.SelectEverything();
+        }
+
         private void DeselectAll(CallbackContext context)
         {
             if (!IsActionAllowed(context))
@@ -175,10 +187,8 @@ namespace ElementalEngagement
         {
             if (!IsActionAllowed(context))
                 return;
-            if (!selectionInputHandler.isThereSelectable())
-            {
-                selectionInputHandler.IssueCommand(false);
-            }
+
+            selectionInputHandler.IssueCommand(false);
         }
 
         private void IssueAltCommand(CallbackContext context)
@@ -186,10 +196,15 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            if (!selectionInputHandler.isThereSelectable())
-            {
-                selectionInputHandler.IssueCommand(true);
-            }
+            selectionInputHandler.IssueCommand(true);
+        }
+
+        private void Stop(CallbackContext context)
+        {
+            if (!IsActionAllowed(context))
+                return;
+
+            selectionInputHandler.StopSelectedCommands();
         }
 
         private void PlayAbility(CallbackContext context)
@@ -267,7 +282,7 @@ namespace ElementalEngagement
         {
             if (!IsActionAllowed(action))
                 return;
-            panInputHandler.Zoom(new Vector2(0, action.ReadValue<float>()));
+            panInputHandler.Zoom(-new Vector2(0, action.ReadValue<float>()));
         }
 
         void ZoomOut(InputAction action)
@@ -275,7 +290,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(action))
                 return;
 
-            panInputHandler.Zoom(-new Vector2(0, action.ReadValue<float>()));
+            panInputHandler.Zoom(new Vector2(0, action.ReadValue<float>()));
         }
 
         #endregion

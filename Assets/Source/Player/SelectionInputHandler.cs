@@ -10,6 +10,10 @@ using UnityEngine.UI;
 using System;
 using Unity.VisualScripting;
 using UnityEditor;
+using ElementalEngagement.Combat;
+using UnityEditor.MemoryProfiler;
+using UnityEditor.Experimental.GraphView;
+using ElementalEngagement.UI;
 
 namespace ElementalEngagement.Player
 {
@@ -27,6 +31,9 @@ namespace ElementalEngagement.Player
     {
         [Tooltip("The radius of the circular selection.")]
         [SerializeField] private float circularSelectionRadius = 10;
+
+        [Tooltip("The radius to select a single unit in. (Should be the same as the UI circle")]
+        [SerializeField] private float regularSelectionRadius = 10;
 
         [Tooltip("The input component that this will get mouse data from.")]
         [SerializeField] private PlayerInput input;
@@ -55,19 +62,28 @@ namespace ElementalEngagement.Player
 
         private Camera camera;
 
+        private bool selectedThisTick = false;
+
         private void Awake()
         {
             camera = GetComponent<Camera>();
+        }
+
+        private void Update()
+        {
+            selectedThisTick = false;
         }
         /// <summary>
         /// Selects the unit under the cursor.
         /// </summary>
         public void Select()
         {
-            if (GetSelectableUnderCursor(out Selectable selectable) && !selectable.isSelected)
+            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius) && !selectable.isSelected)
             {
                 _selectedObjects.Add(selectable);
+                selectable.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
                 selectable.isSelected = true;
+                selectedThisTick = true;
             }
         }
 
@@ -97,7 +113,9 @@ namespace ElementalEngagement.Player
                                 continue;
 
                             _selectedObjects.Add(selectable);
+                            selectable.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
                             selectable.isSelected = true;
+                            selectedThisTick = true;
                         }
                     }
 
@@ -126,7 +144,7 @@ namespace ElementalEngagement.Player
 
             string currentSelectedTag = "";
 
-            if (GetSelectableUnderCursor(out Selectable selectable))
+            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius))
             {
                 currentSelectedTag = selectable.tag;
                 if (selectable.isSelected)
@@ -143,11 +161,33 @@ namespace ElementalEngagement.Player
                 {
                     Selectable colliderSelect = collider.GetComponent<Selectable>();
                     _selectedObjects.Add(colliderSelect);
+                    colliderSelect.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
                     colliderSelect.isSelected = true;
+                    selectedThisTick = true;
                 }
             }
         }
 
+        /// <summary>
+        /// Selects every unit in the game.
+        /// </summary>
+        public void SelectEverything()
+        {
+            Selectable[] allSelectables = FindObjectsOfType<Selectable>();
+
+            foreach (Selectable select in allSelectables)
+            {
+                Allegiance unitAllegiance = select.GetComponent<Allegiance>();
+
+                if (unitAllegiance.CheckFactionAllegiance(allegiance))
+                {
+                    _selectedObjects.Add(select);
+                    select.gameObject.GetComponentInChildren<HealthBar>().FadeIn();
+                    select.isSelected = true;
+                    selectedThisTick = true;
+                }
+            }
+        }
 
         /// <summary>
         /// Deselects all units.
@@ -158,6 +198,10 @@ namespace ElementalEngagement.Player
             IEnumerable<Selectable> selectedObjects = new List<Selectable>(_selectedObjects);
             foreach (Selectable selectedObject in selectedObjects)
             {
+                if (selectedObject)
+                {
+                    selectedObject.gameObject.GetComponentInChildren<HealthBar>().FadeOut();
+                }
                 _selectedObjects.Remove(selectedObject);
                 selectedObject.isSelected = false;
             }
@@ -166,9 +210,20 @@ namespace ElementalEngagement.Player
         public void IssueCommand(bool isAltCommand)
         {
             Ray screenToWorldRay = new Ray(transform.position, transform.forward);
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask);
+            if (!Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask))
+                return;
 
+            if (selectedThisTick)
+                return;
 
+            for (int i = 0; i < selectedObjects.Count; i++)
+            {
+                if (_selectedObjects[i] == null)
+                {
+                    _selectedObjects.RemoveAt(i);
+                    i--;
+                }
+            }
             foreach (Selectable selectable in selectedObjects)
             {
                 if (selectable == null)
@@ -191,19 +246,22 @@ namespace ElementalEngagement.Player
         }
 
         /// <summary>
-        /// Returns true if there is a selectable object under the cursor.
-        /// This method is used for differentiating between selecting a unit and issuing a command.
+        /// Stop all selected units from performing their current command.
         /// </summary>
-        /// <returns> True if there is a selectable object under the cursor. </returns>
-        public bool isThereSelectable()
+        public void StopSelectedCommands()
         {
-            if (GetSelectableUnderCursor(out Selectable selectable))
+            foreach (Selectable selectable in selectedObjects)
             {
-                return true;
-            }
-            return false;
-        }
+                if (selectable == null)
+                    continue;
 
+                CommandReceiver[] receivers = selectable.GetComponents<CommandReceiver>();
+                foreach (CommandReceiver receiver in receivers)
+                {
+                    receiver.CancelCommand();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets the selectable unit under the ray cursor.
@@ -249,11 +307,11 @@ namespace ElementalEngagement.Player
         /// </summary>
         /// <param name="selectable"> The unit that was under the ray. </param>
         /// <returns> True if there was a valid unit to select. </returns>
-        private bool GetSelectableUnderCursor(out Selectable selectable)
+        private bool GetSelectableUnderCursor(out Selectable selectable, float radius)
         {
             Ray screenToWorldRay = new Ray(transform.position, transform.forward);
 
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, selectableMask);
+            bool result = Physics.SphereCast(screenToWorldRay, radius, out RaycastHit hit, 99999f, selectableMask);
 
             selectable = hit.collider?.GetComponent<Selectable>();
 

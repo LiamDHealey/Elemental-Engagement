@@ -1,7 +1,9 @@
 using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
+using ElementalEngagement.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,12 +40,14 @@ namespace ElementalEngagement.Combat
         [Tooltip("The amounts damage will be multiplied depending on the incoming damage's allegiance.")]
         [SerializeField] private List<DamageMultiplier> damageMultipliers;
 
+        [Tooltip("How long the health bar shows up when damage is taken")]
+        [SerializeField] public float damageHealthBarTime;
+
         [Tooltip("Called when this is damaged.")]
         public UnityEvent<Damage> onDamaged;
 
         [Tooltip("Called once when this has been killed.")]
         public UnityEvent onKilled;
-
 
         // The current number of health points this has.
         public float hp
@@ -77,8 +81,19 @@ namespace ElementalEngagement.Combat
 
             if(hp <= 0)
                 onKilled?.Invoke();
+
+            StartCoroutine(showHealthBar());
         }
 
+        /// <summary>
+        /// Show the health bar for a set amount of seconds
+        /// </summary>
+        IEnumerator showHealthBar()
+        {
+            gameObject.GetComponentInChildren<HealthBar>().FadeIn();
+            yield return new WaitForSeconds(damageHealthBarTime);
+            gameObject.GetComponentInChildren<HealthBar>().FadeOut();
+        }
 
         /// <summary>
         /// Used for determine how things resist damage.
