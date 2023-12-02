@@ -25,8 +25,13 @@ namespace ElementalEngagement.UI
         /// </summary>
         private void Start()
         {
+            bool isShrine = (gameObject.transform.parent.name == "Player1FireShrine") || (gameObject.transform.parent.name == "Player1WaterShrine") || (gameObject.transform.parent.name == "Player1EarthShrine") || (gameObject.transform.parent.name == "Player2FireShrine") || (gameObject.transform.parent.name == "Player2WaterShrine") || (gameObject.transform.parent.name == "Player2EarthShrine");
+            bool isHumanArmy = (gameObject.transform.parent.name == "HumanArmy(Clone)");
             canvasGroup = GetComponent<CanvasGroup>();
-            FadeOut();
+            if (!isShrine && !isHumanArmy)
+            {
+                FadeOut();
+            }
         }
 
         /// <summary>
