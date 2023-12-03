@@ -127,21 +127,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4381274470310263124}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e4b614cf801f61429dfebf82af437ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 4229869321111341770}
-  panspeed: 160
-  zoomspeed: 50
+  panSpeed: 200
+  panAcceleration: 3
+  zoomSpeed: 1
   zoomY: 20
-  map1PositiveBounds: {x: 200, y: 70, z: 270}
-  map1NegativeBounds: {x: 200, y: 70, z: 300}
-  map2PositiveBounds: {x: 340, y: 70, z: 270}
-  map2NegativeBounds: {x: 340, y: 70, z: 400}
-  map3PositiveBounds: {x: 525, y: 70, z: 460}
-  map3NegativeBounds: {x: 425, y: 70, z: 605}
   startPos: {x: 267.7718, y: 10, z: 0.420105}
 --- !u!114 &1686256207638245235
 MonoBehaviour:
