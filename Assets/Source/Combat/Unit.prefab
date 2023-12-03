@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &2730563324831770595
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,10 +540,23 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 854166808930866116}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+      - m_Target: {fileID: 3381072725277730928}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
         m_MethodName: SetTrigger
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnDamaged
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4298545357260384665}
+        m_TargetAssemblyTypeName: SpriteFlasher, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -554,8 +568,9 @@ MonoBehaviour:
   onKilled:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 854166808930866116}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+      - m_Target: {fileID: 3381072725277730928}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
         m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
@@ -653,18 +668,6 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 0, 0, 0, 0
             m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 1, 0, 0, 1
-            m_BoolArgument: 1
           m_CallState: 2
   - faction: 1
     onSelected:
@@ -841,8 +844,9 @@ MonoBehaviour:
   onAttackStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 854166808930866116}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+      - m_Target: {fileID: 3381072725277730928}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
         m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
@@ -932,8 +936,9 @@ MonoBehaviour:
   onSacrificeBegin:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 854166808930866116}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+      - m_Target: {fileID: 3381072725277730928}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
         m_MethodName: ResetTrigger
         m_Mode: 5
         m_Arguments:
@@ -944,8 +949,9 @@ MonoBehaviour:
           m_StringArgument: OnSacrificingEnd
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 854166808930866116}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+      - m_Target: {fileID: 3381072725277730928}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
         m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
@@ -959,8 +965,9 @@ MonoBehaviour:
   onSacrificeEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 854166808930866116}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+      - m_Target: {fileID: 3381072725277730928}
+        m_TargetAssemblyTypeName: ElementalEngagement.Utilities.AnimatorFunctionality,
+          Assembly-CSharp
         m_MethodName: SetTrigger
         m_Mode: 5
         m_Arguments:
@@ -1175,6 +1182,7 @@ GameObject:
   - component: {fileID: 854166808930866116}
   - component: {fileID: 3381072725277730928}
   - component: {fileID: 6329092609386425010}
+  - component: {fileID: 4298545357260384665}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -1282,7 +1290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 854166808930866116}
+  animators:
+  - {fileID: 854166808930866116}
   movingParameterName: IsMoving
   moveThreshed: 0.2
 --- !u!114 &6329092609386425010
@@ -1297,6 +1306,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4298545357260384665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7486104880870669279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 5252771878741741873}
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1001 &3147207846044292745
 PrefabInstance:
   m_ObjectHideFlags: 0

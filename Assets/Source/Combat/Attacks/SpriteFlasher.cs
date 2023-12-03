@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class DamageFlash : MonoBehaviour
+public class SpriteFlasher : MonoBehaviour
 {
-
+    public List<SpriteRenderer> renderers;
     public Color color;
     public float flashLength = .25f;
     private float remainingFlashTime = 0;
 
     public void Flash()
     {
-        GetComponent<SpriteRenderer>().color = color;
+        foreach (SpriteRenderer renderer in renderers)
+        {
+            renderer.color = color;
+        }
 
         remainingFlashTime = flashLength;
 
@@ -20,8 +24,15 @@ public class DamageFlash : MonoBehaviour
     private void Update()
     {
         if (remainingFlashTime <= 0)
-            GetComponent<SpriteRenderer>().color = Color.white;
+        {
+            foreach (SpriteRenderer renderer in renderers)
+            {
+                renderer.color = Color.white;
+            }
+        }
         else
+        {
             remainingFlashTime -= Time.deltaTime;
+        }
     }
 }

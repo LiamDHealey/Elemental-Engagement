@@ -5328,6 +5328,7 @@ GameObject:
   - component: {fileID: 4929309723670271310}
   - component: {fileID: 9083011578323652702}
   - component: {fileID: 2250153500424209571}
+  - component: {fileID: 20780561992894998}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -5435,7 +5436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 4929309723670271310}
+  animators: []
   movingParameterName: IsMoving
   moveThreshed: 0.2
 --- !u!114 &2250153500424209571
@@ -5450,6 +5451,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &20780561992894998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006989166688819965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 6783400304754761512}
+  color: {r: 1, g: 0, b: 0, a: 0}
+  flashLength: 0.25
 --- !u!1 &6192588107604640895
 GameObject:
   m_ObjectHideFlags: 0
@@ -5514,7 +5531,19 @@ MonoBehaviour:
   damageHealthBarTime: 0
   onDamaged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 20780561992894998}
+        m_TargetAssemblyTypeName: SpriteFlasher, Assembly-CSharp
+        m_MethodName: Flash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onKilled:
     m_PersistentCalls:
       m_Calls:

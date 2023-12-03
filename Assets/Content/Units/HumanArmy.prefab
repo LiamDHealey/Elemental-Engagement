@@ -161,8 +161,8 @@ GameObject:
   - component: {fileID: 6182665523050958499}
   - component: {fileID: 4287280942261733432}
   - component: {fileID: 8344419410555795762}
-  - component: {fileID: 533895965459254928}
   - component: {fileID: 5857852764081840639}
+  - component: {fileID: 3092826464274142807}
   m_Layer: 8
   m_Name: Sprite (2)
   m_TagString: Untagged
@@ -258,21 +258,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &533895965459254928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527156397212043189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8344419410555795762}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &5857852764081840639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +270,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3092826464274142807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527156397212043189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &794191176748066835
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,8 +296,8 @@ GameObject:
   - component: {fileID: 1286217969182246121}
   - component: {fileID: 266424869425904020}
   - component: {fileID: 644649916610444820}
-  - component: {fileID: 1434831975585836708}
   - component: {fileID: 8309041358154242356}
+  - component: {fileID: 3039521676795657355}
   m_Layer: 8
   m_Name: Sprite (14)
   m_TagString: Untagged
@@ -393,21 +393,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1434831975585836708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 794191176748066835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 644649916610444820}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &8309041358154242356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,6 +405,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3039521676795657355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794191176748066835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &1090852339398504008
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,8 +431,8 @@ GameObject:
   - component: {fileID: 7950322239929922026}
   - component: {fileID: 8376098852576228198}
   - component: {fileID: 6985517253072421243}
-  - component: {fileID: 5914457841373249269}
   - component: {fileID: 9104344007287362378}
+  - component: {fileID: 1908236696626744233}
   m_Layer: 8
   m_Name: Sprite (1)
   m_TagString: Untagged
@@ -528,21 +528,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5914457841373249269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090852339398504008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6985517253072421243}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &9104344007287362378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +540,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1908236696626744233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090852339398504008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &1652542034547876755
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,8 +566,8 @@ GameObject:
   - component: {fileID: 1723413131006180163}
   - component: {fileID: 8957059237048305098}
   - component: {fileID: 2996813436503732323}
-  - component: {fileID: 5105988584072371092}
   - component: {fileID: 1968930270455877511}
+  - component: {fileID: 6880954622889839763}
   m_Layer: 8
   m_Name: Sprite (10)
   m_TagString: Untagged
@@ -663,21 +663,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5105988584072371092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652542034547876755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2996813436503732323}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &1968930270455877511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +675,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6880954622889839763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652542034547876755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &2137381920114646096
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,8 +701,8 @@ GameObject:
   - component: {fileID: 5573823021073142890}
   - component: {fileID: 5368822220709745217}
   - component: {fileID: 6012920191348094926}
-  - component: {fileID: 2435650365903259576}
   - component: {fileID: 3062060715619311801}
+  - component: {fileID: 5613821754032404808}
   m_Layer: 8
   m_Name: Sprite (9)
   m_TagString: Untagged
@@ -798,21 +798,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2435650365903259576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137381920114646096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6012920191348094926}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &3062060715619311801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -825,6 +810,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5613821754032404808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137381920114646096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &3268522120280312022
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,8 +990,8 @@ GameObject:
   - component: {fileID: 2229806744706500604}
   - component: {fileID: 8700578769906853587}
   - component: {fileID: 4040006140832346999}
-  - component: {fileID: 3410466922939235935}
   - component: {fileID: 7767963327340913080}
+  - component: {fileID: 2887892591931980067}
   m_Layer: 8
   m_Name: Sprite (5)
   m_TagString: Untagged
@@ -1087,21 +1087,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3410466922939235935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3754481016287881128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4040006140832346999}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &7767963327340913080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,6 +1099,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2887892591931980067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754481016287881128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &3868597953948420346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1125,8 @@ GameObject:
   - component: {fileID: 64740453278238951}
   - component: {fileID: 6705967641487868042}
   - component: {fileID: 8860882977128851926}
-  - component: {fileID: 3912509790384055039}
   - component: {fileID: 8585881504612279830}
+  - component: {fileID: 331936642945189962}
   m_Layer: 8
   m_Name: Sprite (13)
   m_TagString: Untagged
@@ -1222,21 +1222,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3912509790384055039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3868597953948420346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8860882977128851926}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &8585881504612279830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,6 +1234,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &331936642945189962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868597953948420346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &4114255441987388387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1260,8 +1260,8 @@ GameObject:
   - component: {fileID: 3198312182648399612}
   - component: {fileID: 7549200102176296158}
   - component: {fileID: 7290138108186294179}
-  - component: {fileID: 4926177920102486430}
   - component: {fileID: 6857835188617731820}
+  - component: {fileID: 650128231106174594}
   m_Layer: 8
   m_Name: Sprite (15)
   m_TagString: Untagged
@@ -1357,21 +1357,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4926177920102486430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4114255441987388387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7290138108186294179}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &6857835188617731820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1384,6 +1369,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &650128231106174594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4114255441987388387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &5359548921007671175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,8 +1395,8 @@ GameObject:
   - component: {fileID: 1922940179937333298}
   - component: {fileID: 61452755332447447}
   - component: {fileID: 8356465593563857763}
-  - component: {fileID: 16437842401958773}
   - component: {fileID: 6916885459595385066}
+  - component: {fileID: 5749685265471362998}
   m_Layer: 8
   m_Name: Sprite (7)
   m_TagString: Untagged
@@ -1492,21 +1492,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &16437842401958773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5359548921007671175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 8356465593563857763}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &6916885459595385066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,6 +1504,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5749685265471362998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359548921007671175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &5680887623791629293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,8 +1530,8 @@ GameObject:
   - component: {fileID: 2262451906528034586}
   - component: {fileID: 6352166136818749856}
   - component: {fileID: 778141141052004242}
-  - component: {fileID: 6497059484580593177}
   - component: {fileID: 5312431941727136534}
+  - component: {fileID: 3969416268973919074}
   m_Layer: 8
   m_Name: Sprite (8)
   m_TagString: Untagged
@@ -1627,21 +1627,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6497059484580593177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5680887623791629293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 778141141052004242}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &5312431941727136534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,6 +1639,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3969416268973919074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680887623791629293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &6072297815622738880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,8 +1665,8 @@ GameObject:
   - component: {fileID: 5141266880620296294}
   - component: {fileID: 9184961902578694882}
   - component: {fileID: 4247097119178550819}
-  - component: {fileID: 2908524474734853530}
   - component: {fileID: 3932978149845960653}
+  - component: {fileID: 8990210535037311855}
   m_Layer: 8
   m_Name: Sprite (12)
   m_TagString: Untagged
@@ -1762,21 +1762,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2908524474734853530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6072297815622738880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 4247097119178550819}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &3932978149845960653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,6 +1774,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8990210535037311855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072297815622738880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &6093550511855232299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,8 +1800,8 @@ GameObject:
   - component: {fileID: 8569751550495325233}
   - component: {fileID: 2737738706927477232}
   - component: {fileID: 5960285140600062034}
-  - component: {fileID: 8295615761588338023}
   - component: {fileID: 3258454740363824567}
+  - component: {fileID: 8441712595124642258}
   m_Layer: 8
   m_Name: Sprite (3)
   m_TagString: Untagged
@@ -1897,21 +1897,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8295615761588338023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093550511855232299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5960285140600062034}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &3258454740363824567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1924,6 +1909,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8441712595124642258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093550511855232299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &6742147167901740771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,8 +1935,8 @@ GameObject:
   - component: {fileID: 2967937559382644994}
   - component: {fileID: 2060945591754281246}
   - component: {fileID: 83585443319934826}
-  - component: {fileID: 4767147540338185492}
   - component: {fileID: 8355949668663127000}
+  - component: {fileID: 4891112912798905354}
   m_Layer: 8
   m_Name: Sprite (11)
   m_TagString: Untagged
@@ -2032,21 +2032,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4767147540338185492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6742147167901740771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 83585443319934826}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &8355949668663127000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2059,6 +2044,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4891112912798905354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6742147167901740771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &6801285554589285683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,8 +2070,8 @@ GameObject:
   - component: {fileID: 7093718771701310541}
   - component: {fileID: 4993035637664898378}
   - component: {fileID: 2369126217341251427}
-  - component: {fileID: 536500081373381074}
   - component: {fileID: 7125213341411948352}
+  - component: {fileID: 8210538911938051603}
   m_Layer: 8
   m_Name: Sprite (6)
   m_TagString: Untagged
@@ -2167,21 +2167,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &536500081373381074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6801285554589285683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2369126217341251427}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &7125213341411948352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2194,6 +2179,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8210538911938051603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801285554589285683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &8422438844186826065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,8 +2205,8 @@ GameObject:
   - component: {fileID: 637572319804638997}
   - component: {fileID: 8650747538233670848}
   - component: {fileID: 3097554129280657460}
-  - component: {fileID: 4161802669658795070}
   - component: {fileID: 1816045588358379533}
+  - component: {fileID: 6890342519215452191}
   m_Layer: 8
   m_Name: Sprite (16)
   m_TagString: Untagged
@@ -2302,21 +2302,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4161802669658795070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8422438844186826065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 3097554129280657460}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &1816045588358379533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,6 +2314,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6890342519215452191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422438844186826065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1 &8632768037968841988
 GameObject:
   m_ObjectHideFlags: 0
@@ -2340,8 +2340,8 @@ GameObject:
   - component: {fileID: 4145175478754042021}
   - component: {fileID: 6888575752239093628}
   - component: {fileID: 5613296872374788242}
-  - component: {fileID: 5090028215513659758}
   - component: {fileID: 6669482054717020388}
+  - component: {fileID: 5853407141898019653}
   m_Layer: 8
   m_Name: Sprite (4)
   m_TagString: Untagged
@@ -2437,21 +2437,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5090028215513659758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8632768037968841988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5613296872374788242}
-  movingParameterName: IsMoving
-  moveThreshed: 0.2
 --- !u!114 &6669482054717020388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2464,6 +2449,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5853407141898019653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8632768037968841988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e119676975d9604b97cad4b155313e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers: []
+  color: {r: 1, g: 0, b: 0, a: 1}
+  flashLength: 0.25
 --- !u!1001 &8634695071115868937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2744,10 +2744,6 @@ PrefabInstance:
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[17].m_Target
       value: 
       objectReference: {fileID: 527156397212043189}
-    - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[18].m_Target
-      value: 
-      objectReference: {fileID: 533895965459254928}
     - target: {fileID: 2375182342915241180, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
@@ -3212,6 +3208,78 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: invertFlipping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[1]
+      value: 
+      objectReference: {fileID: 8356465593563857763}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[2]
+      value: 
+      objectReference: {fileID: 778141141052004242}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[3]
+      value: 
+      objectReference: {fileID: 6012920191348094926}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[4]
+      value: 
+      objectReference: {fileID: 2996813436503732323}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[5]
+      value: 
+      objectReference: {fileID: 83585443319934826}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[6]
+      value: 
+      objectReference: {fileID: 8860882977128851926}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[7]
+      value: 
+      objectReference: {fileID: 4247097119178550819}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[8]
+      value: 
+      objectReference: {fileID: 644649916610444820}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[9]
+      value: 
+      objectReference: {fileID: 7290138108186294179}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[10]
+      value: 
+      objectReference: {fileID: 3097554129280657460}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[11]
+      value: 
+      objectReference: {fileID: 6985517253072421243}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[12]
+      value: 
+      objectReference: {fileID: 5960285140600062034}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[13]
+      value: 
+      objectReference: {fileID: 5613296872374788242}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[14]
+      value: 
+      objectReference: {fileID: 4040006140832346999}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[15]
+      value: 
+      objectReference: {fileID: 2369126217341251427}
+    - target: {fileID: 3381072725277730928, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: animators.Array.data[16]
+      value: 
+      objectReference: {fileID: 8344419410555795762}
     - target: {fileID: 3600748324673135355, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Speed
       value: 0.5
@@ -3280,6 +3348,74 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.561
       objectReference: {fileID: 0}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.size
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[1]
+      value: 
+      objectReference: {fileID: 61452755332447447}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[2]
+      value: 
+      objectReference: {fileID: 6352166136818749856}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[3]
+      value: 
+      objectReference: {fileID: 5368822220709745217}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[4]
+      value: 
+      objectReference: {fileID: 8957059237048305098}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[5]
+      value: 
+      objectReference: {fileID: 2060945591754281246}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[6]
+      value: 
+      objectReference: {fileID: 6705967641487868042}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[7]
+      value: 
+      objectReference: {fileID: 9184961902578694882}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[8]
+      value: 
+      objectReference: {fileID: 266424869425904020}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[9]
+      value: 
+      objectReference: {fileID: 7549200102176296158}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[10]
+      value: 
+      objectReference: {fileID: 8650747538233670848}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[11]
+      value: 
+      objectReference: {fileID: 8376098852576228198}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[12]
+      value: 
+      objectReference: {fileID: 2737738706927477232}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[13]
+      value: 
+      objectReference: {fileID: 6888575752239093628}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[14]
+      value: 
+      objectReference: {fileID: 8700578769906853587}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[15]
+      value: 
+      objectReference: {fileID: 4993035637664898378}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: renderers.Array.data[16]
+      value: 
+      objectReference: {fileID: 4287280942261733432}
     - target: {fileID: 5113534057273330663, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: volumeParam
       value: 
