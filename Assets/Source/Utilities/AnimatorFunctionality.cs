@@ -1,5 +1,6 @@
     using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ namespace ElementalEngagement.Utilities
     public class AnimatorFunctionality : MonoBehaviour
     {
         [Tooltip("The animator this is helping.")]
-        [SerializeField] private Animator animator = null;
+        [SerializeField] private List<Animator> animators = null;
 
         [Tooltip("The name of the animator parameter used to check if the animator is moving.")]
         [SerializeField] private string movingParameterName = "IsMoving";
@@ -21,12 +22,15 @@ namespace ElementalEngagement.Utilities
         [Tooltip("The minimum distance this needs to move to be consider moving.")] [Min(0)]
         public float moveThreshed = 1.0f;
 
+        public bool invertFlipping = false;
+
         // Whether or not this is currently moving
         public bool isMoving { get; private set; } = false;
 
         // The last position this was at.
         private Vector3 lastPosition;
 
+        private List<SpriteRenderer> spriteRenderers;
 
         /// <summary>
         /// Destroys this component's game object
@@ -65,6 +69,7 @@ namespace ElementalEngagement.Utilities
         private void Start()
         {
             lastPosition = transform.position;
+            spriteRenderers = animators.Select(a => a.GetComponent<SpriteRenderer>()).ToList();
         }
 
         /// <summary>
@@ -72,7 +77,7 @@ namespace ElementalEngagement.Utilities
         /// </summary>
         public void FixedUpdate()
         {
-            if (animator == null)
+            if (animators.Count <= 0 || animators[0] == null)
                 return;
 
             bool moved = (lastPosition - transform.position).sqrMagnitude/Time.fixedDeltaTime > moveThreshed * moveThreshed;
@@ -80,9 +85,39 @@ namespace ElementalEngagement.Utilities
             if (moved != isMoving)
             {
                 isMoving = moved;
-                animator?.SetBool(movingParameterName, isMoving);
+                foreach (Animator animator in animators)
+                {
+                    animator?.SetBool(movingParameterName, isMoving);
+                }
             }
+            
+            if (isMoving && Mathf.Abs((lastPosition - transform.position).normalized.x) > 0.1)
+            {
+                bool flipped = (lastPosition - transform.position).x > 0;
+                foreach (SpriteRenderer renderer in spriteRenderers)
+                {
+                    renderer.flipX = invertFlipping != flipped;
+                } 
+            }
+
             lastPosition  = transform.position;
+
+        }
+
+        public void SetTrigger(string triggerName)
+        {
+            foreach (Animator animator in animators)
+            {
+                animator?.SetTrigger(triggerName);
+            }
+        }
+
+        public void ResetTrigger(string triggerName)
+        {
+            foreach (Animator animator in animators)
+            {
+                animator?.ResetTrigger(triggerName);
+            }
         }
     }
 }
