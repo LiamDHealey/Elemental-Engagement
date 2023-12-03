@@ -31,10 +31,10 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Start()
         {
-            if (gameObject.transform.parent == null) { return; }
 
             if (singleTarget)
             {
+                if (gameObject.transform.parent == null) { return; }
                 Attack attack = gameObject.transform.parent.GetComponent<Attack>();
 
                 if (attack == null)
@@ -69,10 +69,9 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
-            if (gameObject.transform.parent == null) { return; }
-
             if (singleTarget)
             {
+                if (gameObject.transform.parent == null) { return; }
                 Attack attack = gameObject.transform.parent.GetComponent<Attack>();
 
                 if (attack == null)
@@ -88,6 +87,9 @@ namespace ElementalEngagement.Combat
 
             foreach (Collider collider in collidersToEffect)
             {
+                if (collider == null)
+                    continue;
+
                 Attack attack = collider.GetComponent<Attack>();
 
                 if (attack == null)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4133199355464677907}
   - component: {fileID: 3627468106886470680}
   - component: {fileID: 8913703173607817556}
+  - component: {fileID: 5207507777600616938}
   m_Layer: 0
   m_Name: arrow
   m_TagString: Untagged
@@ -4858,6 +4859,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5207507777600616938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979172391709310984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &5182755943203176184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4869,6 +4883,7 @@ GameObject:
   - component: {fileID: 3052963798698052828}
   - component: {fileID: 193522777508082217}
   - component: {fileID: 8036979047747961751}
+  - component: {fileID: 167377719591854023}
   m_Layer: 0
   m_Name: glow
   m_TagString: Untagged
@@ -9756,6 +9771,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &167377719591854023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5182755943203176184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &5832370684494613209
 GameObject:
   m_ObjectHideFlags: 0
@@ -9767,6 +9795,7 @@ GameObject:
   - component: {fileID: 8924653000737659056}
   - component: {fileID: 3994545016302356667}
   - component: {fileID: 53653616636776667}
+  - component: {fileID: 5537660944801287007}
   m_Layer: 0
   m_Name: Spirit Swarm Preview Unit
   m_TagString: Untagged
@@ -14602,6 +14631,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5537660944801287007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832370684494613209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &7574885110223473826
 GameObject:
   m_ObjectHideFlags: 0
@@ -14613,6 +14655,7 @@ GameObject:
   - component: {fileID: 7574885110223473827}
   - component: {fileID: 7574885110223473825}
   - component: {fileID: 7574885110223473824}
+  - component: {fileID: 6789955043955036228}
   m_Layer: 0
   m_Name: shadow
   m_TagString: Untagged
@@ -19500,6 +19543,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6789955043955036228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574885110223473826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &7574885110912285936
 GameObject:
   m_ObjectHideFlags: 0
@@ -19511,6 +19567,7 @@ GameObject:
   - component: {fileID: 7574885110912285937}
   - component: {fileID: 7574885110912285943}
   - component: {fileID: 7574885110912285942}
+  - component: {fileID: 3315951795134935994}
   m_Layer: 0
   m_Name: circle
   m_TagString: Untagged
@@ -24407,3 +24464,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3315951795134935994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7574885110912285936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0

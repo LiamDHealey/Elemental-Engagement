@@ -22,10 +22,10 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void Start()
         {
-            if (gameObject.transform.parent == null) { return; }
-
             if (singleTarget)
             {
+                if (gameObject.transform.parent == null) { return; }
+
                 Health health = gameObject.transform.parent.GetComponent<Health>();
 
                 if (health == null)
@@ -60,9 +60,10 @@ namespace ElementalEngagement.Combat
         /// </summary>
         private void OnDestroy()
         {
-            if (gameObject.transform.parent == null) { return; }
             if (singleTarget)
             {
+                if (gameObject.transform.parent == null) { return; }
+
                 Health health = gameObject.transform.parent.GetComponent<Health>();
 
                 if (health == null)
@@ -78,6 +79,9 @@ namespace ElementalEngagement.Combat
 
             foreach (Collider collider in collidersToEffect)
             {
+                if (collider == null)
+                    continue;
+
                 Health health = collider.GetComponent<Health>();
 
                 if (health == null)

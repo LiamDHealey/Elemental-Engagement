@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 876736467695174549}
   - component: {fileID: 876736467695174635}
   - component: {fileID: 876736467695174548}
+  - component: {fileID: 8602743016839574004}
   m_Layer: 0
   m_Name: sparks_stretched
   m_TagString: Untagged
@@ -4849,6 +4850,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8602743016839574004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876736467695174550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1
 --- !u!1 &876736467827076463
 GameObject:
   m_ObjectHideFlags: 0
@@ -4860,6 +4874,7 @@ GameObject:
   - component: {fileID: 876736467827076462}
   - component: {fileID: 876736467827076460}
   - component: {fileID: 876736467827076461}
+  - component: {fileID: 5271383822351033210}
   m_Layer: 0
   m_Name: flares
   m_TagString: Untagged
@@ -9734,6 +9749,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5271383822351033210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876736467827076463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1
 --- !u!1 &876736468664910514
 GameObject:
   m_ObjectHideFlags: 0
@@ -9745,6 +9773,7 @@ GameObject:
   - component: {fileID: 876736468664910513}
   - component: {fileID: 876736468664910519}
   - component: {fileID: 876736468664910512}
+  - component: {fileID: 7580827799679575044}
   m_Layer: 0
   m_Name: rings
   m_TagString: Untagged
@@ -14632,6 +14661,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7580827799679575044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876736468664910514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1
 --- !u!1 &2993975943395350838
 GameObject:
   m_ObjectHideFlags: 0
@@ -14643,6 +14685,7 @@ GameObject:
   - component: {fileID: 2993975943395350833}
   - component: {fileID: 2993975943395350835}
   - component: {fileID: 2993975943395350832}
+  - component: {fileID: 8546010387168154538}
   m_Layer: 0
   m_Name: area
   m_TagString: Untagged
@@ -19548,6 +19591,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8546010387168154538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2993975943395350838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1
 --- !u!1 &8385369004194624508
 GameObject:
   m_ObjectHideFlags: 0
@@ -19559,6 +19615,7 @@ GameObject:
   - component: {fileID: 8385369004194624511}
   - component: {fileID: 8385369004194624497}
   - component: {fileID: 8385369004194624510}
+  - component: {fileID: 1609617870261763145}
   m_Layer: 0
   m_Name: shadow
   m_TagString: Untagged
@@ -24446,6 +24503,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1609617870261763145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385369004194624508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1
 --- !u!1 &8385369004893257912
 GameObject:
   m_ObjectHideFlags: 0
@@ -24457,6 +24527,7 @@ GameObject:
   - component: {fileID: 8385369004893257915}
   - component: {fileID: 8385369004893257917}
   - component: {fileID: 8385369004893257914}
+  - component: {fileID: 612145479398079646}
   m_Layer: 0
   m_Name: shadow_vertical
   m_TagString: Untagged
@@ -29344,6 +29415,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &612145479398079646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385369004893257912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1
 --- !u!1 &8385369005059721526
 GameObject:
   m_ObjectHideFlags: 0
@@ -29355,6 +29439,7 @@ GameObject:
   - component: {fileID: 8385369005059721481}
   - component: {fileID: 8385369005059721483}
   - component: {fileID: 8385369005059721480}
+  - component: {fileID: 6341491434987822945}
   m_Layer: 0
   m_Name: glow
   m_TagString: Untagged
@@ -34242,6 +34327,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6341491434987822945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8385369005059721526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1
 --- !u!1 &8476858034194145137
 GameObject:
   m_ObjectHideFlags: 0
@@ -34253,6 +34351,7 @@ GameObject:
   - component: {fileID: 8476858034194145142}
   - component: {fileID: 8476858034194145143}
   - component: {fileID: 8476858034194145136}
+  - component: {fileID: 3996064708872215380}
   m_Layer: 0
   m_Name: Petrify Preview Unit
   m_TagString: Untagged
@@ -39098,3 +39197,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &3996064708872215380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8476858034194145137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 1

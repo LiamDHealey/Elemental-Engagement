@@ -13,7 +13,15 @@ public class Bridge : MonoBehaviour
 
     public Vector2Int bridgeSize;
 
+    public float railingWidth;
+
+    public Transform segmentContainer;
+
     public BoxCollider boxCollider;
+
+    public BoxCollider leftRailingCollider;
+
+    public BoxCollider rightRailingCollider;
 
     [Header("Segments")]
     public GameObject topLeftCorner;
@@ -35,14 +43,19 @@ public class Bridge : MonoBehaviour
     {
         gameObject.layer = LayerMask.NameToLayer("Ground");
 
-
-        while(transform.childCount > 0)
+        int i = 0;
+        while(segmentContainer.childCount > 0)
         {
-            DestroyImmediate(transform.GetChild(0).gameObject);
+            DestroyImmediate(segmentContainer.GetChild(i).gameObject);
         }
 
         boxCollider.size = new Vector3(segmentSize.x * bridgeSize.x, 1, segmentSize.y * bridgeSize.y);
         boxCollider.center = new Vector3(0, -0.5f, 0);
+        leftRailingCollider.size = new Vector3(segmentSize.x * bridgeSize.x, 2, railingWidth);
+        leftRailingCollider.center = new Vector3(0, 1, (segmentSize.y * bridgeSize.y + railingWidth) / 2f);
+        rightRailingCollider.size = new Vector3(segmentSize.x * bridgeSize.x, 2, railingWidth);
+        rightRailingCollider.center = new Vector3(0, 1, (segmentSize.y * bridgeSize.y + railingWidth) / -2f);
+
         for (int x = 0; x < bridgeSize.x; x++)
         {
             for (int z = 0; z < bridgeSize.y; z++)
@@ -52,43 +65,43 @@ public class Bridge : MonoBehaviour
                 {
                     if (z == 0)
                     {
-                        newSegment = Instantiate(topLeftCorner, transform);
+                        newSegment = Instantiate(topLeftCorner, segmentContainer);
                     }
                     else if (z == bridgeSize.y - 1)
                     {
-                        newSegment = Instantiate(topRightCorner, transform);
+                        newSegment = Instantiate(topRightCorner, segmentContainer);
                     }
                     else
                     {
-                        newSegment = Instantiate(topCenterEdge, transform);
+                        newSegment = Instantiate(topCenterEdge, segmentContainer);
                     }
                 }
                 else if (x == bridgeSize.x - 1)
                 {
                     if (z == 0)
                     {
-                        newSegment = Instantiate(bottomLeftCorner, transform);
+                        newSegment = Instantiate(bottomLeftCorner, segmentContainer);
                     }
                     else if (z == bridgeSize.y - 1)
                     {
-                        newSegment = Instantiate(bottomRightCorner, transform);
+                        newSegment = Instantiate(bottomRightCorner, segmentContainer);
                     }
                     else
                     {
-                        newSegment = Instantiate(bottomCenterEdge, transform);
+                        newSegment = Instantiate(bottomCenterEdge, segmentContainer);
                     }
                 }
                 else if (z == 0)
                 {
-                    newSegment = Instantiate(middleLeftEdge, transform);
+                    newSegment = Instantiate(middleLeftEdge, segmentContainer);
                 }
                 else if (z == bridgeSize.y - 1)
                 {
-                    newSegment = Instantiate(middleRightEdge, transform);
+                    newSegment = Instantiate(middleRightEdge, segmentContainer);
                 }
                 else
                 {
-                    newSegment = Instantiate(middleCenterFloor, transform);
+                    newSegment = Instantiate(middleCenterFloor, segmentContainer);
                 }
 
                 newSegment.transform.localPosition = new Vector3(segmentSize.x * x - boxCollider.size.x/2f + segmentSize.x/2, 0, segmentSize.y * z - boxCollider.size.z / 2f + segmentSize.y / 2);

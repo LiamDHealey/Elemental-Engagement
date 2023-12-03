@@ -20,10 +20,9 @@ namespace ElementalEngagement.Combat
         /// </summary>
         void Start()
         {
-            if (gameObject.transform.parent == null) { return; }
-
             if (singleTarget)
             {
+                if (gameObject.transform.parent == null) { return; }
                 Movement speed= gameObject.transform.parent.GetComponent<Movement>();
 
                 if (speed == null)
@@ -54,10 +53,9 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public void OnDestroy()
         {
-            if (gameObject.transform.parent == null) { return; }
-
             if (singleTarget)
             {
+                if (gameObject.transform.parent == null) { return; }
                 Movement speed = gameObject.transform.parent.GetComponent<Movement>();
 
                 if (speed == null)
@@ -71,6 +69,9 @@ namespace ElementalEngagement.Combat
 
             foreach (Collider collider in collidersToEffect)
             {
+                if (collider == null)
+                    continue;
+
                 Movement speed = collider.GetComponent<Movement>();
 
                 if (speed == null)

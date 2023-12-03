@@ -63,6 +63,9 @@ namespace ElementalEngagement.UI
         [Tooltip("Called every tick with the new cooldown percent passed in.")]
         [SerializeField] private MinimizableEvent<float> onCooldownPercentChanged;
 
+        [Tooltip("Called every tick with the new cooldown percent passed in.")]
+        [SerializeField] private MinimizableEvent<string> onCooldownTimeChanged;
+
 
 
         // Set this to enable/disable the selected overlay
@@ -145,7 +148,10 @@ namespace ElementalEngagement.UI
 
             cooldownOverlayEnabled = currentCooldown != 0;
             if (cooldownOverlayEnabled)
-                onCooldownPercentChanged?.Invoke(currentCooldown/ability.cooldown);
+            {
+                onCooldownPercentChanged?.Invoke(currentCooldown / ability.cooldown);
+                onCooldownTimeChanged?.Invoke(currentCooldown.ToString("N0"));
+            }
 
             selectedOverlayEnabled = manager?.selectedAbility == ability;
         }
