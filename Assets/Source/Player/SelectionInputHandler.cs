@@ -200,7 +200,7 @@ namespace ElementalEngagement.Player
             {
                 if (selectedObject)
                 {
-                    selectedObject.gameObject.GetComponentInChildren<HealthBar>().FadeOut();
+                    selectedObject.gameObject.GetComponentInChildren<HealthBar>().FastFadeOut();
                 }
                 _selectedObjects.Remove(selectedObject);
                 selectedObject.isSelected = false;

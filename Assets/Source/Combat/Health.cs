@@ -94,7 +94,7 @@ namespace ElementalEngagement.Combat
         {
             gameObject.GetComponentInChildren<HealthBar>().FadeIn();
             yield return new WaitForSeconds(damageHealthBarTime);
-            gameObject.GetComponentInChildren<HealthBar>().FadeOut();
+            gameObject.GetComponentInChildren<HealthBar>().FastFadeOut();
         }
 
         /// <summary>
