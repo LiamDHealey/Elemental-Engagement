@@ -30,7 +30,7 @@ namespace ElementalEngagement.UI
             canvasGroup = GetComponent<CanvasGroup>();
             if (!isShrine && !isHumanArmy)
             {
-                FadeOut();
+                FastFadeOut();
             }
         }
 
@@ -67,30 +67,11 @@ namespace ElementalEngagement.UI
         }
 
         /// <summary>
-        /// Fades the health slider out if visible.
+        /// Quickly fades the health slider out if visible.
         /// </summary>
-        public void FadeOut()
+        public void FastFadeOut()
         {
-            bool isHumanArmy = (gameObject.transform.parent.name == "HumanArmy(Clone)");
-            if (!isHumanArmy)
-            {
-                StartCoroutine(FadeOutCoroutine());
-            }
-        }
-
-        /// <summary>
-        /// Coroutine to perform a *fancy* fade in animation
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator FadeOutCoroutine()
-        {
-            canvasGroup.alpha = 1;
-            for (int i = 0; i < 10; i++)
-            {
-                canvasGroup.alpha -= 0.1f;
-                yield return new WaitForSeconds(0.01f);
-            }
-            StopCoroutine(FadeOutCoroutine());
+            canvasGroup.alpha = 0;
         }
     } 
 }
