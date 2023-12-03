@@ -36,6 +36,7 @@ namespace ElementalEngagement.Player
                     Hud.transform.SetParent(input.transform);
 
                     Camera camera = input.GetComponent<Camera>();
+                    camera.cullingMask -= 1 << LayerMask.NameToLayer(faction == Faction.PlayerOne ? "HiddenFromP1" : "HiddenFromP2");
                     Hud.GetComponent<Canvas>().worldCamera = camera;
 
                     RectTransform childRect = ((RectTransform)Hud.transform.GetChild(0));
