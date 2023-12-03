@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5717862235738819842}
   - component: {fileID: 7888161525904577786}
   - component: {fileID: 5926879433359911782}
+  - component: {fileID: 3520721886725815388}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -97,6 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3520721886725815388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241562172796790021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &2590485344988562836
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8593038303179891535}
+  - component: {fileID: 7311677140425520242}
   m_Layer: 0
   m_Name: WaterRallyPoint_Preview
   m_TagString: Untagged
@@ -129,3 +144,16 @@ Transform:
   - {fileID: 5717862235738819842}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7311677140425520242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590485344988562836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
