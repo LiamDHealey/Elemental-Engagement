@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -17,66 +18,39 @@ namespace ElementalEngagement.Player
         [SerializeField] private PlayerInput input;
 
         [Tooltip("The speed multiplier for panning.")]
-        [SerializeField] private float panspeed = 1f;
+        [SerializeField] private float panSpeed = 1f;
+
+        [Tooltip("The normalized acceleration this when starting or stopping panning.")]
+        [SerializeField] private float panAcceleration = 3f;
 
         [Tooltip("The speed multiplier for zooming.")]
-        [SerializeField] private float zoomspeed = 1f;
+        [SerializeField] private float zoomSpeed = 1f;
 
         [Tooltip("The closest on the Y axis this object can zoom.")]
         [SerializeField] private float zoomY = 10f;
 
-        [Tooltip("The camera boundary for the Grasslands map. Y-axis is for zoom height. The bigger the Y-axis, the farther one can zoom out.")]
-        [SerializeField] private Vector3 map1PositiveBounds;
-        [Tooltip("The camera boundary for the Grasslands map.")]
-        [SerializeField] private Vector3 map1NegativeBounds;
-
-        [Tooltip("The camera boundary for the Desert map. Y-axis is for zoom height. The bigger the Y-axis, the farther one can zoom out.")]
-        [SerializeField] private Vector3 map2PositiveBounds;
-        [Tooltip("The camera boundary for the Desert map.")]
-        [SerializeField] private Vector3 map2NegativeBounds;
-
-        [Tooltip("The camera boundary for the Tundra map. Y-axis is for zoom height. The bigger the Y-axis, the farther one can zoom out.")]
-        [SerializeField] private Vector3 map3PositiveBounds;
-        [Tooltip("The camera boundary for the Tundra map.")]
-        [SerializeField] private Vector3 map3NegativeBounds;
-
-        private Vector3 boundsPositive;
-        private Vector3 boundsNegative;
+        private Vector3 minBound => CameraBounds.boundsBox.bounds.min;
+        private Vector3 maxBound => CameraBounds.boundsBox.bounds.max;
+        private float speedMultiplier;
 
         [SerializeField] Vector3 startPos;
-
-        private void Start()
-        {
-            UnityEngine.SceneManagement.Scene currentMap = SceneManager.GetActiveScene();
-            if (currentMap.name == "GrasslandMap")
-            {
-                boundsPositive = map1PositiveBounds;
-                boundsNegative = map1NegativeBounds;
-            }
-            else if (currentMap.name == "DesertMap")
-            {
-                boundsPositive = map2PositiveBounds;
-                boundsNegative = map2NegativeBounds;
-            }
-            else if (currentMap.name == "TundraMap")
-            {
-                boundsPositive = map3PositiveBounds;
-                boundsNegative = map3NegativeBounds;
-            }
-        }
 
         /// <summary>
         /// Move this
         /// </summary>
         public void Pan(Vector2 input)
         {
-            Vector2 delta = input * panspeed * Time.deltaTime;
+            speedMultiplier = input.sqrMagnitude < 0.1
+                ? Mathf.Clamp01(speedMultiplier - panAcceleration * 2 * Time.deltaTime)
+                : Mathf.Clamp01(speedMultiplier + panAcceleration * Time.deltaTime);
+            
+            Vector2 delta = input * panSpeed * speedMultiplier * Time.deltaTime;
 
+            Vector3 pos = transform.position;
             transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x + delta.x, startPos.x - boundsNegative.x, startPos.x + boundsPositive.x), 
-                transform.position.y,
-                Mathf.Clamp(transform.position.z + delta.y, startPos.z - boundsNegative.z, (startPos.z + boundsPositive.z)-30)
-                );
+                Mathf.Clamp(pos.x + delta.x, minBound.x, maxBound.x), 
+                pos.y,
+                Mathf.Clamp(pos.z + delta.y, minBound.z, maxBound.z));
         }
 
         /// <summary>
@@ -84,11 +58,11 @@ namespace ElementalEngagement.Player
         /// </summary>
         public void Zoom(Vector2 input)
         {
-            Vector2 delta = input * zoomspeed * Time.deltaTime;
+            Vector2 delta = input * zoomSpeed * Time.deltaTime;
 
             transform.position = new Vector3(
                 transform.position.x,
-                Mathf.Clamp(transform.position.y + delta.y, zoomY, startPos.y + boundsPositive.y),
+                Mathf.Clamp(transform.position.y + delta.y, zoomY, startPos.y),
                 transform.position.z
                 );
         }
