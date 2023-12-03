@@ -29,21 +29,35 @@ namespace ElementalEngagement.Player
         [Tooltip("The closest on the Y axis this object can zoom.")]
         [SerializeField] private float zoomY = 10f;
 
+        [Tooltip("The multiplier for the deceleration")]
+        public float decelerationBoost = 2f;
+
         private Vector3 minBound => CameraBounds.boundsBox.bounds.min;
         private Vector3 maxBound => CameraBounds.boundsBox.bounds.max;
         private float speedMultiplier;
+        bool lastAccelerating = false;
 
-        [SerializeField] Vector3 startPos;
+        Vector3? startPos;
 
         /// <summary>
         /// Move this
         /// </summary>
         public void Pan(Vector2 input)
         {
-            speedMultiplier = input.sqrMagnitude < 0.1
-                ? Mathf.Clamp01(speedMultiplier - panAcceleration * 2 * Time.deltaTime)
-                : Mathf.Clamp01(speedMultiplier + panAcceleration * Time.deltaTime);
-            
+            bool currentAccelerating = input.sqrMagnitude < 0.1;
+            if (!lastAccelerating && currentAccelerating)
+            {
+                speedMultiplier = 0;
+            }
+            else
+            {
+                speedMultiplier = currentAccelerating
+                    ? Mathf.Clamp01(speedMultiplier - panAcceleration * decelerationBoost * Time.deltaTime)
+                    : Mathf.Clamp01(speedMultiplier + panAcceleration * Time.deltaTime);
+            }
+
+            lastAccelerating = currentAccelerating;
+
             Vector2 delta = input * panSpeed * speedMultiplier * Time.deltaTime;
 
             Vector3 pos = transform.position;
@@ -59,10 +73,11 @@ namespace ElementalEngagement.Player
         public void Zoom(Vector2 input)
         {
             Vector2 delta = input * zoomSpeed * Time.deltaTime;
+            startPos ??= transform.position;
 
             transform.position = new Vector3(
                 transform.position.x,
-                Mathf.Clamp(transform.position.y + delta.y, zoomY, startPos.y),
+                Mathf.Clamp(transform.position.y + delta.y, zoomY, startPos.Value.y),
                 transform.position.z
                 );
         }
