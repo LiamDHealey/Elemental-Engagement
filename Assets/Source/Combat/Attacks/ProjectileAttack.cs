@@ -62,7 +62,7 @@ namespace ElementalEngagement.Combat
             }
             else if (timeRemainingToAttack <= 0 || !needsToWait)
             {
-                while (validTargets[0] == null)
+                while (validTargets.Count > 0 && validTargets[0] == null)
                 {
                     validTargets.RemoveAt(0);
                 }

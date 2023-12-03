@@ -110,10 +110,13 @@ public class Movement : MonoBehaviour
         }
 
         agent.stoppingDistance = stoppingDistance;
-        agent.SetDestination(destination);
         this.navigator = navigator;
-
         destinationReached = (destination - transform.position).magnitude <= stoppingDistance;
+
+        if (agent.isOnNavMesh)
+        {
+            agent.SetDestination(destination);
+        }
     }
 
     /// <summary>

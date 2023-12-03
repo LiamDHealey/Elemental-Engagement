@@ -22,6 +22,9 @@ namespace ElementalEngagement.Combat
 
         protected bool CanModify(Collider collider)
         {
+            if (collider == null)
+                return false;
+
             Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
             return ((affectsEnemies != (allegiance.faction == colliderAllegiance?.faction)) || allegiance.faction == Faction.Unaligned)
                 && (allegiance.god == colliderAllegiance?.god || allegiance.god == MinorGod.Unaligned);

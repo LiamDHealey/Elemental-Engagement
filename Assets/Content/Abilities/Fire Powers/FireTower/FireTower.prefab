@@ -5928,14 +5928,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9173821113085464656}
     m_Modifications:
-    - target: {fileID: 1535089726803382314, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1707386870458220364, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2527524241045839502, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_Name
       value: HealthBar
@@ -5945,11 +5937,7 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3525556639119249430, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3525556639119249430, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_AnchorMax.y
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4053637251632674593, guid: bae706e231c75744fbe955af1264558e, type: 3}
@@ -5990,19 +5978,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20.12
+      value: 2.93
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.060425952
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.060425952
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.060425952
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6014,15 +6002,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.54
+      value: 9.78
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97464526
+      value: 0.8640656
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22375593
+      value: 0.5033794
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6038,11 +6026,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.52
+      value: 18.53
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 25.859
+      value: 60.448
       objectReference: {fileID: 0}
     - target: {fileID: 6400319439024031507, guid: bae706e231c75744fbe955af1264558e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -6060,18 +6048,6 @@ PrefabInstance:
       propertyPath: healthToDisplay
       value: 
       objectReference: {fileID: 6780629216558479507}
-    - target: {fileID: 6418125800119652861, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6418125800119652861, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6941960448084190459, guid: bae706e231c75744fbe955af1264558e, type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
