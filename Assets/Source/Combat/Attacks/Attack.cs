@@ -33,5 +33,7 @@ namespace ElementalEngagement.Combat
 
         [Tooltip("Called when this attack actually deals damage")]
         public UnityEvent onAttackDamage;
+
+        public abstract void SetAttackInterval(float newAttackInterval, bool waitAfterChanging);
     }
 }

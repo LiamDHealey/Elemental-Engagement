@@ -41,6 +41,13 @@ namespace ElementalEngagement.Combat
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
         }
 
+        public override void SetAttackInterval(float interval, bool waitAfterChanging)
+        {
+            attackInterval = interval;
+            timeRemainingToAttack = interval;
+            needsToWait = waitAfterChanging;
+        }
+
         private void Update()
         {
             if (!enabled)
