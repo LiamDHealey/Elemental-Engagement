@@ -6,35 +6,22 @@ public class DamageFlash : MonoBehaviour
 {
 
     public Color color;
-    public float flashLength = 0.5f;
+    public float flashLength = .25f;
     private float remainingFlashTime = 0;
-    private bool shouldFlash;
 
     public void Flash()
     {
         GetComponent<SpriteRenderer>().color = color;
 
-        if (!shouldFlash)
-        {
-            remainingFlashTime = flashLength;
-            shouldFlash = true;
-        }
+        remainingFlashTime = flashLength;
+
     }
 
     private void Update()
     {
-        if (shouldFlash)
-            Flash();
-
         if (remainingFlashTime <= 0)
-        {
             GetComponent<SpriteRenderer>().color = Color.white;
-            shouldFlash = false;
-        }
-        
         else
-        {
-            remainingFlashTime -= flashLength;
-        }
+            remainingFlashTime -= Time.deltaTime;
     }
 }
