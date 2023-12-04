@@ -72,7 +72,7 @@
                     "name": "RotateAbility",
                     "type": "Value",
                     "id": "fbe6a0f1-395b-4f4b-92cc-59de8f2743bc",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -489,7 +489,7 @@
                 {
                     "name": "",
                     "id": "19937fb8-1607-4066-9dfd-ce382552d9e7",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -498,59 +498,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Arrow Keys",
-                    "id": "3fa547ba-fa36-4720-9bc2-54f6be493188",
-                    "path": "Dpad",
+                    "name": "",
+                    "id": "f57d8469-8356-4000-9010-ff4fa6daf074",
+                    "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "RotateAbility",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "910627b9-a60f-4b07-9164-e4def7a104ec",
-                    "path": "<Keyboard>/upArrow",
+                    "name": "",
+                    "id": "7e37368e-fae7-4c29-86c4-eac51103411b",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Invert",
                     "groups": "Keyboard&Mouse",
                     "action": "RotateAbility",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "52798d6a-ee44-4ef0-b3aa-2227633839c7",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "RotateAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "2e073105-831f-4a76-ba9e-8c9779cef4c0",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "RotateAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "32233cee-b478-4334-807d-3f69d046e1a3",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "RotateAbility",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",

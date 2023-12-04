@@ -39,6 +39,9 @@ namespace ElementalEngagement.Player
         [Tooltip("The input to get the play bindings from.")]
         [SerializeField] private PlayerInput input;
 
+        [Tooltip("The speed at which abilities are rotated.")]
+        public float rotationSpeed = 180;
+
         // Whether or not an ability is currently selected.
         public bool isAbilitySelected => currentSelection[0] != null && currentSelection[1] != null;
 
@@ -161,15 +164,20 @@ namespace ElementalEngagement.Player
 
         public enum SelectionResult { SubmenuOpened, Success, AbilityNotAvailable }
 
-        public void RotateAbility(Vector2 direction)
+        public void RotateAbility(float rotationAmount)
         {
-            if (direction.sqrMagnitude < Vector2.kEpsilon)
+            if (Math.Abs(rotationAmount) < Vector2.kEpsilon)
                 return;
 
             if (abilityPreview == null)
                 return;
 
-            abilityPreview.transform.right = new Vector3(direction.x, 0, direction.y);
+            if (!selectedAbility.canBeRotated)
+                return;
+
+            abilityPreview.transform.right = Quaternion.AngleAxis(rotationAmount * rotationSpeed * Time.deltaTime 
+                                                                  + abilityPreview.transform.rotation.eulerAngles.y, Vector3.up)
+                                             * Vector3.right;
         }
 
         public void ResetSelection()

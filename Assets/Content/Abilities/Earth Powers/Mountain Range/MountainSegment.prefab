@@ -203,9 +203,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animators: []
   movingParameterName: IsMoving
   moveThreshed: 1
+  invertFlipping: 0
 --- !u!1 &7291558856822521767
 GameObject:
   m_ObjectHideFlags: 0

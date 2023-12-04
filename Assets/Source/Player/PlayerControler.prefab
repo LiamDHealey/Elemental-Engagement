@@ -192,6 +192,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   input: {fileID: 4229869321111341770}
+  rotationSpeed: 180
 --- !u!114 &4229869321111341770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +312,7 @@ MonoBehaviour:
     requiredStates: 8
     forbiddenStates: 16
   - action: {fileID: -4910851007293593000, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
-    requiredStates: 8
+    requiredStates: 32
     forbiddenStates: 16
   - action: {fileID: -3100612602435359187, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
     requiredStates: 0

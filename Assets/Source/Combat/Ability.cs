@@ -30,5 +30,8 @@ namespace ElementalEngagement.Combat
 
         [Tooltip("Whether or not this collides with things")]
         public bool hasCollision = false;
+
+        [Tooltip("Whether or not this can be rotated")]
+        public bool canBeRotated = false;
     }
 }

@@ -19,7 +19,7 @@ namespace ElementalEngagement.Utilities
 
         public void Start()
         {
-            GetComponent<Image>().color = GetComponentInParent<Allegiance>().faction switch
+            GetComponent<Image>().color = GetComponentInParent<Allegiance>()?.faction switch
             {
                 Faction.PlayerOne => player1Color,
                 Faction.PlayerTwo => player2Color,

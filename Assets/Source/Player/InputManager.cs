@@ -42,6 +42,9 @@ namespace ElementalEngagement
                 if (UIManager.isUIOpen)
                     return State.InMenu;
                 if (abilityInputHandler.isAbilitySelected)
+                    if (abilityInputHandler.selectedAbility.canBeRotated)
+                        return State.AbilitySelected | State.RotatingAbility;
+                    else
                         return State.AbilitySelected;
                 if (abilityInputHandler.isSelectionInProgress)
                     if (selectionInputHandler.selectedObjects.Count > 0)
@@ -220,7 +223,7 @@ namespace ElementalEngagement
             if (!IsActionAllowed(action))
                 return;
 
-            abilityInputHandler.RotateAbility(action.ReadValue<Vector2>());
+            abilityInputHandler.RotateAbility(action.ReadValue<float>());
         }
 
         private void SelectAbility0(CallbackContext context)
@@ -313,6 +316,7 @@ namespace ElementalEngagement
             SelectingAbility = 4,
             AbilitySelected = 8,
             InMenu = 16,
+            RotatingAbility = 32,
         }
     }
 }
