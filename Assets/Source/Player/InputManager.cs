@@ -297,7 +297,7 @@ namespace ElementalEngagement
 
             if (state.HasFlag(State.SelectingAbility) || state.HasFlag(State.AbilitySelected))
             {
-                abilityInputHandler.ResetSelection();
+                abilityInputHandler.UndoSelection();
             }
             else if (state.HasFlag(State.InMenu))
             {

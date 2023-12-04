@@ -141,6 +141,12 @@ namespace ElementalEngagement.Player
             if (unlockedAbilities.Contains(ability))
             {
                 onAbilitySelected?.Invoke();
+                if(currentSelection[1] == index)
+                {
+                    PlayAbility();
+                    return SelectionResult.AbilityPlayed;
+                }
+
                 currentSelection[1] = index;
                 if (abilityPreview != null)
                 {
@@ -167,7 +173,7 @@ namespace ElementalEngagement.Player
             }
         }
 
-        public enum SelectionResult { SubmenuOpened, Success, AbilityNotAvailable }
+        public enum SelectionResult { SubmenuOpened, Success, AbilityNotAvailable, AbilityPlayed }
 
         public void RotateAbility(float rotationAmount)
         {
@@ -189,6 +195,21 @@ namespace ElementalEngagement.Player
         {
             onAbilityDeselected?.Invoke();
             currentSelection[0] = null;
+            currentSelection[1] = null;
+
+            if (abilityPreview != null)
+            {
+                Destroy(abilityPreview.gameObject);
+            }
+        }
+
+        public void UndoSelection()
+        {
+            onAbilityDeselected?.Invoke();
+            if (currentSelection[1] == null)
+            {
+                currentSelection[0] = null;
+            }
             currentSelection[1] = null;
 
             if (abilityPreview != null)
