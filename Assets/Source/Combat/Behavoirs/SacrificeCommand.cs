@@ -110,7 +110,6 @@ namespace ElementalEngagement.Combat
                 return;
 
             movement.AllowMovement(this);
-            onSacrificeEnd?.Invoke();
             targetSacrificeLocation.GetComponent<SacrificeLocation>().StopSacrificing(this);
         }
 
