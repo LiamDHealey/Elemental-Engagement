@@ -112,7 +112,7 @@ public class Bridge : MonoBehaviour
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(Bridge))]
-class DecalMeshHelperEditor : Editor
+class BridgeEditor : Editor
 {
     public override void OnInspectorGUI()
     {

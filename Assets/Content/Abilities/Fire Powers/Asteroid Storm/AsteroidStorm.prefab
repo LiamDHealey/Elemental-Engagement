@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -10, y: 0, z: -6}
-  m_LocalScale: {x: 0.8662489, y: 0.8662489, z: 0.8662489}
+  m_LocalScale: {x: 0.9887365, y: 0.9887365, z: 0.9887365}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 679162482424805635}
@@ -19552,7 +19552,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -5, y: 0, z: 10}
-  m_LocalScale: {x: 1.0656493, y: 1.0656493, z: 1.0656493}
+  m_LocalScale: {x: 1.2163321, y: 1.2163321, z: 1.2163321}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1263791772209261884}
@@ -44224,7 +44224,7 @@ MonoBehaviour:
   interval: 0
   duration: 10
   playOnStart: 1
-  fadeOutDuration: 0
+  fadeOutDuration: 5
   useMixer: 1
   volumeParam: asteroidSwarmVolume
 --- !u!1 &4629259982731968035
@@ -82878,7 +82878,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 20, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0884, y: 1.0884, z: 1.0884}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 189995435618849255}
@@ -83046,7 +83046,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 10, y: 0, z: 4}
-  m_LocalScale: {x: 0.74774724, y: 0.74774724, z: 0.74774724}
+  m_LocalScale: {x: 0.85347867, y: 0.85347867, z: 0.85347867}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4904133154853862909}
@@ -88037,7 +88037,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.0055294, y: 0.0083301, z: 0}
-  m_LocalScale: {x: 1.0598795, y: 1.0598795, z: 1.0598795}
+  m_LocalScale: {x: 1.2097465, y: 1.2097465, z: 1.2097465}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4626684584867218309}
@@ -88220,7 +88220,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6, y: 0, z: -8}
-  m_LocalScale: {x: 1.1141295, y: 1.1141295, z: 1.1141295}
+  m_LocalScale: {x: 1.2716675, y: 1.2716675, z: 1.2716675}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5507837475343240993}
@@ -98221,15 +98221,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429692, guid: c82022460ac6d274cb9e2aefc6da9dc9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 17.996235
+      value: 17.99623
       objectReference: {fileID: 0}
     - target: {fileID: 429692, guid: c82022460ac6d274cb9e2aefc6da9dc9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 17.996235
+      value: 17.99623
       objectReference: {fileID: 0}
     - target: {fileID: 429692, guid: c82022460ac6d274cb9e2aefc6da9dc9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 17.996235
+      value: 17.99623
       objectReference: {fileID: 0}
     - target: {fileID: 429692, guid: c82022460ac6d274cb9e2aefc6da9dc9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -98270,6 +98270,10 @@ PrefabInstance:
     - target: {fileID: 429692, guid: c82022460ac6d274cb9e2aefc6da9dc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 429692, guid: c82022460ac6d274cb9e2aefc6da9dc9, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19867586, guid: c82022460ac6d274cb9e2aefc6da9dc9, type: 3}
       propertyPath: looping

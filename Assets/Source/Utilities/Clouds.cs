@@ -11,6 +11,7 @@ public class Clouds : MonoBehaviour
     [SerializeField][Min(0)] float maxScale = 2f;
     [SerializeField][Min(0)] float minScale = 0.3f;
     [SerializeField][Range(0, 360)] float maxAngle = 15f;
+    [SerializeField] string cloudLayer = "Clouds";
     [SerializeField] List<GameObject> cloudPrefabs;
 
 
@@ -27,11 +28,14 @@ public class Clouds : MonoBehaviour
         {
             clouds.Add(Instantiate(cloudPrefabs[Random.Range(0, cloudPrefabs.Count)], transform).transform);
             clouds[i].transform.localPosition = new Vector3(Random.Range(bounds.min.x, bounds.max.x), 
-                                                       Random.Range(bounds.min.y, bounds.max.y), 
-                                                       Random.Range(bounds.min.z, bounds.max.z));
+                                                            Random.Range(bounds.min.y, bounds.max.y), 
+                                                            Random.Range(bounds.min.z, bounds.max.z));
             clouds[i].transform.localRotation = Quaternion.Euler(90, Random.Range(-maxAngle, maxAngle), 0);
             clouds[i].transform.localScale = Vector3.one * Random.Range(minScale, maxScale);
             cloudSpeeds.Add(Random.Range(minSpeed, maxSpeed));
+
+            clouds[i].GetComponent<SpriteRenderer>().sortingLayerName = cloudLayer;
+            clouds[i].GetComponent<SpriteRenderer>().sortingOrder = (int)(clouds[i].transform.position.y * 100);
         }
     }
 
