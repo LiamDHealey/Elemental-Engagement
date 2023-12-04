@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef9ff5b3eb7b6643b178e948d4d4bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 7661601611414335804}
+  animators: []
   movingParameterName: IsMoving
   moveThreshed: 0.2
+  invertFlipping: 0
 --- !u!114 &5927479814758029465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &5299759797580899091
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!4 &6985680480307078739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6476705285018846832, guid: ec3eec985f5d2344aa0297476dfe44b1, type: 3}
@@ -489,6 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1 &8631457299713214785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5682107764260677986, guid: ec3eec985f5d2344aa0297476dfe44b1, type: 3}
@@ -506,3 +510,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invertAllegiance: 0
