@@ -302,7 +302,6 @@ namespace ElementalEngagement.Player
             if (!result)
                 return false;
 
-            Debug.DrawLine(hit.point, hit.point + new Vector3(radius, 0, 0), Color.red, 10f);  
             selectables = Physics.OverlapSphere(hit.point, radius)
                 .Select(collider => collider.GetComponent<Selectable>()).NotNull()
                 .Where(selectable => selectable.GetComponent<Allegiance>()?.CheckAnyAllegiance(allegiance) ?? true);

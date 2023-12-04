@@ -57,7 +57,6 @@ public class Movement : MonoBehaviour
         if (preventer == null)
             throw new Exception("Preventer must be valid.");
 
-        Debug.Log(preventer);
         
         if (canMove)
         {
@@ -115,7 +114,11 @@ public class Movement : MonoBehaviour
 
         if (agent.isOnNavMesh)
         {
-            agent.SetDestination(destination);
+            if (!agent.SetDestination(destination))
+            {
+                NavMesh.SamplePosition(destination, out NavMeshHit hit, 99999, NavMesh.AllAreas);
+                agent.SetDestination(hit.position);
+            }
         }
     }
 
