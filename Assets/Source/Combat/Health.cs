@@ -40,9 +40,6 @@ namespace ElementalEngagement.Combat
         [Tooltip("The amounts damage will be multiplied depending on the incoming damage's allegiance.")]
         [SerializeField] private List<DamageMultiplier> damageMultipliers;
 
-        [Tooltip("How long the health bar shows up when damage is taken")]
-        [SerializeField] public float damageHealthBarTime;
-
         [Tooltip("Called when this is damaged.")]
         public UnityEvent<Damage> onDamaged;
 
@@ -81,20 +78,6 @@ namespace ElementalEngagement.Combat
 
             if(hp <= 0)
                 onKilled?.Invoke();
-            if (gameObject.GetComponent<Selectable>() != null && !gameObject.GetComponent<Selectable>().isSelected)
-            {
-                StartCoroutine(showHealthBar());
-            }
-        }
-
-        /// <summary>
-        /// Show the health bar for a set amount of seconds
-        /// </summary>
-        IEnumerator showHealthBar()
-        {
-            gameObject.GetComponentInChildren<HealthBar>().FadeIn();
-            yield return new WaitForSeconds(damageHealthBarTime);
-            gameObject.GetComponentInChildren<HealthBar>().FastFadeOut();
         }
 
         /// <summary>
@@ -104,7 +87,7 @@ namespace ElementalEngagement.Combat
         private class DamageMultiplier
         {
             [Tooltip("The god associated with the incoming damage.")]
-            public Favor.MinorGod incomingAffiliation;
+            public MinorGod incomingAffiliation;
 
             [Tooltip("The amount that damage willed be multiplied by.")]
             public float multiplier = 1.5F;
