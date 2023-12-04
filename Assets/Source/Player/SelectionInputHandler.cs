@@ -62,6 +62,9 @@ namespace ElementalEngagement.Player
 
         private Camera camera;
 
+        public UnityEvent groupSelectionStarted;
+        public UnityEvent groupSelectionStopped;
+
         private bool selectedThisTick = false;
 
         private void Awake()
@@ -102,6 +105,7 @@ namespace ElementalEngagement.Player
             /// <returns> The time to wait between selection updates. </returns>
             IEnumerator UpdateSelection()
             {
+                groupSelectionStarted?.Invoke();
                 // Add to selection.
                 while (isInProgress())
                 {
@@ -122,6 +126,7 @@ namespace ElementalEngagement.Player
                     yield return null;
                 }
                 circularSelectionIndicator.SetActive(false);
+                groupSelectionStopped?.Invoke();
             }
         }
 
