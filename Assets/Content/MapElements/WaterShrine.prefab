@@ -30,12 +30,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 7427793930732179511}
+      objectReference: {fileID: 3518134301956538129}
     - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: PlayDeath
       objectReference: {fileID: 0}
     - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: PlayDeathAnimation, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2125978576373769656, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
@@ -246,6 +246,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8548424856781637128, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1439923393952210016}
+    - targetCorrespondingSourceObject: {fileID: 8548424856781637128, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3518134301956538129}
     - targetCorrespondingSourceObject: {fileID: 4979323060529684527, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4267371172209825161}
@@ -302,6 +305,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3518134301956538129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7414885035677120458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1651f925b19deaa42acf31b96c7af1b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playDeath: {fileID: 1439923393952210016}
 --- !u!4 &7771054557393776144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8907197884870483922, guid: 3776eb55da0be754cad5a3538e6b47b2, type: 3}
@@ -817,11 +833,6 @@ PrefabInstance:
       addedObject: {fileID: 1775375758063999881}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4e4d0be8f8cb8146bcf46dd47fe8e43, type: 3}
---- !u!1 &7427793930732179511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1504503432658990, guid: c4e4d0be8f8cb8146bcf46dd47fe8e43, type: 3}
-  m_PrefabInstance: {fileID: 7426870570755739673}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7430485439537240355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4477541505468730, guid: c4e4d0be8f8cb8146bcf46dd47fe8e43, type: 3}
