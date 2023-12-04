@@ -22,9 +22,11 @@ namespace ElementalEngagement.Combat
         [Min(0.00001f)]
         [SerializeField] private float attackIntervalMultiplier = 1;
 
+        List<Attack> attacks;
 
         private void Start()
         {
+            attacks = new List<Attack>();
             area.onTriggerEnter.AddListener(OnTriggerEntered);
             area.onTriggerExit.AddListener(OnTriggerExited);
         }
@@ -46,16 +48,27 @@ namespace ElementalEngagement.Combat
         /// <param name="collider"></param>
         void OnTriggerEntered(Collider collider)
         {
+            attacks.Clear();
             Attack attack = collider.GetComponent<Attack>();
 
-            if (attack == null)
-                return;
             if (!CanModify(collider))
                 return;
 
-            attack.damage.amount *= damageMultiplier;
-            attack.knockback.amount *= knockbackMultiplier;
-            attack.attackInterval *= attackIntervalMultiplier;
+            attacks.Add(attack);
+
+            foreach (var test in collider.GetComponentsInChildren<Attack>())
+            {
+                attacks.Add(test);
+            }
+
+            foreach(Attack tempAttack in attacks)
+            {
+                if (tempAttack == null)
+                    continue;
+                tempAttack.damage.amount *= damageMultiplier;
+                tempAttack.knockback.amount *= knockbackMultiplier;
+                tempAttack.SetAttackInterval(tempAttack.attackInterval * attackIntervalMultiplier);
+            }
         }
 
         /// <summary>
@@ -66,16 +79,27 @@ namespace ElementalEngagement.Combat
         /// <param name="collider"></param>
         void OnTriggerExited(Collider collider)
         {
+            attacks.Clear();
             Attack attack = collider.GetComponent<Attack>();
 
-            if (attack == null)
-                return;
             if (!CanModify(collider))
                 return;
 
-            attack.damage.amount /= damageMultiplier;
-            attack.knockback.amount /= knockbackMultiplier;
-            attack.attackInterval /= attackIntervalMultiplier;
+            attacks.Add(attack);
+
+            foreach (var test in collider.gameObject.GetComponentsInChildren<Attack>())
+            {
+                attacks.Add(test);
+            }
+
+            foreach (var tempAttack in attacks)
+            {
+                if(tempAttack == null)
+                    continue;
+                tempAttack.damage.amount *= damageMultiplier;
+                tempAttack.knockback.amount *= knockbackMultiplier;
+                tempAttack.SetAttackInterval(tempAttack.attackInterval / attackIntervalMultiplier);
+            }
         }
     }
 }
