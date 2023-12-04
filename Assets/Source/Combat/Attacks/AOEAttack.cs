@@ -44,7 +44,7 @@ namespace ElementalEngagement.Combat
         private void Awake()
         {
             needsToWait = waitBeforeDamage;
-            timeRemainingToAttack = attackInterval;
+            timeRemainingToAttack = 0;
             attackRange.onTriggerEnter.AddListener( collider => { TriggerEntered(collider); });
             attackRange.onTriggerExit.AddListener( collider => validTargets.Remove(collider));
         }
@@ -134,6 +134,18 @@ namespace ElementalEngagement.Combat
                 timeRemainingToAttack = attackInterval;
                 needsToWait = true;
             }
+        }
+
+        public override void SetAttackInterval(float newAttackInterval, bool waitAfterChanging)
+        {
+            attackInterval = newAttackInterval;
+            timeRemainingToAttack = attackInterval;
+            needsToWait = waitAfterChanging;
+        }
+
+        public override void SetAttackInterval(float newAttackInterval)
+        {
+            attackInterval = newAttackInterval;
         }
 
         IEnumerator WaitForDamage(Collider other)
