@@ -7,14 +7,21 @@ using UnityEngine.UI;
 
 public class HideOnGroupSelect : MonoBehaviour
 {
-    SelectionInputHandler input;
-    Image image;
+    private SelectionInputHandler input;
+    private Image image;
+    private AbilityInputHandler ability;
+
     void Start()
     {
         image = gameObject.GetComponent<Image>();
         input = GetComponentInParent<SelectionInputHandler>();
+        ability = GetComponentInParent<AbilityInputHandler>();
+
         input.groupSelectionStarted.AddListener(HideCursor);
         input.groupSelectionStopped.AddListener(ShowCursor);
+        ability.onAbilitySelected.AddListener(HideCursor);
+        ability.onAbilityDeselected.AddListener(ShowCursor);
+
     }
 
     private void HideCursor()

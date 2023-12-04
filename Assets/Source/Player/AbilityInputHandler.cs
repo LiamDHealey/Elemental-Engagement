@@ -24,6 +24,10 @@ namespace ElementalEngagement.Player
         [Tooltip("Called when the selected ability changes.")]
         public UnityEvent<Ability> onSelectedAbilityChanged;
 
+        public UnityEvent onAbilitySelected;
+
+        public UnityEvent onAbilityDeselected;
+
         [Tooltip("Called whenever the ability menu is navigated through")]
         public UnityEvent onAbilityMenuChanged;
 
@@ -136,6 +140,7 @@ namespace ElementalEngagement.Player
             Ability ability = abilities[currentSelection[0].Value, index];
             if (unlockedAbilities.Contains(ability))
             {
+                onAbilitySelected?.Invoke();
                 currentSelection[1] = index;
                 if (abilityPreview != null)
                 {
@@ -182,6 +187,7 @@ namespace ElementalEngagement.Player
 
         public void ResetSelection()
         {
+            onAbilityDeselected?.Invoke();
             currentSelection[0] = null;
             currentSelection[1] = null;
 
