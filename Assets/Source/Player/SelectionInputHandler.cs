@@ -250,6 +250,20 @@ namespace ElementalEngagement.Player
             }
         }
 
+        public CommandReceiver GetCurrentCommand()
+        {
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
+            if (!Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask))
+                return null;
+
+            return selectedObjects
+                .Where(selectable => selectable != null)
+                .SelectMany(selectable => selectable.GetComponents<CommandReceiver>())
+                .Where(receiver => receiver.CanExecuteCommand(hit))
+                .OrderByDescending(receiver => receiver.commandPriority)
+                .FirstOrDefault();
+        }
+
         /// <summary>
         /// Stop all selected units from performing their current command.
         /// </summary>
