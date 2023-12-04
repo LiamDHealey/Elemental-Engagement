@@ -35,5 +35,6 @@ namespace ElementalEngagement.Combat
         public UnityEvent onAttackDamage;
 
         public abstract void SetAttackInterval(float newAttackInterval, bool waitAfterChanging);
+        public abstract void SetAttackInterval(float newAttackInterval);
     }
 }

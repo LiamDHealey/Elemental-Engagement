@@ -48,6 +48,11 @@ namespace ElementalEngagement.Combat
             needsToWait = waitAfterChanging;
         }
 
+        public override void SetAttackInterval(float newAttackInterval)
+        {
+            attackInterval = newAttackInterval;
+        }
+
         private void Update()
         {
             if (!enabled)

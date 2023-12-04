@@ -57,10 +57,13 @@ namespace ElementalEngagement.Combat
 
                 foreach (Attack tempAttack in attacks)
                 {
+                    if (tempAttack == null)
+                        continue;
                     tempAttack.damage.amount *= damageMultiplier;
                     tempAttack.knockback.amount *= knockbackMultiplier;
                     tempAttack.SetAttackInterval(tempAttack.attackInterval * attackIntervalMultiplier, true);
                 }
+                return;
             }
 
             collidersToEffect = Physics.OverlapSphere(area.transform.position, area.radius);

@@ -143,6 +143,11 @@ namespace ElementalEngagement.Combat
             needsToWait = waitAfterChanging;
         }
 
+        public override void SetAttackInterval(float newAttackInterval)
+        {
+            attackInterval = newAttackInterval;
+        }
+
         IEnumerator WaitForDamage(Collider other)
         {
             yield return new WaitForSeconds(damageDelay);
