@@ -49,21 +49,7 @@ namespace ElementalEngagement.UI
         /// </summary>
         public void FadeIn()
         {
-            StartCoroutine(FadeInCoroutine());
-        }
-
-        /// <summary>
-        /// Coroutine to perform a *fancy* fade in animation
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator FadeInCoroutine()
-        {
-            canvasGroup.alpha = 0;
-            for (int i = 0; i < 10; i++)
-            {
-                canvasGroup.alpha += 0.1f;
-                yield return new WaitForSeconds(0.01f);
-            }
+            canvasGroup.alpha = 1.0f;
         }
 
         /// <summary>

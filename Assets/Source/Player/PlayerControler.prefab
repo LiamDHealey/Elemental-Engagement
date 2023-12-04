@@ -120,6 +120,12 @@ MonoBehaviour:
   commandMask:
     serializedVersion: 2
     m_Bits: 896
+  groupSelectionStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  groupSelectionStopped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7572055457978535631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +157,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSelectedAbilityChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onAbilitySelected:
+    m_PersistentCalls:
+      m_Calls: []
+  onAbilityDeselected:
     m_PersistentCalls:
       m_Calls: []
   onAbilityMenuChanged:
@@ -301,7 +313,7 @@ MonoBehaviour:
     forbiddenStates: 24
   - action: {fileID: -3569934808544085218, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
     requiredStates: 2
-    forbiddenStates: 24
+    forbiddenStates: 216
   - action: {fileID: 4506297038116039352, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
     requiredStates: 0
     forbiddenStates: 16
@@ -343,6 +355,12 @@ MonoBehaviour:
     forbiddenStates: 24
   - action: {fileID: 4945754695445653006, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
     requiredStates: 2
+    forbiddenStates: 24
+  - action: {fileID: -9041264994828317101, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
+    requiredStates: 128
+    forbiddenStates: 24
+  - action: {fileID: 9169744056339315659, guid: 75446b78dec42964eb0feaae8162db4f, type: 3}
+    requiredStates: 64
     forbiddenStates: 24
 --- !u!114 &2432912754186515058
 MonoBehaviour:
