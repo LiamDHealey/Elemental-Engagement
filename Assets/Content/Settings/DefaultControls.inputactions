@@ -42,9 +42,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "IssueCommand",
+                    "name": "Move",
                     "type": "Button",
                     "id": "33735e59-ce10-49a9-a92b-e1b0e233d4bd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "a1696adf-d4fa-4f7b-adb9-3a21a9748b5f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sacrifice",
+                    "type": "Button",
+                    "id": "9b9ac09e-bc74-4cb7-9bcd-b0f1abd281a0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -273,7 +291,7 @@
                     "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "IssueCommand",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -284,7 +302,7 @@
                     "interactions": "Tap(duration=0.4)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "IssueCommand",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -659,6 +677,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Stop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "231536a1-7728-442d-96d3-5f54e0679add",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap(duration=0.4)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "891ca066-a26b-441f-b062-2182f87e4d6b",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Tap(duration=0.4)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71adbeca-c1eb-41dd-a633-6f14dff9baec",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap(duration=0.4)",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Sacrifice",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6cd39259-8aa9-4b1b-80e2-5621ba828452",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Tap(duration=0.4)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sacrifice",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

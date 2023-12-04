@@ -235,7 +235,6 @@ namespace ElementalEngagement.Favor
             if (!targetUnit.isActive)
             {
                 targetUnit.isActive = true;
-                targetUnit.unit.onSacrificeBegin?.Invoke();
             }
         }
 
@@ -244,7 +243,6 @@ namespace ElementalEngagement.Favor
             if (targetUnit.isActive)
             {
                 targetUnit.isActive = false;
-                targetUnit.unit.onSacrificeEnd?.Invoke();
             }
         }
 
@@ -265,10 +263,12 @@ namespace ElementalEngagement.Favor
                 if (unitsToUpdate[i].unit.Equals(unitToSacrifice))
                 {
                     unitsToUpdate[i].isActive = true;
+                    unitsToUpdate[i].unit.onSacrificeBegin?.Invoke();
                     return;
                 }
             }
-             
+
+            unitToSacrifice.onSacrificeBegin?.Invoke();
             unitsToUpdate.Add(new SacrificingUnit(unitToSacrifice, sacrificeInterval));
         }
 
@@ -284,6 +284,7 @@ namespace ElementalEngagement.Favor
                 if (unitsToUpdate[i].unit.Equals(unitToSacrifice))
                 {
                     unitsToUpdate[i].isActive = false;
+                    unitsToUpdate[i].unit.onSacrificeEnd?.Invoke();
                 }
             }
         }

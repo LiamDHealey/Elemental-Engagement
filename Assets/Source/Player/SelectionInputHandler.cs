@@ -62,6 +62,9 @@ namespace ElementalEngagement.Player
 
         private Camera camera;
 
+        public UnityEvent groupSelectionStarted;
+        public UnityEvent groupSelectionStopped;
+
         private bool selectedThisTick = false;
 
         private void Awake()
@@ -102,6 +105,7 @@ namespace ElementalEngagement.Player
             /// <returns> The time to wait between selection updates. </returns>
             IEnumerator UpdateSelection()
             {
+                groupSelectionStarted?.Invoke();
                 // Add to selection.
                 while (isInProgress())
                 {
@@ -122,6 +126,7 @@ namespace ElementalEngagement.Player
                     yield return null;
                 }
                 circularSelectionIndicator.SetActive(false);
+                groupSelectionStopped?.Invoke();
             }
         }
 
@@ -243,6 +248,20 @@ namespace ElementalEngagement.Player
 
                 chosenReceiver?.ExecuteCommand(hit, selectedObjects, isAltCommand);
             }
+        }
+
+        public CommandReceiver GetCurrentCommand()
+        {
+            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
+            if (!Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask))
+                return null;
+
+            return selectedObjects
+                .Where(selectable => selectable != null)
+                .SelectMany(selectable => selectable.GetComponents<CommandReceiver>())
+                .Where(receiver => receiver.CanExecuteCommand(hit))
+                .OrderByDescending(receiver => receiver.commandPriority)
+                .FirstOrDefault();
         }
 
         /// <summary>

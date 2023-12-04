@@ -1,3 +1,4 @@
+using ElementalEngagement.Combat;
 using ElementalEngagement.Player;
 using System;
 using System.Collections;
@@ -35,28 +36,45 @@ namespace ElementalEngagement
         // The ability manager
         private CameraMovementHandler panInputHandler;
 
+        private State? _state = null;
         private State state
         {
             get
             {
+                if (_state != null)
+                    return _state.Value;
+
+
                 if (UIManager.isUIOpen)
-                    return State.InMenu;
-                if (abilityInputHandler.isAbilitySelected)
+                    _state = State.InMenu;
+                else if (abilityInputHandler.isAbilitySelected)
                     if (abilityInputHandler.selectedAbility.canBeRotated)
-                        return State.AbilitySelected | State.RotatingAbility;
+                        _state = State.AbilitySelected | State.RotatingAbility;
                     else
-                        return State.AbilitySelected;
-                if (abilityInputHandler.isSelectionInProgress)
+                        _state = State.AbilitySelected;
+                else if (abilityInputHandler.isSelectionInProgress)
                     if (selectionInputHandler.selectedObjects.Count > 0)
-                        return State.SelectingAbility | State.UnitsSelected;
+                        _state = State.SelectingAbility | State.UnitsSelected;
                     else
-                        return State.SelectingAbility;
-                if (selectionInputHandler.selectedObjects.Count > 0)
-                    return State.UnitsSelected;
+                        _state = State.SelectingAbility;
+                else if (selectionInputHandler.selectedObjects.Count > 0)
+                {
+                    _state = selectionInputHandler.GetCurrentCommand() switch
+                    {
+                        SacrificeCommand => State.UnitsSelected | State.HoveringOverShrine,
+                        ChaseCommand => State.UnitsSelected | State.HoveringOverEnemies,
+                        _ => State.UnitsSelected,
+                    };
+                }
                 else
-                    return State.Default;
+                    _state = State.Default;
+
+
+                return _state.Value;
             }
         }
+
+
 
         // Start is called before the first frame update
         private void Awake()
@@ -91,7 +109,9 @@ namespace ElementalEngagement
             input.actions["CircularSelect"].performed += CircularSelect;
             input.actions["SelectAll"].performed += SelectAll;
             input.actions["DeselectAll"].performed += DeselectAll;
-            input.actions["IssueCommand"].performed += IssueCommand;
+            input.actions["Move"].performed += IssueCommand;
+            input.actions["Attack"].performed += IssueCommand;
+            input.actions["Sacrifice"].performed += IssueCommand;
             input.actions["AttackMove"].performed += IssueAltCommand;
             input.actions["PlayAbility"].performed += PlayAbility;
             input.actions["SelectAbility0"].performed += SelectAbility0;
@@ -110,7 +130,9 @@ namespace ElementalEngagement
             input.actions["CircularSelect"].performed -= CircularSelect;
             input.actions["SelectAll"].performed -= SelectAll;
             input.actions["DeselectAll"].performed -= DeselectAll;
-            input.actions["IssueCommand"].performed -= IssueCommand;
+            input.actions["Move"].performed -= IssueCommand;
+            input.actions["Attack"].performed -= IssueCommand;
+            input.actions["Sacrifice"].performed -= IssueCommand;
             input.actions["AttackMove"].performed -= IssueAltCommand;
             input.actions["PlayAbility"].performed -= PlayAbility;
             input.actions["SelectAbility0"].performed -= SelectAbility0;
@@ -125,6 +147,8 @@ namespace ElementalEngagement
 
         private void Update()
         {
+            _state = null;
+
             if (input.actions["ZoomIn"].inProgress)
             {
                 ZoomIn(input.actions["ZoomIn"]);
@@ -273,7 +297,7 @@ namespace ElementalEngagement
 
             if (state.HasFlag(State.SelectingAbility) || state.HasFlag(State.AbilitySelected))
             {
-                abilityInputHandler.ResetSelection();
+                abilityInputHandler.UndoSelection();
             }
             else if (state.HasFlag(State.InMenu))
             {
@@ -317,6 +341,8 @@ namespace ElementalEngagement
             AbilitySelected = 8,
             InMenu = 16,
             RotatingAbility = 32,
+            HoveringOverEnemies = 64,
+            HoveringOverShrine = 128,
         }
     }
 }
