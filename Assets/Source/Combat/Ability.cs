@@ -33,5 +33,8 @@ namespace ElementalEngagement.Combat
 
         [Tooltip("Whether or not this can be rotated")]
         public bool canBeRotated = false;
+
+        [Tooltip("The tooltip for the ability.")]
+        public string toolTip = "Plz write the tool tip for me Dylan. Bla bla bla more text so that the box is about the right size, bla bla bla bla bla. I hope you have a good day, bye.";
     }
 }

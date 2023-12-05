@@ -140,14 +140,16 @@ namespace ElementalEngagement.Player
             Ability ability = abilities[currentSelection[0].Value, index];
             if (unlockedAbilities.Contains(ability))
             {
+                int? lastSelection = currentSelection[1];
+                currentSelection[1] = index;
                 onAbilitySelected?.Invoke();
-                if(currentSelection[1] == index)
+
+                if (lastSelection == index)
                 {
                     PlayAbility();
                     return SelectionResult.AbilityPlayed;
                 }
 
-                currentSelection[1] = index;
                 if (abilityPreview != null)
                 {
                     Destroy(abilityPreview.gameObject);
