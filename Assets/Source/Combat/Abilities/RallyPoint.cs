@@ -24,8 +24,20 @@ namespace ElementalEngagement.Combat
         {
             (Faction, string) key = (GetComponent<Allegiance>().faction, rallyTag);
 
-            NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 50, NavMesh.AllAreas);
-            transform.position = hit.position;
+            RaycastHit colliderHit;
+            Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 11), -transform.up, out colliderHit);
+
+            if (colliderHit.collider != null)
+            {
+                Debug.Log("Found Something!");
+                if(colliderHit.collider.GetComponent<SacrificeLocation>() != null)
+                {
+                    Debug.Log("We're In Buisiness!");
+                }
+            }
+
+            NavMesh.SamplePosition(transform.position, out NavMeshHit worldHit, 50, NavMesh.AllAreas);
+            transform.position = worldHit.position;
 
             if (_tagsToRallyLocations.ContainsKey(key))
             {

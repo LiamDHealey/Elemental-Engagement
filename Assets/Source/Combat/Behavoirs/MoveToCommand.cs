@@ -59,6 +59,12 @@ namespace ElementalEngagement.Combat
             {
                 RaycastHit virtualHit = new RaycastHit();
                 virtualHit.point = RallyPoint.tagsToRallyLocations[(allegiance.faction, tag)].position;
+                if (virtualHit.collider != null)
+                {
+                    if (virtualHit.collider.GetComponent<SacrificeLocation>() != null)
+                        return;
+                }
+
                 ExecuteCommand(virtualHit, new ReadOnlyCollection<Selectable>(new List<Selectable>(){ GetComponent<Selectable>() }), false);
             }
         }
