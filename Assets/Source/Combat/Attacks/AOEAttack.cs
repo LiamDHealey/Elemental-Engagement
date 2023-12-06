@@ -28,6 +28,9 @@ namespace ElementalEngagement.Combat
         [Tooltip("How long a unit will be stopped for after attacking.")]
         [SerializeField] private float stopDuration = 0.5f;
 
+        [Tooltip("How long a unit will be stopped for after attacking.")]
+        [SerializeField] private bool invertAllegiance = false;
+
         private float timeRemainingToAttack;
 
         //Private tracker for waitBeforeDamage that can be set to true to start the cycle after 
@@ -64,7 +67,7 @@ namespace ElementalEngagement.Combat
 
             // If the target is aligned with this attack
             if (allegiance != null && otherAllegiance != null &&
-                allegiance.faction == otherAllegiance.faction)
+                (invertAllegiance != (allegiance.faction == otherAllegiance.faction)))
                 return;
 
             validTargets.Add(other);
