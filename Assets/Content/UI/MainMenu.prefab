@@ -767,7 +767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Desert Map
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 364d39c778ebdb343bb374ee7462718f, type: 2}
   m_sharedMaterial: {fileID: 5604977746213849724, guid: 364d39c778ebdb343bb374ee7462718f, type: 2}
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72.1
+  m_fontSize: 62.25
   m_fontSizeBase: 72.54
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -901,7 +901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: Grassland Map
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 364d39c778ebdb343bb374ee7462718f, type: 2}
   m_sharedMaterial: {fileID: 5604977746213849724, guid: 364d39c778ebdb343bb374ee7462718f, type: 2}
@@ -928,7 +928,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72.1
+  m_fontSize: 52.75
   m_fontSizeBase: 72.54
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credits
+  m_text: Tundra Map
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 364d39c778ebdb343bb374ee7462718f, type: 2}
   m_sharedMaterial: {fileID: 5604977746213849724, guid: 364d39c778ebdb343bb374ee7462718f, type: 2}
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72.1
+  m_fontSize: 63.45
   m_fontSizeBase: 72.54
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1728,6 +1728,7 @@ GameObject:
   - component: {fileID: 3799398891476567020}
   - component: {fileID: 8233279285018817417}
   - component: {fileID: 3861361423437008060}
+  - component: {fileID: 1014225870584687723}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -1837,10 +1838,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3861361423437008060}
-        m_TargetAssemblyTypeName: ElementalEngagement.UI.MenuToggler, Assembly-CSharp
-        m_MethodName: Open
-        m_Mode: 5
+      - m_Target: {fileID: 1014225870584687723}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadNewScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1861,6 +1862,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef727ed39e01d4418c675c30fdcd5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1014225870584687723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4487393134400571150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592d971531d35b249a74d4ea46c222cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Content/Scenes/TundraMap
 --- !u!1 &4573445090622199393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,7 +2236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592d971531d35b249a74d4ea46c222cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Content/Scenes/MainScene
+  sceneToLoad: Content/Scenes/GrasslandMap
 --- !u!1 &5608941541903628163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,6 +2743,7 @@ GameObject:
   - component: {fileID: 8554232582991465802}
   - component: {fileID: 2927361415903423155}
   - component: {fileID: 8000623897069469884}
+  - component: {fileID: 6372214111033436990}
   m_Layer: 5
   m_Name: Options Button
   m_TagString: Untagged
@@ -2838,10 +2853,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8000623897069469884}
-        m_TargetAssemblyTypeName: ElementalEngagement.UI.MenuToggler, Assembly-CSharp
-        m_MethodName: Open
-        m_Mode: 5
+      - m_Target: {fileID: 6372214111033436990}
+        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
+        m_MethodName: LoadNewScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2862,6 +2877,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ef727ed39e01d4418c675c30fdcd5f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6372214111033436990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051344522708272626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592d971531d35b249a74d4ea46c222cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Content/Scenes/DesertMap
 --- !u!1 &8544331416862460525
 GameObject:
   m_ObjectHideFlags: 0
