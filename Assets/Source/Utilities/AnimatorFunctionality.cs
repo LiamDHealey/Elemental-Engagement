@@ -20,7 +20,7 @@ namespace ElementalEngagement.Utilities
         [SerializeField] private string movingParameterName = "IsMoving";
 
         [Tooltip("The minimum distance this needs to move to be consider moving.")] [Min(0)]
-        public float moveThreshed = 1.0f;
+        public float moveThreshed = 5.0f;
 
         public bool invertFlipping = false;
 

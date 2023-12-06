@@ -60,7 +60,7 @@ namespace ElementalEngagement.Utilities
             if (instance == null)
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(this);
                 audioSource = GetComponent<AudioSource>();
             }
             else
@@ -112,6 +112,7 @@ namespace ElementalEngagement.Utilities
 
         public static void ResetMusic()
         {
+            instance.StopAllCoroutines();
             foreach (Transform child in instance.transform)
             {
                 Destroy(child.gameObject);
