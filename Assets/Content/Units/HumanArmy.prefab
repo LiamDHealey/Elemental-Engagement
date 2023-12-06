@@ -2495,7 +2495,7 @@ PrefabInstance:
     - target: {fileID: 854166808930866116, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: eb179b76c07d638478d0a3bbb33714d9, type: 2}
+      objectReference: {fileID: 9100000, guid: 78937be34713e56429d090272d735278, type: 2}
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: _speed
       value: 2
@@ -3176,6 +3176,10 @@ PrefabInstance:
       propertyPath: onKilled.m_PersistentCalls.m_Calls.Array.data[18].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2485071494659209621, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2530781178288127167, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.21101104
@@ -3416,6 +3420,14 @@ PrefabInstance:
       propertyPath: renderers.Array.data[16]
       value: 
       objectReference: {fileID: 4287280942261733432}
+    - target: {fileID: 4823168693490502055, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823168693490502055, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5113534057273330663, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: volumeParam
       value: 
@@ -3423,10 +3435,14 @@ PrefabInstance:
     - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1332779222, guid: 00126a37f571a294e84f945445d198b1, type: 3}
+      objectReference: {fileID: -1410167407, guid: 77af8c0ed42a0df49a829fb4c73ecaa6, type: 3}
     - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351249221945880208, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5833595026407189285, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Name
