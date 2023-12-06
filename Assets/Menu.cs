@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class Menu : MonoBehaviour
         if(menuName == this._menuName)
         {
             transform.GetChild(0).gameObject.SetActive(true);
+            transform.GetComponentInChildren<Button>().Select();
         }
     }
 
