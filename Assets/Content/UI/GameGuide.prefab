@@ -1920,10 +1920,10 @@ RectTransform:
   - {fileID: 8726328127895471845}
   m_Father: {fileID: 5489860461356414284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 214.4}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1098.5625, y: -123.3}
+  m_SizeDelta: {x: 732.375, y: 214.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &908418443562988175
 CanvasRenderer:
@@ -6863,10 +6863,10 @@ RectTransform:
   - {fileID: 8756874097360079229}
   m_Father: {fileID: 5489860461356414284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 214.4}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1464.75, y: -123.3}
+  m_SizeDelta: {x: 732.375, y: 214.4}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &259407126778085874
 CanvasRenderer:
@@ -9146,10 +9146,10 @@ RectTransform:
   - {fileID: 1648994072742255445}
   m_Father: {fileID: 5489860461356414284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 214.4}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 366.1875, y: -123.3}
+  m_SizeDelta: {x: 732.375, y: 214.4}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &5732063403434870647
 CanvasRenderer:
@@ -13224,10 +13224,10 @@ RectTransform:
   - {fileID: 3461441065336390063}
   m_Father: {fileID: 5489860461356414284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 214.4}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: -123.3}
+  m_SizeDelta: {x: 732.375, y: 214.4}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6832688376666160571
 CanvasRenderer:
@@ -15694,7 +15694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6937243625477142707
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16472,7 +16472,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6182795436660455181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4965898886676528631}
+        m_TargetAssemblyTypeName: ElementalEngagement.UI.MenuToggler, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: gameGuide
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4965898886676528631
 MonoBehaviour:
   m_ObjectHideFlags: 0
