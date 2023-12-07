@@ -31,11 +31,11 @@ namespace ElementalEngagement.Utilities
         {
             string[] rgba = color.Split(", ");
 
-            GetComponent<SpriteRenderer>().material?.SetColor("_OutlineColor", new Color(float.Parse(rgba[0]), float.Parse(rgba[1]), float.Parse(rgba[2]), float.Parse(rgba[3])));
+            GetComponent<SpriteRenderer>().sharedMaterial?.SetColor("_OutlineColor", new Color(float.Parse(rgba[0]), float.Parse(rgba[1]), float.Parse(rgba[2]), float.Parse(rgba[3])));
         }
         public void SetColor(Color color)
         {
-            GetComponent<SpriteRenderer>().material.SetColor("_OutlineColor", color);
+            GetComponent<SpriteRenderer>().sharedMaterial.SetColor("_OutlineColor", color);
         }
     }
 
