@@ -35,6 +35,9 @@ namespace ElementalEngagement.Utilities
         [Tooltip("Whether or not to use the audioMixer to fade this source")]
         [SerializeField] private bool useMixer = true;
 
+        [Tooltip("Whether this is an announcer")]
+        [SerializeField] private bool isAnnouncer = false;
+
         private bool continuePlaying = false;
         private bool currentlyPlaying = false;
         private float startingMixerVolume = 0f;
@@ -91,13 +94,26 @@ namespace ElementalEngagement.Utilities
             StartCoroutine(StopAfterDelay(duration));
         }
 
-        public void PlayRandomSound()
+        /// <summary>
+        /// Plays random sound and returns the length of the sound
+        /// </summary>
+        /// <returns>Length of Sound</returns>
+        public float PlayRandomSound()
         {
             if(!useMixer)
                 audioSource.volume = startingSourceVolume;
 
+            AudioClip clipToPlay = GetRandomClip(audioClips);
+            float length = clipToPlay.length;
             audioMixer.SetFloat(volumeParam, startingMixerVolume);
-            audioSource.PlayOneShot(GetRandomClip(audioClips));
+
+            if(isAnnouncer)
+            {
+                AnnouncerQueue.addAnnouncer(this);
+            }
+            audioSource.PlayOneShot(clipToPlay);
+
+            return clipToPlay.length;
         }
 
         public void PlayOnInterval()
