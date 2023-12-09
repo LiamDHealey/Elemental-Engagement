@@ -14,7 +14,7 @@ public class SpriteFlasher : MonoBehaviour
     {
         foreach (SpriteRenderer renderer in renderers)
         {
-            renderer.color = color;
+            renderer.color = new Color(1, 0, 0, 0.5f);
         }
 
         remainingFlashTime = flashLength;
