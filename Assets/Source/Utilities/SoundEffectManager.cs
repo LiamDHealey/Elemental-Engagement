@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
+using Unity.VisualScripting;
 
 namespace ElementalEngagement.Utilities
 {
@@ -34,9 +35,6 @@ namespace ElementalEngagement.Utilities
 
         [Tooltip("Whether or not to use the audioMixer to fade this source")]
         [SerializeField] private bool useMixer = true;
-
-        [Tooltip("Whether this is an announcer")]
-        [SerializeField] private bool isAnnouncer = false;
 
         private bool continuePlaying = false;
         private bool currentlyPlaying = false;
@@ -98,22 +96,35 @@ namespace ElementalEngagement.Utilities
         /// Plays random sound and returns the length of the sound
         /// </summary>
         /// <returns>Length of Sound</returns>
-        public float PlayRandomSound()
+        public void PlayRandomSound()
         {
             if(!useMixer)
                 audioSource.volume = startingSourceVolume;
 
             AudioClip clipToPlay = GetRandomClip(audioClips);
-            float length = clipToPlay.length;
             audioMixer.SetFloat(volumeParam, startingMixerVolume);
+            audioSource.PlayOneShot(clipToPlay);
+        }
 
-            if(isAnnouncer)
-            {
-                AnnouncerQueue.addAnnouncer(this);
-            }
+        /// <summary>
+        /// Adds this object to the queue to play an announcer sound
+        /// </summary>
+        public void addAnnouncementToQueue()
+        {
+            AnnouncerQueue.addAnnouncer(this);
+        }
+
+        /// <summary>
+        /// Uses this object to play one of its loaded announcements
+        /// </summary>
+        /// <returns></returns>
+        public float playRandomAnnouncement()
+        {
+            AudioClip clipToPlay = GetRandomClip(audioClips);
+            float length = clipToPlay.length;
             audioSource.PlayOneShot(clipToPlay);
 
-            return clipToPlay.length;
+            return length;
         }
 
         public void PlayOnInterval()

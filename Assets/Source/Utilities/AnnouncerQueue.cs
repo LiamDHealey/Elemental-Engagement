@@ -11,13 +11,19 @@ public class AnnouncerQueue : MonoBehaviour
     private float currentTimeRemaining;
     private bool currentlyPlaying;
 
+    private void Awake()
+    {
+        announcersActive = new Queue<SoundEffectManager>();
+    }
+
     private void Update()
     {
         if(!currentlyPlaying && announcersActive.Count > 0)
         {
             SoundEffectManager activeAnnouncer = announcersActive.Dequeue();
-            float length = activeAnnouncer.PlayRandomSound();
+            float length = activeAnnouncer.playRandomAnnouncement();
             currentTimeRemaining = length;
+            currentlyPlaying = true;
         }
         else if(currentlyPlaying && currentTimeRemaining > 0)
         {
@@ -29,8 +35,8 @@ public class AnnouncerQueue : MonoBehaviour
         }
     }
 
-    public static void addAnnouncer(SoundEffectManager manager)
+    public static void addAnnouncer(SoundEffectManager announcer)
     {
-        announcersActive.Enqueue(manager);
+        announcersActive.Enqueue(announcer);
     }
 }
