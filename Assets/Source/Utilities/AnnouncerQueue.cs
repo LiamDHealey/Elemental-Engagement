@@ -19,6 +19,14 @@ public class AnnouncerQueue : MonoBehaviour
             float length = activeAnnouncer.PlayRandomSound();
             currentTimeRemaining = length;
         }
+        else if(currentlyPlaying && currentTimeRemaining > 0)
+        {
+            currentTimeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            currentlyPlaying = false;
+        }
     }
 
     public static void addAnnouncer(SoundEffectManager manager)
