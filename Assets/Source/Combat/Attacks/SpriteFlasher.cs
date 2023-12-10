@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using ElementalEngagement.Combat;
 
 public class SpriteFlasher : MonoBehaviour
 {
@@ -10,15 +11,17 @@ public class SpriteFlasher : MonoBehaviour
     public float flashLength = .25f;
     private float remainingFlashTime = 0;
 
-    public void Flash()
+    public void Flash(Damage damage)
     {
-        foreach (SpriteRenderer renderer in renderers)
+        if (damage.amount > 0)
         {
-            renderer.color = new Color(1, 0, 0, 0.5f);
+            foreach (SpriteRenderer renderer in renderers)
+            {
+                renderer.color = new Color(1, 0, 0, 0.5f);
+            }
+
+            remainingFlashTime = flashLength;
         }
-
-        remainingFlashTime = flashLength;
-
     }
 
     private void Update()

@@ -48,6 +48,13 @@ namespace ElementalEngagement.Favor
         [Tooltip("Called when this has been decaptured")]
         public UnityEvent onDecaptured;
 
+        [Tooltip("Called when this is starting to be captured")]
+        public UnityEvent onBeginCapturing;
+
+        [Tooltip("Called when this is finished capturing")]
+        public UnityEvent onEndCapturing;
+
+        private bool currentlyCapturing;
 
 
 
@@ -91,12 +98,27 @@ namespace ElementalEngagement.Favor
             }
             remainingNeutralTime -= Time.deltaTime;
 
-            for(int i = unitsToUpdate.Count - 1; i >= 0; i--)
+            bool noneActive = true;
+            for (int i = unitsToUpdate.Count - 1; i >= 0; i--)
             {
                 if (unitsToUpdate[i].unit == null)
                 {
                     unitsToUpdate.RemoveAt(i);
                 }
+                else if (unitsToUpdate[i].isActive)
+                {
+                    noneActive = false;
+                }
+            }
+            if (noneActive)
+            {
+                onEndCapturing?.Invoke();
+                currentlyCapturing = false;
+            }
+            else if (!currentlyCapturing)
+            {
+                currentlyCapturing = true;
+                onBeginCapturing?.Invoke();
             }
 
             SacrificeCurrentUnits();
@@ -129,6 +151,7 @@ namespace ElementalEngagement.Favor
                             if (targetUnit.timeToWait <= 0)
                             {
                                 state = State.Capturing;
+                                onBeginCapturing?.Invoke();
                                 foreach (var capturePoint in new Dictionary<Faction, float>(capturePoints))
                                 {
                                     capturePoints[unitFaction] = 0f;
@@ -154,6 +177,7 @@ namespace ElementalEngagement.Favor
                                 if (capturePoints[unitFaction] >= requiredCapturePoints)
                                 {
                                     state = State.Captured;
+                                    onEndCapturing?.Invoke();
                                     allegiance.faction = unitFaction;
                                     onCaptured?.Invoke();
                                     StopUnitSacrificing(targetUnit);
