@@ -9699,6 +9699,7 @@ GameObject:
   - component: {fileID: 4649626290613986}
   - component: {fileID: 198319247725527338}
   - component: {fileID: 199125967581385946}
+  - component: {fileID: 1074745205558897197}
   m_Layer: 0
   m_Name: Player1Capture
   m_TagString: Untagged
@@ -14517,6 +14518,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &1074745205558897197
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890581295539120}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &1984398602724530
 GameObject:
   m_ObjectHideFlags: 0
