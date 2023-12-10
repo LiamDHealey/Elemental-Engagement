@@ -50,8 +50,11 @@ namespace ElementalEngagement.UI
 
             else if (FavorManager.factionToFavor[(faction, god)] >= .5 && !atHalf)
             {
-                onHalfHumanFavor?.Invoke();
-                atHalf = true;
+                if(allegiance.faction == faction)
+                {
+                    onHalfHumanFavor?.Invoke();
+                    atHalf = true;
+                }
             }
         }
 
