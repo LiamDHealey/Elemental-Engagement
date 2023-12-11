@@ -57,8 +57,13 @@ namespace ElementalEngagement.Combat
 
             if (moveToRallyOnStart && RallyPoint.tagsToRallyLocations.ContainsKey((allegiance.faction, tag)))
             {
+                if (RallyPoint.tagsToInteractibles.ContainsKey((allegiance.faction, tag)))
+                {
+                    return;
+                }
                 RaycastHit virtualHit = new RaycastHit();
                 virtualHit.point = RallyPoint.tagsToRallyLocations[(allegiance.faction, tag)].position;
+
                 ExecuteCommand(virtualHit, new ReadOnlyCollection<Selectable>(new List<Selectable>(){ GetComponent<Selectable>() }), false);
             }
         }

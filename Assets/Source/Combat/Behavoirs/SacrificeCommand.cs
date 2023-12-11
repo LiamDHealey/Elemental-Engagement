@@ -33,9 +33,26 @@ namespace ElementalEngagement.Combat
         [Tooltip("Called when this stops sacrificing itself")]
         public UnityEvent onSacrificeEnd;
 
+        [Tooltip("Whether this unit should move to RallyPoints or not")]
+        [SerializeField] private bool moveToRallyOnStart = true;
+
 
         // The last sacrifice location this was commanded to sacrifice to.
         private Collider targetSacrificeLocation;
+
+        private void Start()
+        {
+            if (moveToRallyOnStart && RallyPoint.tagsToRallyLocations.ContainsKey((allegiance.faction, tag)))
+            {
+                if (RallyPoint.tagsToInteractibles.ContainsKey((allegiance.faction, tag)))
+                {
+                    if (RallyPoint.tagsToInteractibles[(allegiance.faction, tag)].collider.GetComponent<SacrificeLocation>() != null) 
+                    {
+                        ExecuteCommand(RallyPoint.tagsToInteractibles[(allegiance.faction, tag)], new ReadOnlyCollection<Selectable>(new List<Selectable>() { GetComponent<Selectable>() }), false);
+                    }
+                }
+            }
+        }
 
 
         /// <summary>
