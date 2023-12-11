@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DelayStart : MonoBehaviour
 {
+    [Tooltip("How Long to wait before activating this objects children")]
+    public float timeToWait = 0.001f;
     void Start()
     {
         StartCoroutine(ActivateRoutine());
@@ -20,7 +22,7 @@ public class DelayStart : MonoBehaviour
                 t.gameObject.SetActive(false); // disable the children
         }
 
-        yield return new WaitForSeconds(.05f);
+        yield return new WaitForSeconds(timeToWait);
 
         foreach (Transform t in ChildrenTransforms)
         {

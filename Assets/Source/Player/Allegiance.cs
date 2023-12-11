@@ -34,12 +34,6 @@ namespace ElementalEngagement.Player
         // Called when this allegiance's faction was set.
         public List<FactionEvent> onFactionChanged = new List<FactionEvent> { new FactionEvent(Faction.Unaligned), new FactionEvent(Faction.PlayerOne), new FactionEvent(Faction.PlayerTwo) };
 
-
-        private void OnValidate()
-        {
-            InvokeOnFactionChanged();
-        }
-
         private void Start()
         {
             InvokeOnFactionChanged();

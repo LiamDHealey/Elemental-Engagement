@@ -33,6 +33,9 @@ namespace ElementalEngagement.Utilities
         [Tooltip("How Long to fade out the sound to play")]
         [SerializeField]private float fadeOutDuration = 1f;
 
+        [Tooltip("If an Announcer, How long this object should wait before announcing again")]
+        [SerializeField] private float announcementWaitTime = 0f;
+
         [Tooltip("Whether or not to use the audioMixer to fade this source")]
         [SerializeField] private bool useMixer = true;
 
@@ -40,6 +43,7 @@ namespace ElementalEngagement.Utilities
         private bool currentlyPlaying = false;
         private float startingMixerVolume = 0f;
         private float startingSourceVolume = 0f;
+        private float waitingForAnnouncement = 0f;
 
         [Tooltip("The Exact Name of the exposed volume parameter from the AudioMixer that the source is connected to")]
         [SerializeField] private string volumeParam = "godPowerVolume";
@@ -84,6 +88,11 @@ namespace ElementalEngagement.Utilities
             {
                 Destroy(gameObject);
             }
+
+            if(waitingForAnnouncement > 0f) 
+            {
+                waitingForAnnouncement -= Time.deltaTime;
+            }
         }
 
         public void PlayForDuration()
@@ -111,7 +120,10 @@ namespace ElementalEngagement.Utilities
         /// </summary>
         public void addAnnouncementToQueue()
         {
+            if (waitingForAnnouncement > 0)
+                return;
             AnnouncerQueue.addAnnouncer(this);
+            waitingForAnnouncement = announcementWaitTime;
         }
 
         /// <summary>
