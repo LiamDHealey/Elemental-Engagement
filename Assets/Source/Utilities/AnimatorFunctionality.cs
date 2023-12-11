@@ -73,6 +73,10 @@ namespace ElementalEngagement.Utilities
             movement = GetComponentInParent<Movement>();
             lastPosition = transform.position;
             spriteRenderers = animators.Select(a => a.GetComponent<SpriteRenderer>()).ToList();
+            foreach(Animator animator in animators)
+            {
+                animator.SetFloat("RandomOffset", Random.Range(0, 0.5f));
+            }
         }
 
         /// <summary>
@@ -99,7 +103,7 @@ namespace ElementalEngagement.Utilities
                 bool flipped = movement.moveDirection.x < 0;
                 foreach (SpriteRenderer renderer in spriteRenderers)
                 {
-                    renderer.flipX = invertFlipping != flipped;
+                    renderer.material.SetInt("_Flip", flipped ? 1 : 0);
                 } 
             }
 
