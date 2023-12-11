@@ -9,7 +9,6 @@ using UnityEngine.Events;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 using Object = UnityEngine.Object;
 
-[RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour
 {
 
@@ -174,17 +173,8 @@ public class Movement : MonoBehaviour
     {
         if (!destinationReached && canMove && navigator != null)
         {
-            if (Physics.Raycast(transform.position + Vector3.up * 50, Vector3.down, out RaycastHit hit, 500f, walkableMask))
-            {
-                transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
-                transform.position += moveDirection * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime);
-            }
-            else
-            {
-                NavMesh.SamplePosition(transform.position, out NavMeshHit navHit, 1000f, NavMesh.AllAreas);
-                transform.position += (navHit.position - transform.position).normalized * speed * 5 * Time.deltaTime;
-            }
-
+            transform.position = Vector3.Scale(transform.position, new Vector3(1, 0, 1));
+            transform.position += moveDirection * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime);
             agent.nextPosition = transform.position;
         }
 
