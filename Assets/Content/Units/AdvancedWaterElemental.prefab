@@ -5134,6 +5134,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0.5
+  announcementWaitTime: 0
   useMixer: 0
   volumeParam: 
 --- !u!1 &5026256109232540908
@@ -5332,6 +5333,10 @@ PrefabInstance:
     - target: {fileID: 1000893756457621722, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: agentType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1291757304422249541, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1435602950215033256, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5680,6 +5685,26 @@ PrefabInstance:
     - target: {fileID: 8322546842097471898, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 10.419001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7199999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7199999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7199999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 8534031672330110094, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.78
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6997656361314388549, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}

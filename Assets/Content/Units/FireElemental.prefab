@@ -328,10 +328,6 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 99f71e863b2982b409465af0ac871b2f, type: 2}
-    - target: {fileID: 1291757304422249541, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1435602950215033256, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -471,6 +467,18 @@ PrefabInstance:
     - target: {fileID: 4823168693490502055, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885565404329688953, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_SortingLayer
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885565404329688953, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885565404329688953, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1031962593
       objectReference: {fileID: 0}
     - target: {fileID: 5113534057273330663, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: audioClips.Array.size
