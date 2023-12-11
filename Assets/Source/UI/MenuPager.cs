@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace ElementalEngagement.UI
@@ -11,8 +12,9 @@ namespace ElementalEngagement.UI
 
         [SerializeField] private Button nextButton;
         [SerializeField] private Button prevButton;
+        [SerializeField] private GameObject altNextButton;
+        [SerializeField] private GameObject altPrevButton;
         [SerializeField] private List<GameObject> menus;
-
 
         [SerializeField] private int _menuIndex;
         public int menuIndex
@@ -20,35 +22,22 @@ namespace ElementalEngagement.UI
             get => _menuIndex;
             set
             {
+                if (!gameObject.activeInHierarchy)
+                    return;
+
                 if (value >= menus.Count)
                     throw new ArgumentOutOfRangeException();
 
                 menus[_menuIndex].SetActive(false);
-                if (_menuIndex == 0)
-                {
-                    prevButton.gameObject.SetActive(true);
-                }
-                else if (_menuIndex == menus.Count - 1)
-                {
-                    nextButton.gameObject.SetActive(true);
-                }
-
-
+                menus[value].SetActive(true);
+                int oldIndex = _menuIndex;
                 _menuIndex = value;
-
-
-                menus[_menuIndex].SetActive(true);
-                if (_menuIndex == 0)
-                {
-                    prevButton.gameObject.SetActive(false);
-                }
-                else if (_menuIndex == menus.Count - 1)
-                {
-                    nextButton.gameObject.SetActive(false);
-                }
+                onMenuIndexChanged?.Invoke(oldIndex);
             }
         }
 
+
+        public UnityEvent<int> onMenuIndexChanged;
 
         private void Start()
         {
@@ -60,6 +49,18 @@ namespace ElementalEngagement.UI
 
             nextButton.onClick.AddListener(() => menuIndex++);
             prevButton.onClick.AddListener(() => menuIndex--);
+        }
+
+        private void Update()
+        {
+            nextButton.gameObject.SetActive(menuIndex != menus.Count - 1 && nextButton.transform.parent.gameObject.activeSelf);
+            if (altNextButton != null)
+            {
+                altNextButton.SetActive(menuIndex == menus.Count - 1);
+            }
+            prevButton.gameObject.SetActive(menuIndex != 0);
+            if (altPrevButton != null)
+                altPrevButton.SetActive(menuIndex == 0 && nextButton.transform.parent.gameObject.activeSelf);
         }
     }
 }

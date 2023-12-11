@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 668458363085926927}
-  - component: {fileID: 234040135209394935}
   - component: {fileID: 7860104663587853419}
   - component: {fileID: 8835529322014301733}
   - component: {fileID: 6482236068002490565}
@@ -39,33 +38,6 @@ Transform:
   - {fileID: 2016978872141525239}
   m_Father: {fileID: 3169935085978601852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &234040135209394935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274121408428437938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _faction: 0
-  god: 1
-  onFactionChanged:
-  - faction: 0
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 1
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 2
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &7860104663587853419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,10 +67,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allegiance: {fileID: 234040135209394935}
+  allegiance: {fileID: 8335957412197613769}
   damage:
     amount: 5
-    allegiance: {fileID: 234040135209394935}
+    allegiance: {fileID: 0}
   knockback:
     amount: 3
     duration: 0.03
@@ -117,6 +89,7 @@ MonoBehaviour:
   maxTargets: 999
   canAttackAndMove: 0
   stopDuration: 0.5
+  invertAllegiance: 0
 --- !u!135 &6482236068002490565
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19529,7 +19502,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 193990396017921873}
-  - component: {fileID: 3498122609903024570}
   - component: {fileID: 6033639697993629879}
   - component: {fileID: 1972886686219970242}
   - component: {fileID: 1103870813999893325}
@@ -19559,33 +19531,6 @@ Transform:
   - {fileID: 1018954299336136193}
   m_Father: {fileID: 3169935085978601852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3498122609903024570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2628447571497002822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _faction: 0
-  god: 1
-  onFactionChanged:
-  - faction: 0
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 1
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 2
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &6033639697993629879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19615,10 +19560,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allegiance: {fileID: 3498122609903024570}
+  allegiance: {fileID: 8335957412197613769}
   damage:
     amount: 5
-    allegiance: {fileID: 3498122609903024570}
+    allegiance: {fileID: 0}
   knockback:
     amount: 3
     duration: 0.03
@@ -19637,6 +19582,7 @@ MonoBehaviour:
   maxTargets: 999
   canAttackAndMove: 0
   stopDuration: 0.5
+  invertAllegiance: 0
 --- !u!135 &1103870813999893325
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -82903,7 +82849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _faction: 0
-  god: 1
+  god: 0
   onFactionChanged:
   - faction: 0
     onSelected:
@@ -83023,7 +82969,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 821255246555842182}
-  - component: {fileID: 5367453313618362824}
   - component: {fileID: 7822383264423300099}
   - component: {fileID: 9080600493038592256}
   - component: {fileID: 1683184467717652711}
@@ -83053,33 +82998,6 @@ Transform:
   - {fileID: 5174554978529163752}
   m_Father: {fileID: 3169935085978601852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5367453313618362824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7760047039117579482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _faction: 0
-  god: 1
-  onFactionChanged:
-  - faction: 0
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 1
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 2
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &7822383264423300099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83109,10 +83027,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allegiance: {fileID: 5367453313618362824}
+  allegiance: {fileID: 8335957412197613769}
   damage:
     amount: 5
-    allegiance: {fileID: 5367453313618362824}
+    allegiance: {fileID: 0}
   knockback:
     amount: 3
     duration: 0.03
@@ -83131,6 +83049,7 @@ MonoBehaviour:
   maxTargets: 999
   canAttackAndMove: 0
   stopDuration: 0.5
+  invertAllegiance: 0
 --- !u!135 &1683184467717652711
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -88014,7 +87933,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6694636453870565659}
-  - component: {fileID: 2738513357046875250}
   - component: {fileID: 1011002377142038708}
   - component: {fileID: 1996628986238383852}
   - component: {fileID: 3504194135386199408}
@@ -88044,33 +87962,6 @@ Transform:
   - {fileID: 8771022386556542362}
   m_Father: {fileID: 3169935085978601852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2738513357046875250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8428737361580685875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _faction: 0
-  god: 1
-  onFactionChanged:
-  - faction: 0
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 1
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 2
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &1011002377142038708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88100,10 +87991,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allegiance: {fileID: 2738513357046875250}
+  allegiance: {fileID: 8335957412197613769}
   damage:
     amount: 5
-    allegiance: {fileID: 2738513357046875250}
+    allegiance: {fileID: 0}
   knockback:
     amount: 3
     duration: 0.03
@@ -88122,6 +88013,7 @@ MonoBehaviour:
   maxTargets: 999
   canAttackAndMove: 0
   stopDuration: 0.5
+  invertAllegiance: 0
 --- !u!135 &3504194135386199408
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -88197,7 +88089,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1634071219201201677}
-  - component: {fileID: 3681299267156736134}
   - component: {fileID: 2810348737527409306}
   - component: {fileID: 8397472971095841651}
   - component: {fileID: 5211642837953828646}
@@ -88227,33 +88118,6 @@ Transform:
   - {fileID: 1370275752019734628}
   m_Father: {fileID: 3169935085978601852}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3681299267156736134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673560183058404234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271b2bd4cbbe2f94bb83796e99ae2714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _faction: 0
-  god: 1
-  onFactionChanged:
-  - faction: 0
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 1
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
-  - faction: 2
-    onSelected:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &2810348737527409306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88283,10 +88147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 211b5e75a39eceb429fb6240c2a2392b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allegiance: {fileID: 3681299267156736134}
+  allegiance: {fileID: 8335957412197613769}
   damage:
     amount: 5
-    allegiance: {fileID: 3681299267156736134}
+    allegiance: {fileID: 0}
   knockback:
     amount: 3
     duration: 0.03
@@ -88305,6 +88169,7 @@ MonoBehaviour:
   maxTargets: 999
   canAttackAndMove: 0
   stopDuration: 0.5
+  invertAllegiance: 0
 --- !u!135 &5211642837953828646
 SphereCollider:
   m_ObjectHideFlags: 0

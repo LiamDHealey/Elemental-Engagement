@@ -20,7 +20,7 @@ namespace ElementalEngagement.Utilities
         [SerializeField] private string movingParameterName = "IsMoving";
 
         [Tooltip("The minimum distance this needs to move to be consider moving.")] [Min(0)]
-        public float moveThreshed = 1.0f;
+        public float flipThreshold = 0.3f;
 
         public bool invertFlipping = false;
 
@@ -31,6 +31,8 @@ namespace ElementalEngagement.Utilities
         private Vector3 lastPosition;
 
         private List<SpriteRenderer> spriteRenderers;
+
+        private Movement movement;
 
         /// <summary>
         /// Destroys this component's game object
@@ -68,6 +70,7 @@ namespace ElementalEngagement.Utilities
         /// </summary>
         private void Start()
         {
+            movement = GetComponentInParent<Movement>();
             lastPosition = transform.position;
             spriteRenderers = animators.Select(a => a.GetComponent<SpriteRenderer>()).ToList();
         }
@@ -80,7 +83,7 @@ namespace ElementalEngagement.Utilities
             if (animators.Count <= 0 || animators[0] == null)
                 return;
 
-            bool moved = (lastPosition - transform.position).sqrMagnitude/Time.fixedDeltaTime > moveThreshed * moveThreshed;
+            bool moved = movement.canMove && !movement.destinationReached;
             
             if (moved != isMoving)
             {
@@ -91,9 +94,9 @@ namespace ElementalEngagement.Utilities
                 }
             }
             
-            if (isMoving && Mathf.Abs((lastPosition - transform.position).normalized.x) > 0.1)
+            if (isMoving && Mathf.Abs(movement.moveDirection.x) > flipThreshold)
             {
-                bool flipped = (lastPosition - transform.position).x > 0;
+                bool flipped = movement.moveDirection.x < 0;
                 foreach (SpriteRenderer renderer in spriteRenderers)
                 {
                     renderer.flipX = invertFlipping != flipped;

@@ -35,8 +35,6 @@ namespace ElementalEngagement.Favor
         // Tracks the singleton instance of this.
         private static FavorManager instance;
 
-
-
         /// <summary>
         /// Initializes singleton.
         /// </summary>

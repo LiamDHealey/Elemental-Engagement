@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.73750705, y: 0.5763199}
   m_AnchorMax: {x: 0.73750705, y: 0.5763199}
-  m_AnchoredPosition: {x: 0.18920135, y: -0.4124396}
+  m_AnchoredPosition: {x: 0.18920898, y: -0.41243935}
   m_SizeDelta: {x: 258.4863, y: 43.046097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1728864519902528685
@@ -237,7 +237,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9528302, g: 0.07550723, b: 0.09232911, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -260,7 +260,7 @@ MonoBehaviour:
       - m_Target: {fileID: 4290309564685792478}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
         m_MethodName: LoadNewScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -552,7 +552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.73750705, y: 0.3007186}
   m_AnchorMax: {x: 0.73750705, y: 0.3007186}
-  m_AnchoredPosition: {x: 0.18920135, y: 0}
+  m_AnchoredPosition: {x: 0.18920898, y: 0}
   m_SizeDelta: {x: 258.4863, y: 43.0461}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4665310263167638771
@@ -617,7 +617,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9528302, g: 0.07550723, b: 0.09232911, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -897,7 +897,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9528302, g: 0.07550723, b: 0.09232911, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1266,7 +1266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.27047154, y: 0.3007186}
   m_AnchorMax: {x: 0.27047154, y: 0.3007186}
-  m_AnchoredPosition: {x: 0, y: -1.083004}
+  m_AnchoredPosition: {x: 0, y: -1.0830002}
   m_SizeDelta: {x: 258, y: 43.11}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7466724381159628134
@@ -1331,7 +1331,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9528302, g: 0.07550723, b: 0.09232911, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1361,6 +1361,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: gameGuide
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6493218549861453453}
+        m_TargetAssemblyTypeName: ElementalEngagement.UI.MenuToggler, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: pauseMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &6493218549861453453

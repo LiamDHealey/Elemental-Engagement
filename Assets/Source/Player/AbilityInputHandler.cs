@@ -124,6 +124,7 @@ namespace ElementalEngagement.Player
             foreach (Ability unlockedAbility in unlockedAbilities)
             {
                 onAbilityUnlocked?.Invoke(unlockedAbility);
+                _abilityCooldowns.Add(unlockedAbility, unlockedAbility.cooldown);
             }
         }
 

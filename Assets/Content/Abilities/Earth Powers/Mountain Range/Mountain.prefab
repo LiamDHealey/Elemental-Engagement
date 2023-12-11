@@ -148,6 +148,7 @@ MonoBehaviour:
   duration: 5
   playOnStart: 1
   fadeOutDuration: 0
+  useMixer: 1
   volumeParam: mountainWallVolume
 --- !u!1 &7520094084802813353
 GameObject:
@@ -198,6 +199,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 30
   detachBeforeDeath: []
+  onDetached:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3617530182488720133
 MonoBehaviour:
   m_ObjectHideFlags: 0
