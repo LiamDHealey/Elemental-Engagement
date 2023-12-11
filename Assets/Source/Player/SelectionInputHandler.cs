@@ -288,7 +288,7 @@ namespace ElementalEngagement.Player
 
             if (hitLocationIndicator != null)
             {
-                if (result && Mathf.Abs(hit.point.y) <= 0.02)
+                if (result && Mathf.Abs(hit.point.y) <= 0.11)
                 {
                     circularSelectionIndicator.SetActive(true);
                     hitLocationIndicator.position = hit.point;
