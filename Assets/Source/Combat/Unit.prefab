@@ -147,6 +147,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: 
 --- !u!1 &1291757304422249541
@@ -902,6 +903,7 @@ MonoBehaviour:
   maxTargets: 1
   canAttackAndMove: 0
   stopDuration: 1
+  invertAllegiance: 0
 --- !u!114 &172367160331058577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,6 +1206,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: 
 --- !u!1 &7486104880870669279
@@ -1330,7 +1333,7 @@ MonoBehaviour:
   animators:
   - {fileID: 854166808930866116}
   movingParameterName: IsMoving
-  moveThreshed: 0.2
+  flipThreshold: 0.2
   invertFlipping: 0
 --- !u!114 &6329092609386425010
 MonoBehaviour:

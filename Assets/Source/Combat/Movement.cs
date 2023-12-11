@@ -42,9 +42,10 @@ public class Movement : MonoBehaviour
     // Called when this reaches its destination. Provided that this was not already at the destination.
     public UnityEvent onDestinationReached;
 
+    public Vector3 destination => agent.destination;
+    public Vector3 moveDirection => Vector3.Scale(agent.desiredVelocity, new Vector3(1, 0, 1)).normalized;
 
     private NavMeshAgent agent;
-    private new Rigidbody rigidbody;
     private HashSet<Object> movementPreventers = new HashSet<Object>();
     private Object navigator = null;
 
@@ -153,8 +154,6 @@ public class Movement : MonoBehaviour
     
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-
         if (!NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 100f, NavMesh.AllAreas))
         {
             Debug.LogError("Movement component too far from mesh");
@@ -178,8 +177,7 @@ public class Movement : MonoBehaviour
             if (Physics.Raycast(transform.position + Vector3.up * 50, Vector3.down, out RaycastHit hit, 500f, walkableMask))
             {
                 transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
-                transform.position += (Vector3.Scale(agent.desiredVelocity, new Vector3(1, 0, 1)).normalized)
-                                    * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime);
+                transform.position += moveDirection * Mathf.Min(agent.remainingDistance, speed * Time.deltaTime);
             }
             else
             {
