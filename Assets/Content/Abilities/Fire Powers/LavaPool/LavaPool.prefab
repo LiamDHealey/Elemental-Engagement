@@ -14699,7 +14699,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 1
+  m_MaxParticleSize: 1e+9
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -29359,6 +29359,7 @@ MonoBehaviour:
   duration: 8
   playOnStart: 1
   fadeOutDuration: 2
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: lavaPuddleVolume
 --- !u!1001 &9222803285314608323
