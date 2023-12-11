@@ -282,27 +282,16 @@ namespace ElementalEngagement.Player
 
 
             Ray screenToWorldRay = new Ray(transform.position, transform.forward);
+            Vector3 hit = MathHelpers.IntersectWithGround(screenToWorldRay);
 
-
-            bool result = Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, circularMask);
 
             if (hitLocationIndicator != null)
             {
-                if (result && Mathf.Abs(hit.point.y) <= 0.11)
-                {
-                    circularSelectionIndicator.SetActive(true);
-                    hitLocationIndicator.position = hit.point;
-                }
-                else
-                {
-                    circularSelectionIndicator.SetActive(false);
-                }    
+                hitLocationIndicator.gameObject.SetActive(true);
+                hitLocationIndicator.position = hit;
             }
 
-            if (!result)
-                return false;
-
-            selectables = Physics.OverlapSphere(hit.point, radius)
+            selectables = Physics.OverlapSphere(hit, radius)
                 .Select(collider => collider.GetComponent<Selectable>()).NotNull()
                 .Where(selectable => selectable.GetComponent<Allegiance>()?.CheckAnyAllegiance(allegiance) ?? true);
 
