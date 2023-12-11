@@ -16,6 +16,12 @@ namespace ElementalEngagement.Combat
         private static Dictionary<(Faction, string), Transform> _tagsToRallyLocations = new Dictionary<(Faction, string), Transform>();
         public static ReadOnlyDictionary<(Faction, string), Transform> tagsToRallyLocations => new(_tagsToRallyLocations);
 
+        private static Dictionary<(Faction, string), RaycastHit> _tagsToInteractibles = new Dictionary<(Faction, string), RaycastHit>();
+        public static ReadOnlyDictionary<(Faction, string), RaycastHit> tagsToInteractibles => new(_tagsToInteractibles);
+
+        [Tooltip("The mask to use when detecting locations where commands can be issued.")]
+        [SerializeField] private LayerMask commandMask;
+
 
         [Tooltip("The tag of the units to rally to this location.")]
         [SerializeField] private string rallyTag;
@@ -24,15 +30,22 @@ namespace ElementalEngagement.Combat
         {
             (Faction, string) key = (GetComponent<Allegiance>().faction, rallyTag);
 
+            Ray findInteractibles = new Ray(new Vector3(transform.position.x, transform.position.y + 100, transform.position.z), -transform.up);
             RaycastHit colliderHit;
-            Physics.Raycast(new Vector3(transform.position.x, transform.position.y, transform.position.z + 11), -transform.up, out colliderHit);
+            Physics.Raycast(findInteractibles, out colliderHit, 9999f, commandMask);
 
             if (colliderHit.collider != null)
             {
-                Debug.Log("Found Something!");
                 if(colliderHit.collider.GetComponent<SacrificeLocation>() != null)
                 {
-                    Debug.Log("We're In Buisiness!");
+                    if (_tagsToInteractibles.ContainsKey(key))
+                    {
+                        _tagsToInteractibles[key] = colliderHit;
+                    }
+                    else
+                    {
+                        _tagsToInteractibles.Add(key, colliderHit);
+                    }
                 }
             }
 
@@ -57,6 +70,7 @@ namespace ElementalEngagement.Combat
             if (_tagsToRallyLocations.TryGetValue(key, out Transform value) && value == transform)
             {
                 _tagsToRallyLocations.Remove(key);
+                _tagsToInteractibles.Remove(key);
             }
         }
     }

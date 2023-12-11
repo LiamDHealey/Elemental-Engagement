@@ -44,14 +44,13 @@ namespace ElementalEngagement.Combat
         {
             if (moveToRallyOnStart && RallyPoint.tagsToRallyLocations.ContainsKey((allegiance.faction, tag)))
             {
-                RaycastHit virtualHit = new RaycastHit();
-                virtualHit.point = RallyPoint.tagsToRallyLocations[(allegiance.faction, tag)].position;
-                if (virtualHit.collider == null)
-                    return;
-                if (virtualHit.collider.GetComponent<SacrificeLocation>() == null)
-                    return;
-
-                ExecuteCommand(virtualHit, new ReadOnlyCollection<Selectable>(new List<Selectable>() { GetComponent<Selectable>() }), false);
+                if (RallyPoint.tagsToInteractibles.ContainsKey((allegiance.faction, tag)))
+                {
+                    if (RallyPoint.tagsToInteractibles[(allegiance.faction, tag)].collider.GetComponent<SacrificeLocation>() != null) 
+                    {
+                        ExecuteCommand(RallyPoint.tagsToInteractibles[(allegiance.faction, tag)], new ReadOnlyCollection<Selectable>(new List<Selectable>() { GetComponent<Selectable>() }), false);
+                    }
+                }
             }
         }
 
