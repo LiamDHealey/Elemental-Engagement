@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -29,6 +30,7 @@ namespace ElementalEngagement.Combat
         private void Start()
         {
             (Faction, string) key = (GetComponent<Allegiance>().faction, rallyTag);
+
 
             Ray findInteractibles = new Ray(new Vector3(transform.position.x, transform.position.y + 100, transform.position.z), -transform.up);
             RaycastHit colliderHit;
