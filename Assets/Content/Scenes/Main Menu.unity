@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 570691078}
   - component: {fileID: 570691077}
   - component: {fileID: 570691081}
-  - component: {fileID: 570691082}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -282,18 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc03fbd5626d2b446bb022595fb255a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &570691082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 570691076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd3fdb6fe4b5ff43be7da4437a07a0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &769795500
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,17 +375,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &951968245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5306051689183259618, guid: b670da4464ac6344299ec43c5aaf70c3, type: 3}
-  m_PrefabInstance: {fileID: 1885871677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &951968247 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1520683413309269118, guid: b670da4464ac6344299ec43c5aaf70c3, type: 3}
   m_PrefabInstance: {fileID: 1885871677}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 951968245}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -493,7 +475,6 @@ GameObject:
   - component: {fileID: 1411588958}
   - component: {fileID: 1411588957}
   - component: {fileID: 1411588956}
-  - component: {fileID: 1411588955}
   m_Layer: 5
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -501,18 +482,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1411588955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1411588954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd3fdb6fe4b5ff43be7da4437a07a0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1411588956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,6 +588,7 @@ GameObject:
   - component: {fileID: 1441001790}
   - component: {fileID: 1441001789}
   - component: {fileID: 1441001791}
+  - component: {fileID: 1441001792}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -638,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 951968245}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1441001790
@@ -686,6 +656,18 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!114 &1441001792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441001787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd3fdb6fe4b5ff43be7da4437a07a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1523976812 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1041166308720970908, guid: f604b7f1aa23ecb4d91ebec328e90299, type: 3}
