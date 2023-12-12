@@ -57,6 +57,9 @@ namespace ElementalEngagement.Player
         private List<Selectable> _selectedObjects = new List<Selectable>();
         public ReadOnlyCollection<Selectable> selectedObjects { get => _selectedObjects.AsReadOnly(); }
 
+        [Tooltip("Checks if the player can double-tap to select all similar units.")]
+        public bool canSelectAll = false;
+
         private Camera camera;
 
         public UnityEvent groupSelectionStarted;
@@ -72,6 +75,13 @@ namespace ElementalEngagement.Player
         private void Update()
         {
             selectedThisTick = false;
+            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius) && selectable.isSelected)
+            {
+                canSelectAll = true;
+            } else
+            {
+                canSelectAll = false;
+            }
         }
         /// <summary>
         /// Selects the unit under the cursor.
