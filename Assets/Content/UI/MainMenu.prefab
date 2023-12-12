@@ -1841,13 +1841,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1014225870584687723}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
         m_MethodName: LoadNewScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: optionsMenu
+          m_StringArgument: Content/Scenes/TundraMap
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &3861361423437008060
@@ -1874,7 +1874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592d971531d35b249a74d4ea46c222cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Content/Scenes/TundraMap
 --- !u!1 &4573445090622199393
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,13 +2214,13 @@ MonoBehaviour:
       - m_Target: {fileID: 7323017994643958266}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
         m_MethodName: LoadNewScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Content/Scenes/MainScene
+          m_StringArgument: Content/Scenes/GrasslandMap
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &7323017994643958266
@@ -2236,7 +2235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592d971531d35b249a74d4ea46c222cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Content/Scenes/GrasslandMap
 --- !u!1 &5608941541903628163
 GameObject:
   m_ObjectHideFlags: 0
@@ -2856,13 +2854,13 @@ MonoBehaviour:
       - m_Target: {fileID: 6372214111033436990}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
         m_MethodName: LoadNewScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: optionsMenu
+          m_StringArgument: Content/Scenes/DesertMap
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &8000623897069469884
@@ -2889,7 +2887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592d971531d35b249a74d4ea46c222cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Content/Scenes/DesertMap
 --- !u!1 &8544331416862460525
 GameObject:
   m_ObjectHideFlags: 0
