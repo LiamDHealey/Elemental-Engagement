@@ -113,7 +113,7 @@ namespace ElementalEngagement.Combat
                     Health health = validTargets[i].GetComponent<Health>();
                     KnockbackReceiver knockbackReceiver = validTargets[i].GetComponent<KnockbackReceiver>();
 
-                    Debug.Log("Attack Started for " + this.ToString() + this.transform.parent);
+                    //Debug.Log("Attack Started for " + this.ToString() + this.transform.parent);
 
                     if (!canAttackAndMove)
                     {

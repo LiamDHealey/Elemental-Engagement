@@ -15,9 +15,10 @@ public class SpriteFlasher : MonoBehaviour
     {
         if (damage.amount > 0)
         {
+            Debug.Log(transform.parent);
             foreach (SpriteRenderer renderer in renderers)
             {
-                renderer.color = new Color(1, 0, 0, 0.5f);
+                renderer.color = color;
             }
 
             remainingFlashTime = flashLength;
