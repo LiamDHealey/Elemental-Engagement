@@ -92,7 +92,7 @@ namespace ElementalEngagement.UI
 
         private void DetectMaxEarthFavor(Faction faction, MinorGod god)
         {
-            if (god != MinorGod.Water)
+            if (god != MinorGod.Earth)
                 return;
             else if (allegiance.faction != faction)
                 return;
