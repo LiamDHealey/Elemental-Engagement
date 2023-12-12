@@ -143,6 +143,15 @@ namespace ElementalEngagement.Utilities
         {
             if(!currentlyPlaying)
             {
+                
+                if(useMixer)
+                {
+                    audioMixer.SetFloat(volumeParam, startingMixerVolume);
+                }
+                else
+                {
+                    audioSource.volume = startingSourceVolume;
+                }
                 currentlyPlaying = true;
                 continuePlaying = true;
                 StartCoroutine(EffectOnInterval());
@@ -153,6 +162,8 @@ namespace ElementalEngagement.Utilities
         {
             continuePlaying = false;
             currentlyPlaying = false;
+            stopSound();
+            StopCoroutine(EffectOnInterval());
         }
 
         public void stopSound()
@@ -183,8 +194,9 @@ namespace ElementalEngagement.Utilities
         {
             while(continuePlaying)
             {
-                audioSource.PlayOneShot(GetRandomClip(audioClips));
-                yield return new WaitForSeconds(interval);
+                AudioClip clipToPlay = GetRandomClip(audioClips);
+                audioSource.PlayOneShot(clipToPlay);
+                yield return new WaitForSeconds(interval + clipToPlay.length);
             }
         }
 
