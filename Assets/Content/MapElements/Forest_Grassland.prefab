@@ -44,7 +44,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.085755214, g: 0.6037736, b: 0.014239941, a: 1}
-  m_Intensity: 7
+  m_Intensity: 5
   m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 1
+  flipThreshold: 0.3
   invertFlipping: 0
 --- !u!114 &5590469660360622201
 MonoBehaviour:
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 1
+  flipThreshold: 0.3
   invertFlipping: 0
 --- !u!114 &3297502800732294387
 MonoBehaviour:
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 1
+  flipThreshold: 0.3
   invertFlipping: 0
 --- !u!114 &3609621612736072796
 MonoBehaviour:
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 1
+  flipThreshold: 0.3
   invertFlipping: 0
 --- !u!114 &6379741483355694881
 MonoBehaviour:
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 1
+  flipThreshold: 0.3
   invertFlipping: 0
 --- !u!114 &6537375730437923547
 MonoBehaviour:
@@ -1484,7 +1484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 1
+  flipThreshold: 0.3
   invertFlipping: 0
 --- !u!114 &9038291666687051874
 MonoBehaviour:
