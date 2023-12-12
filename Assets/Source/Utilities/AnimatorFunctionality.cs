@@ -24,6 +24,9 @@ namespace ElementalEngagement.Utilities
 
         public bool invertFlipping = false;
 
+        [Range(0, 1)]
+        public float maxRandomOffsetAmount = 0.3f;
+
         // Whether or not this is currently moving
         public bool isMoving { get; private set; } = false;
 
@@ -73,9 +76,9 @@ namespace ElementalEngagement.Utilities
             movement = GetComponentInParent<Movement>();
             lastPosition = transform.position;
             spriteRenderers = animators.Select(a => a.GetComponent<SpriteRenderer>()).ToList();
-            foreach(Animator animator in animators)
+            foreach (Animator animator in animators)
             {
-                animator.SetFloat("RandomOffset", Random.Range(0, 0.5f));
+                animator.SetFloat("RandomOffset", Random.Range(0, maxRandomOffsetAmount));
             }
         }
 
@@ -108,9 +111,17 @@ namespace ElementalEngagement.Utilities
             }
 
             lastPosition  = transform.position;
-
         }
-
+        private void LateUpdate()
+        {
+            foreach (SpriteRenderer renderer in spriteRenderers)
+            {
+                renderer.material.SetVector("_TextureRect", new Vector4(renderer.sprite.textureRect.min.x / renderer.sprite.texture.width,
+                                                                        renderer.sprite.textureRect.min.y / renderer.sprite.texture.height,
+                                                                        renderer.sprite.textureRect.max.x / renderer.sprite.texture.width,
+                                                                        renderer.sprite.textureRect.max.y / renderer.sprite.texture.height));
+            }
+        }
         public void SetTrigger(string triggerName)
         {
             foreach (Animator animator in animators)
