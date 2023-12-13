@@ -50,6 +50,11 @@ namespace ElementalEngagement.Combat
                     }
                 }
             }
+            else
+            {
+                if (_tagsToInteractibles.ContainsKey(key))
+                    _tagsToInteractibles.Remove(key);
+            }
 
             NavMesh.SamplePosition(transform.position, out NavMeshHit worldHit, 50, NavMesh.AllAreas);
             transform.position = worldHit.position;
