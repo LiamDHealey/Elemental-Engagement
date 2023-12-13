@@ -190,7 +190,6 @@ namespace ElementalEngagement
         {
             if (!IsActionAllowed(context))
                 return;
-
             selectionInputHandler.SelectAll();
         }
 
