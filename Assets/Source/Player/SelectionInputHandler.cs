@@ -57,8 +57,8 @@ namespace ElementalEngagement.Player
         private List<Selectable> _selectedObjects = new List<Selectable>();
         public ReadOnlyCollection<Selectable> selectedObjects { get => _selectedObjects.AsReadOnly(); }
 
-        [Tooltip("Checks if the player can double-tap to select all similar units.")]
-        public bool canSelectAll = false;
+        //Checks if the player can double-tap to select all similar units.
+        private bool canSelectAll = false;
 
         private Camera camera;
 
@@ -142,37 +142,40 @@ namespace ElementalEngagement.Player
         /// <param name="context"> The context of the selection input. </param>
         public void SelectAll()
         {
-            Ray cornerRay = camera.ScreenPointToRay(camera.pixelRect.size);
-            Vector3 cornerPos = MathHelpers.IntersectWithGround(cornerRay);
-
-            Vector3 centerGroundPos = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
-
-            Vector3 extent = (cornerPos - centerGroundPos);
-            extent = new Vector3(Mathf.Abs(extent.x), 50, Mathf.Abs(extent.z)) * 0.6f;
-
-            Collider[] hitColliders = Physics.OverlapBox(centerGroundPos, extent);
-
-            string currentSelectedTag = "";
-
-            if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius))
+            if (canSelectAll)
             {
-                currentSelectedTag = selectable.tag;
-                if (selectable.isSelected)
+                Ray cornerRay = camera.ScreenPointToRay(camera.pixelRect.size);
+                Vector3 cornerPos = MathHelpers.IntersectWithGround(cornerRay);
+
+                Vector3 centerGroundPos = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
+
+                Vector3 extent = (cornerPos - centerGroundPos);
+                extent = new Vector3(Mathf.Abs(extent.x), 50, Mathf.Abs(extent.z)) * 0.6f;
+
+                Collider[] hitColliders = Physics.OverlapBox(centerGroundPos, extent);
+
+                string currentSelectedTag = "";
+
+                if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius))
                 {
-                    DeselectAll();
+                    currentSelectedTag = selectable.tag;
+                    if (selectable.isSelected)
+                    {
+                        DeselectAll();
+                    }
                 }
-            }
 
 
-            foreach (Collider collider in hitColliders)
-            {
-                Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
-                if (collider.tag == currentSelectedTag && colliderAllegiance.faction == allegiance.faction)
+                foreach (Collider collider in hitColliders)
                 {
-                    Selectable colliderSelect = collider.GetComponent<Selectable>();
-                    _selectedObjects.Add(colliderSelect);
-                    colliderSelect.isSelected = true;
-                    selectedThisTick = true;
+                    Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
+                    if (collider.tag == currentSelectedTag && colliderAllegiance.faction == allegiance.faction)
+                    {
+                        Selectable colliderSelect = collider.GetComponent<Selectable>();
+                        _selectedObjects.Add(colliderSelect);
+                        colliderSelect.isSelected = true;
+                        selectedThisTick = true;
+                    }
                 }
             }
         }

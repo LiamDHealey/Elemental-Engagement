@@ -190,10 +190,7 @@ namespace ElementalEngagement
         {
             if (!IsActionAllowed(context))
                 return;
-            if (selectionInputHandler.canSelectAll)
-            {
-                selectionInputHandler.SelectAll();
-            }
+            selectionInputHandler.SelectAll();
         }
 
         private void SelectEverything(CallbackContext context)
