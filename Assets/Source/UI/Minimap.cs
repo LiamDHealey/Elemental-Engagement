@@ -43,7 +43,7 @@ namespace ElementalEngagement.UI
                 Vector3 boundsRelativePosition = (icon.transform.position - worldspaceBounds.center);
                 iconTransform.anchoredPosition = new Vector2((boundsRelativePosition.x / worldspaceBounds.extents.x) * rectTransform.rect.size.x,
                                                              (boundsRelativePosition.z / worldspaceBounds.extents.z) * rectTransform.rect.size.y);
-                iconTransform.sizeDelta = new Vector2(icon.iconSize, icon.iconSize) * rectTransform.rect.size / backgroundSize;
+                iconTransform.sizeDelta = new Vector2(icon.iconSize, icon.iconSize) * 0.2f/* * rectTransform.rect.size / backgroundSize*/;
                 icons[i].sprite = icon.icon;
 
                 i++;
