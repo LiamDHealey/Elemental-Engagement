@@ -38,11 +38,15 @@ namespace ElementalEngagement.Combat
         [SerializeField] private bool moveToRallyOnStart = true;
 
 
+        private Attack attack;
+
         // The targets currently in range.
         HashSet<Transform> validTargets = new HashSet<Transform>();
 
         private void Start()
         {
+            attack = GetComponentInChildren<Attack>();
+
             visionRange.onTriggerEnter.AddListener(
                 (collider) =>
                 {
@@ -107,6 +111,7 @@ namespace ElementalEngagement.Combat
                     // Move to target location
                     if (!isAltCommand || attackableTargets.Count() == 0)
                     {
+                        attack.enabled = false;
                         movement.SetDestination(this, selectedDestination);
 
                         // Min Movement Speed Timeout
@@ -131,6 +136,7 @@ namespace ElementalEngagement.Combat
                     // Chase targets
                     else
                     {
+                        attack.enabled = true;
                         // Get the closest target
                         float SqrDistance(Transform target) => (target.position - transform.position).sqrMagnitude;
                         Transform closetsTarget = attackableTargets
@@ -189,7 +195,9 @@ namespace ElementalEngagement.Combat
         public override void CancelCommand()
         {
             StopAllCoroutines();
-            movement.RemoveDestination(this);
+            if (attack != null)
+                attack.enabled = true;
+            movement?.RemoveDestination(this);
             commandInProgress = false;
         }
     }

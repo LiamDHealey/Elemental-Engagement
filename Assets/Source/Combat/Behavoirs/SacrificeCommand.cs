@@ -79,6 +79,7 @@ namespace ElementalEngagement.Combat
         public override void ExecuteCommand(RaycastHit hitUnderCursor, ReadOnlyCollection<Selectable> selectedObjects, bool isAltCommand)
         {
             commandInProgress = true;
+            GetComponent<Attack>().enabled = false;
             movement.SetDestination(this, SelectDestination(hitUnderCursor, selectedObjects));
 
             targetSacrificeLocation = hitUnderCursor.collider;
@@ -94,6 +95,7 @@ namespace ElementalEngagement.Combat
         /// </summary>
         public override void CancelCommand()
         {
+            GetComponent<Attack>().enabled = true;
             commandInProgress = false;
 
             if (targetSacrificeLocation != null)
