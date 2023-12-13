@@ -163,7 +163,6 @@ namespace ElementalEngagement.Utilities
             continuePlaying = false;
             currentlyPlaying = false;
             stopSound();
-            StopCoroutine(EffectOnInterval());
         }
 
         public void stopSound()
