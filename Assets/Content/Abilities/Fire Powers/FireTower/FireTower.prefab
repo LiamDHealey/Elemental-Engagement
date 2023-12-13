@@ -226,6 +226,7 @@ MonoBehaviour:
   duration: 5
   playOnStart: 1
   fadeOutDuration: 0
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: fireTowerVolume
 --- !u!1 &1555517302378924087
@@ -454,6 +455,7 @@ MonoBehaviour:
   duration: 0
   playOnStart: 0
   fadeOutDuration: 0
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: godPowerVolume
 --- !u!1 &2940384430044487570
@@ -610,8 +612,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 0.2
+  flipThreshold: 0.3
   invertFlipping: 0
+  maxRandomOffsetAmount: 0.3
 --- !u!114 &2250153500424209571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +900,7 @@ MonoBehaviour:
   allegiance: {fileID: 7176149932437668644}
   damage:
     amount: 2
-    allegiance: {fileID: 1828492509368982433, guid: 9059bc288aea34d489796766cc705193, type: 3}
+    allegiance: {fileID: 7176149932437668644}
   knockback:
     amount: 0
     duration: 0

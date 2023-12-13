@@ -110,12 +110,12 @@ namespace ElementalEngagement.Favor
                     noneActive = false;
                 }
             }
-            if (noneActive)
+            if (noneActive && currentlyCapturing)
             {
                 onEndCapturing?.Invoke();
                 currentlyCapturing = false;
             }
-            else if (!currentlyCapturing)
+            else if (!currentlyCapturing && !noneActive)
             {
                 currentlyCapturing = true;
                 onBeginCapturing?.Invoke();

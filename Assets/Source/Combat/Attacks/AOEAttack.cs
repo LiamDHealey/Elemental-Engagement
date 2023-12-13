@@ -79,10 +79,10 @@ namespace ElementalEngagement.Combat
                 return;
             if(validTargets.Count == 0)
             {
-                if (timeRemainingToAttack > 0)
+                if (timeRemainingToAttack > 0 && timeRemainingToAttack != attackInterval)
                     timeRemainingToAttack -= Time.deltaTime;
                 else
-                    timeRemainingToAttack = attackInterval;
+                    timeRemainingToAttack = waitBeforeDamage ? attackInterval : 0;
 
                 return;
             }
@@ -113,7 +113,7 @@ namespace ElementalEngagement.Combat
                     Health health = validTargets[i].GetComponent<Health>();
                     KnockbackReceiver knockbackReceiver = validTargets[i].GetComponent<KnockbackReceiver>();
 
-                    Debug.Log("Attack Started for " + this.ToString() + this.transform.parent);
+                    //Debug.Log("Attack Started for " + this.ToString() + this.transform.parent);
 
                     if (!canAttackAndMove)
                     {

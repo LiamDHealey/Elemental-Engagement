@@ -59,10 +59,10 @@ namespace ElementalEngagement.Combat
                 return;
             if (validTargets.Count == 0)
             {
-                if (timeRemainingToAttack > 0)
+                if (timeRemainingToAttack > 0 && timeRemainingToAttack != attackInterval)
                     timeRemainingToAttack -= Time.deltaTime;
                 else
-                    timeRemainingToAttack = attackInterval;
+                    timeRemainingToAttack = waitBeforeDamage ? attackInterval : 0;
 
                 return;
             }

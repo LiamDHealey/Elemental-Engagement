@@ -70,7 +70,7 @@ public class AttackShrinesBehaviour : MonoBehaviour
                                     return closest;
                             });
 
-                        movement.SetDestination(this, closetsTarget.GetComponent<Spawner>().spawnLocation.position, stoppingRange);
+                        movement.SetDestination(this, closetsTarget.position, stoppingRange);
                         yield return null;
                     }
                 }
