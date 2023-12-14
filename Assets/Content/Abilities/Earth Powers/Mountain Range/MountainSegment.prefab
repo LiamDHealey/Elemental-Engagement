@@ -148,6 +148,7 @@ MonoBehaviour:
   duration: 1.8
   playOnStart: 0
   fadeOutDuration: 1.8
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: mountainWallVolume
 --- !u!1 &2081614332373063347
@@ -5163,7 +5164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68e4031da48309847b21b0b7d9ef0178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHP: 100
+  _maxHP: 250
   damageMultipliers: []
   onDamaged:
     m_PersistentCalls:
@@ -5235,8 +5236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animators: []
   movingParameterName: IsMoving
-  moveThreshed: 1
+  flipThreshold: 0.3
   invertFlipping: 0
+  maxRandomOffsetAmount: 0.3
 --- !u!1 &7520094084802813353
 GameObject:
   m_ObjectHideFlags: 0

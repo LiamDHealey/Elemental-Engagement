@@ -5358,7 +5358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allegiance: {fileID: 1791612107835060976}
   damage:
-    amount: -1
+    amount: -0.5
     allegiance: {fileID: 1791612107835060976}
   knockback:
     amount: 0
@@ -5593,6 +5593,7 @@ MonoBehaviour:
   duration: 7
   playOnStart: 1
   fadeOutDuration: 1
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: spiritPuddleVolume
 --- !u!1001 &2884044469030371348
