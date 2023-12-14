@@ -11,6 +11,8 @@ using System;
 using Unity.VisualScripting;
 using UnityEditor;
 using ElementalEngagement.UI;
+using ElementalEngagement.Combat;
+using UnityEditor.Experimental.GraphView;
 
 namespace ElementalEngagement.Player
 {
@@ -92,8 +94,18 @@ namespace ElementalEngagement.Player
             {
                 _selectedObjects.Add(selectable);
                 selectable.isSelected = true;
+                selectable.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(selectable); });
                 selectedThisTick = true;
             }
+        }
+
+        /// <summary>
+        /// When the selected unit is killed, remove it from the selectedObjects array.
+        /// </summary>
+        public void deselectWhenKilled(Selectable selectedObject)
+        {
+            _selectedObjects.Remove(selectedObject);
+            selectedObject.isSelected = false;
         }
 
         /// <summary>
@@ -124,6 +136,7 @@ namespace ElementalEngagement.Player
 
                             _selectedObjects.Add(selectable);
                             selectable.isSelected = true;
+                            selectable.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(selectable); });
                             selectedThisTick = true;
                         }
                     }
@@ -174,6 +187,7 @@ namespace ElementalEngagement.Player
                         Selectable colliderSelect = collider.GetComponent<Selectable>();
                         _selectedObjects.Add(colliderSelect);
                         colliderSelect.isSelected = true;
+                        colliderSelect.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(colliderSelect); });
                         selectedThisTick = true;
                     }
                 }
@@ -195,6 +209,7 @@ namespace ElementalEngagement.Player
                 {
                     _selectedObjects.Add(select);
                     select.isSelected = true;
+                    select.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(select); });
                     selectedThisTick = true;
                 }
             }
@@ -210,6 +225,7 @@ namespace ElementalEngagement.Player
             foreach (Selectable selectedObject in selectedObjects)
             {
                 _selectedObjects.Remove(selectedObject);
+                selectedObject.gameObject.GetComponent<Health>().onKilled.RemoveListener(delegate { deselectWhenKilled(selectedObject); });
                 selectedObject.isSelected = false;
             }
         }
