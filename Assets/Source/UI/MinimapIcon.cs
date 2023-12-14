@@ -17,7 +17,8 @@ namespace ElementalEngagement.UI
             Faction.PlayerTwo => playerTwoIcon,
             _ => unalignedIcon,
         };
-
+        public bool scaleWithMap = true;
+        public int layer = 0;
         public Sprite unalignedIcon;
         public Sprite playerOneIcon;
         public Sprite playerTwoIcon;

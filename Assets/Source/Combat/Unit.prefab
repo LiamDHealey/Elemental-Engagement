@@ -1056,7 +1056,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddfcfd6f707f264d84d2153435963ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iconSize: 12
+  _iconSize: 2
+  scaleWithMap: 0
+  layer: 1
   unalignedIcon: {fileID: 0}
   playerOneIcon: {fileID: 21300000, guid: aa51a995a2d9dee4aa71bf810f3edd09, type: 3}
   playerTwoIcon: {fileID: 21300000, guid: 33d6b2801a5e6964588d4c3d02f29fba, type: 3}
@@ -1336,6 +1338,7 @@ MonoBehaviour:
   movingParameterName: IsMoving
   flipThreshold: 0.2
   invertFlipping: 0
+  maxRandomOffsetAmount: 0.3
 --- !u!114 &6329092609386425010
 MonoBehaviour:
   m_ObjectHideFlags: 0

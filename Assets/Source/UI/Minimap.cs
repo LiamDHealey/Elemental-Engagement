@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,7 +24,7 @@ namespace ElementalEngagement.UI
         void Update()
         {
             int i = 0;
-            foreach (MinimapIcon icon in MinimapIcon.minimapIcons)
+            foreach (MinimapIcon icon in MinimapIcon.minimapIcons.OrderBy(i => i.layer))
             {
                 if (!worldspaceBounds.Contains(icon.transform.position))
                     continue;
@@ -43,7 +44,12 @@ namespace ElementalEngagement.UI
                 Vector3 boundsRelativePosition = (icon.transform.position - worldspaceBounds.center);
                 iconTransform.anchoredPosition = new Vector2((boundsRelativePosition.x / worldspaceBounds.extents.x) * rectTransform.rect.size.x,
                                                              (boundsRelativePosition.z / worldspaceBounds.extents.z) * rectTransform.rect.size.y);
-                iconTransform.sizeDelta = new Vector2(icon.iconSize, icon.iconSize) * 0.2f/* * rectTransform.rect.size / backgroundSize*/;
+                iconTransform.sizeDelta = new Vector2(icon.iconSize, icon.iconSize);
+                if (icon.scaleWithMap)
+                {
+                    iconTransform.sizeDelta *= rectTransform.rect.size / backgroundSize;
+                }
+                iconTransform.localScale = Vector3.one;
                 icons[i].sprite = icon.icon;
 
                 i++;
