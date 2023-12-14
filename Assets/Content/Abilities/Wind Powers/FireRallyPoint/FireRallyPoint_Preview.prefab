@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 8860612036384855575}
   - component: {fileID: 1968065535855633641}
   - component: {fileID: 4727239112090782832}
+  - component: {fileID: 1847578317682462379}
   m_Layer: 0
   m_Name: FireRallyPoint_Preview
   m_TagString: Untagged
@@ -291,6 +292,19 @@ MonoBehaviour:
     onSelected:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &1847578317682462379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590485344988562836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1001 &6707316526902929062
 PrefabInstance:
   m_ObjectHideFlags: 0

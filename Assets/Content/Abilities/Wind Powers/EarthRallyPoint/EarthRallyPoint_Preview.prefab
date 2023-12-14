@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 9218673182677433737}
   - component: {fileID: 2718540493062235655}
   - component: {fileID: 2950524791290012902}
+  - component: {fileID: 5943900895424329719}
   m_Layer: 0
   m_Name: EarthRallyPoint_Preview
   m_TagString: Untagged
@@ -291,6 +292,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad96d667f3ceaf4a80af1cf6fb775f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5943900895424329719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590485344988562836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32311f0f6caa700409a8088069ae0a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invertAllegiance: 0
 --- !u!1001 &129038302183039724
 PrefabInstance:
   m_ObjectHideFlags: 0
