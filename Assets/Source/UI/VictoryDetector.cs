@@ -12,6 +12,7 @@ namespace ElementalEngagement.UI
         [Tooltip("Maps each player to a win event")]
         [SerializeField] private List<PlayerToEvent> playersToWinEvents;
 
+
         private void Start()
         {
             DefeatManager.onPlayerLost.AddListener(OnPLayerLost);
@@ -27,9 +28,10 @@ namespace ElementalEngagement.UI
             {
                 return;
             }
-            
+
             // Get wining player win event.
             playersToWinEvents.FirstOrDefault(ptwe => ptwe.faction == DefeatManager.survivingFactions[0])?.onWon?.Invoke();
+            Time.timeScale = 0;
         }
 
         /// <summary>

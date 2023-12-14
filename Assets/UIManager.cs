@@ -1,3 +1,5 @@
+using ElementalEngagement.Player;
+using ElementalEngagement.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,8 @@ public class UIManager : MonoBehaviour
     private static UIManager instance;
     private static InputSystemUIInputModule inputModule;
 
+    private bool gameOver = false;
+
     private void Awake()
     {
         onMenuOpened.AddListener(s => openMenus.Add(s));
@@ -44,6 +48,7 @@ public class UIManager : MonoBehaviour
 
             inputModule = FindAnyObjectByType<InputSystemUIInputModule>();
             inputModule.move.action.performed += ControllerInputReceived;
+            DefeatManager.onPlayerLost.AddListener(s => gameOver = true);
         }
     }
 
@@ -58,7 +63,7 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
-        if(openMenus.Count > 0)
+        if(openMenus.Count > 0 || gameOver)
         {
             Time.timeScale = 0f;
         }
