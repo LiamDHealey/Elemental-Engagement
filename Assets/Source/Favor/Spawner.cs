@@ -1,8 +1,8 @@
+using ElementalEngagement.Combat;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -15,6 +15,9 @@ namespace ElementalEngagement.Favor
     [RequireComponent(typeof(Player.Allegiance))]
     public class Spawner : MonoBehaviour
     {
+        [Tooltip("The thing to spawn")]
+        [SerializeField] private int spawnCap = 100;
+
         [Tooltip("The thing to spawn")]
         [SerializeField] private GameObject objectToSpawn;
 
@@ -33,6 +36,17 @@ namespace ElementalEngagement.Favor
         //The time since the last object was spawned
         float timeSinceLastSpawn;
 
+        public static Dictionary<Faction, HashSet<GameObject>> spawnedObjects = new Dictionary<Faction, HashSet<GameObject>>()
+            {
+                { Faction.PlayerOne, new HashSet<GameObject>() },
+                { Faction.PlayerTwo, new HashSet<GameObject>() },
+            };
+        public static Dictionary<Faction, int> spawnCaps = new Dictionary<Faction, int>()
+            {
+                { Faction.PlayerOne, 0 },
+                { Faction.PlayerTwo, 0 },
+            };
+
         /// <summary>
         /// Prepares to spawn objects at the start of the game
         /// </summary>
@@ -40,6 +54,15 @@ namespace ElementalEngagement.Favor
         {
             spawnAllegiance = GetComponent<Allegiance>();
             timeSinceLastSpawn = 0;
+        }
+
+        public void Start()
+        {
+            spawnedObjects[spawnAllegiance.faction] = FindObjectsOfType<Selectable>()
+                .Where(x => x.allegiance.faction == spawnAllegiance.faction)
+                .Select(x => x.gameObject)
+                .ToHashSet();
+            spawnCaps[spawnAllegiance.faction] = spawnCap;
         }
 
         /// <summary>
@@ -50,14 +73,24 @@ namespace ElementalEngagement.Favor
             float spawnInterval = baseInterval / SpawnrateProvider.GetSpawnrateMultiplier(spawnAllegiance);
             
             timeSinceLastSpawn += Time.deltaTime;
-            if(timeSinceLastSpawn >= spawnInterval)
+            spawnedObjects[spawnAllegiance.faction] = spawnedObjects[spawnAllegiance.faction]
+                .Where(s => s != null)
+                .ToHashSet();
+
+            if (timeSinceLastSpawn >= spawnInterval)
             {
+                if (spawnedObjects[spawnAllegiance.faction].Count >= spawnCaps[spawnAllegiance.faction])
+                    return;
+
                 GameObject spawnedObject = Instantiate(objectToSpawn);
 
                 Vector2 noise = Random.insideUnitCircle;
                 spawnedObject.transform.position = spawnLocation.position + new Vector3(noise.x, 0, noise.y);
                 spawnedObject.GetComponent<Allegiance>().faction = spawnAllegiance.faction;
                 onSpawned?.Invoke();
+
+                spawnedObjects[spawnAllegiance.faction].Add(spawnedObject);
+                spawnedObject.GetComponent<Health>().onKilled.AddListener(() => spawnedObjects[spawnAllegiance.faction].Remove(spawnedObject));
 
                 timeSinceLastSpawn = 0;
             }

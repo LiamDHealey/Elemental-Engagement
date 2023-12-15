@@ -30,7 +30,6 @@ public class SelectedList : MonoBehaviour
         }
 
         foreach (var uniqueUnit in selectionInputHandler.selectedObjects
-            .Where(s => s != null)
             .Select(s => s.tag)
             .Distinct()
             .ToDictionary(tag => tag, tag => selectionInputHandler.selectedObjects.Count(s => s != null && s.tag == tag)))

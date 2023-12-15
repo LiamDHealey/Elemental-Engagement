@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1739284908831529635}
   - component: {fileID: 3145855875071801190}
   - component: {fileID: 6539842292092834662}
+  - component: {fileID: 167433962160442107}
   m_Layer: 0
   m_Name: Player 1 Small Cursor
   m_TagString: Untagged
@@ -98,6 +99,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invertAllegiance: 0
+--- !u!114 &167433962160442107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032636224874122471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e30071b590d1d4e904a54f7d7f0544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7942867861834019462
 GameObject:
   m_ObjectHideFlags: 0

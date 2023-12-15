@@ -30,7 +30,13 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        onMenuOpened.AddListener(s => openMenus.Add(s));
+        onMenuOpened.AddListener(s => 
+        {
+            if (!openMenus.Contains(s)) 
+            { 
+                openMenus.Add(s);
+            } 
+        });
         onMenuClosed.AddListener(s => openMenus.Remove(s));
     }
 

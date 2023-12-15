@@ -1,3 +1,4 @@
+using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,6 +50,9 @@ namespace ElementalEngagement.Combat
                 upgradedUnit.GetComponent<Allegiance>().faction = colliderAllegiance.faction;
 
                 Destroy(collider.gameObject);
+
+                Spawner.spawnedObjects[colliderAllegiance.faction].Add(upgradedUnit);
+                upgradedUnit.GetComponent<Health>().onKilled.AddListener(() => Spawner.spawnedObjects[colliderAllegiance.faction].Remove(upgradedUnit));
             }
         }
     }

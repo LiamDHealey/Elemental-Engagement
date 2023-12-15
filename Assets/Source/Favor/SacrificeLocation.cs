@@ -303,14 +303,14 @@ namespace ElementalEngagement.Favor
         /// <param name="unitToSacrifice"> The unit being sacrificed. </param>
         public void StopSacrificing(SacrificeCommand unitToSacrifice)
         {
-            for(int i = 0; i < unitsToUpdate.Count; i++) 
+            for (int i = 0; i < unitsToUpdate.Count; i++)
             {
-                if (unitsToUpdate[i].unit.Equals(unitToSacrifice))
+                if (unitsToUpdate[i].unit == unitToSacrifice)
                 {
                     unitsToUpdate[i].isActive = false;
-                    unitsToUpdate[i].unit.onSacrificeEnd?.Invoke();
                 }
             }
+            unitToSacrifice.onSacrificeEnd?.Invoke();
         }
 
 
