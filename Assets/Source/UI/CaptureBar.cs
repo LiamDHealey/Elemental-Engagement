@@ -68,6 +68,12 @@ namespace ElementalEngagement.UI
                     lockoutSlider.maxValue = sacrificeLocation.neutralLockoutTime;
                     lockoutSlider.value = sacrificeLocation.remainingNeutralTime;
                     lockoutSlider.gameObject.SetActive(sacrificeLocation.remainingNeutralTime > 0);
+
+                    playerOneCapturingSlider.maxValue = sacrificeLocation.requiredCapturePoints;
+                    playerOneCapturingSlider.value = sacrificeLocation.capturePoints[Faction.PlayerOne];
+
+                    playerTwoCapturingSlider.maxValue = sacrificeLocation.requiredCapturePoints;
+                    playerTwoCapturingSlider.value = sacrificeLocation.capturePoints[Faction.PlayerTwo];
                     break;
 
 
