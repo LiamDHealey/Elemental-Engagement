@@ -148,6 +148,7 @@ MonoBehaviour:
   duration: 5
   playOnStart: 1
   fadeOutDuration: 0
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: mountainWallVolume
 --- !u!1 &7520094084802813353
@@ -197,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4aea180c064f9f40a924306184fed88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 30
+  lifetime: 60
   detachBeforeDeath: []
   onDetached:
     m_PersistentCalls:

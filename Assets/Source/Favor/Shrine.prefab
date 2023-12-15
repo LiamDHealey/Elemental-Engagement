@@ -527,7 +527,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 18.94, z: 10}
+  m_Size: {x: 10, y: 8, z: 10}
   m_Center: {x: 0, y: -0.72002244, z: 0}
 --- !u!114 &2125978576373769656
 MonoBehaviour:
@@ -620,6 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _iconSize: 22
   scaleWithMap: 1
+  layer: 0
   unalignedIcon: {fileID: 0}
   playerOneIcon: {fileID: 0}
   playerTwoIcon: {fileID: 0}

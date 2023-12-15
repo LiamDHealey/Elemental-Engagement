@@ -55,6 +55,8 @@ MonoBehaviour:
   damageMultiplier: 1
   knockbackMultiplier: 1
   attackIntervalMultiplier: 0.75
+  changeAttackPattern: 0
+  waitForDamage: 0
 --- !u!114 &8099918555011541522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +258,7 @@ MonoBehaviour:
   duration: 9
   playOnStart: 1
   fadeOutDuration: 1
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: spiritSwarmVolume
 --- !u!1 &6607328154304511375
@@ -5146,7 +5149,7 @@ MonoBehaviour:
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
   affectsEnemies: 0
-  maxHpMultiplier: 1.5
+  maxHpMultiplier: 3
 --- !u!114 &5608733842328156764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5162,7 +5165,7 @@ MonoBehaviour:
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
   affectsEnemies: 0
-  damageMultiplier: 1
+  damageMultiplier: 4
   knockbackMultiplier: 1
   attackIntervalMultiplier: 0.75
 --- !u!114 &7050953722733766674
@@ -5180,7 +5183,7 @@ MonoBehaviour:
   area: {fileID: 2811049362678237505}
   allegiance: {fileID: 2918475226641877387}
   affectsEnemies: 0
-  speedMultiplier: 1.5
+  speedMultiplier: 3
 --- !u!135 &9118675805897069436
 SphereCollider:
   m_ObjectHideFlags: 0
