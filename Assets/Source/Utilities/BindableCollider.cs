@@ -15,6 +15,8 @@ namespace ElementalEngagement
     {
         // Called when on trigger enter is called.
         public UnityEvent<Collider> onTriggerEnter = new UnityEvent<Collider>();
+        // Called when on trigger enter is called.
+        public UnityEvent<Collider> onTriggerStay = new UnityEvent<Collider>();
         // Called when on trigger exit is called.
         public UnityEvent<Collider> onTriggerExit = new UnityEvent<Collider>();
         // Called when on trigger enter is called.
@@ -37,6 +39,11 @@ namespace ElementalEngagement
         {
             _overlappingColliders.Add(other);
             onTriggerEnter?.Invoke(other);
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            onTriggerStay?.Invoke(other);
         }
 
         /// <summary>
