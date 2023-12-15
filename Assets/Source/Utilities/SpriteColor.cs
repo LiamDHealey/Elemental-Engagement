@@ -1,3 +1,4 @@
+using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,11 +12,18 @@ namespace ElementalEngagement.Utilities
     [RequireComponent(typeof(SpriteRenderer))]
     public class SpriteColor : MonoBehaviour
     {
-        public void SetColor(string color)
-        {
-            string[] rgba = color.Split(", ");
+        public Color player1Color = Color.white;
+        public Color player2Color = Color.black;
+        public Color unalignedColor = Color.clear;
 
-            GetComponent<SpriteRenderer>().color = new Color(float.Parse(rgba[0]), float.Parse(rgba[1]), float.Parse(rgba[2]), float.Parse(rgba[3]));
+        public void Start()
+        {
+            GetComponent<SpriteRenderer>().color = GetComponentInParent<Allegiance>()?.faction switch
+            {
+                Faction.PlayerOne => player1Color,
+                Faction.PlayerTwo => player2Color,
+                _ => unalignedColor,
+            };
         }
     }
 
