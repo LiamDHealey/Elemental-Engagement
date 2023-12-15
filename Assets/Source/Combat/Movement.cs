@@ -147,7 +147,7 @@ public class Movement : MonoBehaviour
     {
         NavMeshPath path = new NavMeshPath();
         agent.CalculatePath(destination, path);
-        return path.status != NavMeshPathStatus.PathInvalid;
+        return path.status == NavMeshPathStatus.PathComplete;
     }
 
     

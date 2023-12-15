@@ -79,5 +79,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
+    public static bool IsMenuOpen(string menuName)
+    {
+        return openMenus.Contains(menuName);
+    }
 }
