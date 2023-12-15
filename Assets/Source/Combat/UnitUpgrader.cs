@@ -1,3 +1,4 @@
+using ElementalEngagement.Favor;
 using ElementalEngagement.Player;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,8 +48,12 @@ namespace ElementalEngagement.Combat
                 upgradedHealth.hp = upgradedHealth.maxHp * healthPercent;
 
                 upgradedUnit.GetComponent<Allegiance>().faction = colliderAllegiance.faction;
+                (Faction, MinorGod) AllegianceKey() => (colliderAllegiance.faction, colliderAllegiance.god);
 
                 Destroy(collider.gameObject);
+
+                Spawner.spawnedObjects[AllegianceKey()].Add(upgradedUnit);
+                upgradedUnit.GetComponent<Health>().onKilled.AddListener(() => Spawner.spawnedObjects[AllegianceKey()].Remove(upgradedUnit));
             }
         }
     }

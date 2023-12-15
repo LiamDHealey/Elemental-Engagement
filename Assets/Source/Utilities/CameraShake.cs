@@ -9,6 +9,11 @@ namespace ElementalEngagement.Utilities
     {
         public float intensity = 1f;
         public static bool isShaking = false;
+        private void Start()
+        {
+            isShaking = false;
+        }
+
 
         void Update()
         {
