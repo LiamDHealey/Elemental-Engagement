@@ -8,6 +8,7 @@ public class SpriteFlasher : MonoBehaviour
 {
     public List<SpriteRenderer> renderers;
     public Color color;
+    public Color healColor;
     public float flashLength = .25f;
     private float remainingFlashTime = 0;
 
@@ -19,6 +20,16 @@ public class SpriteFlasher : MonoBehaviour
             foreach (SpriteRenderer renderer in renderers)
             {
                 renderer.color = color;
+            }
+
+            remainingFlashTime = flashLength;
+        }
+        if (damage.amount < 0)
+        {
+            Debug.Log(transform.parent);
+            foreach (SpriteRenderer renderer in renderers)
+            {
+                renderer.color = healColor;
             }
 
             remainingFlashTime = flashLength;

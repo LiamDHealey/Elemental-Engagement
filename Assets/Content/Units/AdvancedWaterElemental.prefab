@@ -5502,6 +5502,18 @@ PrefabInstance:
       propertyPath: onAttackDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: healColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: healColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4298545357260384665, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: healColor.r
+      value: 0.9490196
+      objectReference: {fileID: 0}
     - target: {fileID: 4823168693490502055, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5538,6 +5550,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2123812375, guid: 569fa5ee34da5b144a31b42660a09cd1, type: 3}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Color.a
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
