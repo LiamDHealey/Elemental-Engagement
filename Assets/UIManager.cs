@@ -69,6 +69,9 @@ public class UIManager : MonoBehaviour
     }
     private void Update()
     {
+        if (!AllegianceManager.gameStarted)
+            return;
+
         if(openMenus.Count > 0 || gameOver)
         {
             Time.timeScale = 0f;
