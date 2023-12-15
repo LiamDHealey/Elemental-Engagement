@@ -21,6 +21,8 @@ namespace ElementalEngagement.Combat
 
         [Tooltip("The mask used to detect what blocks this.")]
         [SerializeField] private LayerMask blockerMask;
+        public Material invalidMaterial;
+        public Material validMaterial;
 
 
 
@@ -28,6 +30,7 @@ namespace ElementalEngagement.Combat
         private List<GameObject> spawnedObjects = new List<GameObject>();
 
         private bool _isColliding = false;
+
         bool IAbilityCollider.isColliding { get => _isColliding; set => _isColliding = value; }
 
         public void Spawn()
@@ -38,23 +41,24 @@ namespace ElementalEngagement.Combat
 
             float totalDistance = (endpoint1.position - endpoint2.position).magnitude;
             Vector3 direction = (endpoint2.position - endpoint1.position) / totalDistance;
-            if (!float.IsFinite(totalDistance))
+            if (!float.IsNormal(totalDistance))
             {
                 return;
             }
 
-            if (Physics.SphereCast(new Ray(endpoint1.position, direction), blockerDistance, totalDistance, blockerMask))
+            if (Physics.SphereCast(new Ray(endpoint2.position, -direction), blockerDistance, totalDistance, blockerMask)
+                || Physics.SphereCast(new Ray(endpoint1.position, direction), blockerDistance, totalDistance, blockerMask))
             {
                 _isColliding = true;
             }
 
             Vector3 start = endpoint1.position;
             Vector3 offset = direction * distance;
-            for (int i = 0; i < totalDistance / distance; i++)
+            for (int i = 0; i < (totalDistance - distance * 1.5)/ distance; i++)
             {
-                Spawn(start + offset * i);
+                Spawn(start + offset * i + offset/2);
             }
-            Spawn(endpoint2.position);
+            Spawn(endpoint2.position - offset / 2);
 
 
             void Spawn(Vector3 position)
@@ -63,6 +67,7 @@ namespace ElementalEngagement.Combat
                 spawnedObject.transform.parent = transform;
                 spawnedObject.transform.position = position;
                 spawnedObject.transform.rotation = transform.rotation;
+                spawnedObject.GetComponentInChildren<MeshRenderer>().material = _isColliding ? invalidMaterial : validMaterial;
                 spawnedObjects.Add(spawnedObject);
             }
         }
