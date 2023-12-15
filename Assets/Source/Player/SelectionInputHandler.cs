@@ -59,10 +59,15 @@ namespace ElementalEngagement.Player
         private List<Selectable> _selectedObjects = new List<Selectable>();
         public ReadOnlyCollection<Selectable> selectedObjects { get => _selectedObjects.AsReadOnly(); }
 
+        // Keeps track of the deselectWhenKilled actions attached to each selectable
+        private Dictionary<Selectable, UnityAction> deselectWhenKilledTracker = new Dictionary<Selectable, UnityAction>();
+
         //Checks if the player can double-tap to select all similar units.
         private bool canSelectAll = false;
 
         private Camera camera;
+
+        private delegate void deselectWhenKilledDelegate();
 
         public UnityEvent groupSelectionStarted;
         public UnityEvent groupSelectionStopped;
@@ -94,8 +99,21 @@ namespace ElementalEngagement.Player
             {
                 _selectedObjects.Add(selectable);
                 selectable.isSelected = true;
-                selectable.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(selectable); });
+                addKillDelegate(selectable);
                 selectedThisTick = true;
+            }
+        }
+
+        /// <summary>
+        /// Add the deselectWhenKilled Delegate when the object is selected.
+        /// </summary>
+        public void addKillDelegate(Selectable selectable)
+        {
+            if (!deselectWhenKilledTracker.ContainsKey(selectable))
+            {
+                UnityAction onKillAction = new UnityAction(delegate { deselectWhenKilled(selectable); });
+                selectable.gameObject.GetComponent<Health>().onKilled.AddListener(onKillAction);
+                deselectWhenKilledTracker.Add(selectable, onKillAction);
             }
         }
 
@@ -136,7 +154,7 @@ namespace ElementalEngagement.Player
 
                             _selectedObjects.Add(selectable);
                             selectable.isSelected = true;
-                            selectable.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(selectable); });
+                            addKillDelegate(selectable);
                             selectedThisTick = true;
                         }
                     }
@@ -187,7 +205,7 @@ namespace ElementalEngagement.Player
                         Selectable colliderSelect = collider.GetComponent<Selectable>();
                         _selectedObjects.Add(colliderSelect);
                         colliderSelect.isSelected = true;
-                        colliderSelect.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(colliderSelect); });
+                        addKillDelegate(colliderSelect);
                         selectedThisTick = true;
                     }
                 }
@@ -209,7 +227,7 @@ namespace ElementalEngagement.Player
                 {
                     _selectedObjects.Add(select);
                     select.isSelected = true;
-                    select.gameObject.GetComponent<Health>().onKilled.AddListener(delegate { deselectWhenKilled(select); });
+                    addKillDelegate(select);
                     selectedThisTick = true;
                 }
             }
@@ -225,7 +243,7 @@ namespace ElementalEngagement.Player
             foreach (Selectable selectedObject in selectedObjects)
             {
                 _selectedObjects.Remove(selectedObject);
-                selectedObject.gameObject.GetComponent<Health>().onKilled.RemoveListener(delegate { deselectWhenKilled(selectedObject); });
+                selectedObject.gameObject.GetComponent<Health>().onKilled.RemoveListener(deselectWhenKilledTracker[selectedObject]);
                 selectedObject.isSelected = false;
             }
         }
