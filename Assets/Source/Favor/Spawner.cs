@@ -32,30 +32,19 @@ namespace ElementalEngagement.Favor
 
         //The Allegiance tied to this spawner
         Allegiance spawnAllegiance;
-        (Faction, MinorGod) allegianceKey => (spawnAllegiance.faction, spawnAllegiance.god);
 
         //The time since the last object was spawned
         float timeSinceLastSpawn;
 
-        public static Dictionary<(Faction, MinorGod), HashSet<GameObject>> spawnedObjects = new Dictionary<(Faction, MinorGod), HashSet<GameObject>>()
+        public static Dictionary<Faction, HashSet<GameObject>> spawnedObjects = new Dictionary<Faction, HashSet<GameObject>>()
             {
-                { (Faction.PlayerOne, MinorGod.Fire), new HashSet<GameObject>() },
-                { (Faction.PlayerOne, MinorGod.Earth), new HashSet<GameObject>() },
-                { (Faction.PlayerOne, MinorGod.Water), new HashSet<GameObject>() },
-                { (Faction.PlayerTwo, MinorGod.Fire), new HashSet<GameObject>() },
-                { (Faction.PlayerTwo, MinorGod.Earth), new HashSet<GameObject>() },
-                { (Faction.PlayerTwo, MinorGod.Water), new HashSet<GameObject>() },
+                { Faction.PlayerOne, new HashSet<GameObject>() },
+                { Faction.PlayerTwo, new HashSet<GameObject>() },
             };
-        public static Dictionary<(Faction, MinorGod), int> spawnCaps = new Dictionary<(Faction, MinorGod), int>()
+        public static Dictionary<Faction, int> spawnCaps = new Dictionary<Faction, int>()
             {
-                { (Faction.PlayerOne, MinorGod.Fire), 0 },
-                { (Faction.PlayerOne, MinorGod.Earth), 0 },
-                { (Faction.PlayerOne, MinorGod.Water), 0 },
-                { (Faction.PlayerOne, MinorGod.Human), 0 },
-                { (Faction.PlayerTwo, MinorGod.Fire), 0 },
-                { (Faction.PlayerTwo, MinorGod.Earth), 0 },
-                { (Faction.PlayerTwo, MinorGod.Water), 0 },
-                { (Faction.PlayerTwo, MinorGod.Human), 0 },
+                { Faction.PlayerOne, 0 },
+                { Faction.PlayerTwo, 0 },
             };
 
         /// <summary>
@@ -69,11 +58,11 @@ namespace ElementalEngagement.Favor
 
         public void Start()
         {
-            spawnedObjects[allegianceKey] = FindObjectsOfType<Selectable>()
-                .Where(x => x.allegiance.faction == spawnAllegiance.faction && x.allegiance.god == spawnAllegiance.god)
+            spawnedObjects[spawnAllegiance.faction] = FindObjectsOfType<Selectable>()
+                .Where(x => x.allegiance.faction == spawnAllegiance.faction)
                 .Select(x => x.gameObject)
                 .ToHashSet();
-            spawnCaps[allegianceKey] = spawnCap;
+            spawnCaps[spawnAllegiance.faction] = spawnCap;
         }
 
         /// <summary>
@@ -84,13 +73,13 @@ namespace ElementalEngagement.Favor
             float spawnInterval = baseInterval / SpawnrateProvider.GetSpawnrateMultiplier(spawnAllegiance);
             
             timeSinceLastSpawn += Time.deltaTime;
-            spawnedObjects[allegianceKey] = spawnedObjects[allegianceKey]
+            spawnedObjects[spawnAllegiance.faction] = spawnedObjects[spawnAllegiance.faction]
                 .Where(s => s != null)
                 .ToHashSet();
 
             if (timeSinceLastSpawn >= spawnInterval)
             {
-                if (spawnedObjects[allegianceKey].Count >= spawnCap)
+                if (spawnedObjects[spawnAllegiance.faction].Count >= spawnCaps[spawnAllegiance.faction])
                     return;
 
                 GameObject spawnedObject = Instantiate(objectToSpawn);
@@ -100,8 +89,8 @@ namespace ElementalEngagement.Favor
                 spawnedObject.GetComponent<Allegiance>().faction = spawnAllegiance.faction;
                 onSpawned?.Invoke();
 
-                spawnedObjects[allegianceKey].Add(spawnedObject);
-                spawnedObject.GetComponent<Health>().onKilled.AddListener(() => spawnedObjects[allegianceKey].Remove(spawnedObject));
+                spawnedObjects[spawnAllegiance.faction].Add(spawnedObject);
+                spawnedObject.GetComponent<Health>().onKilled.AddListener(() => spawnedObjects[spawnAllegiance.faction].Remove(spawnedObject));
 
                 timeSinceLastSpawn = 0;
             }

@@ -7,25 +7,26 @@ using TMPro;
 using UnityEngine;
 
 
-[RequireComponent(typeof(TMP_Text))]
-public class SpawnCapDisplay : MonoBehaviour
+namespace ElementalEngagement.UI
 {
-    public MinorGod god;
-
-    TMP_Text text;
-    Allegiance allegiance;
-    (Faction, MinorGod) allegianceKey => (allegiance.faction, god);
-
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(TMP_Text))]
+    public class SpawnCapDisplay : MonoBehaviour
     {
-        text = GetComponent<TMP_Text>();
-        allegiance = GetComponentInParent<Allegiance>();
+        TMP_Text text;
+        Allegiance allegiance;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            text = GetComponent<TMP_Text>();
+            allegiance = GetComponentInParent<Allegiance>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            text.text = $"{Spawner.spawnedObjects[allegiance.faction].Count}/{Spawner.spawnCaps[allegiance.faction]} units";
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        text.text = $"{Spawner.spawnedObjects[allegianceKey].Count}/{Spawner.spawnCaps[allegianceKey]}";
-    }
 }
