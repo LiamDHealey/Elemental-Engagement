@@ -15,9 +15,16 @@ namespace ElementalEngagement.Player
     /// </summary>
     public class AllegianceManager : MonoBehaviour
     {
+        public static UnityEvent onGameStarted = new UnityEvent();
+
         [SerializeField] List<FactionToOverrides> factionsToOverrides = new List<FactionToOverrides>();
         HashSet<Faction> claimedFactions = new HashSet<Faction>();
 
+        private float _timeUntilGameStart = 5;
+        public static float timeUntilGameStart => instance._timeUntilGameStart;
+        private bool _gameStarted;
+        public static bool gameStarted => instance._gameStarted;
+        private static AllegianceManager instance;
         public void OnPlayerJoined(PlayerInput input)
         {
             foreach (Faction faction in Enum.GetValues(typeof(Faction)))
@@ -62,6 +69,30 @@ namespace ElementalEngagement.Player
             public Faction faction;
             public Transform spawnTransform;
             public GameObject hud;
+        }
+        private void Start()
+        {
+            instance = this;
+            Time.timeScale = 0;
+        }
+
+        private void Update()
+        {
+            if (!gameStarted && claimedFactions.Count == 2)
+            {
+                _timeUntilGameStart -= Time.unscaledDeltaTime;
+                if (timeUntilGameStart <= 0)
+                {
+                    StartGame();
+                }
+            }
+        }
+
+        private void StartGame()
+        {
+            _gameStarted = true;
+            Time.timeScale = 1;
+            onGameStarted?.Invoke();
         }
     }
 }

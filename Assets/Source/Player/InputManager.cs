@@ -286,7 +286,14 @@ namespace ElementalEngagement
             if (!IsActionAllowed(context))
                 return;
 
-            UIManager.onMenuOpened?.Invoke("pauseMenu");
+            if (!UIManager.IsMenuOpen("pauseMenu"))
+            {
+                UIManager.onMenuOpened?.Invoke("pauseMenu");
+            }
+            else
+            {
+                UIManager.onMenuClosed?.Invoke("pauseMenu");
+            }
         }
 
         private void Back(CallbackContext context)
