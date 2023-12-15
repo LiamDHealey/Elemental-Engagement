@@ -51,9 +51,11 @@ namespace ElementalEngagement.Favor
                 { (Faction.PlayerOne, MinorGod.Fire), 0 },
                 { (Faction.PlayerOne, MinorGod.Earth), 0 },
                 { (Faction.PlayerOne, MinorGod.Water), 0 },
+                { (Faction.PlayerOne, MinorGod.Human), 0 },
                 { (Faction.PlayerTwo, MinorGod.Fire), 0 },
                 { (Faction.PlayerTwo, MinorGod.Earth), 0 },
                 { (Faction.PlayerTwo, MinorGod.Water), 0 },
+                { (Faction.PlayerTwo, MinorGod.Human), 0 },
             };
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace ElementalEngagement.Favor
 
             if (timeSinceLastSpawn >= spawnInterval)
             {
-                if (spawnedObjects.Count < spawnCap)
+                if (spawnedObjects[allegianceKey].Count >= spawnCap)
                     return;
 
                 GameObject spawnedObject = Instantiate(objectToSpawn);
