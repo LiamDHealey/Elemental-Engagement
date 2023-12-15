@@ -228,7 +228,7 @@ namespace ElementalEngagement.Player
             if (!unlockedAbilities.Contains(ability) || _abilityCooldowns.ContainsKey(ability))
                 return;
 
-            if (ability.hasCollision && (abilityPreview.GetComponent<IAbilityCollider>()?.isColliding ?? false))
+            if (ability.hasCollision && abilityPreview.GetComponentsInChildren<IAbilityCollider>().Any(c => c.isColliding))
                 return;
 
             _abilityCooldowns.Add(ability, ability.cooldown);
