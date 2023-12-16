@@ -55,7 +55,8 @@ namespace ElementalEngagement.Utilities
 
         private void OnDestroy()
         {
-            audioMixer.SetFloat(volumeParam, startingMixerVolume);
+            if(useMixer)
+                audioMixer.SetFloat(volumeParam, startingMixerVolume);
         }
 
         private void Awake()
@@ -68,7 +69,10 @@ namespace ElementalEngagement.Utilities
         private void Start()
         {
             startingSourceVolume = audioSource.volume;
-            audioMixer.GetFloat(volumeParam, out startingMixerVolume);
+            
+            if(useMixer)
+                audioMixer.GetFloat(volumeParam, out startingMixerVolume);
+
             if (playOnStart) 
             {
                 if(loop)
@@ -109,9 +113,12 @@ namespace ElementalEngagement.Utilities
         {
             if(!useMixer)
                 audioSource.volume = startingSourceVolume;
+            else
+            {
+                audioMixer.SetFloat(volumeParam, startingMixerVolume);
+            }
 
             AudioClip clipToPlay = GetRandomClip(audioClips);
-            audioMixer.SetFloat(volumeParam, startingMixerVolume);
             audioSource.PlayOneShot(clipToPlay);
         }
 

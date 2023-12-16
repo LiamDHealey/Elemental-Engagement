@@ -232,7 +232,7 @@ MonoBehaviour:
   playOnStart: 0
   fadeOutDuration: 1
   announcementWaitTime: 0
-  useMixer: 1
+  useMixer: 0
   volumeParam: 
 --- !u!1 &4855536111389586781
 GameObject:
@@ -983,6 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _iconSize: 38
   scaleWithMap: 1
+  layer: 0
   unalignedIcon: {fileID: 0}
   playerOneIcon: {fileID: 0}
   playerTwoIcon: {fileID: 0}
