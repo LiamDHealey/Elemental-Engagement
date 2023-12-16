@@ -50,14 +50,9 @@ namespace ElementalEngagement.Combat
         public float hp
         { get;  set; }
 
-        // How much the unit is being damaged at the moment
-        public float damageAmount
-        { get; private set; }
-
         public void Awake()
         {
             hp = _maxHP;
-            damageAmount = 0;
         }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace ElementalEngagement.Combat
                 }
             }
 
-            damageAmount = damage.amount;
             onDamaged?.Invoke(damage);
 
             hp = Mathf.Clamp(hp - damage.amount, 0, maxHp);
