@@ -87,12 +87,12 @@ namespace ElementalEngagement.Combat
                 return;
             }
 
-            if(needsToWait && timeRemainingToAttack > 0)
+            if(timeRemainingToAttack > 0)
             {
                 timeRemainingToAttack -= Time.deltaTime;
                 return;
             }
-            else if (timeRemainingToAttack <= 0 || !needsToWait)
+            else if (timeRemainingToAttack <= 0)
             {
                 for(int i = validTargets.Count - 1; i >= 0; i--)
                 {
@@ -135,15 +135,14 @@ namespace ElementalEngagement.Combat
                 }
 
                 timeRemainingToAttack = attackInterval;
-                needsToWait = true;
             }
         }
 
         public override void SetAttackInterval(float newAttackInterval, bool waitAfterChanging)
         {
             attackInterval = newAttackInterval;
-            timeRemainingToAttack = attackInterval;
-            needsToWait = waitAfterChanging;
+            waitBeforeDamage = waitAfterChanging;
+            timeRemainingToAttack = waitAfterChanging ? attackInterval : 0;
         }
 
         public override void SetAttackInterval(float newAttackInterval)
