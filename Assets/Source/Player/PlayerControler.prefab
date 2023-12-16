@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4259697199818080447
 Transform:
   m_ObjectHideFlags: 0
@@ -44,7 +44,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3945524023151872831, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -146,9 +146,9 @@ MonoBehaviour:
   loop: 0
   interval: 0
   duration: 0
-  playOnStart: 0
+  playOnStart: 1
   fadeOutDuration: 1
-  announcementWaitTime: 0.25
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: announcerVolume
 --- !u!1 &4381274470310263124
@@ -219,35 +219,33 @@ MonoBehaviour:
     onSelected:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5798168222946714641}
-          m_TargetAssemblyTypeName: ElementalEngagement.Utilities.SoundEffectManager,
-            Assembly-CSharp
-          m_MethodName: addAnnouncementToQueue
-          m_Mode: 1
+        - m_Target: {fileID: 1863126938128317250}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
   - faction: 2
     onSelected:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 26193984464147337}
-          m_TargetAssemblyTypeName: ElementalEngagement.Utilities.SoundEffectManager,
-            Assembly-CSharp
-          m_MethodName: addAnnouncementToQueue
-          m_Mode: 1
+        - m_Target: {fileID: 7644246229622615313}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 0
+            m_BoolArgument: 1
           m_CallState: 2
 --- !u!114 &-2631422958165361864
 MonoBehaviour:
@@ -868,7 +866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4768296434230041833
 Transform:
   m_ObjectHideFlags: 0
@@ -895,7 +893,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -3945524023151872831, guid: bce542ea60c95564ba5eb4c0f9b36c84, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -997,9 +995,9 @@ MonoBehaviour:
   loop: 0
   interval: 0
   duration: 0
-  playOnStart: 0
+  playOnStart: 1
   fadeOutDuration: 1
-  announcementWaitTime: 0.25
+  announcementWaitTime: 0
   useMixer: 1
   volumeParam: announcerVolume
 --- !u!1 &8361649208543269712

@@ -61,14 +61,14 @@ namespace ElementalEngagement.Utilities
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
-            startingSourceVolume = audioSource.volume;
             audioMixer = audioSource.outputAudioMixerGroup.audioMixer;
-            audioMixer.GetFloat(volumeParam, out  startingMixerVolume);
         }
 
 
         private void Start()
         {
+            startingSourceVolume = audioSource.volume;
+            audioMixer.GetFloat(volumeParam, out startingMixerVolume);
             if (playOnStart) 
             {
                 if(loop)
