@@ -6,6 +6,8 @@ public class DelayStart : MonoBehaviour
 {
     [Tooltip("How Long to wait before activating this objects children")]
     public float timeToWait = 0.001f;
+
+    Transform[] children;
     void Start()
     {
         StartCoroutine(ActivateRoutine());
@@ -13,10 +15,9 @@ public class DelayStart : MonoBehaviour
 
     private IEnumerator ActivateRoutine()
     {
-
         // make a list of all children
-        Transform[] ChildrenTransforms = this.gameObject.GetComponentsInChildren<Transform>();
-        foreach (Transform t in ChildrenTransforms)
+        children = this.gameObject.GetComponentsInChildren<Transform>();
+        foreach (Transform t in children)
         {
             if (0 == t.childCount)
                 t.gameObject.SetActive(false); // disable the children
@@ -24,7 +25,7 @@ public class DelayStart : MonoBehaviour
 
         yield return new WaitForSeconds(timeToWait);
 
-        foreach (Transform t in ChildrenTransforms)
+        foreach (Transform t in children)
         {
             t.gameObject.SetActive(true);  // restore all the disabled objects in the list (even the parent)
         }

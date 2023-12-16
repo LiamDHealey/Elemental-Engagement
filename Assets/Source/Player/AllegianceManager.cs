@@ -23,7 +23,7 @@ namespace ElementalEngagement.Player
         private float _timeUntilGameStart = 5;
         public static float timeUntilGameStart => instance._timeUntilGameStart;
         private bool _gameStarted;
-        public static bool gameStarted => instance._gameStarted;
+        public static bool gameStarted => instance?._gameStarted ?? false;
         private static AllegianceManager instance;
         public void OnPlayerJoined(PlayerInput input)
         {

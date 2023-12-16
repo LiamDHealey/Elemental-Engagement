@@ -67,9 +67,6 @@ namespace ElementalEngagement.Favor
         // The number of decapture points this currently has.
         public float decapturePoints { get; private set; } = 0;
 
-        // Dictionary of coroutines currently being run associated with the unit running it.
-        private Dictionary<SacrificeCommand, IEnumerator>  sacrificeCoroutines = new Dictionary<SacrificeCommand, IEnumerator>();
-
         //List of all units that have ever sacrificed and their cooldown
         private List<SacrificingUnit> unitsToUpdate = new List<SacrificingUnit>();
 
@@ -104,6 +101,7 @@ namespace ElementalEngagement.Favor
                 if (unitsToUpdate[i].unit == null)
                 {
                     unitsToUpdate.RemoveAt(i);
+                    i--;
                 }
                 else if (unitsToUpdate[i].isActive)
                 {

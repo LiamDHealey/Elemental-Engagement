@@ -108,19 +108,20 @@ namespace ElementalEngagement.Combat
                     onAttackStart?.Invoke();
                 }
 
+
+                if (!canAttackAndMove)
+                {
+                    CancelInvoke("AllowMovement");
+                    movement?.PreventMovement(this);
+                    Invoke("AllowMovement", stopDuration);
+                }
+
                 for (int i = 0; i < maxIndex; i++)
                 {   
                     Health health = validTargets[i].GetComponent<Health>();
                     KnockbackReceiver knockbackReceiver = validTargets[i].GetComponent<KnockbackReceiver>();
 
                     //Debug.Log("Attack Started for " + this.ToString() + this.transform.parent);
-
-                    if (!canAttackAndMove)
-                    {
-                        CancelInvoke("AllowMovement");
-                        movement?.PreventMovement(this);
-                        Invoke("AllowMovement", stopDuration);
-                    }
 
                     if (damageDelay > 0)
                     {
@@ -130,11 +131,11 @@ namespace ElementalEngagement.Combat
                     {
                         health?.TakeDamage(damage);
                         knockbackReceiver?.ReceiveKnockback(knockback);
-                        onAttackDamage?.Invoke();
                     }
                 }
-
                 timeRemainingToAttack = attackInterval;
+
+                onAttackDamage?.Invoke();
             }
         }
 

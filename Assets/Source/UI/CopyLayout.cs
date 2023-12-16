@@ -13,7 +13,21 @@ namespace ElementalEngagement.UI
     public class CopyLayout : MonoBehaviour
     {
         [Tooltip("Maps each player to a win event")]
-        public RectTransform source;
+        [SerializeField] private RectTransform _source;
+        public RectTransform source 
+        {
+            get => _source;
+            set
+            {
+                _source = value;
+                Update();
+            }
+        }
+
+        private void Start()
+        {
+            Update();
+        }
 
         private void Update()
         {

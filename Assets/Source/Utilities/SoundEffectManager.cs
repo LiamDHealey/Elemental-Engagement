@@ -53,6 +53,13 @@ namespace ElementalEngagement.Utilities
 
         private AudioMixer audioMixer = null;
 
+        private void OnEnable()
+        {
+            startingSourceVolume = audioSource.volume;
+            if(useMixer)
+                audioMixer.GetFloat(volumeParam, out startingMixerVolume);
+        }
+
         private void OnDestroy()
         {
             if(useMixer)
@@ -69,7 +76,6 @@ namespace ElementalEngagement.Utilities
         private void Start()
         {
             startingSourceVolume = audioSource.volume;
-            
             if(useMixer)
                 audioMixer.GetFloat(volumeParam, out startingMixerVolume);
 
