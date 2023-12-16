@@ -121,6 +121,7 @@ MonoBehaviour:
   allegiance: {fileID: 7250479293466123396}
   affectsEnemies: 0
   VFXPrefab: {fileID: 4557073698510574151, guid: 74d4f5a534d04f447b92dc7dd72f59ce, type: 3}
+  destroyDelay: 0
 --- !u!135 &3895532641874134912
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -155,6 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onTriggerStay:
     m_PersistentCalls:
       m_Calls: []
   onTriggerExit:
@@ -336,8 +340,9 @@ MonoBehaviour:
   duration: 5
   playOnStart: 1
   fadeOutDuration: 0
-  useMixer: 1
-  volumeParam: godPowerVolume
+  announcementWaitTime: 0
+  useMixer: 0
+  volumeParam: 
 --- !u!114 &6404981250907850213
 MonoBehaviour:
   m_ObjectHideFlags: 0
