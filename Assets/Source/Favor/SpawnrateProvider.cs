@@ -12,7 +12,7 @@ namespace ElementalEngagement.Favor
         [Tooltip("The unit to provide a spawnrate boost to")]
         public float spawnRateMultiplier = 1.25f;
 
-        private static List<SpawnrateProvider> providers = new List<SpawnrateProvider>();
+        private static HashSet<SpawnrateProvider> providers = new HashSet<SpawnrateProvider>();
 
         private Allegiance allegiance;
 
@@ -23,7 +23,7 @@ namespace ElementalEngagement.Favor
             {
                 if (!allegiance.CheckBothAllegiance(provider.allegiance))
                     continue;
-                multiplier *= provider.spawnRateMultiplier;
+                multiplier += provider.spawnRateMultiplier;
             }
             return multiplier;
         }
