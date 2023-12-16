@@ -14,8 +14,11 @@ public class SpriteFlasher : MonoBehaviour
     private float remainingFlashTime = 0;
 
     private List<Color> originalColors = new List<Color>();
+    private Health health;
+
     private void Start()
     {
+        health = GetComponent<Health>();
         for (int i = 0; i < renderers.Count; i++)
         {
             originalColors.Add(renderers[i].color);
@@ -33,9 +36,8 @@ public class SpriteFlasher : MonoBehaviour
 
             remainingFlashTime = flashLength;
         }
-        if (damage.amount < 0)
+        else if (damage.amount < 0 && health.hp < health.maxHp)
         {
-            Debug.Log(transform.parent);
             foreach (SpriteRenderer renderer in renderers)
             {
                 renderer.color = healColor;
