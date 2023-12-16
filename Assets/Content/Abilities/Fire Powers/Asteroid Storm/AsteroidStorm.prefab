@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8835529322014301733}
   - component: {fileID: 6482236068002490565}
   - component: {fileID: 995275647833398919}
-  - component: {fileID: 5156165183056899486}
   m_Layer: 2
   m_Name: 1st Asteroid
   m_TagString: Untagged
@@ -83,7 +82,19 @@ MonoBehaviour:
       m_Calls: []
   onAttackDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8835529322014301733}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movement: {fileID: 0}
   attackRange: {fileID: 995275647833398919}
   maxTargets: 999
@@ -126,6 +137,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -135,27 +149,6 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &5156165183056899486
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274121408428437938}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d483c335194bc3244bac7fcffa62aebb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &822201720260004261
 GameObject:
   m_ObjectHideFlags: 0
@@ -19506,7 +19499,6 @@ GameObject:
   - component: {fileID: 1972886686219970242}
   - component: {fileID: 1103870813999893325}
   - component: {fileID: 3557790986421664722}
-  - component: {fileID: 6343804759761709182}
   m_Layer: 2
   m_Name: 3rd Asteroid
   m_TagString: Untagged
@@ -19576,7 +19568,19 @@ MonoBehaviour:
       m_Calls: []
   onAttackDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1972886686219970242}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movement: {fileID: 0}
   attackRange: {fileID: 3557790986421664722}
   maxTargets: 999
@@ -19619,6 +19623,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -19628,27 +19635,6 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &6343804759761709182
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2628447571497002822}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d483c335194bc3244bac7fcffa62aebb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2992012603277009101
 GameObject:
   m_ObjectHideFlags: 0
@@ -82804,8 +82790,6 @@ GameObject:
   - component: {fileID: 3169935085978601852}
   - component: {fileID: 8335957412197613769}
   - component: {fileID: -4413762488026342783}
-  - component: {fileID: 7785458032764344796}
-  - component: {fileID: 7012133622005105386}
   - component: {fileID: 4952245712497268435}
   - component: {fileID: 4236858772971300497}
   m_Layer: 2
@@ -82881,51 +82865,6 @@ MonoBehaviour:
   onDetached:
     m_PersistentCalls:
       m_Calls: []
---- !u!135 &7785458032764344796
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7520094084802813353}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 10
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7012133622005105386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7520094084802813353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b9321f9db6c55d479173e3e69f13b91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onTriggerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onTriggerExit:
-    m_PersistentCalls:
-      m_Calls: []
-  onCollisionEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  onCollisionExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!95 &4952245712497268435
 Animator:
   serializedVersion: 5
@@ -82974,7 +82913,6 @@ GameObject:
   - component: {fileID: 9080600493038592256}
   - component: {fileID: 1683184467717652711}
   - component: {fileID: 6424589756571059484}
-  - component: {fileID: 8457941252602741170}
   m_Layer: 2
   m_Name: 4th Asteroid
   m_TagString: Untagged
@@ -83044,7 +82982,19 @@ MonoBehaviour:
       m_Calls: []
   onAttackDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9080600493038592256}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movement: {fileID: 0}
   attackRange: {fileID: 6424589756571059484}
   maxTargets: 999
@@ -83087,6 +83037,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -83096,27 +83049,6 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &8457941252602741170
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7760047039117579482}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d483c335194bc3244bac7fcffa62aebb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8404830670213518780
 GameObject:
   m_ObjectHideFlags: 0
@@ -87938,7 +87870,6 @@ GameObject:
   - component: {fileID: 1996628986238383852}
   - component: {fileID: 3504194135386199408}
   - component: {fileID: 3975878478859051958}
-  - component: {fileID: 7577691755947646656}
   m_Layer: 2
   m_Name: 5th Asteroid
   m_TagString: Untagged
@@ -88008,7 +87939,19 @@ MonoBehaviour:
       m_Calls: []
   onAttackDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1996628986238383852}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movement: {fileID: 0}
   attackRange: {fileID: 3975878478859051958}
   maxTargets: 999
@@ -88051,6 +87994,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -88060,27 +88006,6 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &7577691755947646656
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8428737361580685875}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d483c335194bc3244bac7fcffa62aebb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8673560183058404234
 GameObject:
   m_ObjectHideFlags: 0
@@ -88094,7 +88019,6 @@ GameObject:
   - component: {fileID: 8397472971095841651}
   - component: {fileID: 5211642837953828646}
   - component: {fileID: 5641013848812430732}
-  - component: {fileID: 1498198845197587761}
   m_Layer: 2
   m_Name: 2nd Asteroid
   m_TagString: Untagged
@@ -88164,7 +88088,19 @@ MonoBehaviour:
       m_Calls: []
   onAttackDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8397472971095841651}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movement: {fileID: 0}
   attackRange: {fileID: 5641013848812430732}
   maxTargets: 999
@@ -88207,6 +88143,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -88216,27 +88155,6 @@ MonoBehaviour:
   onCollisionExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1498198845197587761
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8673560183058404234}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d483c335194bc3244bac7fcffa62aebb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8928195049540006573
 GameObject:
   m_ObjectHideFlags: 0
