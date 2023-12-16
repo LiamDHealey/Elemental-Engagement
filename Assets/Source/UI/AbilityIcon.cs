@@ -1,5 +1,6 @@
 ﻿using ElementalEngagement.Combat;
 using ElementalEngagement.Player;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -22,12 +23,15 @@ namespace ElementalEngagement.UI
                 if (value == _ability)
                     return;
                 _ability = value;
-                iconImage.sprite = _ability.icon;
+                foreach (Image image in iconImages)
+                { 
+                    image.sprite = _ability.icon;
+                }
             }
         }
 
         [Tooltip("The image used to display the ability icon.")]
-        [SerializeField] private Image iconImage;
+        [SerializeField] private List<Image> iconImages;
             
         [Tooltip("The manager this is showing the ability for.")]
         public AbilityInputHandler manager;
@@ -139,7 +143,11 @@ namespace ElementalEngagement.UI
 
         private void Update()
         {
-            iconImage.sprite = ability?.icon ?? null;
+
+            foreach (Image image in iconImages)
+            {
+                image.sprite = ability?.icon ?? null;
+            }
             if (ability == null) return;
 
             float currentCooldown = 0;
