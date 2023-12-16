@@ -14,8 +14,16 @@ public class ShowOnDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponentInParent<Health>().onDamaged.AddListener(delegate { timeSinceDamage = 0; });
+        GetComponentInParent<Health>().onDamaged.AddListener(UpdateOnDamage);
         images = GetComponentsInChildren<Image>();
+    }
+
+    private void UpdateOnDamage(Damage damage)
+    {
+        if (damage.amount != 0)
+        {
+            timeSinceDamage = 0;
+        }
     }
 
     // Update is called once per frame
