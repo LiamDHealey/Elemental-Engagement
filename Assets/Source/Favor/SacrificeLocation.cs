@@ -131,11 +131,6 @@ namespace ElementalEngagement.Favor
 
             foreach(SacrificingUnit targetUnit in unitsToUpdate)
             {
-                if(!targetUnit.isActive)
-                {
-                    continue;
-                }
-
                 unitGod = targetUnit.unit.GetComponent<Allegiance>().god;
                 unitFaction = targetUnit.unit.GetComponent<Allegiance>().faction;
                 unitHealth = targetUnit.unit.GetComponent<Health>();
