@@ -7,11 +7,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 namespace ElementalEngagement.Utilities
 {
     public class MusicManager : MonoBehaviour
     {
+        public AudioMixerGroup mixerGroup;
+
+
         [Tooltip("The time it takes for a track to fade out after another starts.")] [Min(0f)]
         [SerializeField] private float fadeOutDuration = 0.5f;
 
@@ -21,8 +25,6 @@ namespace ElementalEngagement.Utilities
 
         [Tooltip("The music that will play on the menu")]
         [SerializeField] private List<MusicTrack> menuMusic = new List<MusicTrack>();
-
-
 
         [Header("Low Intensity")]
 
@@ -160,6 +162,8 @@ namespace ElementalEngagement.Utilities
             GameObject container = new GameObject($"MusicPlayer_{state}_Track{musicIndex}");
             container.transform.parent = instance.transform;
             AudioSource audioSource = container.AddComponent<AudioSource>();
+            audioSource.outputAudioMixerGroup = instance.mixerGroup;
+
             yield return null;
 
 

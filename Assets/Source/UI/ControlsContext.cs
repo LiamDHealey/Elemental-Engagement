@@ -40,81 +40,85 @@ namespace ElementalEngagement.UI
         {
             IEnumerable<InputAction> actions = inputManager.availableActions;
             int index = 0;
-            foreach (InputAction action in actions)
+
+            if (Settings.contextualControls)
             {
-                Control control = allowedControls.FirstOrDefault(ctrl => ctrl.action.action.name == action.name);
-                if (control == null)
-                    continue;
-
-                if (textBoxes.Count <= index)
+                foreach (InputAction action in actions)
                 {
-                    GameObject newTextBox = Instantiate(template.gameObject);
-                    newTextBox.transform.SetParent(controlsContainer.transform, false);
-                    newTextBox.SetActive(true);
-                    containers.Add(newTextBox);
-                    textBoxes.Add(newTextBox.GetComponentInChildren<TextMeshProUGUI>());
-                }
+                    Control control = allowedControls.FirstOrDefault(ctrl => ctrl.action.action.name == action.name);
+                    if (control == null)
+                        continue;
 
-
-                
-
-
-                IEnumerable<InputBinding> appropriateBindings = action.bindings.Where(b => b.groups.Contains(input.currentControlScheme));
-
-                string bindingName;
-                if (input.devices.Any(device => device is DualShockGamepad))
-                {
-                    textBoxes[index].spriteAsset = playStationSpriteAsset;
-                    bindingName = GetBindingNameWithIcons();
-                }
-                else if (input.devices.Any(device => device is XInputController))
-                {
-                    textBoxes[index].spriteAsset = xBoxSpriteAsset;
-                    bindingName = GetBindingNameWithIcons();
-                }
-                else if (input.devices.Any(d => d is Keyboard))
-                {
-                    textBoxes[index].spriteAsset = keyboardSpriteAsset;
-                    bindingName = GetBindingNameWithIcons();
-                }
-                else
-                {
-                    bindingName = GetBindingName();
-                }
-
-                string bindingInteractions = appropriateBindings.First().interactions.Split('(')[0];
-                textBoxes[index].text = format
-                    .Replace("{binding}", control.includeInteractions ? $"{bindingInteractions} {bindingName}" : bindingName)
-                    .Replace("{action}", control.displayName);
-
-                index++;
+                    if (textBoxes.Count <= index)
+                    {
+                        GameObject newTextBox = Instantiate(template.gameObject);
+                        newTextBox.transform.SetParent(controlsContainer.transform, false);
+                        newTextBox.SetActive(true);
+                        containers.Add(newTextBox);
+                        textBoxes.Add(newTextBox.GetComponentInChildren<TextMeshProUGUI>());
+                    }
 
 
 
 
 
-                string GetBindingNameWithIcons()
-                {
-                    return appropriateBindings
-                        .Aggregate("", (name, binding) =>
-                        {
-                            return name + $"<sprite name=\"{binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions, control: input.devices[0])}\">";
-                        });
-                }
-                string GetBindingName()
-                {
-                    if (input.devices.Count == 0)
+                    IEnumerable<InputBinding> appropriateBindings = action.bindings.Where(b => b.groups.Contains(input.currentControlScheme));
+
+                    string bindingName;
+                    if (input.devices.Any(device => device is DualShockGamepad))
+                    {
+                        textBoxes[index].spriteAsset = playStationSpriteAsset;
+                        bindingName = GetBindingNameWithIcons();
+                    }
+                    else if (input.devices.Any(device => device is XInputController))
+                    {
+                        textBoxes[index].spriteAsset = xBoxSpriteAsset;
+                        bindingName = GetBindingNameWithIcons();
+                    }
+                    else if (input.devices.Any(d => d is Keyboard))
+                    {
+                        textBoxes[index].spriteAsset = keyboardSpriteAsset;
+                        bindingName = GetBindingNameWithIcons();
+                    }
+                    else
+                    {
+                        bindingName = GetBindingName();
+                    }
+
+                    string bindingInteractions = appropriateBindings.First().interactions.Split('(')[0];
+                    textBoxes[index].text = format
+                        .Replace("{binding}", control.includeInteractions ? $"{bindingInteractions} {bindingName}" : bindingName)
+                        .Replace("{action}", control.displayName);
+
+                    index++;
+
+
+
+
+
+                    string GetBindingNameWithIcons()
+                    {
                         return appropriateBindings
                             .Aggregate("", (name, binding) =>
                             {
-                                return name + binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions);
+                                return name + $"<sprite name=\"{binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions, control: input.devices[0])}\">";
                             });
+                    }
+                    string GetBindingName()
+                    {
+                        if (input.devices.Count == 0)
+                            return appropriateBindings
+                                .Aggregate("", (name, binding) =>
+                                {
+                                    return name + binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions);
+                                });
 
-                    return appropriateBindings
-                        .Aggregate("", (name, binding) =>
-                        {
-                            return name + binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions, control: input.devices[0]);
-                        });
+                        return appropriateBindings
+                            .Aggregate("", (name, binding) =>
+                            {
+                                return name + binding.ToDisplayString(InputBinding.DisplayStringOptions.DontIncludeInteractions, control: input.devices[0]);
+                            });
+                    }
                 }
             }
 

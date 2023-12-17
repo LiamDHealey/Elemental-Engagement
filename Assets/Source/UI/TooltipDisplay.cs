@@ -26,7 +26,7 @@ namespace ElementalEngagement.UI
 
         private void ShowTooltip()
         {
-            gameObject.SetActive(true);
+            gameObject.SetActive(Settings.tooltips);
             if (textBox != null)
                 textBox.text = handler.selectedAbility.toolTip;
 

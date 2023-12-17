@@ -39,6 +39,13 @@ namespace ElementalEngagement.Player
 
         Vector3? startPos;
 
+        Allegiance allegiance;
+
+        private void Start()
+        {
+            allegiance = GetComponent<Allegiance>();
+        }
+
         /// <summary>
         /// Move this
         /// </summary>
@@ -58,7 +65,7 @@ namespace ElementalEngagement.Player
 
             lastAccelerating = currentAccelerating;
 
-            Vector2 delta = input * panSpeed * speedMultiplier * Time.deltaTime;
+            Vector2 delta = input * panSpeed * speedMultiplier * Time.deltaTime * (allegiance?.faction == Faction.PlayerOne ? Settings.p1PanSpeed : Settings.p2PanSpeed);
 
             Vector3 pos = transform.position;
             transform.position = new Vector3(
