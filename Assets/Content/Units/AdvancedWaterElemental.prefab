@@ -182,6 +182,9 @@ MonoBehaviour:
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
   onTriggerExit:
     m_PersistentCalls:
       m_Calls: []
@@ -5163,7 +5166,7 @@ Transform:
   m_GameObject: {fileID: 5026256109232540908}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.78, z: 0.45}
+  m_LocalPosition: {x: 0, y: 5.87, z: 0.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5536,7 +5539,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 135e7cc8499ceab43bf7b222225fde3e, type: 3}
     - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_Size.x
@@ -5570,6 +5573,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5252771878741741873, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 918444e9784fded4888d7e21615c077d, type: 2}
     - target: {fileID: 5351249221945880208, guid: 983e01e33cb06964d9a1d3459512a814, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

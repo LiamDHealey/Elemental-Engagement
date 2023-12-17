@@ -223,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6834619783329830095}
   - component: {fileID: 1007291564173023583}
+  - component: {fileID: 6810820214853304829}
   m_Layer: 0
   m_Name: volcanic_rock_2
   m_TagString: Untagged
@@ -265,7 +266,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: cf929332d6b2b23448a9b137416165b8, type: 3}
+  - {fileID: -876546973899608171, guid: 2bbcad7e886b9404aa35ca476a6c60aa, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -297,6 +298,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6810820214853304829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277482806412615162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2218429076132793190
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +320,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2909133114820596740}
   - component: {fileID: 5486190039704071711}
+  - component: {fileID: 7714285039975530686}
   m_Layer: 0
   m_Name: volcanic_rock_2 (1)
   m_TagString: Untagged
@@ -349,7 +363,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: cf929332d6b2b23448a9b137416165b8, type: 3}
+  - {fileID: -876546973899608171, guid: 2bbcad7e886b9404aa35ca476a6c60aa, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -381,6 +395,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7714285039975530686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218429076132793190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5535481659773444011
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 704113174658947723}
   - component: {fileID: 7706525937270497136}
+  - component: {fileID: 8790923721093277736}
   m_Layer: 0
   m_Name: volcanic_rock_1 (1)
   m_TagString: Untagged
@@ -433,7 +460,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: cf929332d6b2b23448a9b137416165b8, type: 3}
+  - {fileID: -876546973899608171, guid: 2bbcad7e886b9404aa35ca476a6c60aa, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -465,6 +492,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8790923721093277736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535481659773444011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7019836986850473399
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5175820159571848463}
   - component: {fileID: 756715472450931484}
+  - component: {fileID: 5452677590496522865}
   m_Layer: 0
   m_Name: volcanic_rock_1
   m_TagString: Untagged
@@ -517,7 +557,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: cf929332d6b2b23448a9b137416165b8, type: 3}
+  - {fileID: -876546973899608171, guid: 2bbcad7e886b9404aa35ca476a6c60aa, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -549,6 +589,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5452677590496522865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019836986850473399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34d0c9fdb13d9547984752c7caaf3a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &157383749373365822
 PrefabInstance:
   m_ObjectHideFlags: 0
