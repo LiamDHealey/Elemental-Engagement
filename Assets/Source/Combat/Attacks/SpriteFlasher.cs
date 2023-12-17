@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using ElementalEngagement.Combat;
-using UnityEditor.ShaderKeywordFilter;
 
 public class SpriteFlasher : MonoBehaviour
 {
