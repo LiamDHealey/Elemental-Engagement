@@ -17,7 +17,7 @@ namespace ElementalEngagement.Player
         [Tooltip("Called when a player has lost.")]
         [SerializeField] private UnityEvent<Faction> _onPlayerLost;
 
-        public static UnityEvent<Faction> onPlayerLost => instance._onPlayerLost;
+        public static UnityEvent<Faction> onPlayerLost => instance?._onPlayerLost;
 
         // The factions map to their loose conditions.
         public static ReadOnlyDictionary<Faction, ReadOnlyCollection<Health>> factionToVitalStructures;

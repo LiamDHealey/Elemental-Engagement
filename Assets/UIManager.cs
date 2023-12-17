@@ -54,7 +54,7 @@ public class UIManager : MonoBehaviour
 
             inputModule = FindAnyObjectByType<InputSystemUIInputModule>();
             inputModule.move.action.performed += ControllerInputReceived;
-            DefeatManager.onPlayerLost.AddListener(s => gameOver = true);
+            DefeatManager.onPlayerLost?.AddListener(s => gameOver = true);
         }
     }
 
