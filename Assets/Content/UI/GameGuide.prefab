@@ -4126,10 +4126,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Choose a element power type & god power - Tap 1,2,3,4 on keyboard or d-pad
-    on controller\r\n\r\nUse god power - Use the same number or d-pad button or tap
-    space on keyboard or south-button on controller\r\n\r\nRotating mountain range
-    - Hold Z & X on keyboard or use the right stick on controller\r"
+  m_text: "Choose a element power type & god power - Tap 1,2,3,4 on keyboard OR d-pad
+    on controller\r\n\r\nUse selected god power - Use the same number OR d-pad button
+    or tap space on keyboard OR south-button on controller\r\n\r\nRotating mountain
+    range - Hold Z & X on keyboard OR use the right stick on controller\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
@@ -5506,9 +5506,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Camera movement - Hold WASD on keyboard or use the left stick on controller\r\n\r\nCamera
-    zoom - Hold R & F on keyboard or use the left & right triggers on controller\r\n\r\nMenu
-    - Press Esc on keyboard or press the menu button on controller\r"
+  m_text: "Camera movement - Hold WASD on keyboard OR use the left stick on controller\r\n\r\nCamera
+    zoom - Hold R & F on keyboard OR use the left & right triggers on controller\r\n\r\nMenu
+    - Press Esc on keyboard OR press the menu button on controller\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
@@ -10498,23 +10498,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Select a single unit - Tap space on keyboard or south-button on controller
+  m_text: 'Select a single unit - Tap space on keyboard OR south-button on controller
 
     Select
-    all units of the same type - Double tap space on keyboard or south-button on
+    all units of the same type - Double tap space on keyboard OR south-button on
     controller while looking at a unit
 
     Select all units - Tap tab on keyboard
-    or north-button on controller
+    OR north-button on controller
 
     Move/Sacrifice units - Tap space on keyboard
-    or south-button on controller after selecting units
+    OR south-button on controller after selecting units
 
     Attack move units -
-    Tap Q on keyboard or west-button on controller after selecting units
+    Tap Q on keyboard OR west-button on controller after selecting units
 
     Stop
-    units - Tap ~ on keyboard or bumpers on controller after selecting units'
+    units - Tap ~ on keyboard OR bumpers on controller after selecting units
+
+    Deselect/Back
+    - Tap E on keyboard OR east-button on controller'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
