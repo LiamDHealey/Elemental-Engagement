@@ -1312,7 +1312,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "The main type of capture locations are Elemental Territories. These areas
     represent each minor elemental god.\r\nWhile all basic elemental types can capture
-    and de-capture these locations, using the right matchups will do it faster.\r\nThe
+    and de-capture these locations, using the matching element will do it faster.\r\nThe
     more Elemental Territories you capture, the more favor you will generate for
     that minor god to unlock their powers and spawn their basic thralls faster.\r"
   m_isRightToLeft: 0
@@ -3066,7 +3066,7 @@ MonoBehaviour:
     increasing based on the number of Elemental Territories you have captured.
 
     Elementals
-    also do more damage against other elementals in these matchups.
+    also do more damage against other elementals based on the matchup.
 
 '
   m_isRightToLeft: 0
@@ -4126,10 +4126,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Choose a element power type & god power - Tap 1,2,3,4 on keyboard OR d-pad
-    on controller\r\n\r\nUse selected god power - Use the same number OR d-pad button
-    or tap space on keyboard OR south-button on controller\r\n\r\nRotating mountain
-    range - Hold Z & X on keyboard OR use the right stick on controller\r"
+  m_text: "Choose a element power type & god power - Tap 1,2,3,4 on keyboard OR <sprite
+    name=D-Pad> on controller\r\n\r\nUse selected god power - Tap SPACE on keyboard
+    OR <sprite name=A> on controller\r\nAlternatively, use the same number OR <sprite
+    name=D-Pad> button that selected the power\n\r\nRotating mountain range - Hold
+    Z & X on keyboard OR <sprite name=RS X> on controller\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
@@ -4148,7 +4149,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 5446e8ee68f6c0c4e872aa592e9ed7be, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: f31df1658faed60489c38edeb2da1d48, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -4156,7 +4157,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.55
+  m_fontSize: 37.65
   m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5506,9 +5507,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Camera movement - Hold WASD on keyboard OR use the left stick on controller\r\n\r\nCamera
-    zoom - Hold R & F on keyboard OR use the left & right triggers on controller\r\n\r\nMenu
-    - Press Esc on keyboard OR press the menu button on controller\r"
+  m_text: "Camera movement - Hold WASD on keyboard OR <sprite name=LS> on controller\r\n\r\nCamera
+    zoom - Hold R & F on keyboard OR <sprite name=LT><sprite name=RT> on controller\r\n\r\nMenu
+    - Press ESC on keyboard OR <sprite name=Menu> on controller\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
@@ -5527,7 +5528,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 5446e8ee68f6c0c4e872aa592e9ed7be, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: f31df1658faed60489c38edeb2da1d48, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -5535,7 +5536,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40.95
+  m_fontSize: 48.75
   m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10498,26 +10499,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Select a single unit - Tap space on keyboard OR south-button on controller
+  m_text: 'Select a single unit - Tap SPACE on keyboard OR <sprite name=A> on controller
 
     Select
-    all units of the same type - Double tap space on keyboard OR south-button on
-    controller while looking at a unit
+    all units of the same type - Double tap SPACE on keyboard OR <sprite name=A>
+    on controller while looking at a unit
 
-    Select all units - Tap tab on keyboard
-    OR north-button on controller
+    Select all units - Tap TAB on keyboard
+    OR <sprite name=Y> on controller
 
-    Move/Sacrifice units - Tap space on keyboard
-    OR south-button on controller after selecting units
+    Move/Sacrifice units - Tap SPACE on keyboard
+    OR <sprite name=A> on controller after selecting units
 
-    Attack move units -
-    Tap Q on keyboard OR west-button on controller after selecting units
+    Attack move units
+    - Tap Q on keyboard OR <sprite name=X> on controller after selecting units
 
     Stop
-    units - Tap ~ on keyboard OR bumpers on controller after selecting units
+    units - Tap ~ on keyboard OR <sprite name=LB><sprite name=RB> on controller after
+    selecting units
 
-    Deselect/Back
-    - Tap E on keyboard OR east-button on controller'
+    Deselect/Back - Tap E on keyboard OR <sprite name=B> on
+    controller'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
@@ -10536,7 +10538,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 5446e8ee68f6c0c4e872aa592e9ed7be, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: f31df1658faed60489c38edeb2da1d48, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -10544,7 +10546,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.25
+  m_fontSize: 23.85
   m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12754,9 +12756,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "As you gain favor with the 3 element minor gods, you will unlock their
-    god powers.\r\n\r\nThere are 4 tiers of powers, Tier 0, Tier 1, Tier 2, and Tier
-    3.\r\nAll Tier 0 powers are unlocked immediately.\r\nAll Tier 1 powers can be
-    unlocked at 33% favor.\r\nOnly two of the three Tier 2 powers can be unlocked,
+    god powers.\r\nChoose who you give favor to wisely, as you can only have a set
+    number of god powers.\n\r\nThere are 4 tiers of powers, Tier 0, Tier 1, Tier
+    2, and Tier 3.\r\nAll Tier 0 powers are unlocked immediately.\r\nAll Tier 1 powers
+    can be unlocked at 33% favor.\r\nOnly two of the three Tier 2 powers can be unlocked,
     at 66% favor.\r\nOnly one of the three Tier 3 powers can be unlocked, at 100%
     favor.\r"
   m_isRightToLeft: 0
@@ -15856,10 +15859,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Fire god powers focus solely on damaging your enemy\u2019s units.\r\n\r\nTier
-    0: Lava Pool - Damages units in an area over time\r\nTier 1: Fire Tower - Creates
-    a defensive tower that shoots enemy units\r\nTier 2: Advanced Fire Elemental
-    Upgrade - Upgrades basic fire elementals into advanced ones\r\nTier 3: Asteroid
-    Storm - Unleashes a hail of asteroids in an area\r"
+    0: Lava Pool - Damages enemy units in an area over time\r\nTier 1: Fire Tower
+    - Creates a defensive tower that shoots enemy units\r\nTier 2: Advanced Fire
+    Elemental Upgrade - Upgrades basic fire elementals into advanced ones\r\nTier
+    3: Asteroid Storm - Unleashes a hail of asteroids in an area\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
