@@ -250,39 +250,42 @@ namespace ElementalEngagement.Player
 
         public void IssueCommand(bool isAltCommand)
         {
-            Ray screenToWorldRay = new Ray(transform.position, transform.forward);
-            if (!Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask))
-                return;
-
-            if (selectedThisTick)
-                return;
-
-            for (int i = 0; i < selectedObjects.Count; i++)
+            if (!GetSelectableUnderCursor(out Selectable select, regularSelectionRadius))
             {
-                if (_selectedObjects[i] == null)
+                Ray screenToWorldRay = new Ray(transform.position, transform.forward);
+                if (!Physics.Raycast(screenToWorldRay, out RaycastHit hit, 9999f, commandMask))
+                    return;
+
+                if (selectedThisTick)
+                    return;
+
+                for (int i = 0; i < selectedObjects.Count; i++)
                 {
-                    _selectedObjects.RemoveAt(i);
-                    i--;
+                    if (_selectedObjects[i] == null)
+                    {
+                        _selectedObjects.RemoveAt(i);
+                        i--;
+                    }
                 }
-            }
-            foreach (Selectable selectable in selectedObjects)
-            {
-                if (selectable == null)
-                    continue;
-
-                CommandReceiver[] receivers = selectable.GetComponents<CommandReceiver>();
-                foreach (CommandReceiver receiver in receivers)
+                foreach (Selectable selectable in selectedObjects)
                 {
-                    receiver.CancelCommand();
+                    if (selectable == null)
+                        continue;
+
+                    CommandReceiver[] receivers = selectable.GetComponents<CommandReceiver>();
+                    foreach (CommandReceiver receiver in receivers)
+                    {
+                        receiver.CancelCommand();
+                    }
+
+                    // Get highest priority receiver that can execute this command.
+                    CommandReceiver chosenReceiver = receivers
+                        .Where(receiver => receiver.CanExecuteCommand(hit))
+                        .OrderByDescending(receiver => receiver.commandPriority)
+                        .FirstOrDefault();
+
+                    chosenReceiver?.ExecuteCommand(hit, selectedObjects, isAltCommand);
                 }
-
-                // Get highest priority receiver that can execute this command.
-                CommandReceiver chosenReceiver = receivers
-                    .Where(receiver => receiver.CanExecuteCommand(hit))
-                    .OrderByDescending(receiver => receiver.commandPriority)
-                    .FirstOrDefault();
-
-                chosenReceiver?.ExecuteCommand(hit, selectedObjects, isAltCommand);
             }
         }
 
