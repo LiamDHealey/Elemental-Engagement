@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     public static UnityEvent<string> onMenuOpened = new UnityEvent<string>();
     public static UnityEvent<string> onMenuClosed = new UnityEvent<string>();
     public static UnityEvent<string> onMenuFocused = new UnityEvent<string>();
-    public static bool usingNavigation = false;
+    public static bool usingNavigation { get; private set; } = false;
 
 
 
@@ -54,8 +54,18 @@ public class UIManager : MonoBehaviour
 
             inputModule = FindAnyObjectByType<InputSystemUIInputModule>();
             inputModule.move.action.performed += ControllerInputReceived;
+            inputModule.leftClick.action.performed += MouseInputReceived;
+            inputModule.cancel.action.performed += GoBack;
             DefeatManager.onPlayerLost?.AddListener(s => gameOver = true);
         }
+    }
+
+    private void GoBack(CallbackContext context)
+    {
+        if (openMenus.Count <= 1)
+            return;
+
+        onMenuClosed?.Invoke(openMenus.Last());
     }
 
     private static void ControllerInputReceived(CallbackContext context)
@@ -64,9 +74,17 @@ public class UIManager : MonoBehaviour
         {
             usingNavigation = true;
             onMenuFocused?.Invoke(openMenus[openMenus.Count - 1]);
-            inputModule.move.action.performed -= ControllerInputReceived;
         }
     }
+
+    private static void MouseInputReceived(CallbackContext context)
+    {
+        if (usingNavigation && openMenus.Count > 0)
+        {
+            usingNavigation = false;
+        }
+    }
+
     private void Update()
     {
         if (!AllegianceManager.gameStarted)
