@@ -12,6 +12,7 @@ using UnityEditor;
 using ElementalEngagement.UI;
 using ElementalEngagement.Combat;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 
 namespace ElementalEngagement.Player
 {
@@ -65,8 +66,6 @@ namespace ElementalEngagement.Player
         private bool canSelectAll = false;
 
         private Camera camera;
-
-        private delegate void deselectWhenKilledDelegate();
 
         public UnityEvent groupSelectionStarted;
         public UnityEvent groupSelectionStopped;
@@ -202,6 +201,10 @@ namespace ElementalEngagement.Player
                     if (collider.tag == currentSelectedTag && colliderAllegiance.faction == allegiance.faction)
                     {
                         Selectable colliderSelect = collider.GetComponent<Selectable>();
+                        if (selectable.isSelected)
+                            continue;
+
+
                         _selectedObjects.Add(colliderSelect);
                         colliderSelect.isSelected = true;
                         addKillDelegate(colliderSelect);
@@ -222,7 +225,7 @@ namespace ElementalEngagement.Player
             {
                 Allegiance unitAllegiance = select.GetComponent<Allegiance>();
 
-                if (unitAllegiance.CheckFactionAllegiance(allegiance))
+                if (!select.isSelected && unitAllegiance.CheckFactionAllegiance(allegiance))
                 {
                     _selectedObjects.Add(select);
                     select.isSelected = true;
