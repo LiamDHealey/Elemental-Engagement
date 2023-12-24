@@ -27,7 +27,7 @@ public class AnnouncerQueue : MonoBehaviour
         }
         else if(currentlyPlaying && currentTimeRemaining > 0)
         {
-            currentTimeRemaining -= Time.deltaTime;
+            currentTimeRemaining -= Time.unscaledDeltaTime;
         }
         else
         {
