@@ -10501,6 +10501,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Select a single unit - Tap SPACE on keyboard OR <sprite name=A> on controller
 
+    Circular
+    Select - Hold SPACE on keyboard OR <sprite name=A> on controller
+
     Select
     all units of the same type - Double tap SPACE on keyboard OR <sprite name=A>
     on controller while looking at a unit
@@ -12072,9 +12075,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Once a player reaches maximum favor with the humans, the Human Army will
-    spawn.\r\nThis army cannot be controlled by either side, and it will head directly
-    for the enemy\u2019s shrines.\r\nThe army has a lot of health, moves extremely
-    slow, and hits everything around it.\r"
+    spawn, and only once per match.\nThis army cannot be controlled by either side,
+    and it will head directly for the enemy\u2019s shrines.\r\nThe army has a lot
+    of health, moves extremely slow, and hits everything around it.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
   m_sharedMaterial: {fileID: 5765575702364376402, guid: e273ce21b56011e4d999e32a6ef7f518, type: 2}
