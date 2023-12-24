@@ -27,6 +27,8 @@ namespace ElementalEngagement.Favor
         [Tooltip("The time between each spawn before any multipliers are applied.")]
         [SerializeField] public float baseInterval = 5f;
 
+        public bool useSpawnCap = true;
+        
         [Tooltip("The location to spawn the units at.")]
         public UnityEvent onSpawned;
 
@@ -79,7 +81,7 @@ namespace ElementalEngagement.Favor
 
             if (timeSinceLastSpawn >= spawnInterval)
             {
-                if (spawnedObjects[spawnAllegiance.faction].Count >= spawnCaps[spawnAllegiance.faction])
+                if (useSpawnCap && spawnedObjects[spawnAllegiance.faction].Count >= spawnCaps[spawnAllegiance.faction])
                     return;
 
                 GameObject spawnedObject = Instantiate(objectToSpawn);
@@ -89,8 +91,11 @@ namespace ElementalEngagement.Favor
                 spawnedObject.GetComponent<Allegiance>().faction = spawnAllegiance.faction;
                 onSpawned?.Invoke();
 
-                spawnedObjects[spawnAllegiance.faction].Add(spawnedObject);
-                spawnedObject.GetComponent<Health>().onKilled.AddListener(() => spawnedObjects[spawnAllegiance.faction].Remove(spawnedObject));
+                if (useSpawnCap)
+                {
+                    spawnedObjects[spawnAllegiance.faction].Add(spawnedObject);
+                    spawnedObject.GetComponent<Health>().onKilled.AddListener(() => spawnedObjects[spawnAllegiance.faction].Remove(spawnedObject));
+                }
 
                 timeSinceLastSpawn = 0;
             }
