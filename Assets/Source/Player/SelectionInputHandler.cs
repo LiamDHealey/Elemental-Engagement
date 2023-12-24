@@ -245,6 +245,9 @@ namespace ElementalEngagement.Player
             foreach (Selectable selectedObject in selectedObjects)
             {
                 _selectedObjects.Remove(selectedObject);
+                if (selectedObject == null)
+                    continue;
+
                 selectedObject.gameObject.GetComponent<Health>().onKilled.RemoveListener(deselectWhenKilledTracker[selectedObject]);
                 selectedObject.isSelected = false;
             }
