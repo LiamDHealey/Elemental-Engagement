@@ -75,9 +75,9 @@ namespace ElementalEngagement.Favor
             float spawnInterval = baseInterval / SpawnrateProvider.GetSpawnrateMultiplier(spawnAllegiance);
             
             timeSinceLastSpawn += Time.deltaTime;
-            spawnedObjects[spawnAllegiance.faction] = spawnedObjects[spawnAllegiance.faction]
-                .Where(s => s != null)
-                .ToHashSet();
+            //spawnedObjects[spawnAllegiance.faction] = spawnedObjects[spawnAllegiance.faction]
+            //    .Where(s => s != null)
+            //    .ToHashSet();
 
             if (timeSinceLastSpawn >= spawnInterval)
             {

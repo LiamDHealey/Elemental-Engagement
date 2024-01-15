@@ -94,6 +94,8 @@ namespace ElementalEngagement.Player
         {
             if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius) && !selectable.isSelected)
             {
+                if (selectable.isSelected)
+                    return;
                 _selectedObjects.Add(selectable);
                 selectable.isSelected = true;
                 addKillDelegate(selectable);
@@ -172,42 +174,40 @@ namespace ElementalEngagement.Player
         {
             if (canSelectAll)
             {
-                Ray cornerRay = camera.ScreenPointToRay(camera.pixelRect.size);
-                Vector3 cornerPos = MathHelpers.IntersectWithGround(cornerRay);
+                Ray topCornerRay = camera.ScreenPointToRay(camera.pixelRect.size);
+                Vector3 topCornerPos = MathHelpers.IntersectWithGround(topCornerRay);
+                Ray bottomCornerRay = camera.ScreenPointToRay(Vector2.zero);
+                Vector3 bottomCornerPos = MathHelpers.IntersectWithGround(bottomCornerRay);
 
                 Vector3 centerGroundPos = MathHelpers.IntersectWithGround(new Ray(transform.position, transform.forward));
 
-                Vector3 extent = (cornerPos - centerGroundPos);
-                extent = new Vector3(Mathf.Abs(extent.x), 50, Mathf.Abs(extent.z)) * 0.6f;
-
+                Vector3 topExtent = (topCornerPos - centerGroundPos);
+                Vector3 bottomExtent = (bottomCornerPos - centerGroundPos);
+                Vector3 extent = new Vector3((Mathf.Abs(topExtent.x) + Mathf.Abs(bottomExtent.x)) / 2, 
+                                             50, 
+                                             (Mathf.Abs(topExtent.z) + Mathf.Abs(bottomExtent.z)) / 2);
+                
                 Collider[] hitColliders = Physics.OverlapBox(centerGroundPos, extent);
-
-                string currentSelectedTag = "";
 
                 if (GetSelectableUnderCursor(out Selectable selectable, regularSelectionRadius))
                 {
-                    currentSelectedTag = selectable.tag;
-                    if (selectable.isSelected)
+                    string currentSelectedTag = selectable.tag;
+
+
+                    foreach (Collider collider in hitColliders)
                     {
-                        DeselectAll();
-                    }
-                }
+                        Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
+                        if (collider.tag == currentSelectedTag && colliderAllegiance.faction == allegiance.faction)
+                        {
+                            Selectable colliderSelect = collider.GetComponent<Selectable>();
+                            if (colliderSelect.isSelected)
+                                continue;
 
-
-                foreach (Collider collider in hitColliders)
-                {
-                    Allegiance colliderAllegiance = collider.GetComponent<Allegiance>();
-                    if (collider.tag == currentSelectedTag && colliderAllegiance.faction == allegiance.faction)
-                    {
-                        Selectable colliderSelect = collider.GetComponent<Selectable>();
-                        if (selectable.isSelected)
-                            continue;
-
-
-                        _selectedObjects.Add(colliderSelect);
-                        colliderSelect.isSelected = true;
-                        addKillDelegate(colliderSelect);
-                        selectedThisTick = true;
+                            _selectedObjects.Add(colliderSelect);
+                            colliderSelect.isSelected = true;
+                            addKillDelegate(colliderSelect);
+                            selectedThisTick = true;
+                        }
                     }
                 }
             }
