@@ -17,7 +17,7 @@ public class SpriteFlasher : MonoBehaviour
 
     private void Start()
     {
-        health = GetComponent<Health>();
+        health = GetComponentInParent<Health>();
         for (int i = 0; i < renderers.Count; i++)
         {
             originalColors.Add(renderers[i].color);
