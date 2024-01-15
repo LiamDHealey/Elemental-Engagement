@@ -32,7 +32,9 @@ public class SelectedList : MonoBehaviour
         foreach (var uniqueUnit in selectionInputHandler.selectedObjects
             .Select(s => s.tag)
             .Distinct()
-            .ToDictionary(tag => tag, tag => selectionInputHandler.selectedObjects.Count(s => s != null && s.tag == tag)))
+            .ToDictionary(tag => tag, tag => selectionInputHandler.selectedObjects
+                                                .Distinct()
+                                                .Count(s => s != null && s.tag == tag)))
         {
             GameObject item = Instantiate(template, transform);
             item.GetComponentInChildren<TMP_Text>().text = $"×{uniqueUnit.Value}";
