@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,8 +8,17 @@ using System.Linq;
 using UnityEditor;
 #endif
 
+/// <summary>
+/// Class for adding colliders to the edges of the map using the nav mesh as the template
+/// </summary>
 public class MapColliderCreator : MonoBehaviour
 {
+    [Tooltip("The height of the colliders to create.")] [Min(0)]
+    public float height = 5f;
+
+    /// <summary>
+    /// Creates box colliders for the whole nav mesh and adds them as children to this game object.
+    /// </summary>
     public void Create()
     {
         NavMeshTriangulation triangulation = NavMesh.CalculateTriangulation();
@@ -36,9 +44,9 @@ public class MapColliderCreator : MonoBehaviour
 
             BoxCollider box = new GameObject("MapCollider", typeof(BoxCollider)).GetComponent<BoxCollider>();
             box.transform.SetParent(transform, false);
-            box.transform.position = (v1 + v2) / 2f + Vector3.up * 2.5f;
+            box.transform.position = (v1 + v2) / 2f + Vector3.up * height / 2f;
             box.transform.rotation = Quaternion.LookRotation(direction);
-            box.size = new Vector3(1, 5, (v1 - v2).magnitude);
+            box.size = new Vector3(1, height, (v1 - v2).magnitude);
         }
 
         bool NearlyEqual(Vector3 v1, Vector3 v2) => (v1 - v2).sqrMagnitude < 0.1;
@@ -47,6 +55,9 @@ public class MapColliderCreator : MonoBehaviour
 
 
 #if UNITY_EDITOR
+/// <summary>
+/// Makes a button show up in the inspector to create the colliders
+/// </summary>
 [CustomEditor(typeof(MapColliderCreator))]
 class MapColliderCreatorEditor : Editor
 {
@@ -59,3 +70,4 @@ class MapColliderCreatorEditor : Editor
     }
 }
 #endif
+
